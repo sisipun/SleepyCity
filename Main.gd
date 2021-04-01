@@ -3,9 +3,13 @@ extends Node2D
 export (PackedScene) var Cell
 export var width = 100
 export var height = 50
+export var born_condition = [3]
+export var survive_condition = [2, 3]
+export var step_count = 5
 
 var map = []
 var screen_size
+var step = 0
 
 func _ready():
 	screen_size = get_viewport_rect().size	
@@ -21,6 +25,7 @@ func _ready():
 			cell.set_size(Vector2(cell_width, cell_height))
 			cell.position = Vector2(cell_width / 2 + i * cell_width, cell_height / 2 + j * cell_height)
 			map[i].append(cell)
+	$StepTimer.start()
 
 func _process(delta):
 	if (Input.is_action_just_pressed("ui_left")):
@@ -33,7 +38,7 @@ func step():
 		for j in range(map[i].size()):
 			var alive = map[i][j].alive
 			var alive_count = alive_count(i, j)
-			new_statuses[i].append((alive && alive_count in [2, 3]) || (!alive && alive_count == 3))
+			new_statuses[i].append((alive && alive_count in survive_condition) || (!alive && alive_count in born_condition))
 	
 	for i in range(new_statuses.size()):
 		for j in range(new_statuses[i].size()):
@@ -60,3 +65,9 @@ func alive_count(i, j):
 	if map[inc_i][j - 1].alive:
 		counter += 1
 	return counter
+
+func _on_StepTimer_timeout():
+	step()
+	step += 1
+	if step >= step_count:
+		$StepTimer.stop()
