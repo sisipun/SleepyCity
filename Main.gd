@@ -3,6 +3,7 @@ extends Node2D
 export (PackedScene) var Cell
 export var width = 100
 export var height = 50
+export var alive_max_count = 10
 export var born_condition = [3]
 export var survive_condition = [2, 3]
 export var step_count = 5
@@ -20,12 +21,11 @@ func _ready():
 		for j in range(height):
 			var cell = Cell.instance()
 			add_child(cell)
-			if randi() % 2:
-				cell.set_alive(false)
+			cell.set_alive(false)
 			cell.set_size(Vector2(cell_width, cell_height))
 			cell.position = Vector2(cell_width / 2 + i * cell_width, cell_height / 2 + j * cell_height)
 			map[i].append(cell)
-	$StepTimer.start()
+	#$StepTimer.start()
 
 func _process(delta):
 	if (Input.is_action_just_pressed("ui_left")):
@@ -38,7 +38,7 @@ func step():
 		for j in range(map[i].size()):
 			var alive = map[i][j].alive
 			var alive_count = alive_count(i, j)
-			new_statuses[i].append((alive && alive_count in survive_condition) || (!alive && alive_count in born_condition))
+			new_statuses[i].append((alive and alive_count in survive_condition) or (not alive and alive_count in born_condition))
 	
 	for i in range(new_statuses.size()):
 		for j in range(new_statuses[i].size()):
