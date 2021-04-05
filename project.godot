@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Cell.gd"
+"path": "res://scripts/Cell.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://Level.gd"
+"path": "res://scripts/Level.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
@@ -27,8 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cells"
-run/main_scene="res://Level.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/MainMenu.tscn"
 
 [display]
 
