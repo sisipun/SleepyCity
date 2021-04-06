@@ -2,6 +2,11 @@ extends Node2D
 
 class_name Level
 
+enum Stage {
+	USER_INPUT,
+	PREVIEW
+}
+
 export (PackedScene) var CellScene
 export var width = 20
 export var height = 10
@@ -11,14 +16,16 @@ export var survive_condition = [2, 3]
 export var step_count = 1
 export var targets = [Vector2(4,4), Vector2(4,5), Vector2(3,4), Vector2(3,5)]
 
+var screen_size
+var stage = Stage.USER_INPUT
 var map = []
 var user_input_map = []
-var screen_size
 var step_number = 0
 var alive_count = 0
 
 func _ready():
-	screen_size = get_viewport_rect().size	
+	screen_size = get_viewport_rect().size		
+	stage = Stage.USER_INPUT
 	var cell_width = screen_size.x / width
 	var cell_height = screen_size.y / height
 	for i in range(width):
@@ -38,6 +45,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_left") and alive_count == alive_max_count:
+		stage = Stage.PREVIEW
 		$StepTimer.start()
 		
 func _on_StepTimer_timeout():
@@ -47,9 +55,13 @@ func _on_StepTimer_timeout():
 		$StepTimer.stop()
 		step_number = 0
 		if not is_target_complete():
+			stage = Stage.USER_INPUT
 			reset_map()
 
 func _on_Cell_clicked(coord_x, coord_y):
+	if stage == Stage.PREVIEW:
+		return
+	
 	var cell = map[coord_x][coord_y]
 	if not cell.is_alive() and alive_count < alive_max_count:
 		alive_count += 1

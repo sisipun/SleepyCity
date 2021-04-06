@@ -17,8 +17,16 @@ margin_bottom = -80.0
 
 [node name="StartButton" type="Button" parent="Buttons"]
 margin_right = 960.0
-margin_bottom = 440.0
+margin_bottom = 218.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Start"
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+margin_top = 222.0
+margin_right = 960.0
+margin_bottom = 440.0
+size_flags_vertical = 3
+text = "Quit"
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
