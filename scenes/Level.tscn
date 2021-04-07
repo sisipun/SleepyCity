@@ -10,4 +10,35 @@ alive_max_count = 10
 step_count = 5
 
 [node name="StepTimer" type="Timer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ActiveCount" type="Label" parent="HUD"]
+visible = false
+margin_right = 200.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Active Cells:"
+align = 1
+valign = 1
+
+[node name="StepNumber" type="Label" parent="HUD"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Step: "
+align = 1
+valign = 1
+
+[node name="PreviewButton" type="Button" parent="HUD"]
+visible = false
+margin_left = 25.0
+margin_top = 12.0
+margin_right = 175.0
+margin_bottom = 12.0
+text = "Check"
 [connection signal="timeout" from="StepTimer" to="." method="_on_StepTimer_timeout"]
+[connection signal="pressed" from="HUD/PreviewButton" to="." method="_on_PreviewButton_pressed"]
