@@ -18,16 +18,26 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://scripts/Level.gd"
+}, {
+"base": "Reference",
+"class": "LevelInfo",
+"language": "GDScript",
+"path": "res://scripts/LevelInfo.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
-"Level": ""
+"Level": "",
+"LevelInfo": ""
 }
 
 [application]
 
 config/name="Cells"
 run/main_scene="res://scenes/MainMenu.tscn"
+
+[autoload]
+
+Levels="*res://scripts/Levels.gd"
 
 [display]
 
