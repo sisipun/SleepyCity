@@ -4,8 +4,6 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-alive_max_count = 10
-step_count = 5
 
 [node name="StepTimer" type="Timer" parent="."]
 
