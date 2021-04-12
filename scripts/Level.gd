@@ -114,6 +114,7 @@ func reset():
 	$HUD/StepNumber.hide()
 
 func complete():
+	Levels.completeCurrent()
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 	
 func alive_around_count(i, j):
