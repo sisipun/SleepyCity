@@ -1,9 +1,9 @@
 extends Control
 
-var button_height = 100
+var button_height = 300
 
 func _ready():
-	var buttons_area_rect = $Buttons.get_global_rect()
+	var buttons_area_rect = $ButtonsScroll/Buttons.get_global_rect()
 	var buttons_area_position = buttons_area_rect.position
 	var buttons_area_size = buttons_area_rect.size
 	
@@ -14,8 +14,8 @@ func _ready():
 		button.disabled = not Levels.values[i].opened
 		button.text = "Level %d" % (i + 1)
 		button.connect("pressed", self, "_on_Level_clicked", [i])
-		add_child(button)
+		$ButtonsScroll/Buttons.add_child(button)
 
 func _on_Level_clicked(i):
-	Levels.current = i
+	Levels.currentIndex = i
 	get_tree().change_scene("res://scenes/Level.tscn")
