@@ -13,6 +13,7 @@ var map
 var user_input_map
 var step_number
 var alive_count
+var attempt_count
 
 func _ready():
 	var cellScene = load("res://scenes/Cell.tscn")	
@@ -22,6 +23,7 @@ func _ready():
 	user_input_map = []
 	step_number = 0
 	alive_count = 0
+	attempt_count = 1
 	
 	var screen_size = get_viewport_rect().size
 	var cell_width = screen_size.x / level.width
@@ -105,6 +107,7 @@ func step():
 
 func reset():
 	$StepTimer.stop()
+	attempt_count += 1	
 	step_number = 0
 	stage = Stage.USER_INPUT
 	for i in range(map.size()):
@@ -114,7 +117,7 @@ func reset():
 	$HUD/StepNumber.hide()
 
 func complete():
-	Levels.completeCurrent()
+	Levels.completeCurrent(attempt_count)
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 	
 func alive_around_count(i, j):

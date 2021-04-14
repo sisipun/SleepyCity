@@ -9,10 +9,12 @@ func _ready():
 	
 	for i in range(Levels.values.size()):
 		var button = Button.new()
+		var level = Levels.values[i]
+		var attempt_count = level.attempt_count
 		button.set_position(Vector2(buttons_area_position.x, buttons_area_position.y + (button_height * i)))
 		button.set_size(Vector2(buttons_area_size.x, button_height))
 		button.disabled = not Levels.values[i].opened
-		button.text = "Level %d" % (i + 1)
+		button.text = "Level %d (%d)" % [i + 1, attempt_count]  if attempt_count > 0 else "Level %d" % (i + 1)
 		button.connect("pressed", self, "_on_Level_clicked", [i])
 		$ButtonsScroll/Buttons.add_child(button)
 
