@@ -6,11 +6,12 @@ enum Type { ALIVE, DEAD, TARGET }
 
 signal clicked(coord_x, coord_y)
 
-export var type = Type.DEAD
+const sprite_size = 1024
 
-var alive_texture = preload("res://assets/alive_cell.png")
-var dead_texture = preload("res://assets/dead_cell.png")
-var target_texture = preload("res://assets/target_cell.png")
+#var alive_texture = preload("res://assets/alive_cell.png")
+#var dead_texture = preload("res://assets/dead_cell.png")
+#var target_texture = preload("res://assets/target_cell.png")
+export var type = Type.DEAD
 var coord_x = 0
 var coord_y = 0
 
@@ -19,13 +20,14 @@ func init(coord_x, coord_y, position, size, alpha = 1, type = Type.DEAD):
 	self.coord_y = coord_y
 	self.position = position
 	set_type(type)
-	var current_size = $Sprite.texture.get_size()
 	$Collision.shape.extents = Vector2(size.x / 2, size.y / 2)
-	$Sprite.scale = Vector2(size.x / current_size.x, size.y / current_size.y)
-	$Sprite.modulate.a = alpha
+	$AnimatedSprite.scale = Vector2(size.x / sprite_size, size.y / sprite_size)
+	$AnimatedSprite.modulate.a = alpha
+	$AnimatedSprite.frame = $AnimatedSprite.frames.get_frame_count($AnimatedSprite.animation) - 1
 	return self
 
 func _ready():
+	$AnimatedSprite.play()
 	set_type(type)
 
 func _on_input_event(viewport, event, shape_idx):
@@ -35,11 +37,11 @@ func _on_input_event(viewport, event, shape_idx):
 func set_type(type):
 	self.type = type
 	if self.type == Type.ALIVE:
-		$Sprite.set_texture(alive_texture)
+		$AnimatedSprite.animation = "alive"
 	elif self.type == Type.DEAD:
-		$Sprite.set_texture(dead_texture)
+		$AnimatedSprite.animation = "dead"
 	elif self.type == Type.TARGET:
-		$Sprite.set_texture(target_texture)
+		$AnimatedSprite.animation = "target"
 		
 func is_alive():
 	return type == Type.ALIVE
