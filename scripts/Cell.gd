@@ -8,9 +8,6 @@ signal clicked(coord_x, coord_y)
 
 const sprite_size = 1024
 
-#var alive_texture = preload("res://assets/alive_cell.png")
-#var dead_texture = preload("res://assets/dead_cell.png")
-#var target_texture = preload("res://assets/target_cell.png")
 export var type = Type.DEAD
 var coord_x = 0
 var coord_y = 0

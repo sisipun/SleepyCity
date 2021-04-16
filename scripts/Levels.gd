@@ -54,8 +54,8 @@ class LevelInfo:
 			dict["survive_condition"],
 			dict["step_count"],
 			targets,
+			dict["opened"],			
 			dict["completed"],
-			dict["opened"],
 			dict["attempt_count"]
 		)
 
