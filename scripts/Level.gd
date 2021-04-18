@@ -7,24 +7,18 @@ enum Stage {
 	PREVIEW
 }
 
-var level
-var stage
-var map
-var user_input_map
-var step_number
-var alive_count
-var attempt_count
+var level = Levels.current()
+var stage = Stage.USER_INPUT
+var map = []
+var user_input_map = []
+var tips = []
+var last_tip = 0
+var step_number = 0
+var alive_count = 0
+var attempt_count = 0
 
 func _ready():
 	var cellScene = load("res://scenes/Cell.tscn")	
-	level = Levels.current()
-	stage = Stage.USER_INPUT	
-	map = []
-	user_input_map = []
-	step_number = 0
-	alive_count = 0
-	attempt_count = 1
-	
 	var screen_size = get_viewport_rect().size
 	var cell_width = screen_size.x / level.width
 	var cell_height = screen_size.y / level.height
@@ -35,34 +29,38 @@ func _ready():
 			var cell = cellScene.instance().init(
 				i, 
 				j, 
-				Vector2(cell_width / 2 + i * cell_width, cell_height / 2 + j * cell_height), 
-				Vector2(cell_width, cell_height)
+				Vector2(
+					cell_width / 2 + i * cell_width, 
+					cell_height / 2 + j * cell_height
+				), 
+				Vector2(
+					cell_width, 
+					cell_height
+				)
 			)
-			cell.connect("clicked", self, "_on_Cell_clicked")
-			add_child(cell)
 			map[i].append(cell)
 			user_input_map[i].append(cell.is_alive())
+			if Vector2(i, j) in level.targets:
+				cell.play_target_effect()
+			if Vector2(i, j) in level.solution:
+				tips.push_back(cell)
+			cell.connect("clicked", self, "_on_cell_clicked")			
+			add_child(cell)
 			
-	for target in level.targets:
-		var cell = cellScene.instance().init(target.x, target.y, Vector2(cell_width / 2 + target.x * cell_width, cell_height / 2 + target.y * cell_height), Vector2(cell_width, cell_height), 0.5, Cell.Type.TARGET)
-		add_child(cell)
-	
 	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
-	$HUD/ActiveCount.show()
 
-func _on_Cell_clicked(coord_x, coord_y):
+func _on_cell_clicked(cell):
 	if stage == Stage.PREVIEW:
 		return
 	
-	var cell = map[coord_x][coord_y]
-	if not cell.is_alive() and alive_count < level.alive_max_count:
-		alive_count += 1
-		cell.set_alive(true)
-	elif cell.is_alive():
+	if cell.is_alive():
 		alive_count -= 1
 		cell.set_alive(false)
+	elif alive_count < level.alive_max_count:
+		alive_count += 1
+		cell.set_alive(true)
 
-	user_input_map[coord_x][coord_y] = cell.is_alive()	
+	user_input_map[cell.coord_x][cell.coord_y] = cell.is_alive()	
 	if alive_count == level.alive_max_count:
 		$HUD/ActiveCount.hide()
 		$HUD/PreviewButton.show()
@@ -71,16 +69,26 @@ func _on_Cell_clicked(coord_x, coord_y):
 		$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
 		$HUD/ActiveCount.show()
 
-func _on_PreviewButton_pressed():
+func _on_tip_pressed():
+	if stage == Stage.PREVIEW:
+		return
+	
+	var tip = last_tip + 1 if last_tip + 1 < tips.size() else 0
+	var cell = tips[tip]
+	if cell.play_tip_effect():
+		last_tip = tip
+
+func _on_preview_pressed():
 	if stage == Stage.PREVIEW:
 		return
 		
 	stage = Stage.PREVIEW
+	attempt_count += 1
 	$HUD/StepNumber.text = "Step: %d/%d" % [step_number, level.step_count]
 	$HUD/StepNumber.show()
 	$StepTimer.start()
 
-func _on_StepTimer_timeout():
+func _on_step_timeout():
 	step_number += 1
 	if step_number <= level.step_count:
 		step()
@@ -99,15 +107,24 @@ func step():
 		for j in range(map[i].size()):
 			var alive = map[i][j].is_alive()
 			var alive_around_count = alive_around_count(i, j)
-			new_statuses[i].append((alive and alive_around_count in level.survive_condition) or (not alive and alive_around_count in level.born_condition))
+			new_statuses[i].append(
+				(alive and alive_around_count in level.survive_condition) or
+				(not alive and alive_around_count in level.born_condition)
+			)
 	
 	for i in range(new_statuses.size()):
 		for j in range(new_statuses[i].size()):
 			map[i][j].set_alive(new_statuses[i][j])
 
+func is_target_complete():
+	for target in level.targets:
+		if not map[target.x][target.y].is_alive():
+			return false
+	
+	return true
+
 func reset():
 	$StepTimer.stop()
-	attempt_count += 1	
 	step_number = 0
 	stage = Stage.USER_INPUT
 	for i in range(map.size()):
@@ -141,12 +158,3 @@ func alive_around_count(i, j):
 	if map[inc_i][j - 1].is_alive():
 		counter += 1
 	return counter
-	
-func is_target_complete():
-	var active_cells = []
-	for i in range(map.size()):
-		for j in range(map[i].size()):
-			if map[i][j].is_alive():
-				active_cells.append(Vector2(i, j))
-	active_cells.sort()
-	return active_cells == level.targets
