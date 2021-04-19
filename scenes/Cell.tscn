@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/Cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/target_cell.png" type="Texture" id=2]
 [ext_resource path="res://assets/dead_cell.png" type="Texture" id=3]
 [ext_resource path="res://assets/alive_cell.png" type="Texture" id=4]
 [ext_resource path="res://assets/tip_cell.png" type="Texture" id=5]
+[ext_resource path="res://assets/water_drop.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -181,5 +182,9 @@ frames = SubResource( 28 )
 
 [node name="EffectSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
+
+[node name="AudioAlive" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+attenuation = 0.5
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="EffectSprite" to="." method="_on_effect_animation_finished"]

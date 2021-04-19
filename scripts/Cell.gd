@@ -65,3 +65,11 @@ func set_alive(alive):
 		$Sprite.animation = "alive"
 	else:
 		$Sprite.animation = "dead"
+		
+
+func change_alive(alive):
+	if self.alive == alive:
+		return
+	
+	$AudioAlive.play()
+	set_alive(alive)

@@ -55,10 +55,10 @@ func _on_cell_clicked(cell):
 	
 	if cell.is_alive():
 		alive_count -= 1
-		cell.set_alive(false)
+		cell.change_alive(false)
 	elif alive_count < level.alive_max_count:
 		alive_count += 1
-		cell.set_alive(true)
+		cell.change_alive(true)
 
 	user_input_map[cell.coord_x][cell.coord_y] = cell.is_alive()	
 	if alive_count == level.alive_max_count:
@@ -114,7 +114,7 @@ func step():
 	
 	for i in range(new_statuses.size()):
 		for j in range(new_statuses[i].size()):
-			map[i][j].set_alive(new_statuses[i][j])
+			map[i][j].change_alive(new_statuses[i][j])
 
 func is_target_complete():
 	for target in level.targets:
@@ -129,7 +129,7 @@ func reset():
 	stage = Stage.USER_INPUT
 	for i in range(map.size()):
 		for j in range(map[i].size()):
-			map[i][j].set_alive(user_input_map[i][j])
+			map[i][j].change_alive(user_input_map[i][j])
 	
 	$HUD/StepNumber.hide()
 
