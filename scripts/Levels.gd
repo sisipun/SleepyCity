@@ -71,17 +71,17 @@ class LevelInfo:
 		)
 
 var values = [
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 4, [3], [2,3], 2, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5), Vector2(5,4), Vector2(5,5)], [Vector2(4,4), Vector2(4,5), Vector2(4,6), Vector2(5,4)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(20, 10, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false)
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 4, [3], [2,3], 2, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5), Vector2(5,4), Vector2(5,5)], [Vector2(4,4), Vector2(4,5), Vector2(4,6), Vector2(5,4)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
+	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false)
 ]
 var currentIndex = 0
 var savePath = "res://saves/"

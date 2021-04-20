@@ -35,11 +35,19 @@ Levels="*res://scripts/Levels.gd"
 
 [display]
 
-window/size/width=1200
+window/size/width=600
+window/size/height=1200
+
+[font]
+
+tablet_driver=false
+
+[gui]
+
+theme/custom_font="res://assets/default.tres"
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
