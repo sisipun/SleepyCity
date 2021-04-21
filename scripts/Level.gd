@@ -7,7 +7,7 @@ enum Stage {
 	PREVIEW
 }
 
-var level = Levels.current()
+var level = Game.currentLevel()
 var stage = Stage.USER_INPUT
 var map = []
 var user_input_map = []
@@ -48,6 +48,10 @@ func _ready():
 			add_child(cell)
 			
 	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
+	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
+	if not Game.has_tip():
+		$HUD/TipButton.hide()
+		
 
 func _on_cell_clicked(cell):
 	if stage == Stage.PREVIEW:
@@ -70,13 +74,17 @@ func _on_cell_clicked(cell):
 		$HUD/ActiveCount.show()
 
 func _on_tip_pressed():
-	if stage == Stage.PREVIEW:
+	if stage == Stage.PREVIEW or not Game.has_tip():
 		return
 	
 	var tip = last_tip + 1 if last_tip + 1 < tips.size() else 0
 	var cell = tips[tip]
 	if cell.play_tip_effect():
 		last_tip = tip
+		Game.decriment_tip()
+		$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
+	if not Game.has_tip():
+		$HUD/TipButton.hide()
 
 func _on_preview_pressed():
 	if stage == Stage.PREVIEW:
@@ -134,7 +142,7 @@ func reset():
 	$HUD/StepNumber.hide()
 
 func complete():
-	Levels.completeCurrent(attempt_count)
+	Game.completeCurrentLevel(attempt_count)
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 	
 func alive_around_count(i, j):

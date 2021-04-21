@@ -1,5 +1,29 @@
 extends Node
 
+class Game:
+	export(Array) var levels
+	export(int) var tips_count
+	
+	func _init(levels, tips_count):
+		self.levels = levels
+		self.tips_count = tips_count
+		
+	func to_dict():
+		var dict_levels = []
+		for level in levels:
+			dict_levels.push_back(level.to_dict())
+		return {
+			"levels": dict_levels,
+			"tips_count": tips_count
+		}
+	
+	static func from_dict(dict):
+		var levels = []
+		var dict_levels = dict["levels"]
+		for level in dict_levels:
+			levels.push_back(LevelInfo.from_dict(level))
+		return Game.new(levels, dict["tips_count"])
+
 class LevelInfo:
 	export(int) var width
 	export(int) var height
@@ -70,7 +94,7 @@ class LevelInfo:
 			dict["attempt_count"]
 		)
 
-var values = [
+var game = Game.new([
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
 	LevelInfo.new(10, 20, 4, [3], [2,3], 2, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5), Vector2(5,4), Vector2(5,5)], [Vector2(4,4), Vector2(4,5), Vector2(4,6), Vector2(5,4)], false),
@@ -82,8 +106,8 @@ var values = [
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false)
-]
-var currentIndex = 0
+], 10)
+var currentLevelIndex = 0
 var savePath = "res://saves/"
 var saveFile = "levels.json"
 
@@ -93,34 +117,42 @@ func _ready():
 		return
 	
 	file.open(savePath + saveFile, File.READ)
-	var results = JSON.parse(file.get_as_text()).result
-	var loaded_values = []
-	for result in results:
-		loaded_values.push_back(LevelInfo.from_dict(result))
-	values = loaded_values
+	game = Game.from_dict(JSON.parse(file.get_as_text()).result)
 	file.close()
 
-func current():
-	return values[currentIndex]
+func levels():
+	return game.levels
+
+func tip_count():
+	return game.tips_count
+
+func currentLevel():
+	return game.levels[currentLevelIndex]
 	
-func completeCurrent(attempt_count):
-	if current().attempt_count == 0 or current().attempt_count > attempt_count:
-		current().attempt_count = attempt_count
-	current().completed = true
-	var next = currentIndex + 1
-	if next < values.size():
-		values[next].opened = true
-	self.saveLevels()
-		
-func saveLevels():
+func completeCurrentLevel(attempt_count):
+	var current = currentLevel()
+	var levels = levels()
+	if current.attempt_count == 0 or current.attempt_count > attempt_count:
+		current.attempt_count = attempt_count
+	current.completed = true
+	var next = currentLevelIndex + 1
+	if next < levels.size():
+		levels[next].opened = true
+	self.save()
+
+func decriment_tip():
+	game.tips_count -= 1
+	self.save()
+
+func has_tip():
+	return game.tips_count > 0
+
+func save():
 	var dir = Directory.new()
 	if not dir.dir_exists(savePath):
 		dir.make_dir(savePath)
 		
 	var file = File.new()
 	file.open(savePath + saveFile, File.WRITE)
-	var store_values = []
-	for value in values:
-		store_values.push_back(value.to_dict())
-	file.store_line(to_json(store_values))
+	file.store_line(to_json(game.to_dict()))
 	file.close()
