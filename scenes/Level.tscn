@@ -23,7 +23,6 @@ __meta__ = {
 }
 
 [node name="StepNumber" type="Label" parent="HUD"]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -200.0
@@ -32,9 +31,11 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Step: "
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PreviewButton" type="Button" parent="HUD"]
-visible = false
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 175.0

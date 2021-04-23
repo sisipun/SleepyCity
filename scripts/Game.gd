@@ -126,6 +126,9 @@ func levels():
 func tip_count():
 	return game.tips_count
 
+func has_tip():
+	return game.tips_count > 0
+
 func currentLevel():
 	return game.levels[currentLevelIndex]
 	
@@ -143,9 +146,6 @@ func completeCurrentLevel(attempt_count):
 func decriment_tip():
 	game.tips_count -= 1
 	self.save()
-
-func has_tip():
-	return game.tips_count > 0
 
 func save():
 	var dir = Directory.new()
