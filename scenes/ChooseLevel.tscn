@@ -11,10 +11,12 @@ __meta__ = {
 }
 
 [node name="ButtonsScroll" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 120.0
 margin_top = 80.0
-margin_right = 480.0
-margin_bottom = 1120.0
+margin_right = -120.0
+margin_bottom = -80.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -29,10 +31,11 @@ custom_constants/separation = 50
 alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 12.0
-margin_bottom = 24.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_top = 20.0
+margin_right = -20.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

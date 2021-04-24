@@ -25,7 +25,8 @@ __meta__ = {
 [node name="StepNumber" type="Label" parent="HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -200.0
+margin_left = -400.0
+margin_right = -200.0
 margin_bottom = 50.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Step: "
@@ -36,24 +37,44 @@ __meta__ = {
 }
 
 [node name="PreviewButton" type="Button" parent="HUD"]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 175.0
-margin_bottom = 30.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = -50.0
+margin_right = 250.0
+margin_bottom = -25.0
 text = "Check"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TipButton" type="Button" parent="HUD"]
-anchor_left = -0.00353149
-anchor_right = -0.00353149
-margin_left = 200.0
-margin_top = 10.0
-margin_right = 350.0
-margin_bottom = 30.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -50.0
+margin_right = -100.0
+margin_bottom = -25.0
 custom_fonts/font = ExtResource( 2 )
 text = "Tip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 13.0
+margin_right = -50.0
+margin_bottom = 25.0
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timeout"]
 [connection signal="pressed" from="HUD/PreviewButton" to="." method="_on_preview_pressed"]
 [connection signal="pressed" from="HUD/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="HUD/BackButton" to="." method="_on_back_pressed"]

@@ -49,9 +49,9 @@ func _ready():
 			
 	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
 	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
-	$HUD/StepNumber.text = "Step: %d" % [level.step_count - step_number]	
-	if not Game.has_tip():
-		$HUD/TipButton.hide()
+	$HUD/StepNumber.text = "Step: %d" % [level.step_count - step_number]
+	$HUD/PreviewButton.disabled = alive_count != level.alive_max_count
+	$HUD/TipButton.disabled = not Game.has_tip()
 
 func _on_cell_clicked(cell):
 	if stage == Stage.PREVIEW:
@@ -65,14 +65,9 @@ func _on_cell_clicked(cell):
 		cell.change_alive(true)
 
 	update_neighbors_count()
-	user_input_map[cell.coord_x][cell.coord_y] = cell.is_alive()	
-	if alive_count == level.alive_max_count:
-		$HUD/ActiveCount.hide()
-		$HUD/PreviewButton.show()
-	else:
-		$HUD/PreviewButton.hide()
-		$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
-		$HUD/ActiveCount.show()
+	user_input_map[cell.coord_x][cell.coord_y] = cell.is_alive()
+	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]	
+	$HUD/PreviewButton.disabled = alive_count != level.alive_max_count
 
 func _on_tip_pressed():
 	if stage == Stage.PREVIEW or not Game.has_tip():
@@ -85,7 +80,7 @@ func _on_tip_pressed():
 		Game.decriment_tip()
 		$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
 	if not Game.has_tip():
-		$HUD/TipButton.hide()
+		$HUD/TipButton.disabled = true
 
 func _on_preview_pressed():
 	if stage == Stage.PREVIEW:
@@ -94,6 +89,9 @@ func _on_preview_pressed():
 	stage = Stage.PREVIEW
 	attempt_count += 1
 	$StepTimer.start()
+	
+func _on_back_pressed():
+	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 
 func _on_step_timeout():
 	step_number += 1
