@@ -31,8 +31,8 @@ class LevelInfo:
 	export(Array) var born_condition
 	export(Array) var survive_condition
 	export(int) var step_count
-	export(Array)var targets
-	export(Array)var solution
+	export(Array) var targets
+	export(Array) var solution
 	export(bool) var completed
 	export(int) var attempt_count
 	export(bool) var opened
@@ -95,18 +95,15 @@ class LevelInfo:
 		)
 
 var game = Game.new([
+	LevelInfo.new(10, 20, 245, [3], [2,3], 10, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
 	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
 	LevelInfo.new(10, 20, 4, [3], [2,3], 2, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5), Vector2(5,4), Vector2(5,5)], [Vector2(4,4), Vector2(4,5), Vector2(4,6), Vector2(5,4)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false)
-], 10)
+	LevelInfo.new(10, 20, 5, [3], [2,3], 2, [Vector2(3,10), Vector2(4,9), Vector2(4,11), Vector2(5,8), Vector2(5,12), Vector2(6,9), Vector2(6,11), Vector2(7, 10)], [Vector2(4,10), Vector2(5,9), Vector2(5,10), Vector2(5,11), Vector2(6,10)], false),
+	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,10), Vector2(3,11), Vector2(4,9), Vector2(5,12), Vector2(6,10), Vector2(6,11)], [Vector2(3,10), Vector2(4,10), Vector2(4,11), Vector2(5,10), Vector2(5,11), Vector2(6, 11)], false),
+	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,9), Vector2(3,10), Vector2(4,9), Vector2(4,10), Vector2(5,11), Vector2(5,12), Vector2(6,11), Vector2(6,12)], [Vector2(3,9), Vector2(3,10), Vector2(4,9), Vector2(5,12), Vector2(6,11), Vector2(6, 12)], false),
+	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,10), Vector2(4,8), Vector2(4,10), Vector2(5,9), Vector2(5,11), Vector2(6,9)], [Vector2(3,9), Vector2(4,10), Vector2(4,11), Vector2(5,8), Vector2(5,9), Vector2(6, 10)], false),
+], 1000)
 var currentLevelIndex = 0
 var savePath = "res://saves/"
 var saveFile = "levels.json"
@@ -137,6 +134,7 @@ func completeCurrentLevel(attempt_count):
 	var levels = levels()
 	if current.attempt_count == 0 or current.attempt_count > attempt_count:
 		current.attempt_count = attempt_count
+		game.tips_count += 1 if attempt_count == 1 else 0
 	current.completed = true
 	var next = currentLevelIndex + 1
 	if next < levels.size():
