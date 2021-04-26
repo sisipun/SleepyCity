@@ -24,7 +24,6 @@ func _ready():
 	var cell_height = screen_size.y / level.height
 	for i in range(level.width):
 		map.append([])
-		user_input_map.append([])
 		for j in range(level.height):
 			var cell = cellScene.instance().init(
 				i, 
@@ -39,7 +38,6 @@ func _ready():
 				)
 			)
 			map[i].append(cell)
-			user_input_map[i].append(cell.is_alive())
 			if Vector2(i, j) in level.targets:
 				cell.play_target_effect()
 			if Vector2(i, j) in level.solution:
@@ -47,14 +45,21 @@ func _ready():
 			cell.connect("clicked", self, "_on_cell_clicked")			
 			add_child(cell)
 			
+	for i in range(level.step_count + 1):
+		user_input_map.append([])
+		for j in len(map):
+			user_input_map[i].append([])
+			for k in len(map[j]):
+				user_input_map[i][j].append(map[j][k].is_alive())
+			
 	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
 	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
-	$HUD/StepNumber.text = "Step: %d" % [level.step_count - step_number]
-	$HUD/PreviewButton.disabled = false #alive_count != level.alive_max_count
+	$HUD/StepNumber.text = "Step: %d/%d" % [step_number, level.step_count]
+	$HUD/PreviewButton.disabled = alive_count != level.alive_max_count
 	$HUD/TipButton.disabled = not Game.has_tip()
 
 func _on_cell_clicked(cell):
-	if stage == Stage.PREVIEW:
+	if stage == Stage.PREVIEW or step_number != 0:
 		return
 	
 	if cell.is_alive():
@@ -65,9 +70,9 @@ func _on_cell_clicked(cell):
 		cell.change_alive(true)
 
 	update_neighbors_count()
-	user_input_map[cell.coord_x][cell.coord_y] = cell.is_alive()
+	user_input_map[step_number][cell.coord_x][cell.coord_y] = cell.is_alive()
 	$HUD/ActiveCount.text = "Active count %d/%d" % [alive_count, level.alive_max_count]	
-	$HUD/PreviewButton.disabled = false #alive_count != level.alive_max_count
+	$HUD/PreviewButton.disabled = alive_count != level.alive_max_count
 
 func _on_tip_pressed():
 	if stage == Stage.PREVIEW or not Game.has_tip():
@@ -84,28 +89,45 @@ func _on_tip_pressed():
 
 func _on_preview_pressed():
 	if stage == Stage.PREVIEW:
-		reset() #TODO
 		return
 		
 	stage = Stage.PREVIEW
 	attempt_count += 1
 	$StepTimer.start()
+	stepNext()
 	
 func _on_back_pressed():
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 
+func _on_step_pressed():
+	if stage == Stage.USER_INPUT and step_number < level.step_count:
+		stepNext()
+
+func _on_step_back_pressed():
+	if stage == Stage.USER_INPUT and step_number > 0:
+		stepPrevious()
+
 func _on_step_timeout():
-	step_number += 1
-	if step_number <= level.step_count:
-		update_status()
-		update_neighbors_count()		
-		$HUD/StepNumber.text = "Step: %d" % [level.step_count - step_number]
+	if step_number < level.step_count:
+		stepNext()
 		return
-		
+	
 	if is_target_complete():
 		complete()
 	else:
 		reset()
+
+func stepNext():
+	step_number += 1
+	update_status(step_number)
+	update_neighbors_count()
+	$HUD/StepNumber.text = "Step: %d/%d" % [step_number, level.step_count]
+
+func stepPrevious():
+	step_number -= 1
+	reset_status(step_number)
+	update_neighbors_count()
+	$HUD/StepNumber.text = "Step: %d/%d" % [step_number, level.step_count]
 
 func is_target_complete():
 	for target in level.targets:
@@ -114,20 +136,17 @@ func is_target_complete():
 	
 	return true
 
+func complete():
+	Game.completeCurrentLevel(attempt_count)
+	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
+
 func reset():
 	$StepTimer.stop()
 	step_number = 0
 	stage = Stage.USER_INPUT
-	for i in range(map.size()):
-		for j in range(map[i].size()):
-			map[i][j].change_alive(user_input_map[i][j])
-	
+	reset_status(0)
 	update_neighbors_count()
-	$HUD/StepNumber.text = "Step: %d" % [level.step_count - step_number]
-
-func complete():
-	Game.completeCurrentLevel(attempt_count)
-	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
+	$HUD/StepNumber.text = "Step: %d/%d" % [step_number, level.step_count]
 
 func update_neighbors_count():
 	for i in range(map.size()):
@@ -135,15 +154,22 @@ func update_neighbors_count():
 			var neighbors_around_count = neighbors_around_count(i, j)
 			map[i][j].set_neighbors_count(neighbors_around_count)
 
-func update_status():
+func update_status(step_number):
 	for i in range(map.size()):
 		for j in range(map[i].size()):
 			var alive = map[i][j].is_alive()
 			var alive_around_count = map[i][j].neighbors_count
-			map[i][j].change_alive(
-				(alive and alive_around_count in level.survive_condition) or
-				(not alive and alive_around_count in level.born_condition)
+			var new_alive = (
+				(alive and alive_around_count in level.survive_condition) 
+				or (not alive and alive_around_count in level.born_condition)
 			)
+			map[i][j].change_alive(new_alive)
+			user_input_map[step_number][i][j] = new_alive
+			
+func reset_status(step_number):
+	for i in range(map.size()):
+		for j in range(map[i].size()):
+			map[i][j].change_alive(user_input_map[step_number][i][j])
 
 func neighbors_around_count(i, j):
 	var inc_i = i + 1 if map.size() > i + 1 else 0
