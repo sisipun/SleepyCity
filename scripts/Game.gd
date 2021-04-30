@@ -33,11 +33,12 @@ class LevelInfo:
 	export(int) var step_count
 	export(Array) var targets
 	export(Array) var solution
+	export(Array) var initial
 	export(bool) var completed
 	export(int) var attempt_count
 	export(bool) var opened
 
-	func _init(width, height, alive_max_count, born_condition, survive_condition, step_count, targets, solution, opened, completed = false, attempt_count = 0):
+	func _init(width, height, alive_max_count, born_condition, survive_condition, step_count, targets, solution, initial, opened, completed = false, attempt_count = 0):
 		self.width = width
 		self.height = height
 		self.alive_max_count = alive_max_count
@@ -46,6 +47,7 @@ class LevelInfo:
 		self.step_count = step_count
 		self.targets = targets
 		self.solution = solution
+		self.initial = initial
 		self.opened = opened
 		self.completed = completed
 		self.attempt_count = attempt_count
@@ -57,6 +59,9 @@ class LevelInfo:
 		var dict_solution = []
 		for solution_item in solution:
 			dict_solution.push_back({"x": solution_item.x, "y":solution_item.y})
+		var dict_initial = []
+		for initial_item in initial:
+			dict_initial.push_back({"x": initial_item.x, "y":initial_item.y})
 		return {
 			"width" : width,
 			"height" : height,
@@ -66,6 +71,7 @@ class LevelInfo:
 			"step_count" : step_count,
 			"targets" : dict_targets,
 			"solution": dict_solution,
+			"initial": dict_initial,
 			"completed" : completed,
 			"opened" : opened,
 			"attempt_count" : attempt_count
@@ -80,6 +86,10 @@ class LevelInfo:
 		var dict_solution = dict["solution"]
 		for solution_item in dict_solution:
 			solution.push_back(Vector2(solution_item["x"], solution_item["y"]))
+		var initial = []
+		var dict_initial = dict["initial"]
+		for initial_item in dict_initial:
+			initial.push_back(Vector2(initial_item["x"], initial_item["y"]))
 		return LevelInfo.new(
 			dict["width"], 
 			dict["height"], 
@@ -89,24 +99,201 @@ class LevelInfo:
 			dict["step_count"],
 			targets,
 			solution,
+			initial,
 			dict["opened"],			
 			dict["completed"],
 			dict["attempt_count"]
 		)
 
-var game = Game.new([
-	LevelInfo.new(10, 20, 245, [3], [2,3], 10, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5)], [Vector2(3,4), Vector2(4,4), Vector2(4,5)], true),
-	LevelInfo.new(10, 20, 3, [3], [2,3], 1, [Vector2(4,4), Vector2(4,5), Vector2(4,6)], [Vector2(3,5), Vector2(4,5), Vector2(5,5)], false),
-	LevelInfo.new(10, 20, 4, [3], [2,3], 2, [Vector2(3,4), Vector2(3,5), Vector2(4,4), Vector2(4,5), Vector2(5,4), Vector2(5,5)], [Vector2(4,4), Vector2(4,5), Vector2(4,6), Vector2(5,4)], false),
-	LevelInfo.new(10, 20, 5, [3], [2,3], 2, [Vector2(3,10), Vector2(4,9), Vector2(4,11), Vector2(5,8), Vector2(5,12), Vector2(6,9), Vector2(6,11), Vector2(7, 10)], [Vector2(4,10), Vector2(5,9), Vector2(5,10), Vector2(5,11), Vector2(6,10)], false),
-	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,10), Vector2(3,11), Vector2(4,9), Vector2(5,12), Vector2(6,10), Vector2(6,11)], [Vector2(3,10), Vector2(4,10), Vector2(4,11), Vector2(5,10), Vector2(5,11), Vector2(6, 11)], false),
-	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,9), Vector2(3,10), Vector2(4,9), Vector2(4,10), Vector2(5,11), Vector2(5,12), Vector2(6,11), Vector2(6,12)], [Vector2(3,9), Vector2(3,10), Vector2(4,9), Vector2(5,12), Vector2(6,11), Vector2(6, 12)], false),
-	LevelInfo.new(10, 20, 6, [3], [2,3], 1, [Vector2(3,10), Vector2(4,8), Vector2(4,10), Vector2(5,9), Vector2(5,11), Vector2(6,9)], [Vector2(3,9), Vector2(4,10), Vector2(4,11), Vector2(5,8), Vector2(5,9), Vector2(6, 10)], false),
-], 1000)
+var game = Game.new(
+	[
+		LevelInfo.new(
+			10, 
+			20, 
+			3, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(3,9), 
+				Vector2(3,10), 
+				Vector2(4,9), 
+				Vector2(4,10)
+			], 
+			[
+				Vector2(3,9), 
+				Vector2(4,9), 
+				Vector2(4,10)
+			],
+			[
+			],
+			true
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+			3, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(4,8), 
+				Vector2(4,9),
+				Vector2(4,10)
+			], 
+			[
+				Vector2(3,9), 
+				Vector2(4,9), 
+				Vector2(5,9)
+			],
+			[
+			], 
+			false
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+			4, 
+			[3], 
+			[2,3], 
+			2, 
+			[
+				Vector2(3,9), 
+				Vector2(3,10), 
+				Vector2(4,9),
+				Vector2(4,10), 
+				Vector2(5,9), 
+				Vector2(5,10)
+			], 
+			[
+				Vector2(4,9),
+				Vector2(4,10), 
+				Vector2(4,11), 
+				Vector2(5,9)
+			], 
+			[
+			], 
+			false
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+			5, 
+			[3], 
+			[2,3], 
+			2, 
+			[
+				Vector2(3,10), 
+				Vector2(4,9), 
+				Vector2(4,11), 
+				Vector2(5,8), 
+				Vector2(5,12), 
+				Vector2(6,9), 
+				Vector2(6,11), 
+				Vector2(7, 10)
+			], 
+			[
+				Vector2(4,10), 
+				Vector2(5,9), 
+				Vector2(5,10), 
+				Vector2(5,11), 
+				Vector2(6,10)
+			], 
+			[
+			], 
+			false
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+			6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(3,10), 
+				Vector2(3,11), 
+				Vector2(4,9), 
+				Vector2(5,12), 
+				Vector2(6,10), 
+				Vector2(6,11)
+			], 
+			[
+				Vector2(3,10), 
+				Vector2(4,10), 
+				Vector2(4,11), 
+				Vector2(5,10), 
+				Vector2(5,11), 
+				Vector2(6, 11)
+			], 
+			[
+			], 
+			false
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+			6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(3,9), 
+				Vector2(3,10), 
+				Vector2(4,9), 
+				Vector2(4,10), 
+				Vector2(5,11), 
+				Vector2(5,12), 
+				Vector2(6,11), 
+				Vector2(6,12)
+			], 
+			[
+				Vector2(3,9), 
+				Vector2(3,10), 
+				Vector2(4,9), 
+				Vector2(5,12), 
+				Vector2(6,11), 
+				Vector2(6, 12)
+			], 
+			[
+			], 
+			false
+		),
+		LevelInfo.new(
+			10, 
+			20, 
+				6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(3,10), 
+				Vector2(4,8), 
+				Vector2(4,10), 
+				Vector2(5,9), 
+				Vector2(5,11), 
+				Vector2(6,9)
+			], 
+			[
+				Vector2(3,9), 
+				Vector2(4,10), 
+				Vector2(4,11), 
+				Vector2(5,8), 
+				Vector2(5,9), 
+				Vector2(6, 10)
+			], 
+			[
+				Vector2(3,9), 
+				Vector2(4,10), 
+			], 
+			false
+		)
+	], 
+	20
+)
 var currentLevelIndex = 0
 var savePath = "res://saves/"
-var saveFile = "levels.json"
+var saveFile = "levels1.0.json"
 
 func _ready():
 	var file = File.new()

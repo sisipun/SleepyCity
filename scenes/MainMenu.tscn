@@ -23,17 +23,15 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Buttons"]
+margin_top = 494.0
 margin_right = 360.0
 margin_bottom = 518.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
 margin_top = 522.0
 margin_right = 360.0
-margin_bottom = 1040.0
-size_flags_vertical = 3
+margin_bottom = 546.0
 text = "Quit"
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]

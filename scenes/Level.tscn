@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/default.tres" type="DynamicFont" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 250, 500 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -100,6 +103,13 @@ text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameArea" type="Area2D" parent="."]
+position = Vector2( 50, 100 )
+
+[node name="GameAreaShape" type="CollisionShape2D" parent="GameArea"]
+position = Vector2( 250, 500 )
+shape = SubResource( 1 )
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timeout"]
 [connection signal="pressed" from="HUD/BackButton" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="HUD/CheckButton" to="." method="_on_check_pressed"]

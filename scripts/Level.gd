@@ -15,14 +15,15 @@ var user_input_map = []
 var tips = []
 var last_tip = 0
 var step_number = 0
-var alive_count = 0
+var alive_count = len(level.initial)
 var attempt_count = 0
 
 func _ready():
 	var cellScene = load("res://scenes/Cell.tscn")	
-	var screen_size = get_viewport_rect().size
-	var cell_width = screen_size.x / level.width
-	var cell_height = screen_size.y / level.height
+	var game_area_size = $GameArea/GameAreaShape.shape.get_extents() * 2
+	var game_area_position = $GameArea.position
+	var cell_width = game_area_size.x / level.width
+	var cell_height = game_area_size.y / level.height
 	for i in range(level.width):
 		map.append([])
 		for j in range(level.height):
@@ -30,13 +31,14 @@ func _ready():
 				i, 
 				j, 
 				Vector2(
-					cell_width / 2 + i * cell_width, 
-					cell_height / 2 + j * cell_height
+					game_area_position.x + cell_width / 2 + i * cell_width, 
+					game_area_position.y + cell_height / 2 + j * cell_height
 				), 
 				Vector2(
 					cell_width, 
 					cell_height
-				)
+				),
+				Vector2(i, j) in level.initial
 			)
 			map[i].append(cell)
 			if Vector2(i, j) in level.targets:
@@ -56,7 +58,7 @@ func _ready():
 	update_hud()
 
 func _on_cell_clicked(cell):
-	if stage == Stage.CHECK or step_number != 0:
+	if stage == Stage.CHECK or step_number != 0 or Vector2(cell.coord_x, cell.coord_y) in level.initial:
 		return
 	
 	if cell.is_alive():
