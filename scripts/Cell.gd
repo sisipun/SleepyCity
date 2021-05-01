@@ -38,8 +38,8 @@ func init(coord_x, coord_y, position, size, alive = false):
 	$Sprite.scale = Vector2(size.x / sprite_size, size.y / sprite_size)
 	$Sprite.frame = $Sprite.frames.get_frame_count($Sprite.animation) - 1
 	$EffectSprite.scale = Vector2(size.x / sprite_size, size.y / sprite_size)
-	$NeighborsCount.set_position(Vector2(-size.x / 2, -size.y / 2))
-	$NeighborsCount.set_size(Vector2(size.x, size.y))
+	$NeighborsCountLabel.set_position(Vector2(-size.x / 2, -size.y / 2))
+	$NeighborsCountLabel.set_size(Vector2(size.x, size.y))
 	return self
 
 func play_target_effect():
@@ -66,24 +66,17 @@ func is_alive():
 func set_alive(alive):
 	self.alive = alive
 	if self.alive:
-		$NeighborsCount.add_color_override("font_color", Color("#ffffff"))
+		$NeighborsCountLabel.add_color_override("font_color", Color("#ffffff"))
 		$Sprite.animation = "alive"
 	else:
-		$NeighborsCount.add_color_override("font_color", Color("#000000"))
+		$NeighborsCountLabel.add_color_override("font_color", Color("#000000"))
 		$Sprite.animation = "dead"
 
 func set_neighbors_count(neighbors_count):
 	self.neighbors_count = neighbors_count
-	$NeighborsCount.text = "%d" % neighbors_count
-	$NeighborsCount.add_color_override("font_color", Color("#ffffff") if alive else Color("#000000"))
+	$NeighborsCountLabel.text = "%d" % neighbors_count
+	$NeighborsCountLabel.add_color_override("font_color", Color("#ffffff") if alive else Color("#000000"))
 	if neighbors_count == 0:
-		$NeighborsCount.hide()
+		$NeighborsCountLabel.hide()
 	else:
-		$NeighborsCount.show()
-
-func change_alive(alive):
-	if self.alive == alive:
-		return
-	
-	$AudioAlive.play()
-	set_alive(alive)
+		$NeighborsCountLabel.show()

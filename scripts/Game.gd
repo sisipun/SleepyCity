@@ -325,7 +325,10 @@ func completeCurrentLevel(attempt_count):
 	current.completed = true
 	var next = currentLevelIndex + 1
 	if next < levels.size():
+		currentLevelIndex = next
 		levels[next].opened = true
+	else:
+		currentLevelIndex = 0
 	self.save()
 
 func decriment_tip():

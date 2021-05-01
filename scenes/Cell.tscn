@@ -1,11 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/target_cell.png" type="Texture" id=2]
 [ext_resource path="res://assets/dead_cell.png" type="Texture" id=3]
 [ext_resource path="res://assets/alive_cell.png" type="Texture" id=4]
 [ext_resource path="res://assets/tip_cell.png" type="Texture" id=5]
-[ext_resource path="res://assets/water_drop.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 15 )
@@ -187,11 +186,7 @@ animation = "dead"
 scale = Vector2( 0.234, 0.234 )
 frames = SubResource( 29 )
 
-[node name="AudioAlive" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
-attenuation = 0.5
-
-[node name="NeighborsCount" type="Label" parent="."]
+[node name="NeighborsCountLabel" type="Label" parent="."]
 margin_left = -15.0
 margin_top = -15.0
 margin_right = 15.0
