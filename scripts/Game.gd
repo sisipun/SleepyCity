@@ -3,10 +3,12 @@ extends Node
 class Game:
 	export(Array) var levels
 	export(int) var tips_count
+	export(bool) var sound
 	
-	func _init(levels, tips_count):
+	func _init(levels, tips_count, sound):
 		self.levels = levels
 		self.tips_count = tips_count
+		self.sound = sound
 		
 	func to_dict():
 		var dict_levels = []
@@ -14,7 +16,8 @@ class Game:
 			dict_levels.push_back(level.to_dict())
 		return {
 			"levels": dict_levels,
-			"tips_count": tips_count
+			"tips_count": tips_count,
+			"sound": sound
 		}
 	
 	static func from_dict(dict):
@@ -22,7 +25,7 @@ class Game:
 		var dict_levels = dict["levels"]
 		for level in dict_levels:
 			levels.push_back(LevelInfo.from_dict(level))
-		return Game.new(levels, dict["tips_count"])
+		return Game.new(levels, dict["tips_count"], dict["sound"])
 
 class LevelInfo:
 	export(int) var width
@@ -289,7 +292,8 @@ var game = Game.new(
 			false
 		)
 	], 
-	20
+	20,
+	true
 )
 var currentLevelIndex = 0
 var savePath = "res://saves/"
@@ -312,6 +316,9 @@ func tip_count():
 
 func has_tip():
 	return game.tips_count > 0
+	
+func has_sound():
+	return game.sound
 
 func currentLevel():
 	return game.levels[currentLevelIndex]
@@ -333,7 +340,17 @@ func completeCurrentLevel(attempt_count):
 
 func decriment_tip():
 	game.tips_count -= 1
-	self.save()
+	save()
+	
+func mute():
+	game.sound = false
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+	save()
+	
+func unmute():
+	game.sound = true
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	save()
 
 func save():
 	var dir = Directory.new()

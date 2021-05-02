@@ -23,15 +23,28 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Buttons"]
-margin_top = 494.0
+margin_top = 480.0
 margin_right = 360.0
-margin_bottom = 518.0
+margin_bottom = 504.0
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
-margin_top = 522.0
+margin_top = 508.0
 margin_right = 360.0
-margin_bottom = 546.0
+margin_bottom = 532.0
 text = "Quit"
-[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+
+[node name="FooterButtons" type="HBoxContainer" parent="Buttons"]
+margin_top = 600.0
+margin_right = 360.0
+margin_bottom = 560.0
+alignment = 1
+
+[node name="SoundButton" type="Button" parent="Buttons/FooterButtons"]
+margin_left = 135.0
+margin_right = 224.0
+margin_bottom = 24.0
+text = "Sound off"
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Buttons/FooterButtons/SoundButton" to="." method="_on_sound_pressed"]

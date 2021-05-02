@@ -77,9 +77,6 @@ func _on_cell_clicked(cell):
 	user_input_map[step_number][cell.coord_x][cell.coord_y] = cell.is_alive()
 
 func _on_tip_pressed():
-	if stage == Stage.CHECK or not Game.has_tip():
-		return
-	
 	var tip = last_tip + 1 if last_tip + 1 < tips.size() else 0
 	var cell = tips[tip]
 	if cell.play_tip_effect():
@@ -88,24 +85,23 @@ func _on_tip_pressed():
 		update_hud()
 
 func _on_check_pressed():
-	if stage == Stage.CHECK:
-		return
-	
 	stage = Stage.CHECK
 	attempt_count += 1
 	$StepTimer.start()
 	step_next()
+	
+func _on_reset_pressed():
+	stage = Stage.USER_INPUT
+	reset_to_initial()
 
 func _on_back_pressed():
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 
 func _on_step_pressed():
-	if stage == Stage.VIEW_RESULT and step_number < level.step_count:
-		step_next()
+	step_next()
 
 func _on_step_back_pressed():
-	if stage == Stage.VIEW_RESULT and step_number > 0:
-		step_previous()
+	step_previous()
 
 func _on_menu_pressed():
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
@@ -122,7 +118,8 @@ func _on_step_timeout():
 	if is_target_complete():
 		complete()
 	else:
-		reset()
+		stage = Stage.VIEW_RESULT		
+		reset_to_user_input()
 
 func step_next():
 	step_number += 1
@@ -147,10 +144,20 @@ func complete():
 	Game.completeCurrentLevel(attempt_count)
 	$HUD/LevelCompletePopup.popup_centered()
 
-func reset():
+func reset_to_user_input():
 	step_number = 0
-	stage = Stage.VIEW_RESULT
 	reset_status(0)
+	update_neighbors_count()
+	update_hud()
+	
+func reset_to_initial():
+	step_number = 0
+	alive_count = len(level.initial)	
+	for i in range(map.size()):
+		for j in range(map[i].size()):
+			var alive = Vector2(i, j) in level.initial
+			map[i][j].set_alive(alive)
+			user_input_map[0][i][j] = alive 
 	update_neighbors_count()
 	update_hud()
 
@@ -203,7 +210,8 @@ func update_hud():
 	$HUD/ActiveCountLabel.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
 	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
 	$HUD/StepNumberLabel.text = "Step: %d/%d" % [step_number, level.step_count]
-	$HUD/CheckButton.disabled = alive_count != level.alive_max_count or step_number != 0
-	$HUD/TipButton.disabled = not Game.has_tip()
+	$HUD/CheckButton.disabled = stage != Stage.USER_INPUT or alive_count != level.alive_max_count or step_number != 0
+	$HUD/TipButton.disabled = stage != Stage.USER_INPUT or not Game.has_tip()
 	$HUD/StepButton.disabled = stage != Stage.VIEW_RESULT or step_number >= level.step_count
 	$HUD/StepBackButton.disabled = stage != Stage.VIEW_RESULT or step_number <= 0
+	$HUD/ResetButton.disabled = stage == Stage.CHECK or step_number > 0
