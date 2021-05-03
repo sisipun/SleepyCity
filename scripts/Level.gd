@@ -46,6 +46,7 @@ func _ready():
 			if Vector2(i, j) in level.solution:
 				tips.push_back(cell)
 			cell.connect("clicked", self, "_on_cell_clicked")
+			cell.connect("animation_finished", self, "_on_cell_animation_finished")
 			add_child(cell)
 			
 	for i in range(level.step_count + 1):
@@ -118,7 +119,11 @@ func _on_step_timeout():
 	if is_target_complete():
 		complete()
 	else:
-		stage = Stage.VIEW_RESULT		
+		show_missing()
+		
+func _on_cell_animation_finished(effect, cell):
+	if effect == Cell.Effect.MISSING and stage != Stage.VIEW_RESULT:
+		stage = Stage.VIEW_RESULT
 		reset_to_user_input()
 
 func step_next():
@@ -139,6 +144,11 @@ func is_target_complete():
 			return false
 	
 	return true
+	
+func show_missing():
+	for target in level.targets:
+		if not map[target.x][target.y].is_alive():
+			map[target.x][target.y].play_missing_effect()
 
 func complete():
 	Game.completeCurrentLevel(attempt_count)
@@ -210,7 +220,7 @@ func update_hud():
 	$HUD/ActiveCountLabel.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
 	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
 	$HUD/StepNumberLabel.text = "Step: %d/%d" % [step_number, level.step_count]
-	$HUD/CheckButton.disabled = stage != Stage.USER_INPUT or alive_count != level.alive_max_count or step_number != 0
+	$HUD/CheckButton.disabled = stage == Stage.CHECK or step_number > 0 or alive_count != level.alive_max_count or step_number != 0
 	$HUD/TipButton.disabled = stage != Stage.USER_INPUT or not Game.has_tip()
 	$HUD/StepButton.disabled = stage != Stage.VIEW_RESULT or step_number >= level.step_count
 	$HUD/StepBackButton.disabled = stage != Stage.VIEW_RESULT or step_number <= 0
