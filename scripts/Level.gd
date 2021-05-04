@@ -55,7 +55,8 @@ func _ready():
 			user_input_map[i].append([])
 			for k in len(map[j]):
 				user_input_map[i][j].append(map[j][k].is_alive())
-			
+	
+	update_neighbors_count()
 	update_hud()
 
 func _on_cell_clicked(cell):

@@ -24,21 +24,21 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Buttons"]
-margin_top = 480.0
+margin_top = 479.0
 margin_right = 360.0
-margin_bottom = 504.0
+margin_bottom = 503.0
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
-margin_top = 508.0
+margin_top = 507.0
 margin_right = 360.0
-margin_bottom = 532.0
+margin_bottom = 531.0
 text = "Quit"
 
 [node name="FooterButtons" type="HBoxContainer" parent="Buttons"]
-margin_top = 536.0
+margin_top = 535.0
 margin_right = 360.0
-margin_bottom = 560.0
+margin_bottom = 559.0
 alignment = 1
 
 [node name="SoundButton" type="Button" parent="Buttons/FooterButtons"]
