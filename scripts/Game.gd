@@ -111,343 +111,342 @@ class LevelInfo:
 var game = Game.new(
 	[
 		LevelInfo.new(
-			10, 
-			20, 
+			4, 
+			8, 
 			3, 
 			[3], 
 			[2,3], 
 			1, 
 			[
-				Vector2(3,9), 
-				Vector2(3,10), 
-				Vector2(4,9), 
-				Vector2(4,10)
+				Vector2(1,3), 
+				Vector2(1,4), 
+				Vector2(2,3), 
+				Vector2(2,4)
 			], 
 			[
-				Vector2(3,9), 
-				Vector2(4,9), 
-				Vector2(4,10)
+				Vector2(1,3), 
+				Vector2(2,3), 
+				Vector2(2,4)
 			],
 			[
 			],
 			true
 		),
 		LevelInfo.new(
+			5, 
 			10, 
-			20, 
 			3, 
 			[3], 
 			[2,3], 
 			1, 
 			[
-				Vector2(4,8), 
-				Vector2(4,9),
-				Vector2(4,10)
+				Vector2(2,3), 
+				Vector2(2,4),
+				Vector2(2,5)
 			], 
 			[
-				Vector2(3,9), 
-				Vector2(4,9), 
-				Vector2(5,9)
+				Vector2(1,4), 
+				Vector2(2,4), 
+				Vector2(3,4)
 			],
 			[
 			], 
 			false
 		),
 		LevelInfo.new(
+			5, 
 			10, 
-			20, 
 			4, 
 			[3], 
 			[2,3], 
 			2, 
 			[
-				Vector2(3,9), 
-				Vector2(3,10), 
-				Vector2(4,9),
-				Vector2(4,10), 
-				Vector2(5,9), 
-				Vector2(5,10)
+				Vector2(1,4), 
+				Vector2(1,5), 
+				Vector2(2,4),
+				Vector2(2,5), 
+				Vector2(3,4), 
+				Vector2(3,5)
 			], 
 			[
-				Vector2(4,9),
-				Vector2(4,10), 
-				Vector2(4,11), 
-				Vector2(5,9)
+				Vector2(2,4),
+				Vector2(2,5), 
+				Vector2(2,6), 
+				Vector2(3,4)
 			], 
 			[
 			], 
 			false
 		),
 		LevelInfo.new(
-			10, 
-			20, 
+			6, 
+			12, 
+			6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(1,5), 
+				Vector2(1,6), 
+				Vector2(2,4), 
+				Vector2(3,7), 
+				Vector2(4,5), 
+				Vector2(4,6)
+			], 
+			[
+				Vector2(2,5), 
+				Vector2(2,6), 
+				Vector2(3,5), 
+				Vector2(3,6),
+			], 
+			[
+				Vector2(1,5), 
+				Vector2(4,6)
+			], 
+			false
+		),
+		LevelInfo.new(
+			6, 
+			12, 
+			6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(1,4), 
+				Vector2(1,5), 
+				Vector2(2,4), 
+				Vector2(2,5), 
+				Vector2(3,6), 
+				Vector2(3,7), 
+				Vector2(4,6), 
+				Vector2(4,7)
+			], 
+			[
+				Vector2(1,5), 
+				Vector2(2,4), 
+				Vector2(3,7), 
+				Vector2(4,6)
+			], 
+			[
+				Vector2(1,4), 
+				Vector2(4,7)
+			], 
+			false
+		),
+		LevelInfo.new(
+			6, 
+			12, 
+			6, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(1,6), 
+				Vector2(2,4), 
+				Vector2(2,6), 
+				Vector2(3,5), 
+				Vector2(3,7), 
+				Vector2(4,5)
+			], 
+			[
+				Vector2(2,7),
+				Vector2(3,4),
+			],
+			[
+				Vector2(1,5), 
+				Vector2(2,6),
+				Vector2(3,5),
+				Vector2(4,6)
+			], 
+			false
+		),
+		LevelInfo.new(
+			7, 
+			14, 
 			5, 
 			[3], 
 			[2,3], 
 			2, 
 			[
-				Vector2(3,10), 
-				Vector2(4,9), 
-				Vector2(4,11), 
-				Vector2(5,8), 
-				Vector2(5,12), 
-				Vector2(6,9), 
-				Vector2(6,11), 
-				Vector2(7, 10)
-			], 
-			[
-				Vector2(4,10), 
-				Vector2(5,9), 
-				Vector2(5,10), 
-				Vector2(5,11), 
-				Vector2(6,10)
-			], 
-			[
-			], 
-			false
-		),
-		LevelInfo.new(
-			10, 
-			20, 
-			6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(3,10), 
-				Vector2(3,11), 
-				Vector2(4,9), 
-				Vector2(5,12), 
-				Vector2(6,10), 
-				Vector2(6,11)
-			], 
-			[
-				Vector2(3,10), 
-				Vector2(4,10), 
-				Vector2(4,11), 
-				Vector2(5,10), 
-				Vector2(5,11), 
-				Vector2(6, 11)
-			], 
-			[
-			], 
-			false
-		),
-		LevelInfo.new(
-			10, 
-			20, 
-			6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
+				Vector2(1,7), 
+				Vector2(2,6), 
+				Vector2(2,8), 
+				Vector2(3,5), 
 				Vector2(3,9), 
-				Vector2(3,10), 
-				Vector2(4,9), 
-				Vector2(4,10), 
-				Vector2(5,11), 
-				Vector2(5,12), 
-				Vector2(6,11), 
-				Vector2(6,12)
-			], 
-			[
-				Vector2(3,9), 
-				Vector2(3,10), 
-				Vector2(4,9), 
-				Vector2(5,12), 
-				Vector2(6,11), 
-				Vector2(6, 12)
-			], 
-			[
-			], 
-			false
-		),
-		LevelInfo.new(
-			10, 
-			20, 
-				6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(3,10), 
+				Vector2(4,6), 
 				Vector2(4,8), 
-				Vector2(4,10), 
-				Vector2(5,9), 
-				Vector2(5,11), 
-				Vector2(6,9)
+				Vector2(5,7)
 			], 
 			[
-				Vector2(4,11), 
-				Vector2(5,8), 
-				Vector2(5,9), 
-				Vector2(6, 10)
+				Vector2(2,7), 
+				Vector2(3,6), 
+				Vector2(3,8), 
+				Vector2(4,7)
 			], 
 			[
-				Vector2(3,9), 
-				Vector2(4,10), 
+				Vector2(3,7)
 			], 
 			false
 		),
-		# NEW
 		LevelInfo.new(
-			10, 
-			20, 
+			7, 
+			14, 
 			8, 
 			[3], 
 			[2,3], 
 			1, 
 			[
+				Vector2(1,5), 
+				Vector2(1,6), 
+				Vector2(2,5), 
 				Vector2(2,7), 
-				Vector2(2,8), 
-				Vector2(3,7), 
-				Vector2(3,9), 
-				Vector2(5,9), 
-				Vector2(5,11), 
-				Vector2(6,10),
-				Vector2(6,11)
+				Vector2(4,7), 
+				Vector2(4,9), 
+				Vector2(5,8),
+				Vector2(5,9)
 			], 
 			[
-				Vector2(4,8), 
-				Vector2(4,10),
+				Vector2(3,6), 
+				Vector2(3,8)
 			], 
 			[
-				Vector2(2,7),
-				Vector2(2,8),
-				Vector2(3,7),
-				Vector2(5,11), 
-				Vector2(6,10),
-				Vector2(6,11)
-			], 
+				Vector2(1,5),
+				Vector2(1,6),
+				Vector2(2,5),
+				Vector2(4,9), 
+				Vector2(5,8),
+				Vector2(5,9)
+			],
 			false
 		),
 		LevelInfo.new(
-			10,
-			20,
+			8,
+			16,
 			9,
 			[3],
 			[2,3],
 			1, 
 			[
-				Vector2(2,7),
-				Vector2(2,8),
-				Vector2(3,7),
-				Vector2(4,8),
-				Vector2(4,10),
-				Vector2(6,10),
-				Vector2(6,12),
-				Vector2(7,11),
-				Vector2(7,12)
-			], 
-			[
-				Vector2(3,9),
-				Vector2(5,9),
-				Vector2(5,11),
-			], 
-			[
-				Vector2(2,7),
-				Vector2(2,8),
-				Vector2(3,7),
-				Vector2(6,12),
-				Vector2(7,11),
-				Vector2(7,12)
-			], 
-			false
-		),
-		LevelInfo.new(
-			10, 
-			20, 
-			16, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,10), 
-				Vector2(1,11), 
-				Vector2(2,6), 
-				Vector2(2,7), 
-				Vector2(2,11), 
+				Vector2(1,5),
+				Vector2(1,6),
+				Vector2(2,5),
 				Vector2(3,6),
 				Vector2(3,8),
-				Vector2(3,10),
 				Vector2(5,8),
 				Vector2(5,10),
-				Vector2(5,12),
-				Vector2(6,7),
-				Vector2(6,11),
-				Vector2(6,12),
-				Vector2(7,7),
-				Vector2(7,8)
-			], 
-			[
-				Vector2(2,9),
-				Vector2(4,7),
-				Vector2(4,11),
 				Vector2(6,9),
+				Vector2(6,10)
 			], 
 			[
-				Vector2(1,10),
-				Vector2(1,11),
-				Vector2(2,6),
 				Vector2(2,7),
-				Vector2(2,11),
-				Vector2(3,6),
-				Vector2(5,12),
-				Vector2(6,7),
-				Vector2(6,11),
-				Vector2(6,12),
-				Vector2(7,7),
-				Vector2(7,8)
+				Vector2(4,7),
+				Vector2(4,9),
+			], 
+			[
+				Vector2(1,5),
+				Vector2(1,6),
+				Vector2(2,5),
+				Vector2(5,10),
+				Vector2(6,9),
+				Vector2(6,10)
 			], 
 			false
 		),
 		LevelInfo.new(
-			10, 
-			20, 
+			8, 
+			16, 
 			16, 
 			[3], 
 			[2,3], 
 			1, 
 			[
-				Vector2(2,7), 
-				Vector2(2,8),
-				Vector2(2,11),
-				Vector2(2,12),
-				Vector2(3,7),
-				Vector2(3,9),
-				Vector2(3,12),
-				Vector2(4,11),
-				Vector2(5,8),
-				Vector2(6,7),
-				Vector2(6,10),
-				Vector2(6,12),
-				Vector2(7,7),
-				Vector2(7,8),
-				Vector2(7,11),
-				Vector2(7,12),
-			], 
-			[
-				Vector2(3,10),
-				Vector2(4,8),
-				Vector2(5,11),
-				Vector2(6,9),
-			], 
-			[
+				Vector2(1,5), 
+				Vector2(1,6),
+				Vector2(1,9),
+				Vector2(1,10),
+				Vector2(2,5),
 				Vector2(2,7),
+				Vector2(2,10),
+				Vector2(3,9),
+				Vector2(4,6),
+				Vector2(5,5),
+				Vector2(5,8),
+				Vector2(5,10),
+				Vector2(6,5),
+				Vector2(6,6),
+				Vector2(6,9),
+				Vector2(6,10)
+			], 
+			[
 				Vector2(2,8),
-				Vector2(2,11),
-				Vector2(2,12),
-				Vector2(3,7),
-				Vector2(3,12),
-				Vector2(6,7),
-				Vector2(6,12),
-				Vector2(7,7),
-				Vector2(7,8),
-				Vector2(7,11),
-				Vector2(7,12),
+				Vector2(3,6),
+				Vector2(4,9),
+				Vector2(5,7)
+			], 
+			[
+				Vector2(1,5),
+				Vector2(1,6),
+				Vector2(1,9),
+				Vector2(1,10),
+				Vector2(2,5),
+				Vector2(2,10),
+				Vector2(5,5),
+				Vector2(5,10),
+				Vector2(6,5),
+				Vector2(6,6),
+				Vector2(6,9),
+				Vector2(6,10)
 			], 
 			false
 		),
+		LevelInfo.new(
+			9, 
+			18, 
+			16, 
+			[3], 
+			[2,3], 
+			1, 
+			[
+				Vector2(1,9), 
+				Vector2(1,10), 
+				Vector2(2,5), 
+				Vector2(2,6), 
+				Vector2(2,10), 
+				Vector2(3,5),
+				Vector2(3,7),
+				Vector2(3,9),
+				Vector2(5,7),
+				Vector2(5,9),
+				Vector2(5,11),
+				Vector2(6,6),
+				Vector2(6,10),
+				Vector2(6,11),
+				Vector2(7,6),
+				Vector2(7,7)
+			], 
+			[
+				Vector2(2,8),
+				Vector2(4,6),
+				Vector2(4,10),
+				Vector2(6,8),
+			], 
+			[
+				Vector2(1,9),
+				Vector2(1,10),
+				Vector2(2,5),
+				Vector2(2,6),
+				Vector2(2,10),
+				Vector2(3,5),
+				Vector2(5,11),
+				Vector2(6,6),
+				Vector2(6,10),
+				Vector2(6,11),
+				Vector2(7,6),
+				Vector2(7,7)
+			], 
+			true
+		)
 	], 
 	20,
 	true
