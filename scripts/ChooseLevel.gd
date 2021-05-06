@@ -13,6 +13,5 @@ func _on_Level_clicked(i):
 	Game.currentLevelIndex = i
 	get_tree().change_scene("res://scenes/Level.tscn")
 
-
 func _on_back_pressed():
 	get_tree().change_scene("res://scenes/MainMenu.tscn")

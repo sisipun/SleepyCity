@@ -445,7 +445,7 @@ var game = Game.new(
 				Vector2(7,6),
 				Vector2(7,7)
 			], 
-			true
+			false
 		)
 	], 
 	20,

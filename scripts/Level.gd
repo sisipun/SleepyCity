@@ -66,12 +66,12 @@ func _on_cell_clicked(cell):
 	if cell.is_alive():
 		alive_count -= 1
 		cell.set_alive(false)
-		$CellSound.play()
+		$CellDeadSound.play()
 		stage = Stage.USER_INPUT
 	elif alive_count < level.alive_max_count:
 		alive_count += 1
 		cell.set_alive(true)
-		$CellSound.play()
+		$CellAliveSound.play()
 		stage = Stage.USER_INPUT
 	
 	update_neighbors_count()
@@ -90,6 +90,7 @@ func _on_check_pressed():
 	stage = Stage.CHECK
 	attempt_count += 1
 	$StepTimer.start()
+	$StepSound.play()
 	step_next()
 	
 func _on_reset_pressed():
@@ -100,9 +101,11 @@ func _on_back_pressed():
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 
 func _on_step_pressed():
+	$StepSound.play()
 	step_next()
 
 func _on_step_back_pressed():
+	$StepSound.play()
 	step_previous()
 
 func _on_menu_pressed():
@@ -113,6 +116,7 @@ func _on_next_level_pressed():
 
 func _on_step_timeout():
 	if step_number < level.step_count:
+		$StepSound.play()
 		step_next()
 		return
 	
@@ -153,6 +157,7 @@ func show_missing():
 
 func complete():
 	Game.completeCurrentLevel(attempt_count)
+	$LevelCompleteSound.play()
 	$HUD/LevelCompletePopup.popup_centered()
 
 func reset_to_user_input():
