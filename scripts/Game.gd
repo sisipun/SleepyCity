@@ -452,7 +452,7 @@ var game = Game.new(
 	true
 )
 var currentLevelIndex = 0
-var savePath = "res://saves/"
+var savePath = "user://saves/"
 var saveFile = "levels1.0.json"
 
 func _ready():

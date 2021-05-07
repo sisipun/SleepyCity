@@ -127,19 +127,20 @@ __meta__ = {
 }
 
 [node name="MenuButton" type="Button" parent="HUD/LevelCompletePopup"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -100.0
+margin_left = 200.0
 margin_top = 15.0
-margin_right = -25.0
-margin_bottom = 15.0
+margin_right = 293.0
+margin_bottom = 39.0
 text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NextButton" type="Button" parent="HUD/LevelCompletePopup"]
 margin_left = 25.0
 margin_top = 15.0
-margin_right = 100.0
-margin_bottom = 15.0
+margin_right = 118.0
+margin_bottom = 39.0
 text = "Next level"
 __meta__ = {
 "_edit_use_anchors_": false
