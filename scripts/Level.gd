@@ -8,6 +8,9 @@ enum Stage {
 	VIEW_RESULT
 }
 
+export var margin_horizontal = 50
+export var margin_vertical = 100
+
 var level = Game.currentLevel()
 var stage = Stage.USER_INPUT
 var map = []
@@ -19,11 +22,10 @@ var alive_count = len(level.initial)
 var attempt_count = 0
 
 func _ready():
-	var cellScene = load("res://scenes/Cell.tscn")	
-	var game_area_size = $GameArea/GameAreaShape.shape.get_extents() * 2
-	var game_area_position = $GameArea.position
-	var cell_width = game_area_size.x / level.width
-	var cell_height = game_area_size.y / level.height
+	var cellScene = load("res://scenes/Cell.tscn")
+	var screen_size = get_viewport_rect().size
+	var cell_width = (screen_size.x - 2 * margin_horizontal) / level.width
+	var cell_height = (screen_size.y - 2 * margin_vertical) / level.height
 	for i in range(level.width):
 		map.append([])
 		for j in range(level.height):
@@ -31,8 +33,8 @@ func _ready():
 				i, 
 				j, 
 				Vector2(
-					game_area_position.x + cell_width / 2 + i * cell_width, 
-					game_area_position.y + cell_height / 2 + j * cell_height
+					margin_horizontal + cell_width / 2 + i * cell_width, 
+					margin_vertical + cell_height / 2 + j * cell_height
 				), 
 				Vector2(
 					cell_width, 
@@ -66,12 +68,12 @@ func _on_cell_clicked(cell):
 	if cell.is_alive():
 		alive_count -= 1
 		cell.set_alive(false)
-		$CellDeadSound.play()
+		$Sound/CellDeadSound.play()
 		stage = Stage.USER_INPUT
 	elif alive_count < level.alive_max_count:
 		alive_count += 1
 		cell.set_alive(true)
-		$CellAliveSound.play()
+		$Sound/CellAliveSound.play()
 		stage = Stage.USER_INPUT
 	
 	update_neighbors_count()
@@ -90,7 +92,7 @@ func _on_check_pressed():
 	stage = Stage.CHECK
 	attempt_count += 1
 	$StepTimer.start()
-	$StepSound.play()
+	$Sound/StepSound.play()
 	step_next()
 	
 func _on_reset_pressed():
@@ -101,11 +103,11 @@ func _on_back_pressed():
 	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
 
 func _on_step_pressed():
-	$StepSound.play()
+	$Sound/StepSound.play()
 	step_next()
 
 func _on_step_back_pressed():
-	$StepSound.play()
+	$Sound/StepSound.play()
 	step_previous()
 
 func _on_menu_pressed():
@@ -116,7 +118,7 @@ func _on_next_level_pressed():
 
 func _on_step_timeout():
 	if step_number < level.step_count:
-		$StepSound.play()
+		$Sound/StepSound.play()
 		step_next()
 		return
 	
@@ -157,7 +159,7 @@ func show_missing():
 
 func complete():
 	Game.completeCurrentLevel(attempt_count)
-	$LevelCompleteSound.play()
+	$Sound/LevelCompleteSound.play()
 	$HUD/LevelCompletePopup.popup_centered()
 
 func reset_to_user_input():
@@ -223,11 +225,11 @@ func neighbors_around_count(i, j):
 	return counter
 
 func update_hud():
-	$HUD/ActiveCountLabel.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
-	$HUD/TipButton.text = "Tip (%d left)" % Game.tip_count()
-	$HUD/StepNumberLabel.text = "Step: %d/%d" % [step_number, level.step_count]
-	$HUD/CheckButton.disabled = stage == Stage.CHECK or step_number > 0 or alive_count != level.alive_max_count or step_number != 0
-	$HUD/TipButton.disabled = stage != Stage.USER_INPUT or not Game.has_tip()
-	$HUD/StepButton.disabled = stage != Stage.VIEW_RESULT or step_number >= level.step_count
-	$HUD/StepBackButton.disabled = stage != Stage.VIEW_RESULT or step_number <= 0
-	$HUD/ResetButton.disabled = stage == Stage.CHECK or step_number > 0
+	$HUD/TopContainer/TopHorizontalContainer/ActiveCountLabel.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
+	$HUD/TopContainer/TopHorizontalContainer/StepNumberLabel.text = "Step: %d/%d" % [step_number, level.step_count]	
+	$HUD/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton.text = "Tip (%d left)" % Game.tip_count()
+	$HUD/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton.disabled = stage != Stage.USER_INPUT or not Game.has_tip()	
+	$HUD/BottomContainer/BottomHorizontalContainer/StepBackButton.disabled = stage != Stage.VIEW_RESULT or step_number <= 0
+	$HUD/BottomContainer/BottomHorizontalContainer/CheckButton.disabled = stage == Stage.CHECK or step_number > 0 or alive_count != level.alive_max_count or step_number != 0
+	$HUD/BottomContainer/BottomHorizontalContainer/ResetButton.disabled = stage == Stage.CHECK or step_number > 0
+	$HUD/BottomContainer/BottomHorizontalContainer/StepButton.disabled = stage != Stage.VIEW_RESULT or step_number >= level.step_count
