@@ -1,12 +1,15 @@
 extends Node2D
 
-class_name Level
+class_name GameArea
 
 enum Stage {
 	USER_INPUT,
 	CHECK,
 	VIEW_RESULT
 }
+
+signal state_changed(stage, step_number, step_count, alive_count, alive_max_count, tip_count)
+signal level_complete()
 
 export var margin_horizontal = 50
 export var margin_vertical = 100
@@ -159,8 +162,8 @@ func show_missing():
 
 func complete():
 	Game.completeCurrentLevel(attempt_count)
+	emit_signal("level_complete")
 	$Sound/LevelCompleteSound.play()
-	$HUD/LevelCompletePopup.popup_centered()
 
 func reset_to_user_input():
 	step_number = 0
@@ -225,11 +228,4 @@ func neighbors_around_count(i, j):
 	return counter
 
 func update_hud():
-	$HUD/TopContainer/TopHorizontalContainer/ActiveCountLabel.text = "Active count %d/%d" % [alive_count, level.alive_max_count]
-	$HUD/TopContainer/TopHorizontalContainer/StepNumberLabel.text = "Step: %d/%d" % [step_number, level.step_count]	
-	$HUD/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton.text = "Tip (%d left)" % Game.tip_count()
-	$HUD/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton.disabled = stage != Stage.USER_INPUT or not Game.has_tip()	
-	$HUD/BottomContainer/BottomHorizontalContainer/StepBackButton.disabled = stage != Stage.VIEW_RESULT or step_number <= 0
-	$HUD/BottomContainer/BottomHorizontalContainer/CheckButton.disabled = stage == Stage.CHECK or step_number > 0 or alive_count != level.alive_max_count or step_number != 0
-	$HUD/BottomContainer/BottomHorizontalContainer/ResetButton.disabled = stage == Stage.CHECK or step_number > 0
-	$HUD/BottomContainer/BottomHorizontalContainer/StepButton.disabled = stage != Stage.VIEW_RESULT or step_number >= level.step_count
+	emit_signal("state_changed", stage, step_number, level.step_count, alive_count, level.alive_max_count, Game.tip_count())

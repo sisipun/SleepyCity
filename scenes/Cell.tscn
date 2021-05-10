@@ -177,6 +177,7 @@ animations = [ {
 } ]
 
 [node name="Cell" type="Area2D"]
+scale = Vector2( 0.99651, 1 )
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
 

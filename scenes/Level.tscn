@@ -1,28 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/Level.gd" type="Script" id=1]
+[ext_resource path="res://scripts/GameArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/default.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/power_on.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/power_off.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/success.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/step.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/Interface.gd" type="Script" id=7]
 
-[node name="Level" type="Node2D"]
-script = ExtResource( 1 )
+[node name="Level" type="Node"]
 
-[node name="StepTimer" type="Timer" parent="."]
+[node name="Interface" type="CanvasLayer" parent="."]
+script = ExtResource( 7 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-follow_viewport_enable = true
-
-[node name="TopContainer " type="CenterContainer" parent="HUD"]
+[node name="TopContainer" type="CenterContainer" parent="Interface"]
 anchor_right = 1.0
 margin_bottom = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopHorizontalContainer" type="HBoxContainer" parent="HUD/TopContainer "]
+[node name="TopHorizontalContainer" type="HBoxContainer" parent="Interface/TopContainer"]
 margin_left = 74.0
 margin_top = 13.0
 margin_right = 526.0
@@ -32,7 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActiveCountLabel" type="Label" parent="HUD/TopContainer /TopHorizontalContainer"]
+[node name="ActiveCountLabel" type="Label" parent="Interface/TopContainer/TopHorizontalContainer"]
 margin_top = 3.0
 margin_right = 100.0
 margin_bottom = 21.0
@@ -45,7 +43,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StepNumberLabel" type="Label" parent="HUD/TopContainer /TopHorizontalContainer"]
+[node name="StepNumberLabel" type="Label" parent="Interface/TopContainer/TopHorizontalContainer"]
 margin_left = 200.0
 margin_top = 3.0
 margin_right = 241.0
@@ -58,13 +56,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopHorizontalButtonsContainer" type="HBoxContainer" parent="HUD/TopContainer /TopHorizontalContainer"]
+[node name="TopHorizontalButtonsContainer" type="HBoxContainer" parent="Interface/TopContainer/TopHorizontalContainer"]
 margin_left = 341.0
 margin_right = 452.0
 margin_bottom = 24.0
 custom_constants/separation = 30
 
-[node name="TipButton" type="Button" parent="HUD/TopContainer /TopHorizontalContainer/TopHorizontalButtonsContainer"]
+[node name="TipButton" type="Button" parent="Interface/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer"]
 margin_right = 32.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 2 )
@@ -73,7 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="HUD/TopContainer /TopHorizontalContainer/TopHorizontalButtonsContainer"]
+[node name="BackButton" type="Button" parent="Interface/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer"]
 margin_left = 62.0
 margin_right = 111.0
 margin_bottom = 24.0
@@ -82,7 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BottomContainer" type="CenterContainer" parent="HUD"]
+[node name="BottomContainer" type="CenterContainer" parent="Interface"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,14 +89,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BottomHorizontalContainer" type="HBoxContainer" parent="HUD/BottomContainer"]
+[node name="BottomHorizontalContainer" type="HBoxContainer" parent="Interface/BottomContainer"]
 margin_left = 75.0
 margin_top = 13.0
 margin_right = 524.0
 margin_bottom = 37.0
 custom_constants/separation = 100
 
-[node name="StepBackButton" type="Button" parent="HUD/BottomContainer/BottomHorizontalContainer"]
+[node name="StepBackButton" type="Button" parent="Interface/BottomContainer/BottomHorizontalContainer"]
 margin_right = 20.0
 margin_bottom = 24.0
 text = "<"
@@ -106,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton" type="Button" parent="HUD/BottomContainer/BottomHorizontalContainer"]
+[node name="CheckButton" type="Button" parent="Interface/BottomContainer/BottomHorizontalContainer"]
 margin_left = 120.0
 margin_right = 178.0
 margin_bottom = 24.0
@@ -115,7 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResetButton" type="Button" parent="HUD/BottomContainer/BottomHorizontalContainer"]
+[node name="ResetButton" type="Button" parent="Interface/BottomContainer/BottomHorizontalContainer"]
 margin_left = 278.0
 margin_right = 329.0
 margin_bottom = 24.0
@@ -124,7 +122,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StepButton" type="Button" parent="HUD/BottomContainer/BottomHorizontalContainer"]
+[node name="StepButton" type="Button" parent="Interface/BottomContainer/BottomHorizontalContainer"]
 margin_left = 429.0
 margin_right = 449.0
 margin_bottom = 24.0
@@ -133,7 +131,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LevelCompletePopup" type="Popup" parent="HUD"]
+[node name="LevelCompletePopup" type="Popup" parent="Interface"]
 margin_right = 300.0
 margin_bottom = 50.0
 popup_exclusive = true
@@ -141,7 +139,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="Button" parent="HUD/LevelCompletePopup"]
+[node name="MenuButton" type="Button" parent="Interface/LevelCompletePopup"]
 margin_left = 200.0
 margin_top = 15.0
 margin_right = 293.0
@@ -151,7 +149,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="Button" parent="HUD/LevelCompletePopup"]
+[node name="NextButton" type="Button" parent="Interface/LevelCompletePopup"]
 margin_left = 25.0
 margin_top = 15.0
 margin_right = 118.0
@@ -161,26 +159,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sound" type="Node" parent="."]
+[node name="GameArea" type="Node2D" parent="."]
+script = ExtResource( 1 )
 
-[node name="CellAliveSound" type="AudioStreamPlayer" parent="Sound"]
+[node name="Sound" type="Node" parent="GameArea"]
+
+[node name="CellAliveSound" type="AudioStreamPlayer" parent="GameArea/Sound"]
 stream = ExtResource( 3 )
 volume_db = -10.0
 
-[node name="CellDeadSound" type="AudioStreamPlayer" parent="Sound"]
+[node name="CellDeadSound" type="AudioStreamPlayer" parent="GameArea/Sound"]
 stream = ExtResource( 4 )
 
-[node name="StepSound" type="AudioStreamPlayer" parent="Sound"]
+[node name="StepSound" type="AudioStreamPlayer" parent="GameArea/Sound"]
 stream = ExtResource( 6 )
 
-[node name="LevelCompleteSound" type="AudioStreamPlayer" parent="Sound"]
+[node name="LevelCompleteSound" type="AudioStreamPlayer" parent="GameArea/Sound"]
 stream = ExtResource( 5 )
-[connection signal="timeout" from="StepTimer" to="." method="_on_step_timeout"]
-[connection signal="pressed" from="HUD/TopContainer /TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton" to="." method="_on_tip_pressed"]
-[connection signal="pressed" from="HUD/TopContainer /TopHorizontalContainer/TopHorizontalButtonsContainer/BackButton" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="HUD/BottomContainer/BottomHorizontalContainer/StepBackButton" to="." method="_on_step_back_pressed"]
-[connection signal="pressed" from="HUD/BottomContainer/BottomHorizontalContainer/CheckButton" to="." method="_on_check_pressed"]
-[connection signal="pressed" from="HUD/BottomContainer/BottomHorizontalContainer/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="HUD/BottomContainer/BottomHorizontalContainer/StepButton" to="." method="_on_step_pressed"]
-[connection signal="pressed" from="HUD/LevelCompletePopup/MenuButton" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="HUD/LevelCompletePopup/NextButton" to="." method="_on_next_level_pressed"]
+
+[node name="StepTimer" type="Timer" parent="GameArea"]
+[connection signal="pressed" from="Interface/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/TipButton" to="GameArea" method="_on_tip_pressed"]
+[connection signal="pressed" from="Interface/TopContainer/TopHorizontalContainer/TopHorizontalButtonsContainer/BackButton" to="GameArea" method="_on_back_pressed"]
+[connection signal="pressed" from="Interface/BottomContainer/BottomHorizontalContainer/StepBackButton" to="GameArea" method="_on_step_back_pressed"]
+[connection signal="pressed" from="Interface/BottomContainer/BottomHorizontalContainer/CheckButton" to="GameArea" method="_on_check_pressed"]
+[connection signal="pressed" from="Interface/BottomContainer/BottomHorizontalContainer/CheckButton" to="GameArea/StepTimer" method="_on_check_pressed"]
+[connection signal="pressed" from="Interface/BottomContainer/BottomHorizontalContainer/ResetButton" to="GameArea" method="_on_reset_pressed"]
+[connection signal="pressed" from="Interface/BottomContainer/BottomHorizontalContainer/StepButton" to="GameArea" method="_on_step_pressed"]
+[connection signal="pressed" from="Interface/LevelCompletePopup/MenuButton" to="GameArea" method="_on_menu_pressed"]
+[connection signal="pressed" from="Interface/LevelCompletePopup/NextButton" to="GameArea" method="_on_next_level_pressed"]
+[connection signal="level_complete" from="GameArea" to="Interface" method="_on_level_complete"]
+[connection signal="state_changed" from="GameArea" to="Interface" method="_on_state_changed"]
+[connection signal="timeout" from="GameArea/StepTimer" to="GameArea" method="_on_step_timeout"]
