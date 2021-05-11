@@ -30,30 +30,22 @@ class Game:
 class LevelInfo:
 	export(int) var width
 	export(int) var height
-	export(int) var alive_max_count
-	export(Array) var born_condition
-	export(Array) var survive_condition
-	export(int) var step_count
 	export(Array) var targets
 	export(Array) var solution
 	export(Array) var initial
-	export(bool) var completed
-	export(int) var attempt_count
 	export(bool) var opened
+	export(bool) var completed
+	export(bool) var bonus
 
-	func _init(width, height, alive_max_count, born_condition, survive_condition, step_count, targets, solution, initial, opened, completed = false, attempt_count = 0):
+	func _init(width, height, targets, solution, initial, opened, completed = false, bonus = false):
 		self.width = width
 		self.height = height
-		self.alive_max_count = alive_max_count
-		self.born_condition = born_condition
-		self.survive_condition = survive_condition
-		self.step_count = step_count
 		self.targets = targets
 		self.solution = solution
 		self.initial = initial
 		self.opened = opened
 		self.completed = completed
-		self.attempt_count = attempt_count
+		self.bonus = bonus
 		
 	func to_dict():
 		var dict_targets = []
@@ -68,16 +60,12 @@ class LevelInfo:
 		return {
 			"width" : width,
 			"height" : height,
-			"alive_max_count" : alive_max_count,
-			"born_condition" : born_condition,
-			"survive_condition" : survive_condition,
-			"step_count" : step_count,
 			"targets" : dict_targets,
 			"solution": dict_solution,
 			"initial": dict_initial,
 			"completed" : completed,
 			"opened" : opened,
-			"attempt_count" : attempt_count
+			"bonus" : bonus
 		}
 	
 	static func from_dict(dict):
@@ -96,358 +84,34 @@ class LevelInfo:
 		return LevelInfo.new(
 			dict["width"], 
 			dict["height"], 
-			dict["alive_max_count"],
-			dict["born_condition"],
-			dict["survive_condition"],
-			dict["step_count"],
 			targets,
 			solution,
 			initial,
-			dict["opened"],			
+			dict["opened"],
 			dict["completed"],
-			dict["attempt_count"]
+			dict["bonus"]
 		)
 
 var game = Game.new(
 	[
 		LevelInfo.new(
-			4, 
-			8, 
-			3, 
-			[3], 
-			[2,3], 
-			1, 
+			5,
+			10, 
 			[
-				Vector2(1,3), 
 				Vector2(1,4), 
 				Vector2(2,3), 
-				Vector2(2,4)
+				Vector2(2,4),
+				Vector2(2,5),
+				Vector2(3,4),
 			], 
 			[
-				Vector2(1,3), 
-				Vector2(2,3), 
 				Vector2(2,4)
 			],
 			[
 			],
 			true
-		),
-		LevelInfo.new(
-			5, 
-			10, 
-			3, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(2,3), 
-				Vector2(2,4),
-				Vector2(2,5)
-			], 
-			[
-				Vector2(1,4), 
-				Vector2(2,4), 
-				Vector2(3,4)
-			],
-			[
-			], 
-			false
-		),
-		LevelInfo.new(
-			5, 
-			10, 
-			4, 
-			[3], 
-			[2,3], 
-			2, 
-			[
-				Vector2(1,4), 
-				Vector2(1,5), 
-				Vector2(2,4),
-				Vector2(2,5), 
-				Vector2(3,4), 
-				Vector2(3,5)
-			], 
-			[
-				Vector2(2,4),
-				Vector2(2,5), 
-				Vector2(2,6), 
-				Vector2(3,4)
-			], 
-			[
-			], 
-			false
-		),
-		LevelInfo.new(
-			6, 
-			12, 
-			6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,5), 
-				Vector2(1,6), 
-				Vector2(2,4), 
-				Vector2(3,7), 
-				Vector2(4,5), 
-				Vector2(4,6)
-			], 
-			[
-				Vector2(2,5), 
-				Vector2(2,6), 
-				Vector2(3,5), 
-				Vector2(3,6),
-			], 
-			[
-				Vector2(1,5), 
-				Vector2(4,6)
-			], 
-			false
-		),
-		LevelInfo.new(
-			6, 
-			12, 
-			6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,4), 
-				Vector2(1,5), 
-				Vector2(2,4), 
-				Vector2(2,5), 
-				Vector2(3,6), 
-				Vector2(3,7), 
-				Vector2(4,6), 
-				Vector2(4,7)
-			], 
-			[
-				Vector2(1,5), 
-				Vector2(2,4), 
-				Vector2(3,7), 
-				Vector2(4,6)
-			], 
-			[
-				Vector2(1,4), 
-				Vector2(4,7)
-			], 
-			false
-		),
-		LevelInfo.new(
-			6, 
-			12, 
-			6, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,6), 
-				Vector2(2,4), 
-				Vector2(2,6), 
-				Vector2(3,5), 
-				Vector2(3,7), 
-				Vector2(4,5)
-			], 
-			[
-				Vector2(2,7),
-				Vector2(3,4),
-			],
-			[
-				Vector2(1,5), 
-				Vector2(2,6),
-				Vector2(3,5),
-				Vector2(4,6)
-			], 
-			false
-		),
-		LevelInfo.new(
-			7, 
-			14, 
-			5, 
-			[3], 
-			[2,3], 
-			2, 
-			[
-				Vector2(1,7), 
-				Vector2(2,6), 
-				Vector2(2,8), 
-				Vector2(3,5), 
-				Vector2(3,9), 
-				Vector2(4,6), 
-				Vector2(4,8), 
-				Vector2(5,7)
-			], 
-			[
-				Vector2(2,7), 
-				Vector2(3,6), 
-				Vector2(3,8), 
-				Vector2(4,7)
-			], 
-			[
-				Vector2(3,7)
-			], 
-			false
-		),
-		LevelInfo.new(
-			7, 
-			14, 
-			8, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,5), 
-				Vector2(1,6), 
-				Vector2(2,5), 
-				Vector2(2,7), 
-				Vector2(4,7), 
-				Vector2(4,9), 
-				Vector2(5,8),
-				Vector2(5,9)
-			], 
-			[
-				Vector2(3,6), 
-				Vector2(3,8)
-			], 
-			[
-				Vector2(1,5),
-				Vector2(1,6),
-				Vector2(2,5),
-				Vector2(4,9), 
-				Vector2(5,8),
-				Vector2(5,9)
-			],
-			false
-		),
-		LevelInfo.new(
-			8,
-			16,
-			9,
-			[3],
-			[2,3],
-			1, 
-			[
-				Vector2(1,5),
-				Vector2(1,6),
-				Vector2(2,5),
-				Vector2(3,6),
-				Vector2(3,8),
-				Vector2(5,8),
-				Vector2(5,10),
-				Vector2(6,9),
-				Vector2(6,10)
-			], 
-			[
-				Vector2(2,7),
-				Vector2(4,7),
-				Vector2(4,9),
-			], 
-			[
-				Vector2(1,5),
-				Vector2(1,6),
-				Vector2(2,5),
-				Vector2(5,10),
-				Vector2(6,9),
-				Vector2(6,10)
-			], 
-			false
-		),
-		LevelInfo.new(
-			8, 
-			16, 
-			16, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,5), 
-				Vector2(1,6),
-				Vector2(1,9),
-				Vector2(1,10),
-				Vector2(2,5),
-				Vector2(2,7),
-				Vector2(2,10),
-				Vector2(3,9),
-				Vector2(4,6),
-				Vector2(5,5),
-				Vector2(5,8),
-				Vector2(5,10),
-				Vector2(6,5),
-				Vector2(6,6),
-				Vector2(6,9),
-				Vector2(6,10)
-			], 
-			[
-				Vector2(2,8),
-				Vector2(3,6),
-				Vector2(4,9),
-				Vector2(5,7)
-			], 
-			[
-				Vector2(1,5),
-				Vector2(1,6),
-				Vector2(1,9),
-				Vector2(1,10),
-				Vector2(2,5),
-				Vector2(2,10),
-				Vector2(5,5),
-				Vector2(5,10),
-				Vector2(6,5),
-				Vector2(6,6),
-				Vector2(6,9),
-				Vector2(6,10)
-			], 
-			false
-		),
-		LevelInfo.new(
-			9, 
-			18, 
-			16, 
-			[3], 
-			[2,3], 
-			1, 
-			[
-				Vector2(1,9), 
-				Vector2(1,10), 
-				Vector2(2,5), 
-				Vector2(2,6), 
-				Vector2(2,10), 
-				Vector2(3,5),
-				Vector2(3,7),
-				Vector2(3,9),
-				Vector2(5,7),
-				Vector2(5,9),
-				Vector2(5,11),
-				Vector2(6,6),
-				Vector2(6,10),
-				Vector2(6,11),
-				Vector2(7,6),
-				Vector2(7,7)
-			], 
-			[
-				Vector2(2,8),
-				Vector2(4,6),
-				Vector2(4,10),
-				Vector2(6,8),
-			], 
-			[
-				Vector2(1,9),
-				Vector2(1,10),
-				Vector2(2,5),
-				Vector2(2,6),
-				Vector2(2,10),
-				Vector2(3,5),
-				Vector2(5,11),
-				Vector2(6,6),
-				Vector2(6,10),
-				Vector2(6,11),
-				Vector2(7,6),
-				Vector2(7,7)
-			], 
-			false
 		)
-	], 
+	],
 	20,
 	true
 )
@@ -479,13 +143,15 @@ func has_sound():
 func currentLevel():
 	return game.levels[currentLevelIndex]
 	
-func completeCurrentLevel(attempt_count):
+func completeCurrentLevel(reset_count):
 	var current = currentLevel()
 	var levels = levels()
-	if current.attempt_count == 0 or current.attempt_count > attempt_count:
-		current.attempt_count = attempt_count
-		game.tips_count += 1 if attempt_count == 1 else 0
-	current.completed = true
+	
+	current.completed = true	
+	if not current.bonus and reset_count == 0:
+		current.bonus = true
+		game.tips_count += 1
+	
 	var next = currentLevelIndex + 1
 	if next < levels.size():
 		currentLevelIndex = next

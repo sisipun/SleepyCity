@@ -1,11 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/target_cell.png" type="Texture" id=2]
 [ext_resource path="res://assets/dead_cell.png" type="Texture" id=3]
 [ext_resource path="res://assets/alive_cell.png" type="Texture" id=4]
-[ext_resource path="res://assets/initial_cell.png" type="Texture" id=6]
-[ext_resource path="res://assets/missing_cell.png" type="Texture" id=7]
+[ext_resource path="res://assets/tip_cell.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -165,14 +164,9 @@ animations = [ {
 "name": "target",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "tip",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "missing",
 "speed": 5.0
 } ]
 
@@ -193,23 +187,5 @@ animation = "dead"
 [node name="EffectSprite" type="AnimatedSprite" parent="."]
 z_index = -2
 frames = SubResource( 29 )
-
-[node name="InitialSprite" type="Sprite" parent="."]
-visible = false
-z_index = -1
-texture = ExtResource( 6 )
-
-[node name="NeighborsCountLabel" type="Label" parent="."]
-margin_left = -64.0
-margin_top = -64.0
-margin_right = 64.0
-margin_bottom = 64.0
-text = "0
-"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="EffectSprite" to="." method="_on_effect_animation_finished"]
