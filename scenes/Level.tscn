@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/GameArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/default.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/power_off.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/cell.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/success.wav" type="AudioStream" id=5]
 [ext_resource path="res://scripts/Interface.gd" type="Script" id=7]
 

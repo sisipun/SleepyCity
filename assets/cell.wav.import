@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/power_on.wav-7eeee451994ed75a796e670971373e2d.sample"
+path="res://.import/cell.wav-02e72f944f3af9e7d43bdfb78fe6cb88.sample"
 
 [deps]
 
-source_file="res://assets/power_on.wav"
-dest_files=[ "res://.import/power_on.wav-7eeee451994ed75a796e670971373e2d.sample" ]
+source_file="res://assets/cell.wav"
+dest_files=[ "res://.import/cell.wav-02e72f944f3af9e7d43bdfb78fe6cb88.sample" ]
 
 [params]
 
