@@ -14,10 +14,25 @@ script = ExtResource( 7 )
 [node name="Top" type="HBoxContainer" parent="Interface"]
 anchor_right = 1.0
 margin_bottom = 50.0
-alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TopLabels" type="MarginContainer" parent="Interface/Top"]
+margin_right = 497.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 25
+custom_constants/margin_top = 10
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 10
+
+[node name="StepLabel" type="Label" parent="Interface/Top/TopLabels"]
+margin_left = 25.0
+margin_top = 16.0
+margin_right = 472.0
+margin_bottom = 34.0
+text = "0"
 
 [node name="TopButtons" type="MarginContainer" parent="Interface/Top"]
 margin_left = 501.0
@@ -116,4 +131,6 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="Interface/LevelCompletePopup/MenuButton" to="GameArea" method="_on_menu_pressed"]
 [connection signal="pressed" from="Interface/LevelCompletePopup/NextButton" to="GameArea" method="_on_next_level_pressed"]
 [connection signal="level_complete" from="GameArea" to="Interface" method="_on_level_complete"]
+[connection signal="reset" from="GameArea" to="Interface" method="_on_reset"]
+[connection signal="step" from="GameArea" to="Interface" method="_on_step"]
 [connection signal="tip" from="GameArea" to="Interface" method="_on_tip"]

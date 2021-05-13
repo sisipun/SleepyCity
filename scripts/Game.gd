@@ -36,8 +36,11 @@ class LevelInfo:
 	export(bool) var opened
 	export(bool) var completed
 	export(bool) var bonus
+	export(bool) var step_count
+	export(bool) var reset_count
+	export(bool) var tip_count
 
-	func _init(width, height, targets, solution, initial, opened, completed = false, bonus = false):
+	func _init(width, height, targets, solution, initial, opened, completed = false, bonus = false, step_count = 0, reset_count = 0, tip_count = 0):
 		self.width = width
 		self.height = height
 		self.targets = targets
@@ -46,6 +49,9 @@ class LevelInfo:
 		self.opened = opened
 		self.completed = completed
 		self.bonus = bonus
+		self.step_count = step_count
+		self.reset_count = reset_count
+		self.tip_count = tip_count
 		
 	func to_dict():
 		var dict_targets = []
@@ -65,7 +71,10 @@ class LevelInfo:
 			"initial": dict_initial,
 			"completed" : completed,
 			"opened" : opened,
-			"bonus" : bonus
+			"bonus" : bonus,
+			"step_count" : step_count,
+			"reset_count" : reset_count,
+			"tip_count" : tip_count,
 		}
 	
 	static func from_dict(dict):
@@ -89,7 +98,10 @@ class LevelInfo:
 			initial,
 			dict["opened"],
 			dict["completed"],
-			dict["bonus"]
+			dict["bonus"],
+			dict["step_count"],
+			dict["reset_count"],
+			dict["tip_count"]
 		)
 
 var game = Game.new(
@@ -352,11 +364,14 @@ func has_sound():
 func currentLevel():
 	return game.levels[currentLevelIndex]
 	
-func completeCurrentLevel(reset_count):
+func completeCurrentLevel(step_count, reset_count, tip_count):
 	var current = currentLevel()
 	var levels = levels()
 	
-	current.completed = true	
+	current.completed = true
+	current.step_count = step_count
+	current.reset_count = reset_count
+	current.tip_count = tip_count
 	if not current.bonus and reset_count == 0:
 		current.bonus = true
 		game.tips_count += 1

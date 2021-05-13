@@ -3,7 +3,9 @@ extends Node2D
 class_name GameArea
 
 signal level_complete(step_count, tip_count, reset_count)
-signal tip()
+signal tip(tip_count)
+signal step(step_count)
+signal reset(reset_count)
 
 export var margin_horizontal = 50
 export var margin_vertical = 100
@@ -12,7 +14,9 @@ var level = Game.currentLevel()
 var completed = false
 var map = []
 var last_tip = 0
+var step_count = 0
 var reset_count = 0
+var tip_count = 0
 
 func _ready():
 	var cellScene = load("res://scenes/Cell.tscn")
@@ -56,24 +60,29 @@ func _on_cell_clicked(cell):
 	map[inc_i][j].set_alive(not map[inc_i][j].is_alive())
 	map[i][inc_j].set_alive(not map[i][inc_j].is_alive())
 	
+	step_count += 1
+	emit_signal("step", step_count)
+	
 	if is_target_complete():
 		completed = true
 		$Sound/LevelCompleteSound.play()
-		Game.completeCurrentLevel(reset_count)
+		Game.completeCurrentLevel(step_count, reset_count, tip_count)
 		emit_signal("level_complete", reset_count)
 	else: 
 		$Sound/CellSound.play()
 
 func _on_tip_pressed():
-	var tip = last_tip + 1 if last_tip + 1 < level.solution.size() else 0
-	var cell = map[level.solution[tip].x][level.solution[tip].y]
+	last_tip = last_tip + 1 if last_tip + 1 < level.solution.size() else 0
+	var cell = map[level.solution[last_tip].x][level.solution[last_tip].y]
 	if cell.play_tip_effect():
-		last_tip += 1
+		tip_count += 1
 		Game.decriment_tip()
-		emit_signal("tip")
+		emit_signal("tip", tip_count)
 
 func _on_reset_pressed():
+	step_count = 0
 	reset_count += 1
+	emit_signal("reset", reset_count)
 	for i in range(map.size()):
 		for j in range(map[i].size()):
 			map[i][j].set_alive(Vector2(i, j) in level.initial)
