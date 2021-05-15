@@ -1,14 +1,9 @@
 extends Node2D
 
-class_name GameArea
-
 signal level_complete(step_count, tip_count, reset_count)
 signal tip(tip_count)
 signal step(step_count)
 signal reset(reset_count)
-
-export var margin_horizontal = 50
-export var margin_vertical = 100
 
 var level = Game.currentLevel()
 var completed = false
@@ -19,10 +14,10 @@ var reset_count = 0
 var tip_count = 0
 
 func _ready():
-	var cell_scene = load("res://scenes/Cell.tscn")
+	var cell_scene = load("res://scenes/level/Cell.tscn")
 	var screen_size = get_viewport_rect().size
-	var cell_width = (screen_size.x - 2 * margin_horizontal) / level.width
-	var cell_height = (screen_size.y - 2 * margin_vertical) / level.height
+	var cell_width = (screen_size.x - 2 * position.x) / level.width
+	var cell_height = (screen_size.y - 2 * position.y) / level.height
 	for i in range(level.width):
 		map.append([])
 		for j in range(level.height):
@@ -30,8 +25,8 @@ func _ready():
 				i,
 				j,
 				Vector2(
-					margin_horizontal + cell_width / 2 + i * cell_width, 
-					margin_vertical + cell_height / 2 + j * cell_height
+					position.x + cell_width / 2 + i * cell_width, 
+					position.y + cell_height / 2 + j * cell_height
 				), 
 				Vector2(
 					cell_width, 
@@ -88,13 +83,13 @@ func _on_reset_pressed():
 			map[i][j].set_alive(Vector2(i, j) in level.initial)
 
 func _on_back_pressed():
-	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
+	get_tree().change_scene("res://scenes/menu/ChooseLevel.tscn")
 
 func _on_menu_pressed():
-	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
+	get_tree().change_scene("res://scenes/menu/ChooseLevel.tscn")
 
 func _on_next_level_pressed():
-	get_tree().change_scene("res://scenes/Level.tscn")
+	get_tree().change_scene("res://scenes/level/Level.tscn")
 		
 func is_target_complete():
 	for target in level.targets:

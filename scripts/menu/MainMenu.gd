@@ -1,6 +1,5 @@
 extends Control
 
-
 func _ready():
 	if Game.has_sound():
 		$MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton.text = "Mute"
@@ -10,7 +9,7 @@ func _ready():
 		Game.mute()
 
 func _on_start_pressed():
-	get_tree().change_scene("res://scenes/ChooseLevel.tscn")
+	get_tree().change_scene("res://scenes/menu/ChooseLevel.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

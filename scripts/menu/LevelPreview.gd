@@ -1,7 +1,5 @@
 extends MarginContainer
 
-class_name LevelPreview
-
 signal clicked(index)
 
 var level_index = 0

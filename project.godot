@@ -8,38 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "Cell",
-"language": "GDScript",
-"path": "res://scripts/Cell.gd"
-}, {
-"base": "Node2D",
-"class": "GameArea",
-"language": "GDScript",
-"path": "res://scripts/GameArea.gd"
-}, {
-"base": "CanvasLayer",
-"class": "Interface",
-"language": "GDScript",
-"path": "res://scripts/Interface.gd"
-}, {
-"base": "MarginContainer",
-"class": "LevelPreview",
-"language": "GDScript",
-"path": "res://scripts/LevelPreview.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"Cell": "",
-"GameArea": "",
-"Interface": "",
-"LevelPreview": ""
+
 }
 
 [application]
 
 config/name="Cells"
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="res://scenes/menu/MainMenu.tscn"
 
 [autoload]
 

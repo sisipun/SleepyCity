@@ -1,12 +1,8 @@
 extends Area2D
 
-class_name Cell
-
-enum Effect { TARGET, TIP, MISSING }
+enum Effect { TARGET, TIP }
 
 signal clicked(cell)
-
-const sprite_size = 128
 
 var alive = false
 var effects = [] 
@@ -28,14 +24,15 @@ func _on_input_event(viewport, event, shape_idx):
 		emit_signal("clicked", self)
 
 func init(coord_x, coord_y, position, size, alive = false):
+	var sprite_size = $Sprite.frames.get_frame($Sprite.animation, 0).get_size()
 	self.coord_x = coord_x
 	self.coord_y = coord_y
 	self.position = position
 	set_alive(alive)
 	$Collision.shape.extents = Vector2(size.x / 2, size.y / 2)
-	$Sprite.scale = Vector2(size.x / sprite_size, size.y / sprite_size)
+	$Sprite.scale = Vector2(size.x / sprite_size.x, size.y / sprite_size.y)
 	$Sprite.frame = $Sprite.frames.get_frame_count($Sprite.animation) - 1
-	$EffectSprite.scale = Vector2(size.x / sprite_size, size.y / sprite_size)
+	$EffectSprite.scale = Vector2(size.x / sprite_size.x, size.y / sprite_size.y)
 	return self
 
 func play_target_effect():
@@ -44,7 +41,6 @@ func play_target_effect():
 		
 	effects.push_back(Effect.TARGET)
 	$EffectSprite.animation = "target"
-	$EffectSprite.show()
 	return true
 	
 func play_tip_effect():
@@ -53,7 +49,6 @@ func play_tip_effect():
 
 	effects.push_back(Effect.TIP)
 	$EffectSprite.animation = "tip"
-	$EffectSprite.show()
 	return true
 
 func is_alive():

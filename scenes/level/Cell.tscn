@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://scripts/Cell.gd" type="Script" id=1]
+[ext_resource path="res://scripts/level/Cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/target_cell.png" type="Texture" id=2]
 [ext_resource path="res://assets/dead_cell.png" type="Texture" id=3]
 [ext_resource path="res://assets/alive_cell.png" type="Texture" id=4]

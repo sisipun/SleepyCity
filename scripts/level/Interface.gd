@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-class_name Interface
-
 func _ready():
 	$Top/TopLabels/StepLabel.text = "0"
 	$Bottom/BottomButtons/TipButton.text = "Tip (%d)" % Game.tip_count()
