@@ -19,14 +19,14 @@ var reset_count = 0
 var tip_count = 0
 
 func _ready():
-	var cellScene = load("res://scenes/Cell.tscn")
+	var cell_scene = load("res://scenes/Cell.tscn")
 	var screen_size = get_viewport_rect().size
 	var cell_width = (screen_size.x - 2 * margin_horizontal) / level.width
 	var cell_height = (screen_size.y - 2 * margin_vertical) / level.height
 	for i in range(level.width):
 		map.append([])
 		for j in range(level.height):
-			var cell = cellScene.instance().init(
+			var cell = cell_scene.instance().init(
 				i,
 				j,
 				Vector2(

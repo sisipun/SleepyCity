@@ -19,7 +19,7 @@ __meta__ = {
 }
 
 [node name="TopLabels" type="MarginContainer" parent="Interface/Top"]
-margin_right = 497.0
+margin_right = 476.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
@@ -30,12 +30,12 @@ custom_constants/margin_bottom = 10
 [node name="StepLabel" type="Label" parent="Interface/Top/TopLabels"]
 margin_left = 25.0
 margin_top = 16.0
-margin_right = 472.0
+margin_right = 451.0
 margin_bottom = 34.0
 text = "0"
 
 [node name="TopButtons" type="MarginContainer" parent="Interface/Top"]
-margin_left = 501.0
+margin_left = 480.0
 margin_right = 600.0
 margin_bottom = 50.0
 custom_constants/margin_right = 25
@@ -46,8 +46,9 @@ custom_constants/margin_bottom = 10
 [node name="BackButton" type="Button" parent="Interface/Top/TopButtons"]
 margin_left = 25.0
 margin_top = 10.0
-margin_right = 74.0
+margin_right = 95.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 70, 0 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,30 +58,32 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -50.0
+margin_top = -100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BottomButtons" type="HBoxContainer" parent="Interface/Bottom"]
-margin_left = 208.0
-margin_top = 13.0
-margin_right = 391.0
-margin_bottom = 37.0
+margin_left = 150.0
+margin_top = 25.0
+margin_right = 450.0
+margin_bottom = 75.0
 custom_constants/separation = 100
 
 [node name="ResetButton" type="Button" parent="Interface/Bottom/BottomButtons"]
-margin_right = 51.0
-margin_bottom = 24.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
 text = "Reset"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TipButton" type="Button" parent="Interface/Bottom/BottomButtons"]
-margin_left = 151.0
-margin_right = 183.0
-margin_bottom = 24.0
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Tip"
 __meta__ = {

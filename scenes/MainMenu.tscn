@@ -23,15 +23,16 @@ __meta__ = {
 margin_left = 32.0
 margin_right = 568.0
 margin_bottom = 1200.0
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StartButton" type="Button" parent="MenuMargin/Buttons"]
-margin_top = 545.0
+margin_top = 529.0
 margin_right = 536.0
-margin_bottom = 569.0
+margin_bottom = 553.0
 text = "Start"
 
 [node name="QuitButton" type="Button" parent="MenuMargin/Buttons"]
@@ -41,9 +42,9 @@ margin_bottom = 597.0
 text = "Quit"
 
 [node name="FooterButtonsMargin" type="MarginContainer" parent="MenuMargin/Buttons"]
-margin_top = 601.0
+margin_top = 617.0
 margin_right = 536.0
-margin_bottom = 655.0
+margin_bottom = 671.0
 custom_constants/margin_top = 30
 
 [node name="FooterButtons" type="HBoxContainer" parent="MenuMargin/Buttons/FooterButtonsMargin"]

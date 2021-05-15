@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "GameArea",
 "language": "GDScript",
 "path": "res://scripts/GameArea.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Interface",
+"language": "GDScript",
+"path": "res://scripts/Interface.gd"
+}, {
+"base": "MarginContainer",
+"class": "LevelPreview",
+"language": "GDScript",
+"path": "res://scripts/LevelPreview.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
-"GameArea": ""
+"GameArea": "",
+"Interface": "",
+"LevelPreview": ""
 }
 
 [application]
