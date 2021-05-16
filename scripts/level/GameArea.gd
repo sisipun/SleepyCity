@@ -25,8 +25,8 @@ func _ready():
 				i,
 				j,
 				Vector2(
-					position.x + cell_width / 2 + i * cell_width, 
-					position.y + cell_height / 2 + j * cell_height
+					cell_width / 2 + i * cell_width, 
+					cell_height / 2 + j * cell_height
 				), 
 				Vector2(
 					cell_width, 

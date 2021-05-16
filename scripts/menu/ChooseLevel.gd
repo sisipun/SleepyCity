@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	var preview_scene = load("res://scenes/level/LevelPreview.tscn")
+	var preview_scene = load("res://scenes/menu/LevelPreview.tscn")
 	var horizontal_container
 	for i in len(Game.levels()):
 		if i % 2 == 0:
