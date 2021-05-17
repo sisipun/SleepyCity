@@ -20,7 +20,7 @@ __meta__ = {
 
 [node name="TopLabels" type="MarginContainer" parent="Interface/Top"]
 margin_right = 476.0
-margin_bottom = 50.0
+margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
@@ -29,15 +29,15 @@ custom_constants/margin_bottom = 10
 
 [node name="StepLabel" type="Label" parent="Interface/Top/TopLabels"]
 margin_left = 25.0
-margin_top = 16.0
+margin_top = 13.0
 margin_right = 451.0
-margin_bottom = 34.0
+margin_bottom = 40.0
 text = "0"
 
 [node name="TopButtons" type="MarginContainer" parent="Interface/Top"]
 margin_left = 480.0
 margin_right = 600.0
-margin_bottom = 50.0
+margin_bottom = 53.0
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
 custom_constants/margin_left = 25
@@ -47,7 +47,7 @@ custom_constants/margin_bottom = 10
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 95.0
-margin_bottom = 40.0
+margin_bottom = 43.0
 rect_min_size = Vector2( 70, 0 )
 text = "Back"
 __meta__ = {

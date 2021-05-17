@@ -7,50 +7,48 @@
 [node name="LevelPreview" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -500.0
+margin_bottom = -1000.0
+rect_min_size = Vector2( 125, 250 )
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PreviewTexture" type="TextureRect" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 590.0
-margin_bottom = 1190.0
+[node name="PreviewTexture" type="NinePatchRect" parent="."]
+margin_right = 125.0
+margin_bottom = 250.0
 texture = ExtResource( 4 )
-stretch_mode = 1
 
 [node name="PreviewArea" type="VBoxContainer" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 590.0
-margin_bottom = 1190.0
+margin_right = 125.0
+margin_bottom = 250.0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bottom" type="HBoxContainer" parent="PreviewArea"]
-margin_top = 1150.0
-margin_right = 580.0
-margin_bottom = 1180.0
+margin_top = 220.0
+margin_right = 125.0
+margin_bottom = 250.0
 
 [node name="LevelLabel" type="Label" parent="PreviewArea/Bottom"]
-margin_right = 546.0
+margin_right = 91.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "0"
+valign = 2
 
 [node name="BonusTexture" type="TextureRect" parent="PreviewArea/Bottom"]
-margin_left = 550.0
-margin_right = 580.0
+margin_left = 95.0
+margin_right = 125.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
 texture = ExtResource( 3 )
