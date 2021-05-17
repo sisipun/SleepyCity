@@ -16,8 +16,9 @@ var tip_count = 0
 func _ready():
 	var cell_scene = load("res://scenes/level/Cell.tscn")
 	var screen_size = get_viewport_rect().size
-	var cell_width = (screen_size.x - 2 * position.x) / level.width
-	var cell_height = (screen_size.y - 2 * position.y) / level.height
+	var cell_margin = 1.2
+	var cell_width = (screen_size.x - 2 * position.x) / (cell_margin * level.width)
+	var cell_height = (screen_size.y - 2 * position.y) / (cell_margin * level.height)
 	for i in range(level.width):
 		map.append([])
 		for j in range(level.height):
@@ -25,8 +26,8 @@ func _ready():
 				i,
 				j,
 				Vector2(
-					cell_width / 2 + i * cell_width, 
-					cell_height / 2 + j * cell_height
+					(cell_margin / 2) * cell_width + i * cell_margin * cell_width, 
+					(cell_margin / 2) * cell_height + j * cell_margin * cell_height
 				), 
 				Vector2(
 					cell_width, 
