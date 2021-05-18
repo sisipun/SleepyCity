@@ -1,17 +1,17 @@
 extends Node
 
-class Game:
-	export(Array) var levels
-	export(int) var tips_count
-	export(bool) var sound
+class GameInfo:
+	var levels: Array
+	var tips_count: int
+	var sound: bool
 	
-	func _init(levels, tips_count, sound):
+	func _init(levels, tips_count, sound) -> void:
 		self.levels = levels
 		self.tips_count = tips_count
 		self.sound = sound
 		
-	func to_dict():
-		var dict_levels = []
+	func to_dict() -> Dictionary:
+		var dict_levels: Array = []
 		for level in levels:
 			dict_levels.push_back(level.to_dict())
 		return {
@@ -20,27 +20,39 @@ class Game:
 			"sound": sound
 		}
 	
-	static func from_dict(dict):
-		var levels = []
-		var dict_levels = dict["levels"]
+	static func from_dict(dict) -> GameInfo:
+		var levels: Array = []
+		var dict_levels: Array = dict["levels"]
 		for level in dict_levels:
 			levels.push_back(LevelInfo.from_dict(level))
-		return Game.new(levels, dict["tips_count"], dict["sound"])
+		return GameInfo.new(levels, dict["tips_count"], dict["sound"])
 
 class LevelInfo:
-	export(int) var width
-	export(int) var height
-	export(Array) var targets
-	export(Array) var solution
-	export(Array) var initial
-	export(bool) var opened
-	export(bool) var completed
-	export(bool) var bonus
-	export(bool) var step_count
-	export(bool) var reset_count
-	export(bool) var tip_count
+	var width: int
+	var height: int
+	var targets: Array
+	var solution: Array
+	var initial: Array
+	var opened: bool
+	var completed: bool
+	var bonus: bool
+	var step_count: bool
+	var reset_count: bool
+	var tip_count: bool
 
-	func _init(width, height, targets, solution, initial, opened, completed = false, bonus = false, step_count = 0, reset_count = 0, tip_count = 0):
+	func _init(
+			width: int, 
+			height: int, 
+			targets: Array,
+			solution: Array,
+			initial: Array, 
+			opened: bool, 
+			completed: bool = false, 
+			bonus: bool = false, 
+			step_count: int = 0, 
+			reset_count: int = 0, 
+			tip_count: int = 0
+		) -> void:
 		self.width = width
 		self.height = height
 		self.targets = targets
@@ -53,14 +65,14 @@ class LevelInfo:
 		self.reset_count = reset_count
 		self.tip_count = tip_count
 		
-	func to_dict():
-		var dict_targets = []
+	func to_dict() -> Dictionary:
+		var dict_targets: Array = []
 		for target in targets:
 			dict_targets.push_back({"x": target.x, "y":target.y})
-		var dict_solution = []
+		var dict_solution: Array = []
 		for solution_item in solution:
 			dict_solution.push_back({"x": solution_item.x, "y":solution_item.y})
-		var dict_initial = []
+		var dict_initial: Array = []
 		for initial_item in initial:
 			dict_initial.push_back({"x": initial_item.x, "y":initial_item.y})
 		return {
@@ -77,17 +89,17 @@ class LevelInfo:
 			"tip_count" : tip_count,
 		}
 	
-	static func from_dict(dict):
-		var targets = []
-		var dict_targets = dict["targets"]
+	static func from_dict(dict) -> LevelInfo:
+		var targets: Array = []
+		var dict_targets: Array = dict["targets"]
 		for target in dict_targets:
 			targets.push_back(Vector2(target["x"], target["y"]))
-		var solution = []
-		var dict_solution = dict["solution"]
+		var solution: Array = []
+		var dict_solution: Array = dict["solution"]
 		for solution_item in dict_solution:
 			solution.push_back(Vector2(solution_item["x"], solution_item["y"]))
-		var initial = []
-		var dict_initial = dict["initial"]
+		var initial: Array = []
+		var dict_initial: Array = dict["initial"]
 		for initial_item in dict_initial:
 			initial.push_back(Vector2(initial_item["x"], initial_item["y"]))
 		return LevelInfo.new(
@@ -104,7 +116,7 @@ class LevelInfo:
 			dict["tip_count"]
 		)
 
-var game = Game.new(
+var _game: GameInfo = GameInfo.new(
 	[
 		LevelInfo.new(
 			5,
@@ -336,37 +348,40 @@ var game = Game.new(
 	20,
 	true
 )
-var currentLevelIndex = 0
-var savePath = "user://saves/"
-var saveFile = "levels1.0.json"
+var _current_level_index: int = 0
+var _save_path: String = "user://saves/"
+var _save_file: String = "levels1.0.json"
 
-func _ready():
-	var file = File.new()
-	if not file.file_exists(savePath + saveFile):
+func _ready() -> void:
+	var file: = File.new()
+	if not file.file_exists(_save_path + _save_file):
 		return
 	
-	file.open(savePath + saveFile, File.READ)
-	game = Game.from_dict(JSON.parse(file.get_as_text()).result)
+	file.open(_save_path + _save_file, File.READ)
+	_game = GameInfo.from_dict(JSON.parse(file.get_as_text()).result)
 	file.close()
 
-func levels():
-	return game.levels
+func levels() -> Array:
+	return _game.levels
 
-func tip_count():
-	return game.tips_count
+func tip_count() -> int:
+	return _game.tips_count
 
-func has_tip():
-	return game.tips_count > 0
+func has_tip() -> bool:
+	return _game.tips_count > 0
 	
-func has_sound():
-	return game.sound
+func has_sound() -> bool:
+	return _game.sound
 
-func currentLevel():
-	return game.levels[currentLevelIndex]
+func set_current_level(index: int) -> void:
+	_current_level_index = index
+
+func get_current_level() -> LevelInfo:
+	return _game.levels[_current_level_index]
 	
-func completeCurrentLevel(step_count, reset_count, tip_count):
-	var current = currentLevel()
-	var levels = levels()
+func completeCurrentLevel(step_count: int, reset_count: int, tip_count: int) -> void:
+	var current: LevelInfo = get_current_level()
+	var levels: Array = levels()
 	
 	current.completed = true
 	current.step_count = step_count
@@ -374,36 +389,36 @@ func completeCurrentLevel(step_count, reset_count, tip_count):
 	current.tip_count = tip_count
 	if not current.bonus and reset_count == 0:
 		current.bonus = true
-		game.tips_count += 1
+		_game.tips_count += 1
 	
-	var next = currentLevelIndex + 1
+	var next: int = _current_level_index + 1
 	if next < levels.size():
-		currentLevelIndex = next
+		_current_level_index = next
 		levels[next].opened = true
 	else:
-		currentLevelIndex = 0
+		_current_level_index = 0
 	self.save()
 
-func decriment_tip():
-	game.tips_count -= 1
+func decriment_tip() -> void:
+	_game.tips_count -= 1
 	save()
 	
-func mute():
-	game.sound = false
+func mute() -> void:
+	_game.sound = false
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	save()
 	
-func unmute():
-	game.sound = true
+func unmute() -> void:
+	_game.sound = true
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	save()
 
-func save():
-	var dir = Directory.new()
-	if not dir.dir_exists(savePath):
-		dir.make_dir(savePath)
+func save() -> void:
+	var dir: Directory = Directory.new()
+	if not dir.dir_exists(_save_path):
+		dir.make_dir(_save_path)
 		
-	var file = File.new()
-	file.open(savePath + saveFile, File.WRITE)
-	file.store_line(to_json(game.to_dict()))
+	var file: File = File.new()
+	file.open(_save_path + _save_file, File.WRITE)
+	file.store_line(to_json(_game.to_dict()))
 	file.close()

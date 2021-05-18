@@ -1,33 +1,44 @@
 extends Area2D
+class_name Cell
+
 
 enum Effect { TARGET, TIP }
-
 signal clicked(cell)
 
-var alive = false
-var effects = [] 
-var coord_x = 0
-var coord_y = 0
-var neighbors_count = 0
 
-func _ready():
+var _alive: bool = false
+var _effects: Array = [] 
+var _coord_x: int = 0
+var _coord_y: int = 0
+
+
+func _ready() -> void:
 	$Sprite.play()
 	$EffectSprite.play()
 
-func _on_effect_animation_finished():
-	if $EffectSprite.animation == "tip":
-		effects.erase(Effect.TIP)
-	$EffectSprite.animation = "target" if Effect.TARGET in effects else "default"
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_effect_animation_finished() -> void:
+	if $EffectSprite.animation == "tip":
+		_effects.erase(Effect.TIP)
+	$EffectSprite.animation = "target" if Effect.TARGET in _effects else "default"
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventScreenTouch and event.is_pressed():
 		emit_signal("clicked", self)
 
-func init(coord_x, coord_y, position, size, alive = false):
-	var sprite_size = $Sprite.frames.get_frame($Sprite.animation, 0).get_size()
-	self.coord_x = coord_x
-	self.coord_y = coord_y
-	self.position = position
+
+func init(
+		coord_x: int, 
+		coord_y: int, 
+		position: Vector2, 
+		size: Vector2, 
+		alive: bool = false
+	) -> Cell:
+	var sprite_size: Vector2 = $Sprite.frames.get_frame($Sprite.animation, 0).get_size()
+	self.position = position	
+	_coord_x = coord_x
+	_coord_y = coord_y
 	set_alive(alive)
 	$Collision.shape.extents = Vector2(size.x / 2, size.y / 2)
 	$Sprite.scale = Vector2(size.x / sprite_size.x, size.y / sprite_size.y)
@@ -35,28 +46,36 @@ func init(coord_x, coord_y, position, size, alive = false):
 	$EffectSprite.scale = Vector2(size.x / sprite_size.x, size.y / sprite_size.y)
 	return self
 
-func play_target_effect():
-	if Effect.TARGET in effects:
+
+func play_target_effect() -> bool:
+	if Effect.TARGET in _effects:
 		return false
 		
-	effects.push_back(Effect.TARGET)
+	_effects.push_back(Effect.TARGET)
 	$EffectSprite.animation = "target"
 	return true
-	
-func play_tip_effect():
-	if Effect.TIP in effects:
-		return false
 
-	effects.push_back(Effect.TIP)
+
+func play_tip_effect() -> bool:
+	if Effect.TIP in _effects:
+		return false
+		
+	_effects.push_back(Effect.TIP)
 	$EffectSprite.animation = "tip"
 	return true
 
-func is_alive():
-	return alive
 
-func set_alive(alive):
-	self.alive = alive
-	if self.alive:
+func get_coordinates() -> Vector2:
+	return Vector2(_coord_x, _coord_y)
+
+
+func is_alive() -> bool:
+	return _alive
+
+
+func set_alive(alive: bool) -> void:
+	_alive = alive
+	if _alive:
 		$Sprite.animation = "alive"
 	else:
 		$Sprite.animation = "dead"

@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Cell",
+"language": "GDScript",
+"path": "res://scripts/level/Cell.gd"
+}, {
+"base": "MarginContainer",
+"class": "LevelPreview",
+"language": "GDScript",
+"path": "res://scripts/menu/LevelPreview.gd"
+} ]
 _global_script_class_icons={
-
+"Cell": "",
+"LevelPreview": ""
 }
 
 [application]
