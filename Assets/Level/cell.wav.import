@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cell.wav-c12405dbfd867bfbaa7af2e687772f65.sample"
+
+[deps]
+
+source_file="res://Assets/Level/cell.wav"
+dest_files=[ "res://.import/cell.wav-c12405dbfd867bfbaa7af2e687772f65.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

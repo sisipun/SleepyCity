@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=2]
+
+[node name="Interface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLabels" type="MarginContainer" parent="Top"]
+margin_right = 476.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 25
+custom_constants/margin_top = 10
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 10
+
+[node name="StepLabel" type="Label" parent="Top/TopLabels"]
+margin_left = 25.0
+margin_top = 13.0
+margin_right = 451.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="TopButtons" type="MarginContainer" parent="Top"]
+margin_left = 480.0
+margin_right = 600.0
+margin_bottom = 53.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 10
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="Top/TopButtons"]
+margin_left = 25.0
+margin_top = 10.0
+margin_right = 95.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 70, 0 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -75.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomButtons" type="HBoxContainer" parent="Bottom"]
+margin_left = 150.0
+margin_right = 450.0
+margin_bottom = 50.0
+custom_constants/separation = 100
+
+[node name="ResetButton" type="Button" parent="Bottom/BottomButtons"]
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TipButton" type="Button" parent="Bottom/BottomButtons"]
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Tip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelCompletePopup" type="Popup" parent="."]
+margin_right = 300.0
+margin_bottom = 50.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="LevelCompletePopup"]
+margin_left = 200.0
+margin_top = 15.0
+margin_right = 293.0
+margin_bottom = 39.0
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="LevelCompletePopup"]
+margin_left = 25.0
+margin_top = 15.0
+margin_right = 118.0
+margin_bottom = 39.0
+text = "Next level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Top/TopButtons/BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Bottom/BottomButtons/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Bottom/BottomButtons/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="LevelCompletePopup/MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="LevelCompletePopup/NextButton" to="." method="_on_next_pressed"]

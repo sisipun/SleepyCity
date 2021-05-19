@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Menu/ChooseLevel/ChooseLevel.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menu/background.png" type="Texture" id=2]
+
+[node name="ChooseLevel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelsList" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButtonMargin" type="MarginContainer" parent="LevelsList"]
+margin_right = 600.0
+margin_bottom = 73.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 20
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 20
+
+[node name="Top" type="HBoxContainer" parent="LevelsList/BackButtonMargin"]
+margin_left = 50.0
+margin_top = 20.0
+margin_right = 550.0
+margin_bottom = 53.0
+alignment = 2
+
+[node name="BackButton" type="Button" parent="LevelsList/BackButtonMargin/Top"]
+margin_left = 432.0
+margin_right = 500.0
+margin_bottom = 33.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelsScroll" type="ScrollContainer" parent="LevelsList"]
+margin_top = 77.0
+margin_right = 600.0
+margin_bottom = 1200.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelsMargin" type="MarginContainer" parent="LevelsList/LevelsScroll"]
+margin_right = 600.0
+margin_bottom = 1123.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+
+[node name="Levels" type="GridContainer" parent="LevelsList/LevelsScroll/LevelsMargin"]
+margin_left = 50.0
+margin_right = 550.0
+margin_bottom = 1123.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
+[connection signal="pressed" from="LevelsList/BackButtonMargin/Top/BackButton" to="." method="_on_back_pressed"]

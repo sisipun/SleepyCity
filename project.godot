@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://scripts/level/Cell.gd"
+"path": "res://Game/Level/GameArea/Cell.gd"
 }, {
 "base": "MarginContainer",
 "class": "LevelPreview",
 "language": "GDScript",
-"path": "res://scripts/menu/LevelPreview.gd"
+"path": "res://Game/Menu/ChooseLevel/LevelPreview.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
@@ -27,11 +27,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Cells"
-run/main_scene="res://scenes/menu/MainMenu.tscn"
+run/main_scene="res://Game/Menu/MainMenu/MainMenu.tscn"
 
 [autoload]
 
-Game="*res://scripts/Game.gd"
+Game="*res://Game/Menu/Game.gd"
 
 [display]
 
@@ -47,7 +47,7 @@ tablet_driver=false
 
 [gui]
 
-theme/custom_font="res://assets/default.tres"
+theme/custom_font="res://Assets/Common/default.tres"
 
 [input_devices]
 
