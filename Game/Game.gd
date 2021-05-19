@@ -1,5 +1,7 @@
 extends Node
 
+signal level_complete(level)
+
 class GameInfo:
 	var levels: Array
 	var tips_count: int
@@ -36,9 +38,9 @@ class LevelInfo:
 	var opened: bool
 	var completed: bool
 	var bonus: bool
-	var step_count: bool
-	var reset_count: bool
-	var tip_count: bool
+	var step_count: int
+	var reset_count: int
+	var tip_count: int
 
 	func _init(
 			width: int, 
@@ -387,7 +389,7 @@ func completeCurrentLevel(step_count: int, reset_count: int, tip_count: int) -> 
 	current.step_count = step_count
 	current.reset_count = reset_count
 	current.tip_count = tip_count
-	if not current.bonus and reset_count == 0:
+	if not current.bonus and len(current.solution) >= step_count:
 		current.bonus = true
 		_game.tips_count += 1
 	
@@ -398,6 +400,7 @@ func completeCurrentLevel(step_count: int, reset_count: int, tip_count: int) -> 
 	else:
 		_current_level_index = 0
 	self.save()
+	emit_signal("level_complete", current)
 
 func decriment_tip() -> void:
 	_game.tips_count -= 1

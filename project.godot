@@ -31,7 +31,7 @@ run/main_scene="res://Game/Menu/MainMenu/MainMenu.tscn"
 
 [autoload]
 
-Game="*res://Game/Menu/Game.gd"
+Game="*res://Game/Game.gd"
 
 [display]
 

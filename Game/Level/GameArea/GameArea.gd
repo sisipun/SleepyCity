@@ -1,7 +1,6 @@
 extends Node2D
 
 
-signal level_complete(step_count, tip_count, reset_count)
 signal tip(tip_count)
 signal step(step_count)
 signal reset(reset_count)
@@ -83,7 +82,6 @@ func _on_cell_clicked(cell: Cell) -> void:
 		_completed = true
 		$Sound/LevelCompleteSound.play()
 		Game.completeCurrentLevel(_step_count, _reset_count, _tip_count)
-		emit_signal("level_complete", _reset_count)
 	else: 
 		$Sound/CellSound.play()
 

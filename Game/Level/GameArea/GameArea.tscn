@@ -20,5 +20,4 @@ stream = ExtResource( 4 )
 layer = -1
 
 [node name="Background" type="Sprite" parent="BackgroundLayer"]
-position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
