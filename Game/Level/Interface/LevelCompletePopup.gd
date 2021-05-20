@@ -10,7 +10,11 @@ func _ready() -> void:
 func _on_level_complete(level: Game.LevelInfo) -> void:
 	popup_centered()
 	var step = level.step_count
-	$Menu/StepLabel.text = "%d/%d" % [level.step_count, len(level.solution)]
+	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [level.step_count, len(level.solution)]
+	if level.step_count == len(level.solution):
+		$Menu/CenterLabels/Labels/BonusTexture.show()
+	else:
+		$Menu/CenterLabels/Labels/BonusTexture.hide()
 
 
 func _on_menu_pressed() -> void:
