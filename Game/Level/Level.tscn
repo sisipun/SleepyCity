@@ -27,10 +27,9 @@ position = Vector2( 50, 100 )
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 2 )]
-[connection signal="reset" from="GameArea" to="InterfaceLayer/Interface" method="_on_reset"]
 [connection signal="step" from="GameArea" to="InterfaceLayer/Interface" method="_on_step"]
-[connection signal="tip" from="GameArea" to="InterfaceLayer/Interface" method="_on_tip"]
 [connection signal="back_to_menu" from="InterfaceLayer/Interface" to="GameArea" method="_on_back_to_menu"]
 [connection signal="next" from="InterfaceLayer/Interface" to="GameArea" method="_on_next"]
 [connection signal="reset" from="InterfaceLayer/Interface" to="GameArea" method="_on_reset"]
+[connection signal="step_back" from="InterfaceLayer/Interface" to="GameArea" method="_on_step_back"]
 [connection signal="tip" from="InterfaceLayer/Interface" to="GameArea" method="_on_tip"]

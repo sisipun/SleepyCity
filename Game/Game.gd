@@ -1,6 +1,7 @@
 extends Node
 
 signal level_complete(level)
+signal tip(tip_count)
 
 class GameInfo:
 	var levels: Array
@@ -39,8 +40,6 @@ class LevelInfo:
 	var completed: bool
 	var bonus: bool
 	var step_count: int
-	var reset_count: int
-	var tip_count: int
 
 	func _init(
 			width: int, 
@@ -51,9 +50,7 @@ class LevelInfo:
 			opened: bool, 
 			completed: bool = false, 
 			bonus: bool = false, 
-			step_count: int = 0, 
-			reset_count: int = 0, 
-			tip_count: int = 0
+			step_count: int = 0
 		) -> void:
 		self.width = width
 		self.height = height
@@ -64,8 +61,6 @@ class LevelInfo:
 		self.completed = completed
 		self.bonus = bonus
 		self.step_count = step_count
-		self.reset_count = reset_count
-		self.tip_count = tip_count
 		
 	func to_dict() -> Dictionary:
 		var dict_targets: Array = []
@@ -86,9 +81,7 @@ class LevelInfo:
 			"completed" : completed,
 			"opened" : opened,
 			"bonus" : bonus,
-			"step_count" : step_count,
-			"reset_count" : reset_count,
-			"tip_count" : tip_count,
+			"step_count" : step_count
 		}
 	
 	static func from_dict(dict) -> LevelInfo:
@@ -113,9 +106,7 @@ class LevelInfo:
 			dict["opened"],
 			dict["completed"],
 			dict["bonus"],
-			dict["step_count"],
-			dict["reset_count"],
-			dict["tip_count"]
+			dict["step_count"]
 		)
 
 var _game: GameInfo = GameInfo.new(
@@ -381,14 +372,12 @@ func set_current_level(index: int) -> void:
 func get_current_level() -> LevelInfo:
 	return _game.levels[_current_level_index]
 	
-func completeCurrentLevel(step_count: int, reset_count: int, tip_count: int) -> void:
+func completeCurrentLevel(step_count: int) -> void:
 	var current: LevelInfo = get_current_level()
 	var levels: Array = levels()
 	
 	current.completed = true
 	current.step_count = step_count
-	current.reset_count = reset_count
-	current.tip_count = tip_count
 	if not current.bonus and len(current.solution) >= step_count:
 		current.bonus = true
 		_game.tips_count += 1
@@ -399,12 +388,13 @@ func completeCurrentLevel(step_count: int, reset_count: int, tip_count: int) -> 
 		levels[next].opened = true
 	else:
 		_current_level_index = 0
-	self.save()
+	save()
 	emit_signal("level_complete", current)
 
 func decriment_tip() -> void:
 	_game.tips_count -= 1
 	save()
+	emit_signal("tip", _game.tips_count)
 	
 func mute() -> void:
 	_game.sound = false

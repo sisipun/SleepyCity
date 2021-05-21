@@ -21,7 +21,7 @@ __meta__ = {
 }
 
 [node name="Labels" type="MarginContainer" parent="Top"]
-margin_right = 476.0
+margin_right = 474.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
@@ -32,13 +32,13 @@ custom_constants/margin_bottom = 10
 [node name="StepLabel" type="Label" parent="Top/Labels"]
 margin_left = 25.0
 margin_top = 13.0
-margin_right = 451.0
+margin_right = 449.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 
 [node name="Buttons" type="MarginContainer" parent="Top"]
-margin_left = 480.0
+margin_left = 478.0
 margin_right = 600.0
 margin_bottom = 53.0
 custom_constants/margin_right = 25
@@ -46,13 +46,13 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="BackButton" type="Button" parent="Top/Buttons"]
+[node name="MenuButton" type="Button" parent="Top/Buttons"]
 margin_left = 25.0
 margin_top = 10.0
-margin_right = 95.0
+margin_right = 97.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 70, 0 )
-text = "Back"
+text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,13 +68,20 @@ __meta__ = {
 }
 
 [node name="Buttons" type="HBoxContainer" parent="Bottom"]
-margin_left = 150.0
-margin_right = 450.0
+margin_left = 50.0
+margin_right = 550.0
 margin_bottom = 50.0
 custom_constants/separation = 100
 
-[node name="ResetButton" type="Button" parent="Bottom/Buttons"]
+[node name="StepBackButton" type="Button" parent="Bottom/Buttons"]
 margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+text = "Back"
+
+[node name="ResetButton" type="Button" parent="Bottom/Buttons"]
+margin_left = 200.0
+margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 text = "Reset"
@@ -83,8 +90,8 @@ __meta__ = {
 }
 
 [node name="TipButton" type="Button" parent="Bottom/Buttons"]
-margin_left = 200.0
-margin_right = 300.0
+margin_left = 400.0
+margin_right = 500.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 custom_fonts/font = ExtResource( 1 )
@@ -94,7 +101,8 @@ __meta__ = {
 }
 
 [node name="LevelCompletePopup" parent="." instance=ExtResource( 3 )]
-[connection signal="pressed" from="Top/Buttons/BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/TipButton" to="." method="_on_tip_pressed"]
 [connection signal="back_to_menu" from="LevelCompletePopup" to="." method="_on_menu"]

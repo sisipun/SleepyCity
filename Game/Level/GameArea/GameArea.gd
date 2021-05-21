@@ -1,18 +1,14 @@
 extends Node2D
 
 
-signal tip(tip_count)
 signal step(step_count)
-signal reset(reset_count)
 
 
 var _level: Game.LevelInfo = Game.get_current_level()
 var _completed: bool = false
 var _map: Array = []
+var _steps: Array = []
 var _last_tip: int = 0
-var _step_count: int = 0
-var _reset_count: int = 0
-var _tip_count: int = 0
 var _cell_margin: float = 10
 
 
@@ -66,22 +62,15 @@ func _on_cell_clicked(cell: Cell) -> void:
 	var coordinates = cell.get_coordinates()
 	var i: int = coordinates.x
 	var j: int = coordinates.y
-	var inc_i: int = i + 1 if _map.size() > i + 1 else 0
-	var inc_j: int = j + 1 if _map[i].size() > j + 1 else 0
 	
-	_map[i][j].set_alive(not _map[i][j].is_alive())
-	_map[i - 1][j].set_alive(not _map[i - 1][j].is_alive())
-	_map[i][j - 1].set_alive(not _map[i][j - 1].is_alive())
-	_map[inc_i][j].set_alive(not _map[inc_i][j].is_alive())
-	_map[i][inc_j].set_alive(not _map[i][inc_j].is_alive())
-	
-	_step_count += 1
-	emit_signal("step", _step_count)
+	_steps.append(Vector2(i, j))	
+	make_step(i, j)
+	emit_signal("step", len(_steps))
 	
 	if is_target_complete():
 		_completed = true
 		$Sound/LevelCompleteSound.play()
-		Game.completeCurrentLevel(_step_count, _reset_count, _tip_count)
+		Game.completeCurrentLevel(len(_steps))
 	else: 
 		$Sound/CellSound.play()
 
@@ -91,18 +80,23 @@ func _on_tip() -> void:
 	var last_tip_position: Vector2 = _level.solution[_last_tip]
 	var cell: Cell = _map[last_tip_position.x][last_tip_position.y]
 	if cell.play_tip_effect():
-		_tip_count += 1
 		Game.decriment_tip()
-		emit_signal("tip", _tip_count)
 
 
 func _on_reset() -> void:
-	_step_count = 0
-	_reset_count += 1
-	emit_signal("reset", _reset_count)
+	_steps = []
 	for i in range(_map.size()):
 		for j in range(_map[i].size()):
 			_map[i][j].set_alive(Vector2(i, j) in _level.initial)
+
+
+func _on_step_back() -> void:
+	if not _steps:
+		return
+	
+	var step: Vector2 = _steps.pop_back()
+	make_step(step.x, step.y)
+	emit_signal("step", len(_steps))
 
 
 func _on_back_to_menu() -> void:
@@ -127,3 +121,14 @@ func is_target_complete() -> bool:
 				return false
 	
 	return true
+	
+
+func make_step(i, j):
+	var inc_i: int = i + 1 if _map.size() > i + 1 else 0
+	var inc_j: int = j + 1 if _map[i].size() > j + 1 else 0
+	
+	_map[i][j].set_alive(not _map[i][j].is_alive())
+	_map[i - 1][j].set_alive(not _map[i - 1][j].is_alive())
+	_map[i][j - 1].set_alive(not _map[i][j - 1].is_alive())
+	_map[inc_i][j].set_alive(not _map[inc_i][j].is_alive())
+	_map[i][inc_j].set_alive(not _map[i][inc_j].is_alive())
