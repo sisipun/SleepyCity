@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Game/Menu/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/background.png" type="Texture" id=2]
+[ext_resource path="res://Game/Menu/MainMenu/SoundButton.gd" type="Script" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -72,6 +73,7 @@ margin_left = 234.0
 margin_right = 302.0
 margin_bottom = 33.0
 text = "Mute"
+script = ExtResource( 3 )
 [connection signal="pressed" from="MenuMargin/Buttons/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MenuMargin/Buttons/QuitButton" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton" to="MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton" method="_on_pressed"]

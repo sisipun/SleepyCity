@@ -353,6 +353,11 @@ func _ready() -> void:
 	file.open(_save_path + _save_file, File.READ)
 	_game = GameInfo.from_dict(JSON.parse(file.get_as_text()).result)
 	file.close()
+	
+	if has_sound():
+		unmute()
+	else:
+		mute()
 
 func levels() -> Array:
 	return _game.levels

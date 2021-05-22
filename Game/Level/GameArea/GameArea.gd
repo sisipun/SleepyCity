@@ -3,24 +3,23 @@ extends Node2D
 
 signal step(step_count)
 
+export (float) var cell_margin: float = 10
 
 var _level: Game.LevelInfo = Game.get_current_level()
 var _completed: bool = false
 var _map: Array = []
 var _steps: Array = []
 var _last_tip: int = 0
-var _cell_margin: float = 10
-
 
 func _ready() -> void:
 	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
 	
 	var screen_size: = get_viewport_rect().size
 	var game_area_width: = screen_size.x - 2 * position.x
-	var cells_width: = game_area_width - _cell_margin * (_level.width + 1)
+	var cells_width: = game_area_width - cell_margin * (_level.width + 1)
 	var cell_size: = cells_width / _level.width
 	var cells_height: = cell_size * _level.height
-	var game_area_height: = cells_height + _cell_margin * (_level.height + 1)
+	var game_area_height: = cells_height + cell_margin * (_level.height + 1)
 	
 	var background_size: Vector2 = $BackgroundLayer/Background.get_rect().size
 	$BackgroundLayer/Background.set_position(Vector2(
@@ -39,8 +38,8 @@ func _ready() -> void:
 				i,
 				j,
 				Vector2(
-					_cell_margin + (cell_size / 2) + i * (_cell_margin + cell_size), 
-					_cell_margin + (cell_size / 2) + j * (_cell_margin + cell_size)
+					cell_margin + (cell_size / 2) + i * (cell_margin + cell_size), 
+					cell_margin + (cell_size / 2) + j * (cell_margin + cell_size)
 				), 
 				Vector2(
 					cell_size, 
@@ -97,14 +96,6 @@ func _on_step_back() -> void:
 	var step: Vector2 = _steps.pop_back()
 	make_step(step.x, step.y)
 	emit_signal("step", len(_steps))
-
-
-func _on_back_to_menu() -> void:
-	get_tree().change_scene("res://Game/Menu/ChooseLevel/ChooseLevel.tscn")
-
-
-func _on_next() -> void:
-	get_tree().change_scene("res://Game/Level/Level.tscn")
 
 
 func is_target_complete() -> bool:

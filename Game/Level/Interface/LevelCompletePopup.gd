@@ -18,8 +18,8 @@ func _on_level_complete(level: Game.LevelInfo) -> void:
 
 
 func _on_menu_pressed() -> void:
-	emit_signal("back_to_menu")
+	get_tree().change_scene("res://Game/Menu/ChooseLevel/ChooseLevel.tscn")
 
 
 func _on_next_pressed() -> void:
-	emit_signal("next")
+	get_tree().change_scene("res://Game/Level/Level.tscn")
