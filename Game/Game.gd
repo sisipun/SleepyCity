@@ -377,13 +377,15 @@ func set_current_level(index: int) -> void:
 func get_current_level() -> LevelInfo:
 	return _game.levels[_current_level_index]
 	
-func completeCurrentLevel(step_count: int) -> void:
+func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
 	var current: LevelInfo = get_current_level()
 	var levels: Array = levels()
+	var earn_bonus: = not current.bonus and not took_tip and len(current.solution) >= step_count
 	
 	current.completed = true
-	current.step_count = step_count
-	if not current.bonus and len(current.solution) >= step_count:
+	if current.step_count > step_count:
+		current.step_count = step_count
+	if earn_bonus:
 		current.bonus = true
 		_game.tips_count += 1
 	
@@ -394,7 +396,7 @@ func completeCurrentLevel(step_count: int) -> void:
 	else:
 		_current_level_index = 0
 	save()
-	emit_signal("level_complete", current)
+	emit_signal("level_complete", current, step_count, earn_bonus)
 
 func decriment_tip() -> void:
 	_game.tips_count -= 1

@@ -3,13 +3,14 @@ extends Node2D
 
 signal step(step_count)
 
-export (float) var cell_margin: float = 10
+export (float) var cell_margin: = 10
 
 var _level: Game.LevelInfo = Game.get_current_level()
-var _completed: bool = false
+var _completed: = false
 var _map: Array = []
 var _steps: Array = []
-var _last_tip: int = 0
+var _last_tip: = 0
+var _took_tip: = false
 
 func _ready() -> void:
 	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
@@ -69,7 +70,7 @@ func _on_cell_clicked(cell: Cell) -> void:
 	if is_target_complete():
 		_completed = true
 		$Sound/LevelCompleteSound.play()
-		Game.completeCurrentLevel(len(_steps))
+		Game.completeCurrentLevel(len(_steps), _took_tip)
 	else: 
 		$Sound/CellSound.play()
 
@@ -79,14 +80,13 @@ func _on_tip() -> void:
 	var last_tip_position: Vector2 = _level.solution[_last_tip]
 	var cell: Cell = _map[last_tip_position.x][last_tip_position.y]
 	if cell.play_tip_effect():
+		_took_tip = true
+		reset()
 		Game.decriment_tip()
 
 
 func _on_reset() -> void:
-	_steps = []
-	for i in range(_map.size()):
-		for j in range(_map[i].size()):
-			_map[i][j].set_alive(Vector2(i, j) in _level.initial)
+	reset()
 
 
 func _on_step_back() -> void:
@@ -123,3 +123,10 @@ func make_step(i, j):
 	_map[i][j - 1].set_alive(not _map[i][j - 1].is_alive())
 	_map[inc_i][j].set_alive(not _map[inc_i][j].is_alive())
 	_map[i][inc_j].set_alive(not _map[i][inc_j].is_alive())
+	
+
+func reset():
+	_steps = []
+	for i in range(_map.size()):
+		for j in range(_map[i].size()):
+			_map[i][j].set_alive(Vector2(i, j) in _level.initial)
