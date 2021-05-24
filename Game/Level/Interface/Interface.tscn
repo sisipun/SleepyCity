@@ -110,5 +110,5 @@ __meta__ = {
 [connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/TipButton" to="." method="_on_tip_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]
+[connection signal="pressed" from="Bottom/Buttons/TipButton" to="." method="_on_tip_pressed"]
