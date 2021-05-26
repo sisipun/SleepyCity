@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=2]
 [ext_resource path="res://Game/Level/Interface/LevelCompletePopup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/Level/Interface/TipButton.gd" type="Script" id=4]
 [ext_resource path="res://Game/Level/Interface/StepLabel.gd" type="Script" id=5]
+[ext_resource path="res://Game/Menu/Common/LinkButton.tscn" type="PackedScene" id=6]
 
 [node name="Interface" type="Control"]
 anchor_right = 1.0
@@ -49,16 +50,13 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="MenuButton" type="Button" parent="Top/Buttons"]
+[node name="MenuButton" parent="Top/Buttons" instance=ExtResource( 6 )]
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 97.0
 margin_bottom = 43.0
-rect_min_size = Vector2( 70, 0 )
 text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+link_path = "res://Game/Menu/ChooseLevel/ChooseLevel.tscn"
 
 [node name="Bottom" type="CenterContainer" parent="."]
 anchor_top = 1.0
@@ -107,7 +105,6 @@ __meta__ = {
 [node name="LevelCompletePopup" parent="." instance=ExtResource( 3 )]
 [connection signal="reset" from="." to="Top/Labels/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/Labels/StepLabel" method="_on_step"]
-[connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]

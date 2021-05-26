@@ -1,34 +1,74 @@
 extends Node
 
-signal level_complete(level)
+
+signal level_complete(level, step_count, earn_bonus, is_last_level, is_last_pack)
 signal tip(tip_count)
 
+
 class GameInfo:
-	var levels: Array
+	var packs: Array
+	var current_pack: int
 	var tips_count: int
 	var sound: bool
 	
-	func _init(levels, tips_count, sound) -> void:
-		self.levels = levels
+	
+	func _init(packs: Array, current_pack: int, tips_count: int, sound: bool) -> void:
+		self.packs = packs
+		self.current_pack = current_pack
 		self.tips_count = tips_count
 		self.sound = sound
-		
+	
+	
+	func to_dict() -> Dictionary:
+		var dict_packs: Array = []
+		for pack in packs:
+			dict_packs.push_back(pack.to_dict())
+		return {
+			"packs": dict_packs,
+			"current_pack": current_pack,
+			"tips_count": tips_count,
+			"sound": sound
+		}
+	
+	
+	static func from_dict(dict) -> GameInfo:
+		var packs: Array = []
+		var dict_packs: Array = dict["packs"]
+		for pack in dict_packs:
+			packs.push_back(LevelPackInfo.from_dict(pack))
+		return GameInfo.new(packs, dict["current_pack"], dict["tips_count"], dict["sound"])
+
+
+class LevelPackInfo:
+	var levels: Array
+	var current_level: int
+	var opened: bool
+	
+	
+	func _init(levels: Array, current_level: int, opened: bool) -> void:
+		self.levels = levels
+		self.current_level = current_level
+		self.opened = opened
+	
+	
 	func to_dict() -> Dictionary:
 		var dict_levels: Array = []
 		for level in levels:
 			dict_levels.push_back(level.to_dict())
 		return {
 			"levels": dict_levels,
-			"tips_count": tips_count,
-			"sound": sound
+			"current_level": current_level,
+			"opened": opened
 		}
 	
-	static func from_dict(dict) -> GameInfo:
+	
+	static func from_dict(dict) -> LevelPackInfo:
 		var levels: Array = []
 		var dict_levels: Array = dict["levels"]
 		for level in dict_levels:
 			levels.push_back(LevelInfo.from_dict(level))
-		return GameInfo.new(levels, dict["tips_count"], dict["sound"])
+		return LevelPackInfo.new(levels, dict["current_level"], dict["opened"])
+
 
 class LevelInfo:
 	var width: int
@@ -40,7 +80,8 @@ class LevelInfo:
 	var completed: bool
 	var bonus: bool
 	var step_count: int
-
+	
+	
 	func _init(
 			width: int, 
 			height: int, 
@@ -61,7 +102,8 @@ class LevelInfo:
 		self.completed = completed
 		self.bonus = bonus
 		self.step_count = step_count
-		
+	
+	
 	func to_dict() -> Dictionary:
 		var dict_targets: Array = []
 		for target in targets:
@@ -83,6 +125,7 @@ class LevelInfo:
 			"bonus" : bonus,
 			"step_count" : step_count
 		}
+	
 	
 	static func from_dict(dict) -> LevelInfo:
 		var targets: Array = []
@@ -111,7 +154,9 @@ class LevelInfo:
 
 var _game: GameInfo = GameInfo.new(
 	[
-		LevelInfo.new(
+		LevelPackInfo.new(
+			[
+			LevelInfo.new(
 			5,
 			10, 
 			[
@@ -337,7 +382,9 @@ var _game: GameInfo = GameInfo.new(
 			],
 			false
 		),
-		LevelInfo.new(
+		], 0, true),
+		LevelPackInfo.new(
+		[LevelInfo.new(
 			5,
 			10, 
 			[
@@ -507,7 +554,7 @@ var _game: GameInfo = GameInfo.new(
 				Vector2(3,8),
 				Vector2(4,9),
 			],
-			true
+			false
 		),
 		LevelInfo.new(
 			5,
@@ -579,14 +626,17 @@ var _game: GameInfo = GameInfo.new(
 				Vector2(4,9), 
 			],
 			false
-		),
+		)], 0, false)
 	],
+	0,
 	20,
 	true
 )
-var _current_level_index: int = 0
+
+
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
+
 
 func _ready() -> void:
 	var file: = File.new()
@@ -602,27 +652,50 @@ func _ready() -> void:
 	else:
 		mute()
 
-func levels() -> Array:
-	return _game.levels
 
 func tip_count() -> int:
 	return _game.tips_count
 
+
 func has_tip() -> bool:
 	return _game.tips_count > 0
-	
+
+
 func has_sound() -> bool:
 	return _game.sound
 
-func set_current_level(index: int) -> void:
-	_current_level_index = index
+
+func packs() -> Array:
+	return _game.packs
+
+
+func get_current_pack() -> LevelPackInfo:
+	return _game.packs[_game.current_pack]
+
+
+func get_current_levels() -> Array:
+	return _game.packs[_game.current_pack].levels
+
+
+func set_current_pack(index: int) -> void:
+	_game.current_pack = index
+	save()
+
 
 func get_current_level() -> LevelInfo:
-	return _game.levels[_current_level_index]
-	
+	var pack: LevelPackInfo = get_current_pack()
+	return pack.levels[pack.current_level]
+
+
+func set_current_level(index: int) -> void:
+	var pack: LevelPackInfo = get_current_pack()
+	pack.current_level = index
+	save()
+
+
 func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
 	var current: LevelInfo = get_current_level()
-	var levels: Array = levels()
+	var pack: LevelPackInfo = get_current_pack()
 	var earn_bonus: = not current.bonus and not took_tip and len(current.solution) >= step_count
 	
 	current.completed = true
@@ -632,29 +705,38 @@ func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
 		current.bonus = true
 		_game.tips_count += 1
 	
-	var next: int = _current_level_index + 1
-	if next < levels.size():
-		_current_level_index = next
-		levels[next].opened = true
-	else:
-		_current_level_index = 0
+	var next_level: int = pack.current_level + 1
+	var is_last_level: bool = next_level >= pack.levels.size()
+	var next_pack: int = _game.current_pack + 1
+	var is_last_pack: bool = next_pack >= _game.packs.size()
+	if not is_last_level:
+		pack.current_level = next_level
+		pack.levels[next_level].opened = true
+	elif not is_last_pack:
+		_game.packs[next_pack].opened = true
+	
 	save()
-	emit_signal("level_complete", current, step_count, earn_bonus)
+	emit_signal("level_complete", current, step_count, earn_bonus, is_last_level, is_last_pack)
+	
+
 
 func decriment_tip() -> void:
 	_game.tips_count -= 1
 	save()
 	emit_signal("tip", _game.tips_count)
-	
+
+
 func mute() -> void:
 	_game.sound = false
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	save()
-	
+
+
 func unmute() -> void:
 	_game.sound = true
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	save()
+
 
 func save() -> void:
 	var dir: Directory = Directory.new()
