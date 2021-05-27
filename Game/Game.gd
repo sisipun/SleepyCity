@@ -684,6 +684,7 @@ func set_current_pack(index: int) -> void:
 
 func get_current_level() -> LevelInfo:
 	var pack: LevelPackInfo = get_current_pack()
+	print(pack.current_level)
 	return pack.levels[pack.current_level]
 
 

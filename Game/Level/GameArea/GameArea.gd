@@ -3,9 +3,10 @@ extends Node2D
 
 signal step(step_count)
 
+
 export (float) var cell_margin: = 10
 
-var _level: Game.LevelInfo = Game.get_current_level()
+var _level: Game.LevelInfo
 var _completed: = false
 var _map: Array = []
 var _steps: Array = []
@@ -13,8 +14,9 @@ var _last_tip: = 0
 var _took_tip: = false
 
 func _ready() -> void:
-	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
+	_level = Game.get_current_level()
 	
+	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
 	var screen_size: = get_viewport_rect().size
 	var game_area_width: = screen_size.x - 2 * position.x
 	var cells_width: = game_area_width - cell_margin * (_level.width + 1)

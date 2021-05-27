@@ -45,7 +45,7 @@ alignment = 2
 margin_left = 432.0
 margin_right = 500.0
 text = "Back"
-link_path = "res://Game/Menu/MainMenu/MainMenu.gd"
+link_path = "res://Game/Menu/MainMenu/MainMenu.tscn"
 
 [node name="PackScroll" type="ScrollContainer" parent="PackList"]
 margin_top = 77.0

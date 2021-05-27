@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cells"
-run/main_scene="res://Game/Menu/MainMenu/MainMenu.tscn"
+run/main_scene="res://Game/Level/Level.tscn"
 
 [autoload]
 
