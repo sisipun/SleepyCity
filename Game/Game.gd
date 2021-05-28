@@ -35,11 +35,11 @@ class GameInfo:
 		var packs: Array = []
 		var dict_packs: Array = dict["packs"]
 		for pack in dict_packs:
-			packs.push_back(LevelPackInfo.from_dict(pack))
+			packs.push_back(PackInfo.from_dict(pack))
 		return GameInfo.new(packs, dict["current_pack"], dict["tips_count"], dict["sound"])
 
 
-class LevelPackInfo:
+class PackInfo:
 	var levels: Array
 	var current_level: int
 	var opened: bool
@@ -62,12 +62,12 @@ class LevelPackInfo:
 		}
 	
 	
-	static func from_dict(dict) -> LevelPackInfo:
+	static func from_dict(dict) -> PackInfo:
 		var levels: Array = []
 		var dict_levels: Array = dict["levels"]
 		for level in dict_levels:
 			levels.push_back(LevelInfo.from_dict(level))
-		return LevelPackInfo.new(levels, dict["current_level"], dict["opened"])
+		return PackInfo.new(levels, dict["current_level"], dict["opened"])
 
 
 class LevelInfo:
@@ -154,7 +154,7 @@ class LevelInfo:
 
 var _game: GameInfo = GameInfo.new(
 	[
-		LevelPackInfo.new(
+		PackInfo.new(
 			[
 			LevelInfo.new(
 			5,
@@ -383,7 +383,7 @@ var _game: GameInfo = GameInfo.new(
 			false
 		),
 		], 0, true),
-		LevelPackInfo.new(
+		PackInfo.new(
 		[LevelInfo.new(
 			5,
 			10, 
@@ -669,7 +669,7 @@ func packs() -> Array:
 	return _game.packs
 
 
-func get_current_pack() -> LevelPackInfo:
+func get_current_pack() -> PackInfo:
 	return _game.packs[_game.current_pack]
 
 
@@ -683,20 +683,19 @@ func set_current_pack(index: int) -> void:
 
 
 func get_current_level() -> LevelInfo:
-	var pack: LevelPackInfo = get_current_pack()
-	print(pack.current_level)
+	var pack: PackInfo = get_current_pack()
 	return pack.levels[pack.current_level]
 
 
 func set_current_level(index: int) -> void:
-	var pack: LevelPackInfo = get_current_pack()
+	var pack: PackInfo = get_current_pack()
 	pack.current_level = index
 	save()
 
 
 func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
 	var current: LevelInfo = get_current_level()
-	var pack: LevelPackInfo = get_current_pack()
+	var pack: PackInfo = get_current_pack()
 	var earn_bonus: = not current.bonus and not took_tip and len(current.solution) >= step_count
 	
 	current.completed = true
