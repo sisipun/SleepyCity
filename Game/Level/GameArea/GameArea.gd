@@ -78,13 +78,14 @@ func _on_cell_clicked(cell: Cell) -> void:
 
 
 func _on_tip() -> void:
-	_last_tip = _last_tip + 1 if _last_tip + 1 < _level.solution.size() else 0
 	var last_tip_position: Vector2 = _level.solution[_last_tip]
 	var cell: Cell = _map[last_tip_position.x][last_tip_position.y]
 	if cell.play_tip_effect():
 		_took_tip = true
 		reset()
 		Game.decriment_tip()
+		_last_tip = _last_tip + 1 if _last_tip + 1 < _level.solution.size() else 0
+		
 
 
 func _on_reset() -> void:
