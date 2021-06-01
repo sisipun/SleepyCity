@@ -14,7 +14,7 @@ var _disabled: bool
 
 
 func init(index: int) -> PackPreview:
-	var pack: Game.PackInfo = Game.packs()[index]
+	var pack: Storage.PackInfo = Storage.packs()[index]
 	
 	_pack_index = index
 	_disabled = not pack.opened

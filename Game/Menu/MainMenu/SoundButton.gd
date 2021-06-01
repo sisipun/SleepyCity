@@ -2,16 +2,16 @@ extends Button
 
 
 func _ready() -> void:
-	if Game.has_sound():
+	if Storage.has_sound():
 		text = "Mute"
 	else:
 		text = "Unmute"
 
 
 func _on_pressed() -> void:
-	if Game.has_sound():
-		Game.mute()
+	if Storage.has_sound():
+		Storage.mute()
 		text = "Unmute"
 	else:
-		Game.unmute()
+		Storage.unmute()
 		text = "Mute"

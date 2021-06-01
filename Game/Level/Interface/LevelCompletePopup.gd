@@ -6,10 +6,10 @@ signal next
 
 
 func _ready() -> void:
-	Game.connect("level_complete", self, "_on_level_complete")
+	Storage.connect("level_complete", self, "_on_level_complete")
 
 
-func _on_level_complete(level: Game.LevelInfo, step_count: int, earn_bonus: bool, is_last_level: bool, is_last_pack: bool) -> void:
+func _on_level_complete(level: Storage.LevelInfo, step_count: int, earn_bonus: bool, is_last_level: bool, is_last_pack: bool) -> void:
 	popup_centered()
 	var step = level.step_count
 	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [step_count, len(level.solution)]

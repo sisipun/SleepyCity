@@ -14,7 +14,7 @@ var _disabled: bool
 
 
 func init(index: int) -> LevelPreview:
-	var level: Game.LevelInfo = Game.get_current_levels()[index]
+	var level: Storage.LevelInfo = Storage.get_current_levels()[index]
 	
 	_level_index = index
 	_disabled = not level.opened
