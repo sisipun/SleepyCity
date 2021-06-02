@@ -102,13 +102,13 @@ func _is_target_complete() -> bool:
 	
 	return true
 
-func _step(i: int, j: int):
-	var inc_i: int = i + 1 if _map.size() > i + 1 else 0
-	var inc_j: int = j + 1 if _map[i].size() > j + 1 else 0
+func _step(x: int, y: int):
+	var inc_x: int = x + 1 if _level.width > x + 1 else 0
+	var inc_y: int = y + 1 if _level.height > y + 1 else 0
 	
-	_map[i][j] = not _map[i][j]
-	_map[i - 1][j] = not _map[i - 1][j]
-	_map[i][j - 1] = not _map[i][j - 1]
-	_map[inc_i][j] = not _map[inc_i][j]
-	_map[i][inc_j] = not _map[i][inc_j]
+	_map[x][y] = not _map[x][y]
+	_map[x - 1][y] = not _map[x - 1][y]
+	_map[x][y - 1] = not _map[x][y - 1]
+	_map[inc_x][y] = not _map[inc_x][y]
+	_map[x][inc_y] = not _map[x][inc_y]
 	

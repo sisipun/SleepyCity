@@ -14,7 +14,7 @@ var _took_tip: = false
 
 
 func _ready() -> void:
-	_level = Level.new(Storage.get_current_level())
+	_level = Level.new(Storage.get_current_level()) #Level.new(LevelGenerator.generate(5, 10, 7)) 
 	
 	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
 	var screen_size: = get_viewport_rect().size
@@ -77,7 +77,7 @@ func _on_tip() -> void:
 	var last_tip_position: Vector2 = _level.solution(_last_tip)
 	var cell: Cell = _cells[last_tip_position.x][last_tip_position.y]
 	if cell.play_tip_effect() and _level.reset():
-		update_cells()		
+		update_cells()
 		_took_tip = true
 		_last_tip = _last_tip + 1 if _last_tip + 1 < _level.solution_size() else 0
 		Storage.decriment_tip()

@@ -45,7 +45,7 @@ class PackInfo:
 	var opened: bool
 	
 	
-	func _init(levels: Array, current_level: int, opened: bool) -> void:
+	func _init(levels: Array, current_level: int, opened: bool = false) -> void:
 		self.levels = levels
 		self.current_level = current_level
 		self.opened = opened
@@ -88,7 +88,7 @@ class LevelInfo:
 			targets: Array,
 			solution: Array,
 			initial: Array, 
-			opened: bool, 
+			opened: bool = false, 
 			completed: bool = false, 
 			bonus: bool = false, 
 			step_count: int = 0
@@ -190,8 +190,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,4)
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -209,8 +208,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(2,5)
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -230,8 +228,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,6)
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -249,8 +246,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(2,4)
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -276,8 +272,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(2,5),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -299,8 +294,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,4),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -320,8 +314,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,4),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -347,8 +340,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,5),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -378,8 +370,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,4),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -401,8 +392,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,5),
 				],
 				[
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -432,8 +422,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,5),
 				],
 				[
-				],
-				false
+				]
 			),
 		], 
 		0, 
@@ -475,8 +464,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,4),
 					Vector2(3,5),
 					Vector2(4,4),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -498,8 +486,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,3),
 					Vector2(3,5),
 					Vector2(4,4),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -531,8 +518,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,6),
 					Vector2(3,7),
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -562,8 +548,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,3),
 					Vector2(4,4),
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -601,8 +586,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,3),
 					Vector2(4,4),
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -630,8 +614,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,3),
 					Vector2(4,4),
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -661,8 +644,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(4,3),
 					Vector2(4,4),
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -686,8 +668,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,3), 
 					Vector2(3,6), 
 					Vector2(4,5),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -711,8 +692,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(3,2), 
 					Vector2(4,3), 
 					Vector2(4,4),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -742,8 +722,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(1,8),
 					Vector2(2,8),
 					Vector2(3,8),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -773,8 +752,7 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(2,7),
 					Vector2(3,8),
 					Vector2(4,9),
-				],
-				false
+				]
 			),
 			LevelInfo.new(
 				5,
@@ -844,12 +822,10 @@ var _game: GameInfo = GameInfo.new(
 					Vector2(2,9), 
 					Vector2(3,9), 
 					Vector2(4,9), 
-				],
-				false
+				]
 			)
 		], 
-		0, 
-		false
+		0
 		)
 	],
 	0,
