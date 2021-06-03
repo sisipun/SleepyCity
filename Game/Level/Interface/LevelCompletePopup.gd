@@ -1,8 +1,8 @@
 extends Popup
 
 
-signal back_to_menu
-signal next
+export(String) var next_scene_path
+export(String) var menu_path
 
 
 func _ready() -> void:
@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_level_complete(level: Storage.LevelInfo, step_count: int, earn_bonus: bool, is_last_level: bool, is_last_pack: bool) -> void:
+	print("popup_complete")
 	popup_centered()
 	var step = level.step_count
 	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [step_count, len(level.solution)]
@@ -26,8 +27,8 @@ func _on_level_complete(level: Storage.LevelInfo, step_count: int, earn_bonus: b
 
 
 func _on_menu_pressed() -> void:
-	get_tree().change_scene("res://Game/Menu/ChooseLevel/ChooseLevel.tscn")
+	get_tree().change_scene(menu_path)
 
 
 func _on_next_pressed() -> void:
-	get_tree().change_scene("res://Game/Level/Level.tscn")
+	get_tree().change_scene(next_scene_path)

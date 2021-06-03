@@ -893,7 +893,7 @@ func set_current_level(index: int) -> void:
 	save()
 
 
-func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
+func complete_story_level(step_count: int, took_tip: bool) -> void:
 	var current: LevelInfo = get_current_level()
 	var pack: PackInfo = get_current_pack()
 	var earn_bonus: = not current.bonus and not took_tip and len(current.solution) >= step_count
@@ -917,7 +917,18 @@ func completeCurrentLevel(step_count: int, took_tip: bool) -> void:
 	
 	save()
 	emit_signal("level_complete", current, step_count, earn_bonus, is_last_level, is_last_pack)
+
+
+func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) -> void:
+	print("completed")
+	var pack: PackInfo = get_current_pack()
+	var earn_bonus: = not took_tip and len(info.solution) >= step_count
 	
+	if earn_bonus:
+		_game.tips_count += 1
+	
+	save()
+	emit_signal("level_complete", info, step_count, earn_bonus, false, false)
 
 
 func decriment_tip() -> void:

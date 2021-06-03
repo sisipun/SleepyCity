@@ -2,21 +2,22 @@ extends Node2D
 
 
 signal step(step_count)
+signal completed(steps_count, took_tip)
 
 
 export (float) var cell_margin: = 10
 
 
-var _level: Level
+var _level: LevelMap
 var _cells: Array
 var _last_tip: = 0
 var _took_tip: = false
 
 
-func _ready() -> void:
-	_level = Level.new(Storage.get_current_level()) #Level.new(LevelGenerator.generate(5, 10, 7)) 
+func set_level(info: Storage.LevelInfo):
+	_level = LevelMap.new(info)
 	
-	var cell_scene: = load("res://Game/Level/GameArea/Cell.tscn")
+	var cell_scene: = load("res://Game/Level/Cell.tscn")
 	var screen_size: = get_viewport_rect().size
 	var game_area_width: = screen_size.x - 2 * position.x
 	var cells_width: = game_area_width - cell_margin * (_level.width() + 1)
@@ -65,12 +66,12 @@ func _on_cell_clicked(cell: Cell) -> void:
 	
 	if _level.step(i, j):
 		update_cells()
-		emit_signal("step", _level.steps_count())
 		$Sound/CellSound.play()
+		emit_signal("step", _level.steps_count())
 	
 	if _level.is_complete():
 		$Sound/LevelCompleteSound.play()
-		Storage.completeCurrentLevel(_level.steps_count(), _took_tip)
+		emit_signal("completed", _level.steps_count(), _took_tip)
 
 
 func _on_tip() -> void:

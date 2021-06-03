@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=2]
-[ext_resource path="res://Game/Level/Interface/LevelCompletePopup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Game/Level/Interface/TipButton.gd" type="Script" id=4]
-[ext_resource path="res://Game/Level/Interface/StepLabel.gd" type="Script" id=5]
-[ext_resource path="res://Game/Menu/Common/LinkButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=3]
+[ext_resource path="res://Game/Level/Interface/StepLabel.gd" type="Script" id=4]
+[ext_resource path="res://Game/Level/Interface/TipButton.gd" type="Script" id=5]
 
 [node name="Interface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,7 +37,7 @@ margin_right = 449.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="Buttons" type="MarginContainer" parent="Top"]
 margin_left = 478.0
@@ -50,13 +48,12 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="MenuButton" parent="Top/Buttons" instance=ExtResource( 6 )]
+[node name="MenuButton" type="Button" parent="Top/Buttons"]
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 97.0
 margin_bottom = 43.0
 text = "Menu"
-link_path = "res://Game/Menu/ChooseLevel/ChooseLevel.tscn"
 
 [node name="Bottom" type="CenterContainer" parent="."]
 anchor_top = 1.0
@@ -97,14 +94,13 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 custom_fonts/font = ExtResource( 1 )
 text = "Tip"
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LevelCompletePopup" parent="." instance=ExtResource( 3 )]
 [connection signal="reset" from="." to="Top/Labels/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/Labels/StepLabel" method="_on_step"]
+[connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]

@@ -1,10 +1,18 @@
 extends Node
 
 
-class_name LevelGenerator
+var _level: Storage.LevelInfo
 
 
-static func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
+func _ready() -> void:
+	_level = generate(5, 10, 2)
+	$LevelArea.set_level(_level)
+
+
+func _on_completed(steps_count: int, took_tip: bool) -> void:
+	Storage.complete_generated_level(_level, steps_count, took_tip)
+
+func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
 	var map: = []
 	for i in range(width):
 		map.push_back([])

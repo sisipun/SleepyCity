@@ -12,17 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Game/Level/GameArea/Cell.gd"
+"path": "res://Game/Level/Cell.gd"
 }, {
 "base": "Node",
-"class": "Level",
+"class": "LevelMap",
 "language": "GDScript",
-"path": "res://Game/Level/GameArea/Level.gd"
-}, {
-"base": "Node",
-"class": "LevelGenerator",
-"language": "GDScript",
-"path": "res://Game/LevelGenerator.gd"
+"path": "res://Game/Level/LevelMap.gd"
 }, {
 "base": "MarginContainer",
 "class": "LevelPreview",
@@ -36,8 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Cell": "",
-"Level": "",
-"LevelGenerator": "",
+"LevelMap": "",
 "LevelPreview": "",
 "PackPreview": ""
 }

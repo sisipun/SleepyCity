@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func _on_level_clicked(i: int) -> void:
 	Storage.set_current_level(i)
-	get_tree().change_scene("res://Game/Level/Level.tscn")
+	get_tree().change_scene("res://Game/Level/Story/StoryLevel.tscn")
