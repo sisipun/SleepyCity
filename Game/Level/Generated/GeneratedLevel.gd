@@ -5,7 +5,11 @@ var _level: Storage.LevelInfo
 
 
 func _ready() -> void:
-	_level = generate(5, 10, 2)
+	var generated_count: = Storage.get_generated_count()
+	var min_solution_size: = min(max(generated_count / 3, 3), 18)
+	var solution_size: = randi() % 3 + min_solution_size
+	var width: = min(max(2 * solution_size / 3, 3), 10)
+	_level = generate(width, width * 2, solution_size)
 	$LevelArea.set_level(_level)
 
 
@@ -13,6 +17,7 @@ func _on_completed(steps_count: int, took_tip: bool) -> void:
 	Storage.complete_generated_level(_level, steps_count, took_tip)
 
 func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
+	randomize()
 	var map: = []
 	for i in range(width):
 		map.push_back([])

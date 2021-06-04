@@ -8,13 +8,15 @@ signal tip(tip_count)
 class GameInfo:
 	var packs: Array
 	var current_pack: int
+	var generated_count: int
 	var tips_count: int
 	var sound: bool
 	
 	
-	func _init(packs: Array, current_pack: int, tips_count: int, sound: bool) -> void:
+	func _init(packs: Array, current_pack: int = 0, generated_count: int = 0, tips_count: int = 20, sound: bool = true) -> void:
 		self.packs = packs
 		self.current_pack = current_pack
+		self.generated_count = generated_count
 		self.tips_count = tips_count
 		self.sound = sound
 	
@@ -26,6 +28,7 @@ class GameInfo:
 		return {
 			"packs": dict_packs,
 			"current_pack": current_pack,
+			"generated_count": generated_count,
 			"tips_count": tips_count,
 			"sound": sound
 		}
@@ -36,7 +39,13 @@ class GameInfo:
 		var dict_packs: Array = dict["packs"]
 		for pack in dict_packs:
 			packs.push_back(PackInfo.from_dict(pack))
-		return GameInfo.new(packs, dict["current_pack"], dict["tips_count"], dict["sound"])
+		return GameInfo.new(
+			packs, 
+			dict["current_pack"], 
+			dict["generated_count"], 
+			dict["tips_count"], 
+			dict["sound"]
+		)
 
 
 class PackInfo:
@@ -827,10 +836,7 @@ var _game: GameInfo = GameInfo.new(
 		], 
 		0
 		)
-	],
-	0,
-	20,
-	true
+	]
 )
 
 
@@ -877,6 +883,10 @@ func get_current_levels() -> Array:
 	return _game.packs[_game.current_pack].levels
 
 
+func get_generated_count() -> int:
+	return _game.generated_count
+
+
 func set_current_pack(index: int) -> void:
 	_game.current_pack = index
 	save()
@@ -920,10 +930,10 @@ func complete_story_level(step_count: int, took_tip: bool) -> void:
 
 
 func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) -> void:
-	print("completed")
 	var pack: PackInfo = get_current_pack()
 	var earn_bonus: = not took_tip and len(info.solution) >= step_count
 	
+	_game.generated_count += 1
 	if earn_bonus:
 		_game.tips_count += 1
 	
