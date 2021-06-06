@@ -1,6 +1,9 @@
 extends Node
 
 
+signal init(level_number)
+
+
 var _level: Storage.LevelInfo
 
 
@@ -11,6 +14,7 @@ func _ready() -> void:
 	var width: = min(max(2 * solution_size / 3, 3), 10)
 	_level = generate(width, width * 2, solution_size)
 	$LevelArea.set_level(_level)
+	emit_signal("init", Storage.get_generated_count() + 1)
 
 
 func _on_completed(steps_count: int, took_tip: bool) -> void:

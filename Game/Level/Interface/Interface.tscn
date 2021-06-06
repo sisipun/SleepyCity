@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Game/Level/Interface/LevelLabel.gd" type="Script" id=2]
 [ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Level/Interface/StepLabel.gd" type="Script" id=4]
 [ext_resource path="res://Game/Level/Interface/TipButton.gd" type="Script" id=5]
@@ -21,8 +22,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Labels" type="MarginContainer" parent="Top"]
-margin_right = 474.0
+[node name="LeftLabel" type="MarginContainer" parent="Top"]
+margin_right = 197.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
@@ -30,19 +31,39 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="StepLabel" type="Label" parent="Top/Labels"]
+[node name="StepLabel" type="Label" parent="Top/LeftLabel"]
 margin_left = 25.0
 margin_top = 13.0
-margin_right = 449.0
+margin_right = 172.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 script = ExtResource( 4 )
 
+[node name="CenterLabels" type="MarginContainer" parent="Top"]
+margin_left = 201.0
+margin_right = 398.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 25
+custom_constants/margin_top = 10
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 10
+
+[node name="LevelLabel" type="Label" parent="Top/CenterLabels"]
+margin_left = 25.0
+margin_top = 13.0
+margin_right = 172.0
+margin_bottom = 40.0
+text = "Level 1"
+align = 1
+script = ExtResource( 2 )
+
 [node name="Buttons" type="MarginContainer" parent="Top"]
-margin_left = 478.0
+margin_left = 402.0
 margin_right = 600.0
 margin_bottom = 53.0
+size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
 custom_constants/margin_left = 25
@@ -51,7 +72,7 @@ custom_constants/margin_bottom = 10
 [node name="MenuButton" type="Button" parent="Top/Buttons"]
 margin_left = 25.0
 margin_top = 10.0
-margin_right = 97.0
+margin_right = 173.0
 margin_bottom = 43.0
 text = "Menu"
 
@@ -98,8 +119,9 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="reset" from="." to="Top/Labels/StepLabel" method="_on_reset"]
-[connection signal="step" from="." to="Top/Labels/StepLabel" method="_on_step"]
+[connection signal="init" from="." to="Top/CenterLabels/LevelLabel" method="_on_init"]
+[connection signal="reset" from="." to="Top/LeftLabel/StepLabel" method="_on_reset"]
+[connection signal="step" from="." to="Top/LeftLabel/StepLabel" method="_on_step"]
 [connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]

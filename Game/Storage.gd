@@ -897,6 +897,11 @@ func get_current_level() -> LevelInfo:
 	return pack.levels[pack.current_level]
 
 
+func get_current_level_index() -> int:
+	var pack: PackInfo = get_current_pack()
+	return pack.current_level
+
+
 func set_current_level(index: int) -> void:
 	var pack: PackInfo = get_current_pack()
 	pack.current_level = index

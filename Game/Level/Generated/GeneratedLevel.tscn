@@ -12,4 +12,5 @@ menu_path = "res://Game/Menu/MainMenu/MainMenu.tscn"
 [node name="LevelCompletePopup" parent="InterfaceLayer" index="1"]
 next_scene_path = "res://Game/Level/Generated/GeneratedLevel.tscn"
 menu_path = "res://Game/Menu/MainMenu/MainMenu.tscn"
+[connection signal="init" from="." to="InterfaceLayer/Interface" method="_on_init"]
 [connection signal="completed" from="LevelArea" to="." method="_on_completed"]
