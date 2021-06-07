@@ -20,6 +20,7 @@ func _ready() -> void:
 func _on_completed(steps_count: int, took_tip: bool) -> void:
 	Storage.complete_generated_level(_level, steps_count, took_tip)
 
+
 func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
 	randomize()
 	var map: = []
@@ -63,3 +64,7 @@ func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
 		solutions,
 		initial
 	)
+
+
+func _on_reset() -> void:
+	get_tree().reload_current_scene()

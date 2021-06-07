@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_level_complete(level: Storage.LevelInfo, step_count: int, earn_bonus: bool, is_last_level: bool, is_last_pack: bool) -> void:
 	popup_centered()
 	var step = level.step_count
-	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [step_count, len(level.solution)]
+	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [step_count, min(len(level.solution), step_count)]
 	
 	if is_last_level:
 		$Menu/Buttons/NextButton.hide()
