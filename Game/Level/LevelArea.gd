@@ -19,11 +19,18 @@ func set_level(info: Storage.LevelInfo):
 	
 	var cell_scene: = load("res://Game/Level/Cell.tscn")
 	var screen_size: = get_viewport_rect().size
-	var game_area_width: = screen_size.x - 2 * position.x
-	var cells_width: = game_area_width - cell_margin * (_level.width() + 1)
-	var cell_size: = cells_width / _level.width()
+	var original_game_area_width: = screen_size.x - 2 * position.x
+	var original_game_area_height: = screen_size.y - 2 * position.y
+	var original_cells_width: = original_game_area_width - cell_margin * (_level.width() + 1)
+	var original_cells_height: = original_game_area_height - cell_margin * (_level.height() + 1)
+	var cell_size: = min(original_cells_width / _level.width(), original_cells_height / _level.height())
+	var cells_width: = cell_size * _level.width()
 	var cells_height: = cell_size * _level.height()
+	var game_area_width: = cells_width + cell_margin * (_level.width() + 1)
 	var game_area_height: = cells_height + cell_margin * (_level.height() + 1)
+	
+	position.x += (original_game_area_width - game_area_width) / 2
+	position.y += (original_game_area_height - game_area_height) / 2
 	
 	var background_size: Vector2 = $BackgroundLayer/Background.get_rect().size
 	$BackgroundLayer/Background.set_position(Vector2(
