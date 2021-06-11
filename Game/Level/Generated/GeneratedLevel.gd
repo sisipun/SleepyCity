@@ -9,9 +9,9 @@ var _level: Storage.LevelInfo
 
 func _ready() -> void:
 	var generated_count: = Storage.get_generated_count()
-	var min_solution_size: = min(max(generated_count / 3, 3), 18)
+	var min_solution_size: = min(max(generated_count / 3, 3), 15)
 	var solution_size: = randi() % 3 + min_solution_size
-	var width: = min(max(2 * solution_size / 3, 3), 10)
+	var width: = min(max(2 * min_solution_size / 3, 3), 10)
 	_level = generate(width, width * 2, solution_size)
 	$LevelArea.set_level(_level)
 	emit_signal("init", Storage.get_generated_count() + 1)
