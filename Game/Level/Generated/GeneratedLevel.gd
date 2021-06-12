@@ -49,7 +49,7 @@ func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
 			solutions.push_back(Vector2(x, y))
 			solution_index += 1
 		else:
-			solutions.remove(solution_index)
+			solutions.remove(exists_solution)
 	
 	var initial = []
 	for i in range(width):
