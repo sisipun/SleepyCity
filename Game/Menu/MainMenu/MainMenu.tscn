@@ -75,5 +75,4 @@ margin_right = 302.0
 margin_bottom = 33.0
 text = "Mute"
 script = ExtResource( 3 )
-
 [connection signal="pressed" from="MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton" to="MenuMargin/Buttons/FooterButtonsMargin/FooterButtons/SoundButton" method="_on_pressed"]
