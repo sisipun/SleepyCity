@@ -12,9 +12,11 @@ script = ExtResource( 2 )
 
 [node name="CellSound" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 3 )
+bus = "Sound"
 
 [node name="LevelCompleteSound" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource( 4 )
+bus = "Sound"
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

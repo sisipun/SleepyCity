@@ -11,14 +11,16 @@ class GameInfo:
 	var generated_count: int
 	var tips_count: int
 	var sound: bool
+	var music: bool
 	
 	
-	func _init(packs: Array, current_pack: int = 0, generated_count: int = 0, tips_count: int = 20, sound: bool = true) -> void:
+	func _init(packs: Array, current_pack: int = 0, generated_count: int = 0, tips_count: int = 20, sound: bool = true, music: bool = true) -> void:
 		self.packs = packs
 		self.current_pack = current_pack
 		self.generated_count = generated_count
 		self.tips_count = tips_count
 		self.sound = sound
+		self.music = music
 	
 	
 	func to_dict() -> Dictionary:
@@ -30,7 +32,8 @@ class GameInfo:
 			"current_pack": current_pack,
 			"generated_count": generated_count,
 			"tips_count": tips_count,
-			"sound": sound
+			"sound": sound,
+			"music": music
 		}
 	
 	
@@ -44,7 +47,8 @@ class GameInfo:
 			dict["current_pack"], 
 			dict["generated_count"], 
 			dict["tips_count"], 
-			dict["sound"]
+			dict["sound"],
+			dict["music"]
 		)
 
 
@@ -954,13 +958,17 @@ func decriment_tip() -> void:
 
 func mute() -> void:
 	_game.sound = false
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+	_game.music = false
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), true)
 	save()
 
 
 func unmute() -> void:
 	_game.sound = true
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	_game.music = true
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), false)
 	save()
 
 

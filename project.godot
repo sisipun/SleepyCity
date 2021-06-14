@@ -44,6 +44,7 @@ run/main_scene="res://Game/Menu/MainMenu/MainMenu.tscn"
 [autoload]
 
 Storage="*res://Game/Storage.gd"
+BackgroundMusic="*res://Game/BackgroundMusic.tscn"
 
 [display]
 
