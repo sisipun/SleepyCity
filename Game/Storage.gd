@@ -858,9 +858,14 @@ func _ready() -> void:
 	file.close()
 	
 	if has_sound():
-		unmute()
+		unmute_sound()
 	else:
-		mute()
+		mute_sound()
+		
+	if has_music():
+		unmute_music()
+	else:
+		mute_music()
 
 
 func tip_count() -> int:
@@ -873,6 +878,10 @@ func has_tip() -> bool:
 
 func has_sound() -> bool:
 	return _game.sound
+
+
+func has_music() -> bool:
+	return _game.music
 
 
 func packs() -> Array:
@@ -956,19 +965,27 @@ func decriment_tip() -> void:
 	emit_signal("tip", _game.tips_count)
 
 
-func mute() -> void:
+func mute_sound() -> void:
 	_game.sound = false
-	_game.music = false
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), true)
 	save()
 
 
-func unmute() -> void:
+func unmute_sound() -> void:
 	_game.sound = true
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), false)
+	save()
+
+
+func mute_music() -> void:
+	_game.music = false
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
+	save()
+
+
+func unmute_music() -> void:
 	_game.music = true
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), false)
 	save()
 
 
