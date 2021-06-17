@@ -14,7 +14,14 @@ class GameInfo:
 	var music: bool
 	
 	
-	func _init(packs: Array, current_pack: int = 0, generated_count: int = 0, tips_count: int = 20, sound: bool = true, music: bool = true) -> void:
+	func _init(
+		packs: Array, 
+		current_pack: int = 0, 
+		generated_count: int = 0, 
+		tips_count: int = 20, 
+		sound: bool = true, 
+		music: bool = true
+	) -> void:
 		self.packs = packs
 		self.current_pack = current_pack
 		self.generated_count = generated_count
@@ -37,7 +44,7 @@ class GameInfo:
 		}
 	
 	
-	static func from_dict(dict) -> GameInfo:
+	static func from_dict(dict: Dictionary) -> GameInfo:
 		var packs: Array = []
 		var dict_packs: Array = dict["packs"]
 		for pack in dict_packs:
@@ -75,7 +82,7 @@ class PackInfo:
 		}
 	
 	
-	static func from_dict(dict) -> PackInfo:
+	static func from_dict(dict: Dictionary) -> PackInfo:
 		var levels: Array = []
 		var dict_levels: Array = dict["levels"]
 		for level in dict_levels:
@@ -140,7 +147,7 @@ class LevelInfo:
 		}
 	
 	
-	static func from_dict(dict) -> LevelInfo:
+	static func from_dict(dict: Dictionary) -> LevelInfo:
 		var targets: Array = []
 		var dict_targets: Array = dict["targets"]
 		for target in dict_targets:
@@ -846,6 +853,7 @@ var _game: GameInfo = GameInfo.new(
 
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
+var _current_version: String = "2"
 
 
 func _ready() -> void:
@@ -854,7 +862,13 @@ func _ready() -> void:
 		return
 	
 	file.open(_save_path + _save_file, File.READ)
-	_game = GameInfo.from_dict(JSON.parse(file.get_as_text()).result)
+	var data: Dictionary = JSON.parse(file.get_as_text()).result
+	var version: String = data["version"]
+	if version != _current_version:
+		# TODO add migration
+		return
+	
+	_game = GameInfo.from_dict(data)
 	file.close()
 	
 	if has_sound():
@@ -898,6 +912,10 @@ func get_current_levels() -> Array:
 
 func get_generated_count() -> int:
 	return _game.generated_count
+
+
+func get_current_version() -> String:
+	return _current_version
 
 
 func set_current_pack(index: int) -> void:
@@ -994,7 +1012,9 @@ func save() -> void:
 	if not dir.dir_exists(_save_path):
 		dir.make_dir(_save_path)
 		
+	var data: Dictionary = _game.to_dict()
+	data["version"] = _current_version
 	var file: File = File.new()
 	file.open(_save_path + _save_file, File.WRITE)
-	file.store_line(to_json(_game.to_dict()))
+	file.store_line(to_json(data))
 	file.close()

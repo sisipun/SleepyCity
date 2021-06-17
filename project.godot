@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="Cells"
 run/main_scene="res://Game/Menu/MainMenu/MainMenu.tscn"
 
+[audio]
+
+default_bus_layout="res://Assets/Common/default_bus_layout.tres"
+
 [autoload]
 
 Storage="*res://Game/Storage.gd"
