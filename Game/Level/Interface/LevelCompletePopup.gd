@@ -9,19 +9,31 @@ func _ready() -> void:
 	Storage.connect("level_complete", self, "_on_level_complete")
 
 
-func _on_level_complete(level: Storage.LevelInfo, step_count: int, earn_bonus: bool, is_last_level: bool, is_last_pack: bool) -> void:
+func _on_level_complete(
+	level: Storage.LevelInfo, 
+	step_count: int, 
+	earned_bonuses: int, 
+	is_last_level: bool, 
+	is_last_pack: bool
+) -> void:
 	popup_centered()
 	var step = level.step_count
-	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [step_count, min(len(level.solution), step_count)]
+	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [
+		step_count, 
+		min(len(level.solution), step_count)
+	]
 	
 	if is_last_level:
 		$Menu/Buttons/NextButton.hide()
 	else:
 		$Menu/Buttons/NextButton.show()
 	
-	if earn_bonus:
-		$Menu/CenterLabels/Labels/BonusTexture.show()
+	if earned_bonuses > 0:
+		$Menu/CenterLabels/Labels/BonusLabel.show()
+		$Menu/CenterLabels/Labels/BonusTexture.show()		
+		$Menu/CenterLabels/Labels/BonusLabel.text = "x%d" % earned_bonuses
 	else:
+		$Menu/CenterLabels/Labels/BonusLabel.hide()
 		$Menu/CenterLabels/Labels/BonusTexture.hide()
 
 

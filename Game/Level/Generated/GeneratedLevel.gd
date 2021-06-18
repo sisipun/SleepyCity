@@ -64,7 +64,3 @@ func generate(width: int, height: int, solution_size: int) -> Storage.LevelInfo:
 		solutions,
 		initial
 	)
-
-
-func _on_reset() -> void:
-	get_tree().reload_current_scene()

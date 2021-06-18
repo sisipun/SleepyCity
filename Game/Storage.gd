@@ -1,7 +1,7 @@
 extends Node
 
 
-signal level_complete(level, step_count, earn_bonus, is_last_level, is_last_pack)
+signal level_complete(level, step_count, earned_bonuses, is_last_level, is_last_pack)
 signal tip(tip_count)
 
 
@@ -853,7 +853,7 @@ var _game: GameInfo = GameInfo.new(
 
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "2"
+var _current_version: String = "1"
 
 
 func _ready() -> void:
@@ -942,14 +942,15 @@ func set_current_level(index: int) -> void:
 func complete_story_level(step_count: int, took_tip: bool) -> void:
 	var current: LevelInfo = get_current_level()
 	var pack: PackInfo = get_current_pack()
-	var earn_bonus: = not current.bonus and not took_tip and len(current.solution) >= step_count
+	var earned_bonuses: = 0
 	
 	current.completed = true
 	if current.step_count > step_count:
 		current.step_count = step_count
-	if earn_bonus:
+	if not current.bonus and not took_tip and len(current.solution) >= step_count:
 		current.bonus = true
-		_game.tips_count += 1
+		earned_bonuses = 1
+		_game.tips_count += earned_bonuses
 	
 	var next_level: int = pack.current_level + 1
 	var is_last_level: bool = next_level >= pack.levels.size()
@@ -962,19 +963,20 @@ func complete_story_level(step_count: int, took_tip: bool) -> void:
 		_game.packs[next_pack].opened = true
 	
 	save()
-	emit_signal("level_complete", current, step_count, earn_bonus, is_last_level, is_last_pack)
+	emit_signal("level_complete", current, step_count, earned_bonuses, is_last_level, is_last_pack)
 
 
 func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) -> void:
 	var pack: PackInfo = get_current_pack()
-	var earn_bonus: = not took_tip and len(info.solution) >= step_count
+	var earned_bonuses: = 0
 	
 	_game.generated_count += 1
-	if earn_bonus:
-		_game.tips_count += 1
+	if not took_tip and len(info.solution) >= step_count:
+		earned_bonuses = min((_game.generated_count / 15 + 1), 4)
+		_game.tips_count += earned_bonuses
 	
 	save()
-	emit_signal("level_complete", info, step_count, earn_bonus, false, false)
+	emit_signal("level_complete", info, step_count, earned_bonuses, false, false)
 
 
 func decriment_tip() -> void:
