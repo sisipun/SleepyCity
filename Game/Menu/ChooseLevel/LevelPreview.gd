@@ -11,6 +11,7 @@ var _play_texture: = load("res://Assets/Menu/play.png")
 var _disabled_texture: = load("res://Assets/Menu/disabled.png")
 var _level_index: int
 var _disabled: bool
+var _last_touch_pos: Vector2 = Vector2(-1, -1)
 
 
 func init(index: int) -> LevelPreview:
@@ -34,5 +35,5 @@ func init(index: int) -> LevelPreview:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and not _disabled:
-		if event.is_pressed():
+		if not event.is_pressed() and get_global_rect().has_point(get_global_mouse_position()):
 			emit_signal("clicked", _level_index)

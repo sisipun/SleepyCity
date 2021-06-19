@@ -30,5 +30,6 @@ func init(index: int) -> PackPreview:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and not _disabled:
-		if event.is_pressed():
+		get_global_rect()
+		if not event.is_pressed() and get_global_rect().has_point(get_global_mouse_position()):
 			emit_signal("clicked", _pack_index)

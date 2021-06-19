@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 margin_right = -500.0
 margin_bottom = -1000.0
 rect_min_size = Vector2( 125, 250 )
+mouse_filter = 1
 size_flags_horizontal = 3
 custom_constants/margin_right = 0
 custom_constants/margin_top = 0

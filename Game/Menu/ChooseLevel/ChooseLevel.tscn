@@ -56,6 +56,7 @@ margin_top = 77.0
 margin_right = 600.0
 margin_bottom = 1200.0
 size_flags_vertical = 3
+follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -64,6 +65,7 @@ __meta__ = {
 [node name="LevelsMargin" type="MarginContainer" parent="LevelsList/LevelsScroll"]
 margin_right = 600.0
 margin_bottom = 1123.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
