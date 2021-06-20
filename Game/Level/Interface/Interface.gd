@@ -10,6 +10,10 @@ signal step(step_count)
 export(String) var menu_path
 
 
+func _ready() -> void:
+	margin_top += OS.get_window_safe_area().position.y
+
+
 func _on_reset_pressed() -> void:
 	emit_signal("reset")
 
