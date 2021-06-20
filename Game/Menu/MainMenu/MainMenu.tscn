@@ -82,5 +82,6 @@ margin_left = 289.0
 margin_right = 408.0
 margin_bottom = 33.0
 text = "Music on"
+
 [connection signal="pressed" from="MenuMargin/Buttons/FooterButtonsMargin/SoundButtons/SoundButton" to="MenuMargin/Buttons/FooterButtonsMargin/SoundButtons" method="_on_sound_pressed"]
 [connection signal="pressed" from="MenuMargin/Buttons/FooterButtonsMargin/SoundButtons/MusicButton" to="MenuMargin/Buttons/FooterButtonsMargin/SoundButtons" method="_on_music_pressed"]

@@ -16,6 +16,7 @@ var _took_tip: = false
 
 func set_level(info: Storage.LevelInfo):
 	_level = LevelMap.new(info)
+	position.y += OS.get_window_safe_area().position.y
 	
 	var cell_scene: = load("res://Game/Level/Cell.tscn")
 	var screen_size: = get_viewport_rect().size
