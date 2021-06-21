@@ -17,7 +17,7 @@ __meta__ = {
 
 [node name="Top" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_top = 45.0
+margin_top = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -80,7 +80,7 @@ text = "Menu"
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -90.0
+margin_top = -75.0
 margin_bottom = -55.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,11 +119,12 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="init" from="." to="Top/CenterLabels/LevelLabel" method="_on_init"]
 [connection signal="reset" from="." to="Top/LeftLabel/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/LeftLabel/StepLabel" method="_on_step"]
 [connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]
 [connection signal="pressed" from="Bottom/Buttons/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]
