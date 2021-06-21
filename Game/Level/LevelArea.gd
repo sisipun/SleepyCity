@@ -10,7 +10,6 @@ export (float) var cell_margin: = 10
 
 var _level: LevelMap
 var _cells: Array
-var _last_tip: = 0
 var _took_tip: = false
 
 
@@ -82,12 +81,11 @@ func _on_cell_clicked(cell: Cell) -> void:
 
 
 func _on_tip() -> void:
-	var last_tip_position: Vector2 = _level.solution(_last_tip)
-	var cell: Cell = _cells[last_tip_position.x][last_tip_position.y]
-	if cell.play_tip_effect() and _level.reset():
+	var tip: Vector2 = _level.solution()
+	var cell: Cell = _cells[tip.x][tip.y]
+	if cell.play_tip_effect():
 		update_cells()
 		_took_tip = true
-		_last_tip = _last_tip + 1 if _last_tip + 1 < _level.solution_size() else 0
 		Storage.decriment_tip()
 
 
