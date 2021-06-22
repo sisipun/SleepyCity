@@ -972,7 +972,7 @@ func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) 
 	
 	_game.generated_count += 1
 	if not took_tip and len(info.solution) >= step_count:
-		earned_bonuses = min((_game.generated_count / 15 + 1), 4)
+		earned_bonuses = min(max(info.width / 3, 1), 3)
 		_game.tips_count += earned_bonuses
 	
 	save()

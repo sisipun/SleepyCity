@@ -69,7 +69,11 @@ func step(i: int, j: int) -> bool:
 	else: 
 		_solutions.remove(solution_index)
 	
+	if _is_target_complete():
+		_solutions.clear()
+	
 	return true
+
 
 func step_back() -> bool:
 	if not _steps or is_complete():
@@ -98,6 +102,22 @@ func reset() -> bool:
 			_map[i][j] = Vector2(i, j) in _info.initial
 	for solution in _info.solution:
 		_solutions.push_back(solution)
+	return true
+
+
+func _is_target_complete() -> bool:
+	for target in _info.targets:
+		if not _map[target.x][target.y]:
+			return false
+
+	for i in len(_map):
+		for j in len(_map[i]):
+			var targets_contains: bool = Vector2(i, j) in _info.targets
+			if _map[i][j] and not targets_contains:
+				return false
+			elif not _map[i][j] and targets_contains:
+				return false
+
 	return true
 
 
