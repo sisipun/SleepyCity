@@ -6,6 +6,7 @@ var _info: Storage.LevelInfo
 var _map: Array = []
 var _steps: Array = []
 var _solutions: Array = []
+var _completed = false
 var _solution_changed = true
 
 
@@ -52,7 +53,7 @@ func is_initial(i: int, j: int) -> bool:
 
 
 func is_complete() -> bool:
-	return solution_size() == 0
+	return _completed
 
 
 func step(i: int, j: int) -> bool:
@@ -71,6 +72,7 @@ func step(i: int, j: int) -> bool:
 	
 	if _is_target_complete():
 		_solutions.clear()
+		_completed = true
 	
 	return true
 

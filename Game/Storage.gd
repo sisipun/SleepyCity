@@ -968,7 +968,7 @@ func complete_story_level(step_count: int, took_tip: bool) -> void:
 
 func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) -> void:
 	var pack: PackInfo = get_current_pack()
-	var earned_bonuses: = 0
+	var earned_bonuses: int = 0
 	
 	_game.generated_count += 1
 	if not took_tip and len(info.solution) >= step_count:
