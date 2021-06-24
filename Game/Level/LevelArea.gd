@@ -74,6 +74,8 @@ func _on_cell_clicked(cell: Cell) -> void:
 	if _level.step(i, j):
 		update_cells()
 		$Sound/CellSound.play()
+		if Engine.has_singleton("Haptic"):
+			Engine.get_singleton("Haptic").selection()
 		emit_signal("step", _level.steps_count())
 	
 	if _level.is_complete():
