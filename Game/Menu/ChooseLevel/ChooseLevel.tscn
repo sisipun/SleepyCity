@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Game/Menu/Common/LinkButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Menu/Common/LinkTextureButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Menu/background.png" type="Texture" id=2]
 [ext_resource path="res://Game/Menu/ChooseLevel/LevelList.gd" type="Script" id=3]
 [ext_resource path="res://Game/Menu/ChooseLevel/Levels.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Level/back_button_active.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Level/back_button.png" type="Texture" id=6]
 
 [node name="ChooseLevel" type="Control"]
 anchor_right = 1.0
@@ -34,7 +36,7 @@ __meta__ = {
 
 [node name="BackButtonMargin" type="MarginContainer" parent="LevelList"]
 margin_right = 600.0
-margin_bottom = 73.0
+margin_bottom = 90.0
 custom_constants/margin_right = 50
 custom_constants/margin_top = 20
 custom_constants/margin_left = 50
@@ -44,17 +46,24 @@ custom_constants/margin_bottom = 20
 margin_left = 50.0
 margin_top = 20.0
 margin_right = 550.0
-margin_bottom = 53.0
+margin_bottom = 70.0
 alignment = 2
 
-[node name="BackBuutton" parent="LevelList/BackButtonMargin/Top" instance=ExtResource( 1 )]
-margin_left = 432.0
+[node name="BackButton" parent="LevelList/BackButtonMargin/Top" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 450.0
 margin_right = 500.0
-text = "Back"
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
 link_path = "res://Game/Menu/ChoosePack/ChoosePack.tscn"
 
 [node name="LevelsScroll" type="ScrollContainer" parent="LevelList"]
-margin_top = 77.0
+margin_top = 94.0
 margin_right = 600.0
 margin_bottom = 1200.0
 size_flags_vertical = 3
@@ -66,7 +75,7 @@ __meta__ = {
 
 [node name="LevelsMargin" type="MarginContainer" parent="LevelList/LevelsScroll"]
 margin_right = 600.0
-margin_bottom = 1123.0
+margin_bottom = 1106.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -76,7 +85,7 @@ custom_constants/margin_left = 50
 [node name="Levels" type="GridContainer" parent="LevelList/LevelsScroll/LevelsMargin"]
 margin_left = 50.0
 margin_right = 550.0
-margin_bottom = 1123.0
+margin_bottom = 1106.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

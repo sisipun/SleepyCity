@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Game/Level/Interface/LevelLabel.gd" type="Script" id=2]
 [ext_resource path="res://Game/Level/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Level/Interface/StepLabel.gd" type="Script" id=4]
 [ext_resource path="res://Game/Level/Interface/TipButton.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Level/back_button_active.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Level/reset_button_active.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Level/reset_button.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Level/menu_button_active.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Level/back_button.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Level/menu_button.png" type="Texture" id=11]
 
 [node name="Interface" type="Control"]
 anchor_right = 1.0
@@ -24,7 +30,7 @@ __meta__ = {
 
 [node name="LeftLabel" type="MarginContainer" parent="Top"]
 margin_right = 197.0
-margin_bottom = 53.0
+margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
@@ -33,9 +39,9 @@ custom_constants/margin_bottom = 10
 
 [node name="StepLabel" type="Label" parent="Top/LeftLabel"]
 margin_left = 25.0
-margin_top = 13.0
+margin_top = 10.0
 margin_right = 172.0
-margin_bottom = 40.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 script = ExtResource( 4 )
@@ -43,7 +49,7 @@ script = ExtResource( 4 )
 [node name="CenterLabels" type="MarginContainer" parent="Top"]
 margin_left = 201.0
 margin_right = 398.0
-margin_bottom = 53.0
+margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
@@ -52,9 +58,9 @@ custom_constants/margin_bottom = 10
 
 [node name="LevelLabel" type="Label" parent="Top/CenterLabels"]
 margin_left = 25.0
-margin_top = 13.0
+margin_top = 10.0
 margin_right = 172.0
-margin_bottom = 40.0
+margin_bottom = 37.0
 text = "Level 1"
 align = 1
 script = ExtResource( 2 )
@@ -62,19 +68,22 @@ script = ExtResource( 2 )
 [node name="Buttons" type="MarginContainer" parent="Top"]
 margin_left = 402.0
 margin_right = 600.0
-margin_bottom = 53.0
+margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="MenuButton" type="Button" parent="Top/Buttons"]
+[node name="MenuButton" type="TextureButton" parent="Top/Buttons"]
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 173.0
-margin_bottom = 43.0
-text = "Menu"
+margin_bottom = 37.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 5
 
 [node name="Bottom" type="CenterContainer" parent="."]
 anchor_top = 1.0
@@ -92,34 +101,35 @@ margin_right = 550.0
 margin_bottom = 50.0
 custom_constants/separation = 100
 
-[node name="StepBackButton" type="Button" parent="Bottom/Buttons"]
+[node name="StepBackButton" type="TextureButton" parent="Bottom/Buttons"]
 margin_right = 100.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
-text = "Back"
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 
-[node name="ResetButton" type="Button" parent="Bottom/Buttons"]
+[node name="ResetButton" type="TextureButton" parent="Bottom/Buttons"]
 margin_left = 200.0
 margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
-text = "Reset"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+expand = true
+stretch_mode = 5
 
-[node name="TipButton" type="Button" parent="Bottom/Buttons"]
+[node name="TipButton" type="TextureButton" parent="Bottom/Buttons"]
 margin_left = 400.0
 margin_right = 500.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
-custom_fonts/font = ExtResource( 1 )
-text = "Tip"
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="init" from="." to="Top/CenterLabels/LevelLabel" method="_on_init"]
 [connection signal="reset" from="." to="Top/LeftLabel/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/LeftLabel/StepLabel" method="_on_step"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Menu/generated_button.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Menu/background.png" type="Texture" id=2]
-[ext_resource path="res://Game/Menu/MainMenu/SoundButtons.gd" type="Script" id=3]
 [ext_resource path="res://Game/Menu/Common/LinkTextureButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Menu/story_button.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Menu/story_button_active.png" type="Texture" id=6]
@@ -11,6 +10,8 @@
 [ext_resource path="res://Assets/Menu/music_button.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Menu/sound_button_active.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Menu/sound_button.png" type="Texture" id=11]
+[ext_resource path="res://Game/Menu/MainMenu/SoundButton.gd" type="Script" id=12]
+[ext_resource path="res://Game/Menu/MainMenu/MusicButton.gd" type="Script" id=13]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -57,7 +58,6 @@ margin_right = 536.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 0, 150 )
 alignment = 1
-script = ExtResource( 3 )
 
 [node name="StoryButton" parent="MenuMargin/Buttons/MenuButtons" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -96,6 +96,7 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 10 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 12 )
 
 [node name="MusicButton" type="TextureButton" parent="MenuMargin/Buttons/MenuButtons"]
 margin_left = 405.0
@@ -107,11 +108,12 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 13 )
 
 [node name="FooterButtonsMargin" type="MarginContainer" parent="MenuMargin/Buttons"]
 margin_top = 670.0
 margin_right = 536.0
 margin_bottom = 700.0
 custom_constants/margin_top = 30
-[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/SoundButton" to="MenuMargin/Buttons/MenuButtons" method="_on_sound_pressed"]
-[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/MusicButton" to="MenuMargin/Buttons/MenuButtons" method="_on_music_pressed"]
+[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/SoundButton" to="MenuMargin/Buttons/MenuButtons/SoundButton" method="_on_pressed"]
+[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/MusicButton" to="MenuMargin/Buttons/MenuButtons/MusicButton" method="_on_pressed"]
