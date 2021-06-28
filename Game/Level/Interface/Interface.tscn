@@ -13,8 +13,10 @@
 [ext_resource path="res://Assets/Level/menu_button.png" type="Texture" id=11]
 
 [node name="Interface" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.00479126
+anchor_top = -0.00159709
+anchor_right = 0.995209
+anchor_bottom = 0.998403
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
@@ -23,118 +25,146 @@ __meta__ = {
 
 [node name="Top" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_top = 20.0
+margin_bottom = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftLabel" type="MarginContainer" parent="Top"]
+[node name="Left" type="MarginContainer" parent="Top"]
 margin_right = 197.0
-margin_bottom = 47.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="StepLabel" type="Label" parent="Top/LeftLabel"]
+[node name="StepLabel" type="Label" parent="Top/Left"]
 margin_left = 25.0
-margin_top = 10.0
+margin_top = 36.0
 margin_right = 172.0
-margin_bottom = 37.0
+margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 script = ExtResource( 4 )
 
-[node name="CenterLabels" type="MarginContainer" parent="Top"]
+[node name="Center" type="MarginContainer" parent="Top"]
 margin_left = 201.0
 margin_right = 398.0
-margin_bottom = 47.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 25
 custom_constants/margin_top = 10
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 10
 
-[node name="LevelLabel" type="Label" parent="Top/CenterLabels"]
+[node name="LevelLabel" type="Label" parent="Top/Center"]
 margin_left = 25.0
-margin_top = 10.0
+margin_top = 36.0
 margin_right = 172.0
-margin_bottom = 37.0
+margin_bottom = 63.0
 text = "Level 1"
 align = 1
 script = ExtResource( 2 )
 
-[node name="Buttons" type="MarginContainer" parent="Top"]
+[node name="Right" type="MarginContainer" parent="Top"]
 margin_left = 402.0
 margin_right = 600.0
-margin_bottom = 47.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
-custom_constants/margin_right = 25
-custom_constants/margin_top = 10
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 10
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
 
-[node name="MenuButton" type="TextureButton" parent="Top/Buttons"]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 173.0
-margin_bottom = 37.0
+[node name="MenuButton" type="TextureButton" parent="Top/Right"]
+margin_top = 20.0
+margin_right = 198.0
+margin_bottom = 80.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
-[node name="Bottom" type="CenterContainer" parent="."]
+[node name="Bottom" type="HBoxContainer" parent="."]
+anchor_left = 0.00319417
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 1.00319
 anchor_bottom = 1.0
-margin_top = -75.0
-margin_bottom = -55.0
+margin_top = -100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="HBoxContainer" parent="Bottom"]
-margin_left = 50.0
-margin_right = 550.0
-margin_bottom = 50.0
-custom_constants/separation = 100
+[node name="Left" type="MarginContainer" parent="Bottom"]
+margin_right = 197.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 10
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 10
 
-[node name="StepBackButton" type="TextureButton" parent="Bottom/Buttons"]
-margin_right = 100.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
+[node name="StepBackButton" type="TextureButton" parent="Bottom/Left"]
+margin_left = 25.0
+margin_top = 10.0
+margin_right = 197.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 50, 50 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
 expand = true
 stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ResetButton" type="TextureButton" parent="Bottom/Buttons"]
-margin_left = 200.0
-margin_right = 300.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
+[node name="Center" type="MarginContainer" parent="Bottom"]
+margin_left = 201.0
+margin_right = 398.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 10
+custom_constants/margin_bottom = 10
+
+[node name="ResetButton" type="TextureButton" parent="Bottom/Center"]
+margin_top = 10.0
+margin_right = 197.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 50, 50 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="TipButton" type="TextureButton" parent="Bottom/Buttons"]
-margin_left = 400.0
-margin_right = 500.0
-margin_bottom = 50.0
+[node name="Right" type="MarginContainer" parent="Bottom"]
+margin_left = 402.0
+margin_right = 600.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 25
+custom_constants/margin_top = 10
+custom_constants/margin_bottom = 10
+
+[node name="TipButton" type="TextureButton" parent="Bottom/Right"]
+margin_top = 10.0
+margin_right = 173.0
+margin_bottom = 90.0
 rect_min_size = Vector2( 100, 50 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
-[connection signal="init" from="." to="Top/CenterLabels/LevelLabel" method="_on_init"]
-[connection signal="reset" from="." to="Top/LeftLabel/StepLabel" method="_on_reset"]
-[connection signal="step" from="." to="Top/LeftLabel/StepLabel" method="_on_step"]
-[connection signal="pressed" from="Top/Buttons/MenuButton" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/StepBackButton" to="." method="_on_step_back_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/TipButton" to="." method="_on_tip_pressed"]
-[connection signal="pressed" from="Bottom/Buttons/TipButton" to="Bottom/Buttons/TipButton" method="_on_pressed"]
+
+[connection signal="init" from="." to="Top/Center/LevelLabel" method="_on_init"]
+[connection signal="reset" from="." to="Top/Left/StepLabel" method="_on_reset"]
+[connection signal="step" from="." to="Top/Left/StepLabel" method="_on_step"]
+[connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
+[connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]
