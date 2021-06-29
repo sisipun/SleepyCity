@@ -30,55 +30,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="MarginContainer" parent="Top"]
+[node name="Left" type="CenterContainer" parent="Top"]
 margin_right = 197.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
-custom_constants/margin_right = 25
-custom_constants/margin_top = 10
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 10
+size_flags_vertical = 3
 
 [node name="StepLabel" type="Label" parent="Top/Left"]
-margin_left = 25.0
+margin_left = 91.0
 margin_top = 36.0
-margin_right = 172.0
+margin_right = 106.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 script = ExtResource( 4 )
 
-[node name="Center" type="MarginContainer" parent="Top"]
+[node name="Center" type="CenterContainer" parent="Top"]
 margin_left = 201.0
 margin_right = 398.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
-custom_constants/margin_right = 25
-custom_constants/margin_top = 10
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 10
+size_flags_vertical = 3
 
 [node name="LevelLabel" type="Label" parent="Top/Center"]
-margin_left = 25.0
+margin_left = 63.0
 margin_top = 36.0
-margin_right = 172.0
+margin_right = 134.0
 margin_bottom = 63.0
 text = "Level 1"
 align = 1
 script = ExtResource( 2 )
 
-[node name="Right" type="MarginContainer" parent="Top"]
+[node name="Right" type="CenterContainer" parent="Top"]
 margin_left = 402.0
 margin_right = 600.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
-custom_constants/margin_top = 20
-custom_constants/margin_bottom = 20
+size_flags_vertical = 3
 
 [node name="MenuButton" type="TextureButton" parent="Top/Right"]
-margin_top = 20.0
-margin_right = 198.0
-margin_bottom = 80.0
+margin_left = 64.0
+margin_top = 15.0
+margin_right = 134.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 9 )
 expand = true
@@ -94,72 +89,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="MarginContainer" parent="Bottom"]
+[node name="Left" type="CenterContainer" parent="Bottom"]
 margin_right = 197.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_top = 10
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 10
 
 [node name="StepBackButton" type="TextureButton" parent="Bottom/Left"]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 197.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 48.0
+margin_right = 148.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 6 )
-texture_focused = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="MarginContainer" parent="Bottom"]
+[node name="Center" type="CenterContainer" parent="Bottom"]
 margin_left = 201.0
 margin_right = 398.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_top = 10
-custom_constants/margin_bottom = 10
 
 [node name="ResetButton" type="TextureButton" parent="Bottom/Center"]
-margin_top = 10.0
-margin_right = 197.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 48.0
+margin_right = 148.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="Right" type="MarginContainer" parent="Bottom"]
+[node name="Right" type="CenterContainer" parent="Bottom"]
 margin_left = 402.0
-margin_right = 600.0
+margin_right = 599.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 25
-custom_constants/margin_top = 10
-custom_constants/margin_bottom = 10
 
 [node name="TipButton" type="TextureButton" parent="Bottom/Right"]
-margin_top = 10.0
-margin_right = 173.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 100, 50 )
+margin_left = 48.0
+margin_right = 148.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
-
 [connection signal="init" from="." to="Top/Center/LevelLabel" method="_on_init"]
 [connection signal="reset" from="." to="Top/Left/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/Left/StepLabel" method="_on_step"]

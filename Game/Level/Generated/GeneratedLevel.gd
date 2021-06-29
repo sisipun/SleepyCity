@@ -6,14 +6,7 @@ signal init(level_number)
 
 var _level: Storage.LevelInfo
 
-func test():
-	for i in range(1000):
-		var width: int = min(max(floor(sqrt(i + 10)), 3), 10)
-		var solution_size: int = min(max(randi() % 3 + round(0.2 * width * width) - 1, 3), 20)
-		print("%d: [%d] - [%d]" % [i, width, solution_size])
-
 func _ready() -> void:
-	test()
 	var generated_count: = Storage.get_generated_count()
 	var width: int = min(max(floor(sqrt(generated_count + 10)), 3), 10)
 	var solution_size: int = randi() % 3 + (min(max(round(0.2 * width * width), 3), 20) - 1)
