@@ -8,6 +8,7 @@ signal tip(tip_count)
 class GameInfo:
 	var packs: Array
 	var current_pack: int
+	var generated_level: LevelInfo
 	var generated_count: int
 	var tips_count: int
 	var sound: bool
@@ -16,13 +17,15 @@ class GameInfo:
 	
 	func _init(
 		packs: Array, 
-		current_pack: int = 0, 
-		generated_count: int = 0, 
+		current_pack: int = 0,
+		generated_level = null,
+		generated_count: int = 0,
 		tips_count: int = 20, 
 		sound: bool = true, 
 		music: bool = true
 	) -> void:
 		self.packs = packs
+		self.generated_level = generated_level
 		self.current_pack = current_pack
 		self.generated_count = generated_count
 		self.tips_count = tips_count
@@ -34,9 +37,11 @@ class GameInfo:
 		var dict_packs: Array = []
 		for pack in packs:
 			dict_packs.push_back(pack.to_dict())
+		
 		return {
 			"packs": dict_packs,
 			"current_pack": current_pack,
+			"generated_level": generated_level.to_dict() if generated_level != null else null, 
 			"generated_count": generated_count,
 			"tips_count": tips_count,
 			"sound": sound,
@@ -49,10 +54,12 @@ class GameInfo:
 		var dict_packs: Array = dict["packs"]
 		for pack in dict_packs:
 			packs.push_back(PackInfo.from_dict(pack))
+		var dict_generated_level = dict["generated_level"]
 		return GameInfo.new(
 			packs, 
 			dict["current_pack"], 
-			dict["generated_count"], 
+			LevelInfo.from_dict(dict_generated_level) if dict_generated_level else null, 
+			dict["generated_count"],
 			dict["tips_count"], 
 			dict["sound"],
 			dict["music"]
@@ -853,7 +860,7 @@ var _game: GameInfo = GameInfo.new(
 
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "1"
+var _current_version: String = "2"
 
 
 func _ready() -> void:
@@ -914,6 +921,16 @@ func get_generated_count() -> int:
 	return _game.generated_count
 
 
+func get_generated_level() -> LevelInfo:
+	if _game.generated_level == null:
+		var width: int = min(max(floor(sqrt(_game.generated_count + 10)), 3), 10)
+		var solution_size: int = randi() % 3 + (min(max(round(0.2 * width * width), 3), 20) - 1)
+		_game.generated_level = _generate_level(width, width * 2, solution_size)
+		save()
+
+	return _game.generated_level
+
+
 func get_current_version() -> String:
 	return _current_version
 
@@ -966,10 +983,12 @@ func complete_story_level(step_count: int, took_tip: bool) -> void:
 	emit_signal("level_complete", current, step_count, earned_bonuses, is_last_level, is_last_pack)
 
 
-func complete_generated_level(info: LevelInfo, step_count: int, took_tip: bool) -> void:
+func complete_generated_level(step_count: int, took_tip: bool) -> void:
+	var info: LevelInfo = _game.generated_level		
 	var pack: PackInfo = get_current_pack()
 	var earned_bonuses: int = 0
 	
+	_game.generated_level = null
 	_game.generated_count += 1
 	if not took_tip and len(info.solution) >= step_count:
 		earned_bonuses = min(max(info.width / 3, 1), 3)
@@ -1020,3 +1039,48 @@ func save() -> void:
 	file.open(_save_path + _save_file, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
+
+
+func _generate_level(width: int, height: int, solution_size: int) -> LevelInfo:
+	randomize()
+	var map: = []
+	for i in range(width):
+		map.push_back([])
+		for j in range(height):
+			map[i].push_back(false)
+	
+	var solutions = []
+	var solution_index: = 0
+	while solution_index < solution_size:
+		var x: = randi() % width
+		var y: = randi() % height
+		
+		var inc_x: int = x + 1 if width > x + 1 else 0
+		var inc_y: int = y + 1 if height > y + 1 else 0
+	
+		map[x][y] = not map[x][y]
+		map[x - 1][y] = not map[x - 1][y]
+		map[x][y - 1] = not map[x][y - 1]
+		map[inc_x][y] = not map[inc_x][y]
+		map[x][inc_y] = not map[x][inc_y]
+		
+		var exists_solution = solutions.find(Vector2(x, y)) 
+		if exists_solution == -1:
+			solutions.push_back(Vector2(x, y))
+			solution_index += 1
+		else:
+			solutions.remove(exists_solution)
+	
+	var initial = []
+	for i in range(width):
+		for j in range(height):
+			if map[i][j]:
+				initial.push_back(Vector2(i, j))
+				
+	return LevelInfo.new(
+		width, 
+		height,
+		[],
+		solutions,
+		initial
+	)

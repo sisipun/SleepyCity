@@ -30,7 +30,7 @@ func _on_level_complete(
 	
 	if earned_bonuses > 0:
 		$Menu/CenterLabels/Labels/BonusLabel.show()
-		$Menu/CenterLabels/Labels/BonusTexture.show()		
+		$Menu/CenterLabels/Labels/BonusTexture.show()
 		$Menu/CenterLabels/Labels/BonusLabel.text = "x%d" % earned_bonuses
 	else:
 		$Menu/CenterLabels/Labels/BonusLabel.hide()
