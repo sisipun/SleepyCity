@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Game/Level/Interface/LevelLabel.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Assets/Level/menu_button_active.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Level/back_button.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Level/menu_button.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Level/tip_button.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Level/tip_button_active.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Level/tip_button_disabled.png" type="Texture" id=14]
 
 [node name="Interface" type="Control"]
 anchor_left = -0.00479126
@@ -138,8 +141,9 @@ margin_left = 48.0
 margin_right = 148.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
@@ -149,5 +153,5 @@ script = ExtResource( 5 )
 [connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]
 [connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]
+[connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]

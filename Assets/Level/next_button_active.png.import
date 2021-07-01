@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/music_button.png-197b92ccb4d60268e4b6ff165b0d30f0.stex"
+path="res://.import/next_button_active.png-cff7181eb6091a4dbcd5cae65114dfa7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu/music_button.png"
-dest_files=[ "res://.import/music_button.png-197b92ccb4d60268e4b6ff165b0d30f0.stex" ]
+source_file="res://Assets/Level/next_button_active.png"
+dest_files=[ "res://.import/next_button_active.png-cff7181eb6091a4dbcd5cae65114dfa7.stex" ]
 
 [params]
 
