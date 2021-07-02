@@ -1,6 +1,11 @@
-extends TextureButton
+extends SwitchButton
 
-func _on_pressed() -> void:
+
+func _ready():
+	set_is_on(Storage.has_music())
+
+
+func _on_pressed():
 	if Storage.has_music():
 		Storage.mute_music()
 	else:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Menu/generated_button.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Menu/background.png" type="Texture" id=2]
+[ext_resource path="res://Game/Menu/Common/SwitchButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/Menu/Common/LinkTextureButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Menu/story_button.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Menu/story_button_active.png" type="Texture" id=6]
@@ -11,7 +12,11 @@
 [ext_resource path="res://Assets/Menu/sound_off_button_active.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Menu/sound_off_button.png" type="Texture" id=11]
 [ext_resource path="res://Game/Menu/MainMenu/SoundButton.gd" type="Script" id=12]
-[ext_resource path="res://Game/Menu/MainMenu/MusicButton.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Menu/music_on_button_active.png" type="Texture" id=13]
+[ext_resource path="res://Game/Menu/MainMenu/MusicButton.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Menu/sound_on_button.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Menu/music_on_button.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Menu/sound_on_button_active.png" type="Texture" id=17]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -53,9 +58,9 @@ __meta__ = {
 }
 
 [node name="MenuButtons" type="HBoxContainer" parent="MenuMargin/Buttons"]
-margin_top = 500.0
+margin_top = 525.0
 margin_right = 536.0
-margin_bottom = 650.0
+margin_bottom = 675.0
 rect_min_size = Vector2( 0, 150 )
 alignment = 1
 
@@ -86,34 +91,39 @@ expand = true
 stretch_mode = 5
 link_path = "res://Game/Level/Generated/GeneratedLevel.tscn"
 
-[node name="SoundButton" type="TextureButton" parent="MenuMargin/Buttons/MenuButtons"]
+[node name="Control" parent="MenuMargin/Buttons/MenuButtons" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 270.0
 margin_right = 401.0
 margin_bottom = 150.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 12 )
+on_normal = ExtResource( 15 )
+on_pressed = ExtResource( 17 )
+off_normal = ExtResource( 11 )
+off_pressed = ExtResource( 10 )
 
-[node name="MusicButton" type="TextureButton" parent="MenuMargin/Buttons/MenuButtons"]
+[node name="MusicButton" parent="MenuMargin/Buttons/MenuButtons" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 405.0
 margin_right = 536.0
 margin_bottom = 150.0
+rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 16 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 13 )
+script = ExtResource( 14 )
+on_normal = ExtResource( 16 )
+on_pressed = ExtResource( 13 )
+off_normal = ExtResource( 9 )
+off_pressed = ExtResource( 8 )
 
-[node name="FooterButtonsMargin" type="MarginContainer" parent="MenuMargin/Buttons"]
-margin_top = 670.0
-margin_right = 536.0
-margin_bottom = 700.0
-custom_constants/margin_top = 30
-[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/SoundButton" to="MenuMargin/Buttons/MenuButtons/SoundButton" method="_on_pressed"]
+[connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/Control" to="MenuMargin/Buttons/MenuButtons/Control" method="_on_pressed"]
 [connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/MusicButton" to="MenuMargin/Buttons/MenuButtons/MusicButton" method="_on_pressed"]
