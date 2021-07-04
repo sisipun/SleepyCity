@@ -124,6 +124,5 @@ on_normal = ExtResource( 16 )
 on_pressed = ExtResource( 13 )
 off_normal = ExtResource( 9 )
 off_pressed = ExtResource( 8 )
-
 [connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/Control" to="MenuMargin/Buttons/MenuButtons/Control" method="_on_pressed"]
 [connection signal="pressed" from="MenuMargin/Buttons/MenuButtons/MusicButton" to="MenuMargin/Buttons/MenuButtons/MusicButton" method="_on_pressed"]
