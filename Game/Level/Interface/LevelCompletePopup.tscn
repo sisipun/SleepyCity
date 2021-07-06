@@ -8,7 +8,6 @@
 [ext_resource path="res://Assets/Level/next_button_active.png" type="Texture" id=6]
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -101,6 +100,6 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 expand = true
-stretch_mode = 4
+stretch_mode = 5
 [connection signal="pressed" from="Menu/Buttons/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Menu/Buttons/NextButton" to="." method="_on_next_pressed"]

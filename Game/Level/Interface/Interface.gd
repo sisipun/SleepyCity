@@ -4,6 +4,7 @@ signal init(level_number)
 signal step_back
 signal reset
 signal tip
+signal menu
 signal step(step_count)
 
 
@@ -31,7 +32,7 @@ func _on_step(step_count: int) -> void:
 
 
 func _on_menu_pressed() -> void:
-	get_tree().change_scene(menu_path)
+	emit_signal("menu")
 
 
 func _on_init(level_number) -> void:
