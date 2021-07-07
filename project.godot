@@ -19,33 +19,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Level/LevelMap.gd"
 }, {
-"base": "MarginContainer",
-"class": "LevelPreview",
-"language": "GDScript",
-"path": "res://Game/Menu/ChooseLevel/LevelPreview.gd"
-}, {
-"base": "MarginContainer",
-"class": "PackPreview",
-"language": "GDScript",
-"path": "res://Game/Menu/ChoosePack/PackPreview.gd"
-}, {
 "base": "TextureButton",
 "class": "SwitchButton",
 "language": "GDScript",
-"path": "res://Game/Menu/Common/SwitchButton.gd"
+"path": "res://Game/Components/SwitchButton.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
 "LevelMap": "",
-"LevelPreview": "",
-"PackPreview": "",
 "SwitchButton": ""
 }
 
 [application]
 
 config/name="Cells"
-run/main_scene="res://Game/Level/Generated/GeneratedLevel.tscn"
+run/main_scene="res://Game/Level/Level.tscn"
 
 [audio]
 
@@ -53,8 +41,8 @@ default_bus_layout="res://Assets/Common/default_bus_layout.tres"
 
 [autoload]
 
-Storage="*res://Game/Storage.gd"
-BackgroundMusic="*res://Game/BackgroundMusic.tscn"
+Storage="*res://Game/Common/Storage.gd"
+BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
 
 [display]
 
