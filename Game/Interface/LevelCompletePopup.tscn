@@ -1,14 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/Interface/LevelCompletePopup.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Level/bonus.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Buttons/next_button.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Buttons/next_button_active.png" type="Texture" id=6]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/bonus.png-862a684f483a1bbb00b4255fad453f4f.stex"
-
 [node name="LevelCompletePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -65,7 +63,7 @@ margin_left = 74.0
 margin_right = 104.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 30, 0 )
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 

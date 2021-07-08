@@ -164,8 +164,9 @@ func get_generated_count() -> int:
 
 func get_generated_level() -> LevelInfo:
 	if _game.generated_level == null:
-		var width: int = min(max(floor(sqrt(_game.generated_count + 10)), 3), 10)
-		var solution_size: int = randi() % 3 + (min(max(round(0.2 * width * width), 3), 20) - 1)
+		var complexity = min(max(sqrt(_game.generated_count * 0.3 + 10), 3), 10)
+		var width: int = floor(complexity)
+		var solution_size: int = randi() % 3 + (min(max(round(0.2 * complexity * complexity), 3), 20) - 1)
 		_game.generated_level = _generate_level(width, width * 2, solution_size)
 		save()
 
