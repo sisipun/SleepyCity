@@ -6,7 +6,6 @@
 [ext_resource path="res://Assets/Buttons/next_button_active.png" type="Texture" id=6]
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true

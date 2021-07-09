@@ -6,6 +6,7 @@ signal tip(tip_count)
 
 
 class GameInfo:
+	var preset_levels: Array
 	var generated_level: LevelInfo
 	var generated_count: int
 	var tips_count: int
@@ -14,12 +15,14 @@ class GameInfo:
 	
 	
 	func _init(
+		preset_levels,
 		generated_level = null,
 		generated_count: int = 0,
 		tips_count: int = 20, 
 		sound: bool = true, 
 		music: bool = true
 	) -> void:
+		self.preset_levels = preset_levels
 		self.generated_count = generated_count
 		self.tips_count = tips_count
 		self.sound = sound
@@ -27,7 +30,11 @@ class GameInfo:
 	
 	
 	func to_dict() -> Dictionary:
+		var dict_preset_levels: Array = []
+		for preset_level in preset_levels:
+			dict_preset_levels.push_back(preset_level.to_dict())
 		return {
+			"dict_preset_levels": dict_preset_levels,
 			"generated_level": generated_level.to_dict() if generated_level != null else null, 
 			"generated_count": generated_count,
 			"tips_count": tips_count,
@@ -37,8 +44,13 @@ class GameInfo:
 	
 	
 	static func from_dict(dict: Dictionary) -> GameInfo:
+		var preset_levels: Array = []
+		var dict_preset_levels: Array = dict["dict_preset_levels"]
+		for preset_level in dict_preset_levels:
+			preset_levels.push_back(LevelInfo.from_dict(preset_level))
 		var dict_generated_level = dict["generated_level"]
 		return GameInfo.new(
+			preset_levels,
 			LevelInfo.from_dict(dict_generated_level) if dict_generated_level else null, 
 			dict["generated_count"],
 			dict["tips_count"], 
@@ -106,10 +118,27 @@ class LevelInfo:
 			initial
 		)
 
-var _game: GameInfo = GameInfo.new()
+var _game: GameInfo = GameInfo.new([
+	LevelInfo.new(
+		5,
+		10, 
+		[
+		], 
+		[
+			Vector2(2,4)
+		],
+		[
+			Vector2(1,4), 
+			Vector2(2,3), 
+			Vector2(2,4),
+			Vector2(2,5),
+			Vector2(3,4)
+		]
+	)
+])
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "3"
+var _current_version: String = "1"
 
 
 func _ready() -> void:
@@ -163,13 +192,18 @@ func get_generated_count() -> int:
 
 
 func get_generated_level() -> LevelInfo:
-	if _game.generated_level == null:
+	if _game.generated_level != null:
+		return _game.generated_level
+		
+	if _game.generated_count <= len(_game.preset_levels) - 1:
+		_game.generated_level = _game.preset_levels[_game.generated_count - 1]
+	else:
 		var complexity = min(max(sqrt(_game.generated_count * 0.3 + 10), 3), 10)
 		var width: int = floor(complexity)
 		var solution_size: int = randi() % 3 + (min(max(round(0.2 * complexity * complexity), 3), 20) - 1)
 		_game.generated_level = _generate_level(width, width * 2, solution_size)
-		save()
-
+	
+	save()
 	return _game.generated_level
 
 
