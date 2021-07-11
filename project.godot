@@ -43,6 +43,7 @@ default_bus_layout="res://Assets/Common/default_bus_layout.tres"
 
 Storage="*res://Game/Common/Storage.gd"
 BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
+LevelGenerator="*res://Game/Common/LevelGenerator.gd"
 
 [display]
 

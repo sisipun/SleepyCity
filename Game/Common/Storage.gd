@@ -6,7 +6,7 @@ signal tip(tip_count)
 
 
 class GameInfo:
-	var preset_levels: Array
+	var preset_levels: Dictionary
 	var generated_level: LevelInfo
 	var generated_count: int
 	var tips_count: int
@@ -15,14 +15,15 @@ class GameInfo:
 	
 	
 	func _init(
-		preset_levels,
-		generated_level = null,
+		preset_levels: Dictionary,
+		generated_level: LevelInfo = null,
 		generated_count: int = 0,
 		tips_count: int = 20, 
 		sound: bool = true, 
 		music: bool = true
 	) -> void:
 		self.preset_levels = preset_levels
+		self.generated_level = generated_level
 		self.generated_count = generated_count
 		self.tips_count = tips_count
 		self.sound = sound
@@ -30,9 +31,9 @@ class GameInfo:
 	
 	
 	func to_dict() -> Dictionary:
-		var dict_preset_levels: Array = []
-		for preset_level in preset_levels:
-			dict_preset_levels.push_back(preset_level.to_dict())
+		var dict_preset_levels: Dictionary = {}
+		for preset_level_key in preset_levels:
+			dict_preset_levels[preset_level_key] = preset_levels[preset_level_key].to_dict()
 		return {
 			"dict_preset_levels": dict_preset_levels,
 			"generated_level": generated_level.to_dict() if generated_level != null else null, 
@@ -44,10 +45,10 @@ class GameInfo:
 	
 	
 	static func from_dict(dict: Dictionary) -> GameInfo:
-		var preset_levels: Array = []
-		var dict_preset_levels: Array = dict["dict_preset_levels"]
-		for preset_level in dict_preset_levels:
-			preset_levels.push_back(LevelInfo.from_dict(preset_level))
+		var preset_levels: Dictionary = {}
+		var dict_preset_levels: Dictionary = dict["dict_preset_levels"]
+		for preset_level_key in dict_preset_levels:
+			preset_levels[preset_level_key] = LevelInfo.from_dict(dict_preset_levels[preset_level_key])
 		var dict_generated_level = dict["generated_level"]
 		return GameInfo.new(
 			preset_levels,
@@ -58,9 +59,13 @@ class GameInfo:
 			dict["music"]
 		)
 
+
+enum LevelType { LIGHT = 1, DARK = 2, MIXED = 3 }
+
 class LevelInfo:
 	var width: int
 	var height: int
+	var type: int
 	var targets: Array
 	var solution: Array
 	var initial: Array
@@ -118,8 +123,8 @@ class LevelInfo:
 			initial
 		)
 
-var _game: GameInfo = GameInfo.new([
-	LevelInfo.new(
+var _game: GameInfo = GameInfo.new({
+	0: LevelInfo.new(
 		5,
 		10, 
 		[
@@ -135,7 +140,7 @@ var _game: GameInfo = GameInfo.new([
 			Vector2(3,4)
 		]
 	)
-])
+})
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
 var _current_version: String = "1"
@@ -194,15 +199,8 @@ func get_generated_count() -> int:
 func get_generated_level() -> LevelInfo:
 	if _game.generated_level != null:
 		return _game.generated_level
-		
-	if _game.generated_count <= len(_game.preset_levels) - 1:
-		_game.generated_level = _game.preset_levels[_game.generated_count - 1]
-	else:
-		var complexity = min(max(sqrt(_game.generated_count * 0.3 + 10), 3), 10)
-		var width: int = floor(complexity)
-		var solution_size: int = randi() % 3 + (min(max(round(0.2 * complexity * complexity), 3), 20) - 1)
-		_game.generated_level = _generate_level(width, width * 2, solution_size)
 	
+	_game.generated_level = _game.preset_levels[_game.generated_count] if _game.preset_levels.has(_game.generated_count) else LevelGenerator.generate_level(_game.generated_count, LevelType.DARK)
 	save()
 	return _game.generated_level
 
@@ -265,48 +263,3 @@ func save() -> void:
 	file.open(_save_path + _save_file, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
-
-
-func _generate_level(width: int, height: int, solution_size: int) -> LevelInfo:
-	randomize()
-	var map: = []
-	for i in range(width):
-		map.push_back([])
-		for j in range(height):
-			map[i].push_back(false)
-	
-	var solutions = []
-	var solution_index: = 0
-	while solution_index < solution_size:
-		var x: = randi() % width
-		var y: = randi() % height
-		
-		var inc_x: int = x + 1 if width > x + 1 else 0
-		var inc_y: int = y + 1 if height > y + 1 else 0
-	
-		map[x][y] = not map[x][y]
-		map[x - 1][y] = not map[x - 1][y]
-		map[x][y - 1] = not map[x][y - 1]
-		map[inc_x][y] = not map[inc_x][y]
-		map[x][inc_y] = not map[x][inc_y]
-		
-		var exists_solution = solutions.find(Vector2(x, y)) 
-		if exists_solution == -1:
-			solutions.push_back(Vector2(x, y))
-			solution_index += 1
-		else:
-			solutions.remove(exists_solution)
-	
-	var initial = []
-	for i in range(width):
-		for j in range(height):
-			if map[i][j]:
-				initial.push_back(Vector2(i, j))
-				
-	return LevelInfo.new(
-		width, 
-		height,
-		[],
-		solutions,
-		initial
-	)
