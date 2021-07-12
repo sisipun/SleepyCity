@@ -60,7 +60,7 @@ class GameInfo:
 		)
 
 
-enum LevelType { LIGHT = 1, DARK = 2, MIXED = 3 }
+enum LevelType { LIGHT = 0, DARK = 1, MIXED = 2 }
 
 class LevelInfo:
 	var width: int
@@ -200,7 +200,9 @@ func get_generated_level() -> LevelInfo:
 	if _game.generated_level != null:
 		return _game.generated_level
 	
-	_game.generated_level = _game.preset_levels[_game.generated_count] if _game.preset_levels.has(_game.generated_count) else LevelGenerator.generate_level(_game.generated_count, LevelType.DARK)
+	randomize()
+	var levelType = randi() % (LevelType.MIXED + 1)
+	_game.generated_level = _game.preset_levels[_game.generated_count] if _game.preset_levels.has(_game.generated_count) else LevelGenerator.generate_level(_game.generated_count, levelType)
 	save()
 	return _game.generated_level
 
