@@ -11,10 +11,12 @@ export (float) var cell_margin: = 10
 var _level: LevelMap
 var _cells: Array
 var _took_tip: = false
+var _tutorial: = false
 
 
 func set_level(info: Storage.LevelInfo):
 	_level = LevelMap.new(info)
+	_tutorial = info.tutorial
 	position.y += OS.get_window_safe_area().position.y
 	
 	var cell_scene: = load("res://Game/Level/Cell.tscn")
@@ -64,6 +66,9 @@ func set_level(info: Storage.LevelInfo):
 			cell.connect("clicked", self, "_on_cell_clicked")
 			add_child(cell)
 	update_cells()
+	
+	if _tutorial:
+		show_tip()
 
 
 func _on_cell_clicked(cell: Cell) -> void:
@@ -79,13 +84,12 @@ func _on_cell_clicked(cell: Cell) -> void:
 	if _level.is_complete():
 		$Sound/LevelCompleteSound.play()
 		emit_signal("completed", _level.steps_count(), _took_tip)
+	elif _tutorial:
+		show_tip()
 
 
 func _on_tip() -> void:
-	var tip: Vector2 = _level.solution()
-	var cell: Cell = _cells[tip.x][tip.y]
-	if cell.play_tip_effect():
-		update_cells()
+	if show_tip():
 		_took_tip = true
 		Storage.decriment_tip()
 
@@ -105,3 +109,9 @@ func update_cells():
 	for i in range(_level.width()):
 		for j in range(_level.height()):
 			_cells[i][j].set_alive(_level.is_alive(i, j))
+
+
+func show_tip():
+	var tip: Vector2 = _level.solution()
+	var cell: Cell = _cells[tip.x][tip.y]
+	return cell.play_tip_effect()

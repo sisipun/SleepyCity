@@ -14,42 +14,28 @@ static func generate_level(number: int, level_type: int) -> Storage.LevelInfo:
 	var height = width * 2
 	var solution_size: int = (randi() % 3) + min(max(round(0.2 * complexity * complexity), 3), 20) - 1
 	
+	var level: Storage.LevelInfo
 	if (level_type == Storage.LevelType.DARK):
-		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)		
-		return Storage.LevelInfo.new(
+		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
+		level = Storage.LevelInfo.new(
 			width,
 			height,
+			level_type,
 			[],
 			generated.solution,
 			generated.cells
 		)
 	elif (level_type == Storage.LevelType.LIGHT):
-		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)		
-		return Storage.LevelInfo.new(
+		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
+		level = Storage.LevelInfo.new(
 			width,
 			height,
+			level_type,
 			generated.cells,
 			generated.solution,
 			[]
 		)
-	else:
-		var light_count = floor(solution_size / 2)
-		var generated_light: GeneratedLevel = _generate_level(width, width * 2, light_count)
-		var generated_dark: GeneratedLevel = _generate_level(width, width * 2, light_count)
-		var solution = generated_light.solution
-		for dark_solution in generated_dark.solution:
-			if dark_solution in solution:
-				solution.erase(dark_solution)
-			else:
-				solution.push_back(dark_solution)
-		
-		return Storage.LevelInfo.new(
-			width,
-			height,
-			generated_light.cells,
-			solution,
-			generated_dark.cells
-		)
+	return level
 
 static func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
 	randomize()

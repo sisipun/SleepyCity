@@ -60,7 +60,7 @@ class GameInfo:
 		)
 
 
-enum LevelType { LIGHT = 0, DARK = 1, MIXED = 2 }
+enum LevelType { DARK = 0, LIGHT = 1 }
 
 class LevelInfo:
 	var width: int
@@ -69,19 +69,24 @@ class LevelInfo:
 	var targets: Array
 	var solution: Array
 	var initial: Array
+	var tutorial: bool
 	
 	func _init(
 			width: int, 
-			height: int, 
+			height: int,
+			type: int,
 			targets: Array,
 			solution: Array,
-			initial: Array
+			initial: Array,
+			tutorial: bool = false
 		) -> void:
 		self.width = width
 		self.height = height
+		self.type = type
 		self.targets = targets
 		self.solution = solution
 		self.initial = initial
+		self.tutorial = tutorial
 	
 	func to_dict() -> Dictionary:
 		var dict_targets: Array = []
@@ -96,9 +101,11 @@ class LevelInfo:
 		return {
 			"width" : width,
 			"height" : height,
+			"type": type,
 			"targets" : dict_targets,
 			"solution": dict_solution,
-			"initial": dict_initial
+			"initial": dict_initial,
+			"tutorial": tutorial
 		}
 	
 	
@@ -118,32 +125,58 @@ class LevelInfo:
 		return LevelInfo.new(
 			dict["width"], 
 			dict["height"], 
+			dict["type"],
 			targets,
 			solution,
-			initial
+			initial,
+			dict["tutorial"]
 		)
 
 var _game: GameInfo = GameInfo.new({
 	0: LevelInfo.new(
-		5,
-		10, 
+		3,
+		6,
+		LevelType.DARK,
 		[
 		], 
 		[
-			Vector2(2,4)
+			Vector2(1,2)
 		],
 		[
-			Vector2(1,4), 
-			Vector2(2,3), 
-			Vector2(2,4),
-			Vector2(2,5),
-			Vector2(3,4)
-		]
-	)
+			Vector2(0,2), 
+			Vector2(1,1), 
+			Vector2(1,2),
+			Vector2(1,3),
+			Vector2(2,2)
+		],
+		true
+	),
+	1: LevelInfo.new(
+		3,
+		6,
+		LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(1,1),
+			Vector2(1,3)
+		],
+		[
+			Vector2(0,1), 
+			Vector2(0,3),
+			Vector2(1,0),
+			Vector2(1,1),
+			Vector2(1,3),
+			Vector2(1,4),
+			Vector2(2,1),
+			Vector2(2,3),
+		],
+		true
+	),
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "1"
+var _current_version: String = "2"
 
 
 func _ready() -> void:
@@ -201,7 +234,7 @@ func get_generated_level() -> LevelInfo:
 		return _game.generated_level
 	
 	randomize()
-	var levelType = randi() % (LevelType.MIXED + 1)
+	var levelType = randi() % (LevelType.LIGHT + 1)
 	_game.generated_level = _game.preset_levels[_game.generated_count] if _game.preset_levels.has(_game.generated_count) else LevelGenerator.generate_level(_game.generated_count, levelType)
 	save()
 	return _game.generated_level
