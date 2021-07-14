@@ -7,8 +7,8 @@ signal tip(tip_count)
 
 class GameInfo:
 	var preset_levels: Dictionary
-	var generated_level: LevelInfo
-	var generated_count: int
+	var level: LevelInfo
+	var level_number: int
 	var tips_count: int
 	var sound: bool
 	var music: bool
@@ -16,15 +16,15 @@ class GameInfo:
 	
 	func _init(
 		preset_levels: Dictionary,
-		generated_level: LevelInfo = null,
-		generated_count: int = 0,
+		level: LevelInfo = null,
+		level_number: int = 0,
 		tips_count: int = 20, 
 		sound: bool = true, 
 		music: bool = true
 	) -> void:
 		self.preset_levels = preset_levels
-		self.generated_level = generated_level
-		self.generated_count = generated_count
+		self.level = level
+		self.level_number = level_number
 		self.tips_count = tips_count
 		self.sound = sound
 		self.music = music
@@ -36,8 +36,8 @@ class GameInfo:
 			dict_preset_levels[preset_level_key] = preset_levels[preset_level_key].to_dict()
 		return {
 			"dict_preset_levels": dict_preset_levels,
-			"generated_level": generated_level.to_dict() if generated_level != null else null, 
-			"generated_count": generated_count,
+			"level": level.to_dict() if level != null else null, 
+			"level_number": level_number,
 			"tips_count": tips_count,
 			"sound": sound,
 			"music": music
@@ -49,11 +49,11 @@ class GameInfo:
 		var dict_preset_levels: Dictionary = dict["dict_preset_levels"]
 		for preset_level_key in dict_preset_levels:
 			preset_levels[preset_level_key] = LevelInfo.from_dict(dict_preset_levels[preset_level_key])
-		var dict_generated_level = dict["generated_level"]
+		var dict_level = dict["level"]
 		return GameInfo.new(
 			preset_levels,
-			LevelInfo.from_dict(dict_generated_level) if dict_generated_level else null, 
-			dict["generated_count"],
+			LevelInfo.from_dict(dict_level) if dict_level else null, 
+			dict["level_number"],
 			dict["tips_count"], 
 			dict["sound"],
 			dict["music"]
@@ -176,7 +176,7 @@ var _game: GameInfo = GameInfo.new({
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "2"
+var _current_version: String = "1"
 
 
 func _ready() -> void:
@@ -189,9 +189,7 @@ func _ready() -> void:
 	file.close()
 	
 	var version: String = data["version"]
-	if version != _current_version:
-		save()
-	else:
+	if version == _current_version:
 		_game = GameInfo.from_dict(data)
 	
 	if has_sound():
@@ -221,34 +219,25 @@ func has_music() -> bool:
 	return _game.music
 
 
-func packs() -> Array:
-	return _game.packs
+func get_level_number() -> int:
+	return _game.level_number
 
 
-func get_generated_count() -> int:
-	return _game.generated_count
-
-
-func get_generated_level() -> LevelInfo:
-	if _game.generated_level != null:
-		return _game.generated_level
+func get_level() -> LevelInfo:
+	if _game.level != null:
+		return _game.level
 	
-	randomize()
-	var levelType = randi() % (LevelType.LIGHT + 1)
-	_game.generated_level = _game.preset_levels[_game.generated_count] if _game.preset_levels.has(_game.generated_count) else LevelGenerator.generate_level(_game.generated_count, levelType)
+	_game.level = generate_level()
 	save()
-	return _game.generated_level
+	return _game.level
 
 
-func get_current_version() -> String:
-	return _current_version
-
-func complete_generated_level(step_count: int, took_tip: bool) -> void:
-	var info: LevelInfo = _game.generated_level
+func complete_level(step_count: int, took_tip: bool) -> void:
+	var info: LevelInfo = _game.level
 	var earned_bonuses: int = 0
 	
-	_game.generated_level = null
-	_game.generated_count += 1
+	_game.level_number += 1
+	_game.level = generate_level()
 	if not took_tip and len(info.solution) >= step_count:
 		earned_bonuses = min(max(info.width / 3, 1), 3)
 		_game.tips_count += earned_bonuses
@@ -287,6 +276,10 @@ func unmute_music() -> void:
 	save()
 
 
+func generate_level() -> LevelInfo:
+	return _game.preset_levels[_game.level_number] if _game.preset_levels.has(_game.level_number) else LevelGenerator.generate_level(_game.level_number, LevelType.DARK)
+
+
 func save() -> void:
 	var dir: Directory = Directory.new()
 	if not dir.dir_exists(_save_path):
@@ -294,6 +287,7 @@ func save() -> void:
 		
 	var data: Dictionary = _game.to_dict()
 	data["version"] = _current_version
+	
 	var file: File = File.new()
 	file.open(_save_path + _save_file, File.WRITE)
 	file.store_line(to_json(data))

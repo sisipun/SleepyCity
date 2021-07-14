@@ -12,7 +12,8 @@ static func generate_level(number: int, level_type: int) -> Storage.LevelInfo:
 	var complexity = min(max(sqrt(number * 0.3 + 10), 3), 10)
 	var width: int = floor(complexity)
 	var height = width * 2
-	var solution_size: int = (randi() % 3) + min(max(round(0.2 * complexity * complexity), 3), 20) - 1
+	var rand_part = (randi() % 3)
+	var solution_size: int = rand_part + min(max(round(0.2 * complexity * complexity), 3), 20) - 1
 	
 	var level: Storage.LevelInfo
 	if (level_type == Storage.LevelType.DARK):
@@ -66,6 +67,7 @@ static func _generate_level(width: int, height: int, solution_size: int) -> Gene
 			solution_index += 1
 		else:
 			solutions.remove(exists_solution)
+			solution_index -= 1
 	
 	var cells = []
 	for i in range(width):
