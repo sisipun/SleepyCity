@@ -1,12 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Level/game_area_background.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Level/game_area_back.png" type="Texture" id=1]
 [ext_resource path="res://Game/Level/LevelArea.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/light_on.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/success.wav" type="AudioStream" id=4]
 
-[node name="LevelArea" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 402.836, 600.751 )
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( -384.793, -466.922 )
+b = Vector2( 382.258, 603.135 )
+
+[node name="LevelArea" type="Area2D"]
 script = ExtResource( 2 )
+
+[node name="LevelAreaShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="GameAreaShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Sound" type="Node" parent="."]
 

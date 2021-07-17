@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Game/Level/LevelArea.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Interface/Interface.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Level/background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Level/back.png" type="Texture" id=3]
 [ext_resource path="res://Game/Interface/MenuPopup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/Interface/LevelCompletePopup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Level/Level.gd" type="Script" id=7]
@@ -26,7 +26,7 @@ __meta__ = {
 }
 
 [node name="LevelArea" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50, 100 )
+position = Vector2( 20, 100 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 

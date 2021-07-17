@@ -8,7 +8,7 @@ var _level: Storage.LevelInfo
 
 
 func _ready() -> void:
-	$LevelArea.set_level(Storage.get_level())
+	$LevelArea.init(Storage.get_level())
 	emit_signal("init", Storage.get_level_number() + 1)
 
 

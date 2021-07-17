@@ -1,11 +1,14 @@
-extends Node2D
+extends Area2D
 
 
 signal step(step_count)
 signal completed(steps_count, took_tip)
 
-
-export (float) var cell_margin: = 10
+export (float) var level_area_margin_left = 20
+export (float) var level_area_margin_right = 20
+export (float) var level_area_margin_top = 30
+export (float) var level_area_margin_bottom = 100
+export (float) var cell_margin: = 20
 
 
 var _level: LevelMap
@@ -14,36 +17,24 @@ var _took_tip: = false
 var _tutorial: = false
 
 
-func set_level(info: Storage.LevelInfo):
+func init(info: Storage.LevelInfo):
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
-	position.y += OS.get_window_safe_area().position.y
+	
+	 # OS.get_window_safe_area().position.y
+	
+	var screen_size: = get_viewport_rect().size
+	var level_area_width: float = screen_size.x - (level_area_margin_left + level_area_margin_right)
+	var level_area_heigth: float = screen_size.y - (level_area_margin_top + level_area_margin_bottom)
+	
+	var game_area_position_x: float = $GameAreaShape.shape.a.x
+	var game_area_position_y: float = $GameAreaShape.shape.a.y
+	var game_area_width: float = $GameAreaShape.shape.b.x - $GameAreaShape.shape.a.x
+	var game_area_height: float = $GameAreaShape.shape.b.y - $GameAreaShape.shape.a.y
+	var cells_width: = (game_area_width - cell_margin * (_level.width() + 1)) / _level.width()
+	var cells_height: = (game_area_height - cell_margin * (_level.height() + 1)) / _level.height()
 	
 	var cell_scene: = load("res://Game/Level/Cell.tscn")
-	var screen_size: = get_viewport_rect().size
-	var original_game_area_width: = screen_size.x - 2 * position.x
-	var original_game_area_height: = screen_size.y - 2 * position.y
-	var original_cells_width: = original_game_area_width - cell_margin * (_level.width() + 1)
-	var original_cells_height: = original_game_area_height - cell_margin * (_level.height() + 1)
-	var cell_size: = min(original_cells_width / _level.width(), original_cells_height / _level.height())
-	var cells_width: = cell_size * _level.width()
-	var cells_height: = cell_size * _level.height()
-	var game_area_width: = cells_width + cell_margin * (_level.width() + 1)
-	var game_area_height: = cells_height + cell_margin * (_level.height() + 1)
-	
-	position.x += (original_game_area_width - game_area_width) / 2
-	position.y += (original_game_area_height - game_area_height) / 2
-	
-	var background_size: Vector2 = $BackgroundLayer/Background.get_rect().size
-	$BackgroundLayer/Background.set_position(Vector2(
-		position.x + game_area_width / 2, 
-		position.y + game_area_height / 2
-	))
-	$BackgroundLayer/Background.scale = Vector2(
-		game_area_width / background_size.x, 
-		game_area_height / background_size.y
-	)
-
 	for i in range(_level.width()):
 		_cells.append([])
 		for j in range(_level.height()):
@@ -51,12 +42,12 @@ func set_level(info: Storage.LevelInfo):
 				i,
 				j,
 				Vector2(
-					cell_margin + (cell_size / 2) + i * (cell_margin + cell_size), 
-					cell_margin + (cell_size / 2) + j * (cell_margin + cell_size)
+					game_area_position_x + cell_margin + (cells_width / 2) + i * (cell_margin + cells_width), 
+					game_area_position_y + cell_margin + (cells_height / 2) + j * (cell_margin + cells_height)
 				), 
 				Vector2(
-					cell_size, 
-					cell_size
+					cells_width, 
+					cells_height
 				),
 				false
 			)
@@ -66,6 +57,16 @@ func set_level(info: Storage.LevelInfo):
 			cell.connect("clicked", self, "_on_cell_clicked")
 			add_child(cell)
 	update_cells()
+	
+	scale = Vector2(
+		level_area_width / ($LevelAreaShape.shape.extents.x * 2), 
+		level_area_heigth / ($LevelAreaShape.shape.extents.y * 2)
+	)
+	position.x = level_area_margin_left + level_area_width / 2
+	position.y = level_area_margin_top + level_area_heigth / 2
+	$BackgroundLayer/Background.scale = scale
+	$BackgroundLayer/Background.position = position
+	
 	
 	if _tutorial:
 		show_tip()
