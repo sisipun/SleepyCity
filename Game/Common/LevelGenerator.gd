@@ -1,5 +1,6 @@
 extends Node
 
+
 class GeneratedLevel:
 	var solution: Array
 	var cells: Array
@@ -7,6 +8,7 @@ class GeneratedLevel:
 	func _init(solution: Array, cells: Array):
 		self.solution = solution
 		self.cells = cells
+
 
 static func generate_level(number: int, level_type: int) -> Storage.LevelInfo:
 	var complexity = min(max(sqrt(number * 0.3 + 10), 3), 10)
@@ -37,6 +39,7 @@ static func generate_level(number: int, level_type: int) -> Storage.LevelInfo:
 			[]
 		)
 	return level
+
 
 static func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
 	randomize()

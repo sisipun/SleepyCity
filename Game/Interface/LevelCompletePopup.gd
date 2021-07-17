@@ -1,9 +1,6 @@
 extends Popup
 
 
-export(String) var next_scene_path
-
-
 func _ready() -> void:
 	Storage.connect("level_complete", self, "_on_level_complete")
 
@@ -30,4 +27,4 @@ func _on_level_complete(
 
 
 func _on_next_pressed() -> void:
-	get_tree().change_scene(next_scene_path)
+	get_tree().reload_current_scene()

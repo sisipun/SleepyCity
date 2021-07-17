@@ -62,6 +62,7 @@ class GameInfo:
 
 enum LevelType { DARK = 0, LIGHT = 1 }
 
+
 class LevelInfo:
 	var width: int
 	var height: int

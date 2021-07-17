@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.5, 101.5 )
 
-[sub_resource type="SpriteFrames" id=28]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": false,
@@ -23,7 +23,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=29]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
@@ -36,7 +36,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=31]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
@@ -56,16 +56,16 @@ shape = SubResource( 1 )
 position = Vector2( -0.5, -4 )
 scale = Vector2( 0.663212, 0.67 )
 z_index = -2
-frames = SubResource( 28 )
+frames = SubResource( 2 )
 animation = "alive"
 
 [node name="Border" type="AnimatedSprite" parent="."]
 z_index = -2
-frames = SubResource( 29 )
+frames = SubResource( 3 )
 
 [node name="Tip" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( -0.500003, -0.250005 )
 scale = Vector2( 1.2355, 1.57434 )
-frames = SubResource( 31 )
+frames = SubResource( 4 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]
