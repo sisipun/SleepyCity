@@ -17,11 +17,9 @@ var _took_tip: = false
 var _tutorial: = false
 
 
-func init(info: Storage.LevelInfo):
+func init(info: LevelInfo):
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
-	
-	 # OS.get_window_safe_area().position.y
 	
 	var screen_size: = get_viewport_rect().size
 	var level_area_width: float = screen_size.x - (level_area_margin_left + level_area_margin_right)
@@ -92,7 +90,7 @@ func _on_cell_clicked(cell: Cell) -> void:
 func _on_tip() -> void:
 	if show_tip():
 		_took_tip = true
-		Storage.decriment_tip()
+		TipController.decriment()
 
 
 func _on_reset() -> void:

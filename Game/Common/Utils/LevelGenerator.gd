@@ -10,38 +10,28 @@ class GeneratedLevel:
 		self.cells = cells
 
 
-static func generate_level(number: int, level_type: int) -> Storage.LevelInfo:
-	var complexity = min(max(sqrt(number * 0.3 + 10), 3), 10)
-	var width: int = floor(complexity)
+func generate_level(number: int, level_type: int) -> LevelInfo:
+	var size_factor: float = sqrt(number * 0.3 + 10)
+	var solution_size_factor: float = 0.2 * size_factor * size_factor
+	
+	var width: int = min(floor(size_factor), 10)
 	var height = width * 2
 	var rand_part = (randi() % 3)
-	var solution_size: int = rand_part + min(max(round(0.2 * complexity * complexity), 3), 20) - 1
+	var solution_size: int = rand_part + min(max(ceil(solution_size_factor), 3), 20) - 1
 	
-	var level: Storage.LevelInfo
-	if (level_type == Storage.LevelType.DARK):
-		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
-		level = Storage.LevelInfo.new(
-			width,
-			height,
-			level_type,
-			[],
-			generated.solution,
-			generated.cells
-		)
-	elif (level_type == Storage.LevelType.LIGHT):
-		var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
-		level = Storage.LevelInfo.new(
-			width,
-			height,
-			level_type,
-			generated.cells,
-			generated.solution,
-			[]
-		)
-	return level
+	var level: LevelInfo
+	var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
+	return LevelInfo.new(
+		width,
+		height,
+		level_type,
+		[] if level_type == LevelInfo.LevelType.DARK else generated.cells,
+		generated.solution,
+		generated.cells if level_type == LevelInfo.LevelType.DARK else []
+	)
 
 
-static func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
+func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
 	randomize()
 	var map: = []
 	for i in range(width):

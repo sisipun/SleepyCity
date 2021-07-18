@@ -2,11 +2,8 @@ extends SwitchButton
 
 
 func _ready():
-	set_is_on(Storage.has_music())
+	set_is_on(AudioController.has_music())
 
 
 func _on_pressed():
-	if Storage.has_music():
-		Storage.mute_music()
-	else:
-		Storage.unmute_music()
+	AudioController.play_music(not AudioController.has_music())

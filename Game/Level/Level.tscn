@@ -7,7 +7,6 @@
 [ext_resource path="res://Game/Interface/LevelCompletePopup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Level/Level.gd" type="Script" id=7]
 
-
 [node name="Level" type="Node"]
 script = ExtResource( 7 )
 

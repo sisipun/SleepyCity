@@ -1,6 +1,6 @@
 extends Control
 
-signal init(level_number)
+signal init(level_number, level_progress)
 signal step_back
 signal reset
 signal tip
@@ -35,5 +35,5 @@ func _on_menu_pressed() -> void:
 	emit_signal("menu")
 
 
-func _on_init(level_number) -> void:
-	emit_signal("init", level_number)
+func _on_init(level_number: int, level_progress: int) -> void:
+	emit_signal("init", level_number, level_progress)

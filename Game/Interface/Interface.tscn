@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Game/Interface/LevelLabel.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Buttons/tip_button.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Buttons/tip_button_active.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Buttons/tip_button_disabled.png" type="Texture" id=14]
+[ext_resource path="res://Game/Interface/Progress.gd" type="Script" id=15]
 
 [node name="Interface" type="Control"]
 anchor_left = -0.00479126
@@ -34,47 +35,58 @@ __meta__ = {
 }
 
 [node name="Left" type="CenterContainer" parent="Top"]
-margin_right = 197.0
+margin_right = 196.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StepLabel" type="Label" parent="Top/Left"]
-margin_left = 91.0
+margin_left = 90.0
 margin_top = 36.0
-margin_right = 106.0
+margin_right = 105.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 script = ExtResource( 4 )
 
 [node name="Center" type="CenterContainer" parent="Top"]
-margin_left = 201.0
-margin_right = 398.0
+margin_left = 200.0
+margin_right = 400.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LevelLabel" type="Label" parent="Top/Center"]
-margin_left = 63.0
+margin_left = 64.0
 margin_top = 36.0
-margin_right = 134.0
+margin_right = 135.0
 margin_bottom = 63.0
 text = "Level 1"
 align = 1
 script = ExtResource( 2 )
 
+[node name="Progress" type="ProgressBar" parent="Top/Center"]
+margin_top = 35.0
+margin_right = 200.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 200, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+max_value = 100.0
+step = 1.0
+script = ExtResource( 15 )
+
 [node name="Right" type="CenterContainer" parent="Top"]
-margin_left = 402.0
+margin_left = 404.0
 margin_right = 600.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MenuButton" type="TextureButton" parent="Top/Right"]
-margin_left = 64.0
+margin_left = 63.0
 margin_top = 15.0
-margin_right = 134.0
+margin_right = 133.0
 margin_bottom = 85.0
 rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 11 )
@@ -147,11 +159,11 @@ texture_disabled = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
-[connection signal="init" from="." to="Top/Center/LevelLabel" method="_on_init"]
+[connection signal="init" from="." to="Top/Center/Progress" method="_on_init"]
 [connection signal="reset" from="." to="Top/Left/StepLabel" method="_on_reset"]
 [connection signal="step" from="." to="Top/Left/StepLabel" method="_on_step"]
 [connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]
 [connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]

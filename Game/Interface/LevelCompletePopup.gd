@@ -2,11 +2,11 @@ extends Popup
 
 
 func _ready() -> void:
-	Storage.connect("level_complete", self, "_on_level_complete")
+	LevelController.connect("level_complete", self, "_on_level_complete")
 
 
 func _on_level_complete(
-	level: Storage.LevelInfo, 
+	level: LevelInfo, 
 	step_count: int, 
 	earned_bonuses: int
 ) -> void:

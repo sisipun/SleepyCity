@@ -15,6 +15,16 @@ _global_script_classes=[ {
 "path": "res://Game/Level/Cell.gd"
 }, {
 "base": "Node",
+"class": "GameInfo",
+"language": "GDScript",
+"path": "res://Game/Common/Models/GameInfo.gd"
+}, {
+"base": "Node",
+"class": "LevelInfo",
+"language": "GDScript",
+"path": "res://Game/Common/Models/LevelInfo.gd"
+}, {
+"base": "Node",
 "class": "LevelMap",
 "language": "GDScript",
 "path": "res://Game/Level/LevelMap.gd"
@@ -22,10 +32,12 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "SwitchButton",
 "language": "GDScript",
-"path": "res://Game/Components/SwitchButton.gd"
+"path": "res://Game/Common/UIComponents/SwitchButton.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
+"GameInfo": "",
+"LevelInfo": "",
 "LevelMap": "",
 "SwitchButton": ""
 }
@@ -41,9 +53,14 @@ default_bus_layout="res://Assets/Common/default_bus_layout.tres"
 
 [autoload]
 
-Storage="*res://Game/Common/Storage.gd"
 BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
-LevelGenerator="*res://Game/Common/LevelGenerator.gd"
+LevelInfoParser="*res://Game/Common/Parsers/LevelInfoParser.gd"
+GameInfoParser="*res://Game/Common/Parsers/GameInfoParser.gd"
+GameStorage="*res://Game/Common/Storages/GameStorage.gd"
+LevelGenerator="*res://Game/Common/Utils/LevelGenerator.gd"
+LevelController="*res://Game/Common/Controllers/LevelController.gd"
+TipController="*res://Game/Common/Controllers/TipController.gd"
+AudioController="*res://Game/Common/Controllers/AudioController.gd"
 
 [display]
 

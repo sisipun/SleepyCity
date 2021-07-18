@@ -2,7 +2,7 @@ extends Node
 
 class_name LevelMap
 
-var _info: Storage.LevelInfo
+var _info: LevelInfo
 var _map: Array = []
 var _steps: Array = []
 var _solutions: Array = []
@@ -10,7 +10,7 @@ var _completed = false
 var _solution_changed = true
 
 
-func _init(info: Storage.LevelInfo) -> void:
+func _init(info: LevelInfo) -> void:
 	_info = info
 	for i in range(_info.width):
 		_map.append([])
