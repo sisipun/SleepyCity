@@ -1,6 +1,8 @@
 extends Node
 
+
 class_name LevelMap
+
 
 var _info: LevelInfo
 var _map: Array = []

@@ -1,7 +1,8 @@
-tool
 extends TextureButton
 
+
 class_name SwitchButton
+
 
 export (Texture) var on_normal
 export (Texture) var on_pressed

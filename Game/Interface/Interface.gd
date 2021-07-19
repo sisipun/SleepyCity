@@ -1,14 +1,15 @@
 extends Control
 
+
+class_name Interface
+
+
 signal init(level_number, level_progress)
 signal step_back
 signal reset
 signal tip
 signal menu
 signal step(step_count)
-
-
-export(String) var menu_path
 
 
 func _ready() -> void:

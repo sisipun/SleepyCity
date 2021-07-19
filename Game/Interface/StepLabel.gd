@@ -1,6 +1,9 @@
 extends Label
 
 
+class_name StepLabel
+
+
 func _ready() -> void:
 	text = "0"
 

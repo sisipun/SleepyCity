@@ -1,6 +1,9 @@
 extends Popup
 
 
+class_name MenuPopup
+
+
 func _on_menu() -> void:
 	popup_centered()
 

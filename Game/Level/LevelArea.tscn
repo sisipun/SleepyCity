@@ -14,6 +14,11 @@ b = Vector2( 382.258, 603.135 )
 
 [node name="LevelArea" type="Area2D"]
 script = ExtResource( 2 )
+_level_area_path = NodePath("LevelAreaShape")
+_game_area_path = NodePath("GameAreaShape")
+_background_path = NodePath("BackgroundLayer/Background")
+_cell_sound_path = NodePath("Sound/CellSound")
+_level_complete_sound_path = NodePath("Sound/LevelCompleteSound")
 
 [node name="LevelAreaShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -1,4 +1,6 @@
 extends Area2D
+
+
 class_name Cell
 
 
@@ -32,8 +34,8 @@ func init(
 	_coord_y = coord_y
 	set_alive(alive)
 	scale = Vector2(
-		size.x / ($CellShape.shape.extents.x * 2), 
-		size.y / ($CellShape.shape.extents.y * 2)
+		size.x / ($Shape.shape.extents.x * 2), 
+		size.y / ($Shape.shape.extents.y * 2)
 	)
 
 	$Border.animation = "target" if _target else "default"

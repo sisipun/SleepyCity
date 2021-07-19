@@ -1,6 +1,19 @@
 extends Popup
 
 
+class_name LevelCompletePopup
+
+
+export (NodePath) var _step_label_path
+export (NodePath) var _bonus_label_path
+export (NodePath) var _bonus_texture_path
+
+
+onready var _step_label: Label = get_node(_step_label_path)
+onready var _bonus_label: Label = get_node(_bonus_label_path)
+onready var _bonus_texture: TextureRect = get_node(_bonus_texture_path)
+
+
 func _ready() -> void:
 	LevelController.connect("level_complete", self, "_on_level_complete")
 
@@ -12,18 +25,18 @@ func _on_level_complete(
 ) -> void:
 	popup_centered()
 	
-	$Menu/CenterLabels/Labels/StepLabel.text = "%d/%d" % [
+	_step_label.text = "%d/%d" % [
 		step_count, 
 		min(len(level.solution), step_count)
 	]
 	
 	if earned_bonuses > 0:
-		$Menu/CenterLabels/Labels/BonusLabel.show()
-		$Menu/CenterLabels/Labels/BonusTexture.show()
-		$Menu/CenterLabels/Labels/BonusLabel.text = "x%d" % earned_bonuses
+		_bonus_label.show()
+		_bonus_label.text = "x%d" % earned_bonuses
+		_bonus_texture.show()
 	else:
-		$Menu/CenterLabels/Labels/BonusLabel.hide()
-		$Menu/CenterLabels/Labels/BonusTexture.hide()
+		_bonus_label.hide()
+		_bonus_texture.hide()
 
 
 func _on_next_pressed() -> void:

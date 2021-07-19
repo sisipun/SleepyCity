@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Game/Interface/LevelLabel.gd" type="Script" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Interface/StepLabel.gd" type="Script" id=4]
 [ext_resource path="res://Game/Interface/TipButton.gd" type="Script" id=5]
@@ -14,7 +13,7 @@
 [ext_resource path="res://Assets/Buttons/tip_button.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Buttons/tip_button_active.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Buttons/tip_button_disabled.png" type="Texture" id=14]
-[ext_resource path="res://Game/Interface/Progress.gd" type="Script" id=15]
+[ext_resource path="res://Game/Interface/GameProgress.gd" type="Script" id=15]
 
 [node name="Interface" type="Control"]
 anchor_left = -0.00479126
@@ -56,15 +55,6 @@ margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LevelLabel" type="Label" parent="Top/Center"]
-margin_left = 64.0
-margin_top = 36.0
-margin_right = 135.0
-margin_bottom = 63.0
-text = "Level 1"
-align = 1
-script = ExtResource( 2 )
-
 [node name="Progress" type="ProgressBar" parent="Top/Center"]
 margin_top = 35.0
 margin_right = 200.0
@@ -72,7 +62,6 @@ margin_bottom = 65.0
 rect_min_size = Vector2( 200, 30 )
 size_flags_horizontal = 3
 size_flags_vertical = 2
-max_value = 100.0
 step = 1.0
 script = ExtResource( 15 )
 

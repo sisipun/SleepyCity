@@ -1,6 +1,9 @@
 extends SwitchButton
 
 
+class_name SoundButton
+
+
 func _ready():
 	set_is_on(AudioController.has_sound())
 

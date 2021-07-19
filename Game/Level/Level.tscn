@@ -9,6 +9,7 @@
 
 [node name="Level" type="Node"]
 script = ExtResource( 7 )
+_level_area_path = NodePath("LevelArea")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

@@ -48,7 +48,7 @@ animations = [ {
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
 
-[node name="CellShape" type="CollisionShape2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="."]
 z_index = -1
 shape = SubResource( 1 )
 

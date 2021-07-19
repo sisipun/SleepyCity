@@ -1,15 +1,30 @@
 extends Area2D
 
 
+class_name LevelArea
+
+
 signal step(step_count)
 signal completed(steps_count, took_tip)
 
+
+export (NodePath) var _level_area_path
+export (NodePath) var _game_area_path
+export (NodePath) var _background_path
+export (NodePath) var _cell_sound_path
+export (NodePath) var _level_complete_sound_path
 export (float) var level_area_margin_left = 20
 export (float) var level_area_margin_right = 20
 export (float) var level_area_margin_top = 30
 export (float) var level_area_margin_bottom = 100
 export (float) var cell_margin: = 20
 
+
+onready var _level_area: CollisionShape2D = get_node(_level_area_path)
+onready var _game_area: CollisionShape2D = get_node(_game_area_path)
+onready var _background: Sprite = get_node(_background_path)
+onready var _cell_sound: AudioStreamPlayer = get_node(_cell_sound_path)
+onready var _level_complete_sound: AudioStreamPlayer = get_node(_level_complete_sound_path)
 
 var _level: LevelMap
 var _cells: Array
@@ -25,10 +40,10 @@ func init(info: LevelInfo):
 	var level_area_width: float = screen_size.x - (level_area_margin_left + level_area_margin_right)
 	var level_area_heigth: float = screen_size.y - (level_area_margin_top + level_area_margin_bottom)
 	
-	var game_area_position_x: float = $GameAreaShape.shape.a.x
-	var game_area_position_y: float = $GameAreaShape.shape.a.y
-	var game_area_width: float = $GameAreaShape.shape.b.x - $GameAreaShape.shape.a.x
-	var game_area_height: float = $GameAreaShape.shape.b.y - $GameAreaShape.shape.a.y
+	var game_area_position_x: float = _game_area.shape.a.x
+	var game_area_position_y: float = _game_area.shape.a.y
+	var game_area_width: float = _game_area.shape.b.x - _game_area.shape.a.x
+	var game_area_height: float = _game_area.shape.b.y - _game_area.shape.a.y
 	var cells_width: = (game_area_width - cell_margin * (_level.width() + 1)) / _level.width()
 	var cells_height: = (game_area_height - cell_margin * (_level.height() + 1)) / _level.height()
 	
@@ -57,13 +72,13 @@ func init(info: LevelInfo):
 	update_cells()
 	
 	scale = Vector2(
-		level_area_width / ($LevelAreaShape.shape.extents.x * 2), 
-		level_area_heigth / ($LevelAreaShape.shape.extents.y * 2)
+		level_area_width / (_level_area.shape.extents.x * 2), 
+		level_area_heigth / (_level_area.shape.extents.y * 2)
 	)
 	position.x = level_area_margin_left + level_area_width / 2
 	position.y = level_area_margin_top + level_area_heigth / 2
-	$BackgroundLayer/Background.scale = scale
-	$BackgroundLayer/Background.position = position
+	_background.scale = scale
+	_background.position = position
 	
 	
 	if _tutorial:
@@ -77,11 +92,11 @@ func _on_cell_clicked(cell: Cell) -> void:
 	
 	if _level.step(i, j):
 		update_cells()
-		$Sound/CellSound.play()
+		_cell_sound.play()
 		emit_signal("step", _level.steps_count())
 	
 	if _level.is_complete():
-		$Sound/LevelCompleteSound.play()
+		_level_complete_sound.play()
 		emit_signal("completed", _level.steps_count(), _took_tip)
 	elif _tutorial:
 		show_tip()
