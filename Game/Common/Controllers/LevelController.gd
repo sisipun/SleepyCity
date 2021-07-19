@@ -27,7 +27,8 @@ func get_current() -> LevelInfo:
 
 func complete_current(step_count: int, took_tip: bool) -> void:
 	var completed: LevelInfo = GameStorage.game.level
-	var earned_bonuses: int = 1 if calculate_progress(get_number() + 1) == 0 else 0
+	var progress_completed: bool = calculate_progress(get_number() + 1) == 0 
+	var earned_bonuses: int = 1 if progress_completed else 0
 	
 	GameStorage.game.level_number += 1
 	GameStorage.game.level = generate_level()

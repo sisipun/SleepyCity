@@ -47,6 +47,10 @@ animations = [ {
 [node name="Cell" type="Area2D"]
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
+_shape_path = NodePath("Shape")
+_sprite_path = NodePath("Sprite")
+_border_path = NodePath("Border")
+_tip_path = NodePath("Tip")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 z_index = -1

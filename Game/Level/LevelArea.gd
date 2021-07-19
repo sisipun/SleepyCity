@@ -26,6 +26,7 @@ onready var _background: Sprite = get_node(_background_path)
 onready var _cell_sound: AudioStreamPlayer = get_node(_cell_sound_path)
 onready var _level_complete_sound: AudioStreamPlayer = get_node(_level_complete_sound_path)
 
+
 var _level: LevelMap
 var _cells: Array
 var _took_tip: = false
@@ -51,7 +52,9 @@ func init(info: LevelInfo):
 	for i in range(_level.width()):
 		_cells.append([])
 		for j in range(_level.height()):
-			var cell: Cell = cell_scene.instance().init(
+			var cell_instance: Cell = cell_scene.instance()
+			add_child(cell_instance)
+			var cell: Cell = cell_instance.init(
 				i,
 				j,
 				Vector2(
@@ -68,7 +71,6 @@ func init(info: LevelInfo):
 			if _level.is_target(i, j):
 				cell.play_target_effect()
 			cell.connect("clicked", self, "_on_cell_clicked")
-			add_child(cell)
 	update_cells()
 	
 	scale = Vector2(

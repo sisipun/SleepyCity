@@ -7,6 +7,18 @@ class_name Cell
 signal clicked(cell)
 
 
+export (NodePath) var _shape_path
+export (NodePath) var _sprite_path
+export (NodePath) var _border_path
+export (NodePath) var _tip_path
+
+
+onready var _shape: CollisionShape2D = get_node(_shape_path)
+onready var _sprite: AnimatedSprite = get_node(_sprite_path)
+onready var _border: AnimatedSprite = get_node(_border_path)
+onready var _tip: AnimatedSprite = get_node(_tip_path)
+
+
 var _alive: bool = false
 var _target: bool = false
 var _coord_x: int = 0
@@ -27,38 +39,38 @@ func init(
 		alive: bool = false,
 		target: bool = false
 	) -> Cell:
-	var sprite_size: Vector2 = $Sprite.frames.get_frame($Sprite.animation, 0).get_size()
+	var sprite_size: Vector2 = _sprite.frames.get_frame(_sprite.animation, 0).get_size()
 	self.position = position
 	_target = target
 	_coord_x = coord_x
 	_coord_y = coord_y
 	set_alive(alive)
 	scale = Vector2(
-		size.x / ($Shape.shape.extents.x * 2), 
-		size.y / ($Shape.shape.extents.y * 2)
+		size.x / (_shape.shape.extents.x * 2), 
+		size.y / (_shape.shape.extents.y * 2)
 	)
 
-	$Border.animation = "target" if _target else "default"
-	$Sprite.play()
-	$Border.play()
+	_border.animation = "target" if _target else "default"
+	_border.play()	
+	_sprite.play()
 	return self
 
 
 func play_tip_effect() -> bool:
-	if $Tip.is_playing():
+	if _tip.is_playing():
 		return false
 		
-	$Tip.play()
-	$Tip.show()
+	_tip.play()
+	_tip.show()
 	return true
 
 
 func stop_tip_effect() -> bool:
-	if not $Tip.is_playing():
+	if not _tip.is_playing():
 		return false
 		
-	$Tip.stop()
-	$Tip.hide()
+	_tip.stop()
+	_tip.hide()
 	return true
 
 
@@ -73,6 +85,6 @@ func is_alive() -> bool:
 func set_alive(alive: bool) -> void:
 	_alive = alive
 	if _alive:
-		$Sprite.animation = "alive"
+		_sprite.animation = "alive"
 	else:
-		$Sprite.animation = "dead"
+		_sprite.animation = "dead"
