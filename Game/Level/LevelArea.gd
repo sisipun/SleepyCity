@@ -65,12 +65,11 @@ func init(info: LevelInfo):
 					cells_width, 
 					cells_height
 				),
-				false
+				false,
+				_level.is_target(i, j)
 			)
-			_cells[i].append(cell)
-			if _level.is_target(i, j):
-				cell.play_target_effect()
 			cell.connect("clicked", self, "_on_cell_clicked")
+			_cells[i].append(cell)
 	update_cells()
 	
 	scale = Vector2(

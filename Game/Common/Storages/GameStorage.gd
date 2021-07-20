@@ -45,7 +45,7 @@ var game: GameInfo = GameInfo.new({
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "2"
+var _current_version: String = "1"
 
 
 func _ready() -> void:
