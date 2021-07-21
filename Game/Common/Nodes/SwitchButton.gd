@@ -11,17 +11,14 @@ export (Texture) var off_normal
 export (Texture) var off_pressed
 export (Texture) var off_disabled
 
+
 var is_on = true
 
+
 func _ready() -> void:
-	connect("pressed", self, "_on_button_pressed")
 	texture_normal = on_normal
 	texture_pressed = on_pressed
 	texture_disabled = on_disabled
-
-
-func _on_button_pressed() -> void:
-	set_is_on(!is_on)
 
 
 func set_is_on(is_on: bool) -> void:

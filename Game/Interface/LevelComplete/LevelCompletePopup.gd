@@ -15,14 +15,10 @@ onready var _bonus_texture: TextureRect = get_node(_bonus_texture_path)
 
 
 func _ready() -> void:
-	LevelController.connect("level_complete", self, "_on_level_complete")
+	EventStorage.connect("level_completed", self, "_on_level_completed")
 
 
-func _on_level_complete(
-	level: LevelInfo, 
-	step_count: int, 
-	earned_bonuses: int
-) -> void:
+func _on_level_completed(level: LevelInfo, step_count: int, earned_bonuses: int) -> void:
 	popup_centered()
 	
 	_step_label.text = "%d/%d" % [

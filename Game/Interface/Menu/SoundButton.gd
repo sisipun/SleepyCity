@@ -1,7 +1,7 @@
-extends TextureButton
+extends SwitchButton
 
 
-class_name TipButton
+class_name SoundButton
 
 
 func _ready():
@@ -9,9 +9,8 @@ func _ready():
 
 
 func _on_pressed():
-	EventStorage.emit_signal("decrement_tip")
+	EventStorage.emit_signal("sound_switch")
 
 
 func _on_game_updated(game: GameInfo):
-	if game.tips_count <= 0:
-		disabled = true
+	set_is_on(game.sound)

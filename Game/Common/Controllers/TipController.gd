@@ -1,18 +1,10 @@
 extends Node
 
 
-signal decrement(count)
+func _ready() -> void:
+	EventStorage.connect("decrement_tip", self, "_on_decrement_tip")
 
 
-func count() -> int:
-	return GameStorage.game.tips_count
-
-
-func has_any() -> bool:
-	return GameStorage.game.tips_count > 0
-
-
-func decriment() -> void:
+func _on_decrement_tip() -> void:
 	GameStorage.game.tips_count -= 1
-	GameStorage.save()
-	emit_signal("tip", GameStorage.game.tips_count)
+	EventStorage.emit_signal("game_updated", GameStorage.game)

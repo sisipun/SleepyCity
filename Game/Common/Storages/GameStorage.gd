@@ -60,17 +60,21 @@ func _ready() -> void:
 	var version: String = data["version"]
 	if version == _current_version:
 		game = GameInfoParser.read(data)
+	
+	EventStorage.connect("game_updated", self, "_on_game_updated")
+	EventStorage.emit_signal("game_updated", game)
 
 
-func save() -> void:
+func _on_game_updated(game: GameInfo) -> void:
 	var dir: Directory = Directory.new()
 	if not dir.dir_exists(_save_path):
 		dir.make_dir(_save_path)
 		
-	var data: Dictionary = GameInfoParser.write(game)
+	var data: Dictionary = GameInfoParser.write(self.game)
 	data["version"] = _current_version
 	
 	var file: File = File.new()
 	file.open(_save_path + _save_file, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
+	EventStorage.emit_signal("game_saved", self.game)

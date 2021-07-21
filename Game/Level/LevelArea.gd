@@ -33,7 +33,12 @@ var _took_tip: = false
 var _tutorial: = false
 
 
-func init(info: LevelInfo):
+func _ready() -> void:
+	EventStorage.connect("level_changed", self, "_on_level_changed")
+	EventStorage.connect("decrement_tip", self, "_on_decrement_tip")
+
+
+func _on_level_changed(info: LevelInfo, progress: int):
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
@@ -98,15 +103,14 @@ func _on_cell_clicked(cell: Cell) -> void:
 	
 	if _level.is_complete():
 		_level_complete_sound.play()
-		emit_signal("completed", _level.steps_count(), _took_tip)
+		EventStorage.emit_signal("level_complete", _level.steps_count(), _took_tip)
 	elif _tutorial:
 		show_tip()
 
 
-func _on_tip() -> void:
-	if show_tip():
-		_took_tip = true
-		TipController.decriment()
+func _on_decrement_tip() -> void:
+	show_tip()
+	_took_tip = true
 
 
 func _on_reset() -> void:

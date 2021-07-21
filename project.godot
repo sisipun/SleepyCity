@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Interface/Interface.gd"
 }, {
-"base": "Node",
-"class": "Level",
-"language": "GDScript",
-"path": "res://Game/Level/Level.gd"
-}, {
 "base": "Area2D",
 "class": "LevelArea",
 "language": "GDScript",
@@ -42,7 +37,7 @@ _global_script_classes=[ {
 "base": "Popup",
 "class": "LevelCompletePopup",
 "language": "GDScript",
-"path": "res://Game/Interface/LevelCompletePopup.gd"
+"path": "res://Game/Interface/LevelComplete/LevelCompletePopup.gd"
 }, {
 "base": "Node",
 "class": "LevelInfo",
@@ -57,17 +52,17 @@ _global_script_classes=[ {
 "base": "Popup",
 "class": "MenuPopup",
 "language": "GDScript",
-"path": "res://Game/Interface/MenuPopup.gd"
+"path": "res://Game/Interface/Menu/MenuPopup.gd"
 }, {
 "base": "SwitchButton",
 "class": "MusicButton",
 "language": "GDScript",
-"path": "res://Game/Interface/MusicButton.gd"
+"path": "res://Game/Interface/Menu/MusicButton.gd"
 }, {
 "base": "SwitchButton",
 "class": "SoundButton",
 "language": "GDScript",
-"path": "res://Game/Interface/SoundButton.gd"
+"path": "res://Game/Interface/Menu/SoundButton.gd"
 }, {
 "base": "Label",
 "class": "StepLabel",
@@ -77,7 +72,7 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "SwitchButton",
 "language": "GDScript",
-"path": "res://Game/Common/UIComponents/SwitchButton.gd"
+"path": "res://Game/Common/Nodes/SwitchButton.gd"
 }, {
 "base": "TextureButton",
 "class": "TipButton",
@@ -89,7 +84,6 @@ _global_script_class_icons={
 "GameInfo": "",
 "GameProgress": "",
 "Interface": "",
-"Level": "",
 "LevelArea": "",
 "LevelCompletePopup": "",
 "LevelInfo": "",
@@ -113,7 +107,7 @@ default_bus_layout="res://Assets/Common/default_bus_layout.tres"
 
 [autoload]
 
-BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
+EventStorage="*res://Game/Common/Storages/EventStorage.gd"
 LevelInfoParser="*res://Game/Common/Parsers/LevelInfoParser.gd"
 GameInfoParser="*res://Game/Common/Parsers/GameInfoParser.gd"
 GameStorage="*res://Game/Common/Storages/GameStorage.gd"
@@ -121,6 +115,7 @@ LevelGenerator="*res://Game/Common/Utils/LevelGenerator.gd"
 LevelController="*res://Game/Common/Controllers/LevelController.gd"
 TipController="*res://Game/Common/Controllers/TipController.gd"
 AudioController="*res://Game/Common/Controllers/AudioController.gd"
+BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
 
 [display]
 

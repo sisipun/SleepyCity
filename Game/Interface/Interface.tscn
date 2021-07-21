@@ -154,5 +154,5 @@ script = ExtResource( 5 )
 [connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]
 [connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]
+[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Game/Interface/LevelCompletePopup.gd" type="Script" id=1]
+[ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Level/bonus.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Buttons/next_button.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Buttons/next_button_active.png" type="Texture" id=6]
