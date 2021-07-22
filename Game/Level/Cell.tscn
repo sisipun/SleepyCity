@@ -1,23 +1,23 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/Level/Cell.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Level/dark_border.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Level/dark_window.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Level/light_window.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Level/light_window.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Level/dark_border.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Level/light_border.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Level/tip_cell.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Level/light_border.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Level/dark_window.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80.5, 101.5 )
+extents = Vector2( 88.0623, 101.072 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "alive",
 "speed": 60.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "dead",
 "speed": 60.0
@@ -25,12 +25,12 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "target",
 "speed": 5.0
@@ -57,8 +57,8 @@ z_index = -1
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -0.5, -4 )
-scale = Vector2( 0.663212, 0.67 )
+position = Vector2( -0.797294, -16.2484 )
+scale = Vector2( 0.786119, 0.774645 )
 z_index = -2
 frames = SubResource( 2 )
 animation = "alive"

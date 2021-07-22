@@ -11,8 +11,8 @@ export (NodePath) var _cell_sound_path
 export (NodePath) var _level_complete_sound_path
 export (float) var level_area_margin_left = 20
 export (float) var level_area_margin_right = 20
-export (float) var level_area_margin_top = 30
-export (float) var level_area_margin_bottom = 100
+export (float) var level_area_margin_top = 70
+export (float) var level_area_margin_bottom = 0
 export (float) var cell_margin: = 20
 
 

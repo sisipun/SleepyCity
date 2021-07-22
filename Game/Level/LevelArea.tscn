@@ -6,11 +6,11 @@
 [ext_resource path="res://Assets/Sounds/success.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 402.836, 600.751 )
+extents = Vector2( 347.036, 600.439 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -384.793, -466.922 )
-b = Vector2( 382.258, 603.135 )
+a = Vector2( -330.75, -481.25 )
+b = Vector2( 330.057, 599.269 )
 
 [node name="LevelArea" type="Area2D"]
 script = ExtResource( 2 )

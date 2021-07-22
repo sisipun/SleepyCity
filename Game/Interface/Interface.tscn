@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
-[ext_resource path="res://Game/Interface/StepLabel.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Buttons/back_button_active.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Buttons/reset_button_active.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/reset_button.png" type="Texture" id=8]
@@ -23,84 +21,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 100.0
+[node name="Left" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 70.0
+margin_bottom = 144.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="CenterContainer" parent="Top"]
-margin_right = 196.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="StepLabel" type="Label" parent="Top/Left"]
-margin_left = 90.0
-margin_top = 36.0
-margin_right = 105.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 1 )
-text = "0"
-script = ExtResource( 4 )
-
-[node name="Center" type="CenterContainer" parent="Top"]
-margin_left = 200.0
-margin_right = 400.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Progress" type="ProgressBar" parent="Top/Center"]
-margin_top = 35.0
-margin_right = 200.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 200, 30 )
-size_flags_horizontal = 3
-size_flags_vertical = 2
-step = 1.0
-script = ExtResource( 15 )
-
-[node name="Right" type="CenterContainer" parent="Top"]
-margin_left = 404.0
-margin_right = 600.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MenuButton" type="TextureButton" parent="Top/Right"]
-margin_left = 63.0
-margin_top = 15.0
-margin_right = 133.0
-margin_bottom = 85.0
+[node name="MenuButton" type="TextureButton" parent="Left"]
+margin_right = 70.0
+margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
-[node name="Bottom" type="HBoxContainer" parent="."]
-anchor_left = 0.00319417
-anchor_top = 1.0
-anchor_right = 1.00319
-anchor_bottom = 1.0
-margin_top = -100.0
+[node name="TipButton" parent="Left" instance=ExtResource( 2 )]
+margin_top = 74.0
+margin_right = 70.0
+margin_bottom = 144.0
+
+[node name="Center" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_right = 100.0
+margin_bottom = 144.0
+
+[node name="Center" type="CenterContainer" parent="Center"]
+margin_right = 200.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Progress" type="ProgressBar" parent="Center/Center"]
+margin_top = 57.0
+margin_right = 200.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 200, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+step = 1.0
+script = ExtResource( 15 )
+
+[node name="Right" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -90.0
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = 144.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="CenterContainer" parent="Bottom"]
-margin_right = 197.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="StepBackButton" type="TextureButton" parent="Bottom/Left"]
-margin_left = 48.0
-margin_right = 148.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+[node name="StepBackButton" type="TextureButton" parent="Right"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 expand = true
@@ -109,34 +90,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="CenterContainer" parent="Bottom"]
-margin_left = 201.0
-margin_right = 398.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ResetButton" type="TextureButton" parent="Bottom/Center"]
-margin_left = 48.0
-margin_right = 148.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+[node name="ResetButton" type="TextureButton" parent="Right"]
+margin_top = 74.0
+margin_right = 70.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 expand = true
 stretch_mode = 5
-
-[node name="Right" type="CenterContainer" parent="Bottom"]
-margin_left = 402.0
-margin_right = 599.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TipButton" parent="Bottom/Right" instance=ExtResource( 2 )]
-margin_left = 48.0
-margin_right = 148.0
-[connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
-[connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Left/MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
+[connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
