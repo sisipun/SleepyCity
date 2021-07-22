@@ -4,7 +4,11 @@ extends Popup
 class_name MenuPopup
 
 
-func _on_menu() -> void:
+func _ready() -> void:
+	EventStorage.connect("menu_open", self, "_on_menu_open")
+
+
+func _on_menu_open() -> void:
 	popup_centered()
 
 

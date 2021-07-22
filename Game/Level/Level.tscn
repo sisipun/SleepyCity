@@ -37,8 +37,3 @@ anchor_bottom = 0.999601
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 6 )]
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
-[connection signal="completed" from="LevelArea" to="." method="_on_completed"]
-[connection signal="step" from="LevelArea" to="InterfaceLayer/Interface" method="_on_step"]
-[connection signal="menu" from="InterfaceLayer/Interface" to="InterfaceLayer/MenuPopup" method="_on_menu"]
-[connection signal="reset" from="InterfaceLayer/Interface" to="LevelArea" method="_on_reset"]
-[connection signal="step_back" from="InterfaceLayer/Interface" to="LevelArea" method="_on_step_back"]

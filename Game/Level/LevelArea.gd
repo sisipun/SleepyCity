@@ -4,10 +4,6 @@ extends Area2D
 class_name LevelArea
 
 
-signal step(step_count)
-signal completed(steps_count, took_tip)
-
-
 export (NodePath) var _level_area_path
 export (NodePath) var _game_area_path
 export (NodePath) var _background_path
@@ -36,6 +32,8 @@ var _tutorial: = false
 func _ready() -> void:
 	EventStorage.connect("level_changed", self, "_on_level_changed")
 	EventStorage.connect("decrement_tip", self, "_on_decrement_tip")
+	EventStorage.connect("reset", self, "_on_reset")
+	EventStorage.connect("step_back", self, "_on_step_back")
 
 
 func _on_level_changed(info: LevelInfo, progress: int):
@@ -99,7 +97,7 @@ func _on_cell_clicked(cell: Cell) -> void:
 	if _level.step(i, j):
 		update_cells()
 		_cell_sound.play()
-		emit_signal("step", _level.steps_count())
+		EventStorage.emit_signal("step_count_updated", _level.steps_count())
 	
 	if _level.is_complete():
 		_level_complete_sound.play()
@@ -120,7 +118,7 @@ func _on_reset() -> void:
 
 func _on_step_back() -> void:
 	if _level.step_back():
-		emit_signal("step", _level.steps_count())
+		EventStorage.emit_signal("step_count_updated", _level.steps_count())
 		update_cells()
 
 

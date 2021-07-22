@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _on_level_loaded():
 	EventStorage.emit_signal("level_changed", GameStorage.game.level, _calculate_progress(GameStorage.game.level_number))
+	EventStorage.emit_signal("game_updated", GameStorage.game)
 
 
 func _on_level_complete(step_count: int, took_tip: bool) -> void:

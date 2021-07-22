@@ -1,18 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Common/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Interface/StepLabel.gd" type="Script" id=4]
-[ext_resource path="res://Game/Interface/TipButton.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Buttons/back_button_active.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Buttons/reset_button_active.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/reset_button.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Buttons/menu_button_active.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Buttons/back_button.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Buttons/menu_button.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Buttons/tip_button.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Buttons/tip_button_active.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Buttons/tip_button_disabled.png" type="Texture" id=14]
 [ext_resource path="res://Game/Interface/GameProgress.gd" type="Script" id=15]
 
 [node name="Interface" type="Control"]
@@ -137,22 +134,9 @@ rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TipButton" type="TextureButton" parent="Bottom/Right"]
+[node name="TipButton" parent="Bottom/Right" instance=ExtResource( 2 )]
 margin_left = 48.0
 margin_right = 148.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_disabled = ExtResource( 14 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 5 )
-[connection signal="init" from="." to="Top/Center/Progress" method="_on_init"]
-[connection signal="reset" from="." to="Top/Left/StepLabel" method="_on_reset"]
-[connection signal="step" from="." to="Top/Left/StepLabel" method="_on_step"]
 [connection signal="pressed" from="Top/Right/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Bottom/Left/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Bottom/Center/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Bottom/Right/TipButton" to="." method="_on_tip_pressed"]
-[connection signal="pressed" from="Bottom/Right/TipButton" to="Bottom/Right/TipButton" method="_on_pressed"]
