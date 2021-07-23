@@ -12,6 +12,5 @@ func _on_menu_open() -> void:
 	popup_centered()
 
 
-func _on_background_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.is_pressed():
-		hide()
+func _on_close() -> void:
+	hide()
