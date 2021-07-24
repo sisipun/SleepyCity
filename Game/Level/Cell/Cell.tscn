@@ -1,12 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/Level/Cell/Cell.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Level/light_window.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Level/dark_border.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Level/light_border.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Level/tip_cell.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Level/dark_window.png" type="Texture" id=6]
-
+[ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/dark_border.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/tip_cell.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 88.0623, 101.072 )
@@ -48,10 +47,10 @@ animations = [ {
 [node name="Cell" type="Area2D"]
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
-_shape_path = NodePath("Shape")
-_sprite_path = NodePath("Sprite")
-_border_path = NodePath("Border")
-_tip_path = NodePath("Tip")
+_shape = NodePath("Shape")
+_sprite = NodePath("Sprite")
+_border = NodePath("Border")
+_tip = NodePath("Tip")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 z_index = -1

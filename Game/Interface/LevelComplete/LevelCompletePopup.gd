@@ -4,14 +4,9 @@ extends Popup
 class_name LevelCompletePopup
 
 
-export (NodePath) var _step_label_path
-export (NodePath) var _bonus_label_path
-export (NodePath) var _bonus_texture_path
-
-
-onready var _step_label: Label = get_node(_step_label_path)
-onready var _bonus_label: Label = get_node(_bonus_label_path)
-onready var _bonus_texture: TextureRect = get_node(_bonus_texture_path)
+export (NodePath) onready var _step_label = get_node(_step_label) as Label
+export (NodePath) onready var _bonus_label = get_node(_bonus_label) as Label
+export (NodePath) onready var _bonus_texture = get_node(_bonus_texture) as TextureRect
 
 
 func _ready() -> void:

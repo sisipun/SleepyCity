@@ -5,23 +5,18 @@ class_name LevelArea
 
 
 export (Resource) var _cell_scene
-export (NodePath) var _level_area_path
-export (NodePath) var _game_area_path
-export (NodePath) var _background_path
-export (NodePath) var _cell_sound_path
-export (NodePath) var _level_complete_sound_path
+export (NodePath) onready var _level_area = get_node(_level_area) as CollisionShape2D
+export (NodePath) onready var _game_area = get_node(_game_area) as CollisionShape2D
+export (NodePath) onready var _background = get_node(_background) as Sprite
+export (NodePath) onready var _cell_sound = get_node(_cell_sound) as AudioStreamPlayer
+export (NodePath) onready var _level_complete_sound = get_node(_level_complete_sound) as  AudioStreamPlayer
+
+
 export (float) var level_area_margin_left = 20
 export (float) var level_area_margin_right = 20
 export (float) var level_area_margin_top = 70
 export (float) var level_area_margin_bottom = 0
 export (float) var cell_margin: = 20
-
-
-onready var _level_area: CollisionShape2D = get_node(_level_area_path)
-onready var _game_area: CollisionShape2D = get_node(_game_area_path)
-onready var _background: Sprite = get_node(_background_path)
-onready var _cell_sound: AudioStreamPlayer = get_node(_cell_sound_path)
-onready var _level_complete_sound: AudioStreamPlayer = get_node(_level_complete_sound_path)
 
 
 var _level: LevelMap

@@ -4,10 +4,7 @@ extends TextureButton
 class_name TipButton
 
 
-export (NodePath) var _count_path
-
-
-onready var _count: Label = get_node(_count_path)
+export (NodePath) onready var _count_label = get_node(_count_label) as Label
 
 
 func _ready():
@@ -19,6 +16,6 @@ func _on_pressed():
 
 
 func _on_game_updated(game: GameInfo):
-	_count.text = str(game.tips_count)
+	_count_label.text = str(game.tips_count)
 	if game.tips_count <= 0:
 		disabled = true

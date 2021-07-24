@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/Interface/TipButton.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Buttons/tip_button.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Buttons/tip_button_active.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Buttons/tip_button_disabled.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Button/tip_button.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Button/tip_button_active.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Button/tip_button_disabled.png" type="Texture" id=4]
 
 [node name="TipButton" type="TextureButton"]
 margin_right = 50.0
@@ -18,7 +18,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_count_path = NodePath("CountArea/CountLabel")
+_count_label = NodePath("CountArea/CountLabel")
 
 [node name="CountArea" type="ColorRect" parent="."]
 anchor_left = 1.0

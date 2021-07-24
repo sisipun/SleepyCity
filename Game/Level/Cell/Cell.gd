@@ -7,16 +7,10 @@ class_name Cell
 signal clicked(cell)
 
 
-export (NodePath) var _shape_path
-export (NodePath) var _sprite_path
-export (NodePath) var _border_path
-export (NodePath) var _tip_path
-
-
-onready var _shape: CollisionShape2D = get_node(_shape_path)
-onready var _sprite: AnimatedSprite = get_node(_sprite_path)
-onready var _border: AnimatedSprite = get_node(_border_path)
-onready var _tip: AnimatedSprite = get_node(_tip_path)
+export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
+export (NodePath) onready var _sprite = get_node(_sprite) as AnimatedSprite
+export (NodePath) onready var _border = get_node(_border) as AnimatedSprite
+export (NodePath) onready var _tip = get_node(_tip) as AnimatedSprite
 
 
 var _alive: bool = false

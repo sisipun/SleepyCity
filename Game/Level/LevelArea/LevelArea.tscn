@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Level/LevelArea/LevelArea.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Level/level_area_background.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sound/light_on.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Sound/success.wav" type="AudioStream" id=4]
+[ext_resource path="res://Asset/Level/level_area_background.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Sound/light_on.wav" type="AudioStream" id=3]
+[ext_resource path="res://Asset/Sound/success.wav" type="AudioStream" id=4]
 [ext_resource path="res://Game/Level/LevelArea/LevelAreaBackground.gd" type="Script" id=5]
 [ext_resource path="res://Game/Level/Cell/Cell.tscn" type="PackedScene" id=6]
 
@@ -17,11 +17,11 @@ b = Vector2( 330.057, 599.269 )
 [node name="LevelArea" type="Area2D"]
 script = ExtResource( 1 )
 _cell_scene = ExtResource( 6 )
-_level_area_path = NodePath("LevelAreaShape")
-_game_area_path = NodePath("GameAreaShape")
-_background_path = NodePath("BackgroundLayer/LevelAreaBackground")
-_cell_sound_path = NodePath("Sound/CellSound")
-_level_complete_sound_path = NodePath("Sound/LevelCompleteSound")
+_level_area = NodePath("LevelAreaShape")
+_game_area = NodePath("GameAreaShape")
+_background = NodePath("BackgroundLayer/LevelAreaBackground")
+_cell_sound = NodePath("Sound/CellSound")
+_level_complete_sound = NodePath("Sound/LevelCompleteSound")
 
 [node name="LevelAreaShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

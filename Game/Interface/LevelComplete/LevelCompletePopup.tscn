@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Level/bonus.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Buttons/next_button.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Buttons/next_button_active.png" type="Texture" id=6]
+[ext_resource path="res://Asset/Level/bonus.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Button/next_button.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Button/next_button_active.png" type="Texture" id=6]
 
 [node name="LevelCompletePopup" type="Popup"]
 anchor_right = 1.0
@@ -13,9 +13,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_step_label_path = NodePath("Menu/CenterLabels/Labels/StepLabel")
-_bonus_label_path = NodePath("Menu/CenterLabels/Labels/BonusLabel")
-_bonus_texture_path = NodePath("Menu/CenterLabels/Labels/BonusTexture")
+_step_label = NodePath("Menu/CenterLabels/Labels/StepLabel")
+_bonus_label = NodePath("Menu/CenterLabels/Labels/BonusLabel")
+_bonus_texture = NodePath("Menu/CenterLabels/Labels/BonusTexture")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0

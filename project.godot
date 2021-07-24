@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GameInfo",
 "language": "GDScript",
-"path": "res://Game/Common/Models/GameInfo.gd"
+"path": "res://Game/Common/Model/GameInfo.gd"
 }, {
 "base": "ProgressBar",
 "class": "GameProgress",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "LevelInfo",
 "language": "GDScript",
-"path": "res://Game/Common/Models/LevelInfo.gd"
+"path": "res://Game/Common/Model/LevelInfo.gd"
 }, {
 "base": "Node",
 "class": "LevelMap",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "LevelResource",
 "language": "GDScript",
-"path": "res://Game/Common/Resources/LevelResource.gd"
+"path": "res://Game/Common/Resource/LevelResource.gd"
 }, {
 "base": "Popup",
 "class": "MenuPopup",
@@ -77,7 +77,7 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "SwitchButton",
 "language": "GDScript",
-"path": "res://Game/Common/Nodes/SwitchButton.gd"
+"path": "res://Game/Common/Node/SwitchButton.gd"
 }, {
 "base": "TextureButton",
 "class": "TipButton",
@@ -109,19 +109,19 @@ run/main_scene="res://Game/Level/Level.tscn"
 
 [audio]
 
-default_bus_layout="res://Assets/Common/default_bus_layout.tres"
+default_bus_layout="res://Asset/Common/default_bus_layout.tres"
 
 [autoload]
 
-EventStorage="*res://Game/Common/Storages/EventStorage.gd"
-LevelInfoParser="*res://Game/Common/Parsers/LevelInfoParser.gd"
-GameInfoParser="*res://Game/Common/Parsers/GameInfoParser.gd"
-GameStorage="*res://Game/Common/Storages/GameStorage.gd"
-LevelGenerator="*res://Game/Common/Utils/LevelGenerator.gd"
-LevelController="*res://Game/Common/Controllers/LevelController.tscn"
-TipController="*res://Game/Common/Controllers/TipController.gd"
-AudioController="*res://Game/Common/Controllers/AudioController.gd"
-BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"
+EventStorage="*res://Game/Common/Storage/EventStorage.gd"
+LevelInfoParser="*res://Game/Common/Parser/LevelInfoParser.gd"
+GameInfoParser="*res://Game/Common/Parser/GameInfoParser.gd"
+GameStorage="*res://Game/Common/Storage/GameStorage.gd"
+LevelGenerator="*res://Game/Common/Util/LevelGenerator.gd"
+LevelController="*res://Game/Common/Controller/LevelController.tscn"
+TipController="*res://Game/Common/Controller/TipController.gd"
+AudioController="*res://Game/Common/Controller/AudioController.gd"
+BackgroundMusic="*res://Game/Common/Controller/BackgroundMusicController.tscn"
 
 [display]
 
@@ -138,7 +138,7 @@ tablet_driver=false
 
 [gui]
 
-theme/custom_font="res://Assets/Common/default.tres"
+theme/custom_font="res://Asset/Common/default.tres"
 
 [input_devices]
 
