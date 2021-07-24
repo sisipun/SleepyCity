@@ -1,7 +1,4 @@
-extends ProgressBar
-
-
-class_name GameProgress
+extends NinePatchRect
 
 
 func _ready() -> void:
@@ -9,4 +6,4 @@ func _ready() -> void:
 
 
 func _on_level_changed(level: LevelInfo, levelResource: LevelResource, progress: int) -> void:
-	value = progress
+	texture = levelResource.background_texture

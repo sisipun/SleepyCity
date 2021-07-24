@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_area_background.png-0314d7ae1fb857fd06bc794a8bee3316.stex"
+path="res://.import/level_area_background.png-be87c623e81c2a4f81073ab87028be50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Level/game_area_background.png"
-dest_files=[ "res://.import/game_area_background.png-0314d7ae1fb857fd06bc794a8bee3316.stex" ]
+source_file="res://Assets/Level/level_area_background.png"
+dest_files=[ "res://.import/level_area_background.png-be87c623e81c2a4f81073ab87028be50.stex" ]
 
 [params]
 

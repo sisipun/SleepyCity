@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Game/Level/Cell.gd"
+"path": "res://Game/Level/Cell/Cell.gd"
 }, {
 "base": "Node",
 "class": "GameInfo",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "LevelArea",
 "language": "GDScript",
-"path": "res://Game/Level/LevelArea.gd"
+"path": "res://Game/Level/LevelArea/LevelArea.gd"
 }, {
 "base": "Popup",
 "class": "LevelCompletePopup",
@@ -47,7 +47,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "LevelMap",
 "language": "GDScript",
-"path": "res://Game/Level/LevelMap.gd"
+"path": "res://Game/Level/LevelArea/LevelMap.gd"
+}, {
+"base": "Resource",
+"class": "LevelResource",
+"language": "GDScript",
+"path": "res://Game/Common/Resources/LevelResource.gd"
 }, {
 "base": "Popup",
 "class": "MenuPopup",
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "LevelCompletePopup": "",
 "LevelInfo": "",
 "LevelMap": "",
+"LevelResource": "",
 "MenuPopup": "",
 "MusicButton": "",
 "SoundButton": "",
@@ -112,7 +118,7 @@ LevelInfoParser="*res://Game/Common/Parsers/LevelInfoParser.gd"
 GameInfoParser="*res://Game/Common/Parsers/GameInfoParser.gd"
 GameStorage="*res://Game/Common/Storages/GameStorage.gd"
 LevelGenerator="*res://Game/Common/Utils/LevelGenerator.gd"
-LevelController="*res://Game/Common/Controllers/LevelController.gd"
+LevelController="*res://Game/Common/Controllers/LevelController.tscn"
 TipController="*res://Game/Common/Controllers/TipController.gd"
 AudioController="*res://Game/Common/Controllers/AudioController.gd"
 BackgroundMusic="*res://Game/Common/BackgroundMusic.tscn"

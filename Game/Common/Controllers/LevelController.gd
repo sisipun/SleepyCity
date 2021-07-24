@@ -1,6 +1,16 @@
 extends Node
 
 
+export (Resource) var light_level_resource = light_level_resource as LevelResource
+export (Resource) var dark_level_resouce = dark_level_resouce as LevelResource
+
+
+onready var level_resources = {
+	LevelInfo.LevelType.LIGHT: light_level_resource,
+	LevelInfo.LevelType.DARK: dark_level_resouce
+}
+
+
 func _ready() -> void:
 	if GameStorage.game.level == null:
 		GameStorage.game.level = _generate_level(LevelInfo.LevelType.DARK)
@@ -11,7 +21,12 @@ func _ready() -> void:
 
 
 func _on_level_loaded():
-	EventStorage.emit_signal("level_changed", GameStorage.game.level, _calculate_progress(GameStorage.game.level_number))
+	EventStorage.emit_signal(
+		"level_changed",
+		GameStorage.game.level, 
+		level_resources[GameStorage.game.level.type],
+		_calculate_progress(GameStorage.game.level_number)
+	)
 	EventStorage.emit_signal("game_updated", GameStorage.game)
 
 

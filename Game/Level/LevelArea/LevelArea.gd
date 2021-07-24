@@ -4,6 +4,7 @@ extends Area2D
 class_name LevelArea
 
 
+export (Resource) var _cell_scene
 export (NodePath) var _level_area_path
 export (NodePath) var _game_area_path
 export (NodePath) var _background_path
@@ -36,7 +37,7 @@ func _ready() -> void:
 	EventStorage.connect("step_back", self, "_on_step_back")
 
 
-func _on_level_changed(info: LevelInfo, progress: int):
+func _on_level_changed(info: LevelInfo, levelResource: LevelResource, progress: int) -> void:
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
@@ -50,12 +51,11 @@ func _on_level_changed(info: LevelInfo, progress: int):
 	var game_area_height: float = _game_area.shape.b.y - _game_area.shape.a.y
 	var cells_width: = (game_area_width - cell_margin * (_level.width() + 1)) / _level.width()
 	var cells_height: = (game_area_height - cell_margin * (_level.height() + 1)) / _level.height()
-	
-	var cell_scene: = load("res://Game/Level/Cell.tscn")
+
 	for i in range(_level.width()):
 		_cells.append([])
 		for j in range(_level.height()):
-			var cell_instance: Cell = cell_scene.instance()
+			var cell_instance: Cell = _cell_scene.instance()
 			add_child(cell_instance)
 			var cell: Cell = cell_instance.init(
 				i,
