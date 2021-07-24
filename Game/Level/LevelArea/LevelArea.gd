@@ -32,7 +32,7 @@ func _ready() -> void:
 	EventStorage.connect("step_back", self, "_on_step_back")
 
 
-func _on_level_changed(info: LevelInfo, levelResource: LevelResource, progress: int) -> void:
+func _on_level_changed(info: LevelInfo, level_resource: LevelResource, progress: int) -> void:
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
@@ -64,7 +64,8 @@ func _on_level_changed(info: LevelInfo, levelResource: LevelResource, progress: 
 					cells_height
 				),
 				false,
-				_level.is_target(i, j)
+				_level.is_target(i, j),
+				level_resource
 			)
 			cell.connect("clicked", self, "_on_cell_clicked")
 			_cells[i].append(cell)

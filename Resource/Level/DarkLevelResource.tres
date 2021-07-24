@@ -1,10 +1,40 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://Game/Common/Resource/LevelResource.gd" type="Script" id=1]
+[ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/dark_border.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/background.png-308c86d32799aebc7a46e460d1776ccf.stex"
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "target",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "alive",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "dead",
+"speed": 60.0
+} ]
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
@@ -14,3 +44,5 @@ load_path = "res://.import/level_area_background.png-be87c623e81c2a4f81073ab8702
 script = ExtResource( 1 )
 background_texture = SubResource( 1 )
 level_background_texture = SubResource( 2 )
+cell_sprite_frames = SubResource( 3 )
+cell_border_sprite_frames = SubResource( 4 )

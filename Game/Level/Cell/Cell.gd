@@ -30,8 +30,9 @@ func init(
 		coord_y: int, 
 		position: Vector2, 
 		size: Vector2, 
-		alive: bool = false,
-		target: bool = false
+		alive: bool,
+		target: bool,
+		level_resource: LevelResource
 	) -> Cell:
 	var sprite_size: Vector2 = _sprite.frames.get_frame(_sprite.animation, 0).get_size()
 	self.position = position
@@ -43,9 +44,11 @@ func init(
 		size.x / (_shape.shape.extents.x * 2), 
 		size.y / (_shape.shape.extents.y * 2)
 	)
-
+	
+	_sprite.frames = level_resource.cell_sprite_frames
+	_border.frames = level_resource.cell_border_sprite_frames
 	_border.animation = "target" if _target else "default"
-	_border.play()	
+	_border.play()
 	_sprite.play()
 	return self
 
