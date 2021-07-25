@@ -25,9 +25,9 @@ func generate_level(number: int, level_type: int) -> LevelInfo:
 		width,
 		height,
 		level_type,
-		[] if level_type == LevelInfo.LevelType.DARK else generated.cells,
+		[],
 		generated.solution,
-		generated.cells if level_type == LevelInfo.LevelType.DARK else []
+		generated.cells
 	)
 
 

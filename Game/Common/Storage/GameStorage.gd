@@ -42,10 +42,50 @@ var game: GameInfo = GameInfo.new({
 		],
 		true
 	),
+	4: LevelInfo.new(
+		3,
+		6,
+		LevelInfo.LevelType.LIGHT,
+		[
+		], 
+		[
+			Vector2(1,2)
+		],
+		[
+			Vector2(0,2), 
+			Vector2(1,1), 
+			Vector2(1,2),
+			Vector2(1,3),
+			Vector2(2,2)
+		],
+		true
+	),
+	5: LevelInfo.new(
+		3,
+		6,
+		LevelInfo.LevelType.LIGHT,
+		[
+		], 
+		[
+			Vector2(1,1),
+			Vector2(1,3)
+		],
+		[
+			Vector2(0,1), 
+			Vector2(0,3),
+			Vector2(1,0),
+			Vector2(1,1),
+			Vector2(1,3),
+			Vector2(1,4),
+			Vector2(2,1),
+			Vector2(2,3),
+		],
+		true
+	),
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels1.0.json"
-var _current_version: String = "1.1"
+var _current_version: String = "1.0"
 
 
 func _ready() -> void:
