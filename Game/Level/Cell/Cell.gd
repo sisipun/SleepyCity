@@ -45,9 +45,13 @@ func init(
 		size.y / (_shape.shape.extents.y * 2)
 	)
 	
-	_sprite.frames = level_resource.cell_sprite_frames
-	_border.frames = level_resource.cell_border_sprite_frames
+	var sprite_frames_index = randi() % len(level_resource.cell_sprite_frames)
+	var border_frames_index = randi() % len(level_resource.cell_border_sprite_frames)
+	
+	_sprite.frames = level_resource.cell_sprite_frames[sprite_frames_index]
+	_border.frames = level_resource.cell_border_sprite_frames[border_frames_index]
 	_border.animation = "target" if _target else "default"
+	
 	_border.play()
 	_sprite.play()
 	return self
