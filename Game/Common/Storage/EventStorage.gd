@@ -12,8 +12,9 @@ signal level_changed(level, level_resource, progress)
 signal sound_switch
 signal music_switch
 
-signal step_count_updated(step_count)
+signal step(step_count)
 signal decrement_tip
 signal step_back
 signal reset
 signal menu_open
+signal menu_closed

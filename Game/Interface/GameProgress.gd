@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgress
 
 
 class_name GameProgress

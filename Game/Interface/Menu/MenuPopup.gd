@@ -14,3 +14,4 @@ func _on_menu_open() -> void:
 
 func _on_close() -> void:
 	hide()
+	EventStorage.emit_signal("menu_closed")

@@ -12,14 +12,14 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Game/Level/Cell/Cell.gd"
+"path": "res://Game/LevelArea/Cell/Cell.gd"
 }, {
 "base": "Node",
 "class": "GameInfo",
 "language": "GDScript",
 "path": "res://Game/Common/Model/GameInfo.gd"
 }, {
-"base": "ProgressBar",
+"base": "TextureProgress",
 "class": "GameProgress",
 "language": "GDScript",
 "path": "res://Game/Interface/GameProgress.gd"
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "LevelArea",
 "language": "GDScript",
-"path": "res://Game/Level/LevelArea/LevelArea.gd"
+"path": "res://Game/LevelArea/LevelArea.gd"
 }, {
 "base": "Popup",
 "class": "LevelCompletePopup",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "LevelMap",
 "language": "GDScript",
-"path": "res://Game/Level/LevelArea/LevelMap.gd"
+"path": "res://Game/LevelArea/LevelMap.gd"
 }, {
 "base": "Resource",
 "class": "LevelResource",
@@ -105,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cells"
-run/main_scene="res://Game/Level/Level.tscn"
+run/main_scene="res://Game/Level.tscn"
 
 [audio]
 

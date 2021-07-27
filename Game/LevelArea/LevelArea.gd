@@ -8,8 +8,6 @@ export (Resource) var _cell_scene
 export (NodePath) onready var _level_area = get_node(_level_area) as CollisionShape2D
 export (NodePath) onready var _game_area = get_node(_game_area) as CollisionShape2D
 export (NodePath) onready var _background = get_node(_background) as Sprite
-export (NodePath) onready var _cell_sound = get_node(_cell_sound) as AudioStreamPlayer
-export (NodePath) onready var _level_complete_sound = get_node(_level_complete_sound) as  AudioStreamPlayer
 
 
 export (float) var level_area_margin_left = 20
@@ -92,11 +90,9 @@ func _on_cell_clicked(cell: Cell) -> void:
 	
 	if _level.step(i, j):
 		update_cells()
-		_cell_sound.play()
-		EventStorage.emit_signal("step_count_updated", _level.steps_count())
+		EventStorage.emit_signal("step", _level.steps_count())
 	
 	if _level.is_complete():
-		_level_complete_sound.play()
 		EventStorage.emit_signal("level_complete", _level.steps_count(), _took_tip)
 	elif _tutorial:
 		show_tip()

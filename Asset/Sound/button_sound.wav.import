@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/light_on.wav-a05b9bb266c397cf05cfb0d33e501d65.sample"
+path="res://.import/button_sound.wav-73f393fba63adb3ccd00a4bf7944e35a.sample"
 
 [deps]
 
-source_file="res://Asset/Sound/light_on.wav"
-dest_files=[ "res://.import/light_on.wav-a05b9bb266c397cf05cfb0d33e501d65.sample" ]
+source_file="res://Asset/Sound/button_sound.wav"
+dest_files=[ "res://.import/button_sound.wav-73f393fba63adb3ccd00a4bf7944e35a.sample" ]
 
 [params]
 

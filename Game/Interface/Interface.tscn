@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://Game/Interface/GameProgress.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Asset/Button/back_button_active.png" type="Texture" id=6]
@@ -50,6 +51,9 @@ anchor_right = 0.5
 margin_left = -100.0
 margin_right = 100.0
 margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Center" type="CenterContainer" parent="Center"]
 margin_right = 200.0
@@ -57,14 +61,11 @@ margin_bottom = 144.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Progress" type="ProgressBar" parent="Center/Center"]
+[node name="GameProgress" parent="Center/Center" instance=ExtResource( 1 )]
+margin_left = 0.0
 margin_top = 57.0
 margin_right = 200.0
 margin_bottom = 87.0
-rect_min_size = Vector2( 200, 30 )
-size_flags_horizontal = 3
-size_flags_vertical = 2
-step = 1.0
 script = ExtResource( 15 )
 
 [node name="Right" type="VBoxContainer" parent="."]
