@@ -105,12 +105,13 @@ func _on_decrement_tip() -> void:
 
 func _on_reset() -> void:
 	if _level.reset():
+		EventStorage.emit_signal("step", _level.steps_count())
 		update_cells()
 
 
 func _on_step_back() -> void:
 	if _level.step_back():
-		EventStorage.emit_signal("step_count_updated", _level.steps_count())
+		EventStorage.emit_signal("step", _level.steps_count())
 		update_cells()
 
 

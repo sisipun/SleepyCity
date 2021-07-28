@@ -12,7 +12,7 @@
 flags = 4
 load_path = "res://.import/background.png-308c86d32799aebc7a46e460d1776ccf.stex"
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
@@ -25,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": false,
@@ -38,7 +38,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": false,
@@ -51,13 +51,13 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=5]
 flags = 4
 load_path = "res://.import/level_area_background.png-be87c623e81c2a4f81073ab87028be50.stex"
 
 [resource]
 script = ExtResource( 1 )
 background_texture = SubResource( 1 )
-level_background_texture = SubResource( 4 )
-cell_sprite_frames = [ SubResource( 5 ), SubResource( 6 ) ]
-cell_border_sprite_frames = [ SubResource( 7 ) ]
+level_background_texture = SubResource( 5 )
+cell_sprite_frames = [ SubResource( 3 ), SubResource( 4 ) ]
+cell_border_sprite_frames = [ SubResource( 2 ) ]

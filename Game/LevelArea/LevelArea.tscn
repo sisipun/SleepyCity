@@ -18,8 +18,6 @@ _cell_scene = ExtResource( 1 )
 _level_area = NodePath("LevelAreaShape")
 _game_area = NodePath("GameAreaShape")
 _background = NodePath("BackgroundLayer/LevelAreaBackground")
-_cell_sound = NodePath("")
-_level_complete_sound = NodePath("")
 
 [node name="LevelAreaShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

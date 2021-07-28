@@ -96,7 +96,7 @@ func step_back() -> bool:
 
 
 func reset() -> bool:
-	if is_complete():
+	if not _steps or is_complete():
 		return false
 	
 	_steps = []
