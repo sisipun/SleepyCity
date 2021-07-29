@@ -44,24 +44,24 @@ margin_bottom = 144.0
 [node name="Center" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -100.0
-margin_right = 100.0
-margin_bottom = 144.0
+margin_left = -150.0
+margin_right = 150.0
+margin_bottom = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Center" type="CenterContainer" parent="Center"]
-margin_right = 200.0
-margin_bottom = 144.0
+margin_right = 300.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameProgress" parent="Center/Center" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 57.0
-margin_right = 200.0
-margin_bottom = 87.0
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 274.0
+margin_bottom = 60.0
 script = ExtResource( 15 )
 
 [node name="Right" type="VBoxContainer" parent="."]
