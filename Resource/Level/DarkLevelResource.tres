@@ -8,10 +8,7 @@
 [ext_resource path="res://Asset/Level/level_area_background.png" type="Texture" id=6]
 [ext_resource path="res://Asset/Level/dark_window_2.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Level/light_window_2.png" type="Texture" id=8]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/background.png-308c86d32799aebc7a46e460d1776ccf.stex"
+[ext_resource path="res://Asset/Level/background.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -28,33 +25,33 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "alive",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "dead",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "alive",
 "speed": 60.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": false,
-"name": "alive",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "dead",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "alive",
 "speed": 60.0
 } ]
 
 [resource]
 script = ExtResource( 1 )
-background_texture = SubResource( 1 )
+background_texture = ExtResource( 9 )
 level_background_texture = ExtResource( 6 )
 cell_sprite_frames = [ SubResource( 3 ), SubResource( 4 ) ]
 cell_border_sprite_frames = [ SubResource( 2 ) ]

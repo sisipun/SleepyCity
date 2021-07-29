@@ -58,9 +58,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameProgress" parent="Center/Center" instance=ExtResource( 1 )]
-margin_left = 24.0
+margin_left = 25.0
 margin_top = 40.0
-margin_right = 274.0
+margin_right = 275.0
 margin_bottom = 60.0
 script = ExtResource( 15 )
 
@@ -94,6 +94,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+
 [connection signal="pressed" from="Left/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]

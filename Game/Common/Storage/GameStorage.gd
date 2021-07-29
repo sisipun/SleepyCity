@@ -84,13 +84,16 @@ var game: GameInfo = GameInfo.new({
 	),
 })
 var _save_path: String = "user://saves/"
-var _save_file: String = "levels1.0.json"
+var _save_file: String = "levels.json"
 var _current_version: String = "1.0"
 
 
 func _ready() -> void:
+	EventStorage.connect("game_updated", self, "_on_game_updated")
+	
 	var file: = File.new()
 	if not file.file_exists(_save_path + _save_file):
+		EventStorage.emit_signal("game_updated", game)		
 		return
 	
 	file.open(_save_path + _save_file, File.READ)
@@ -102,7 +105,6 @@ func _ready() -> void:
 		game = GameInfoParser.read(data)
 	
 	EventStorage.connect("game_updated", self, "_on_game_updated")
-	EventStorage.emit_signal("game_updated", game)
 
 
 func _on_game_updated(game: GameInfo) -> void:
