@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sound_off_button_active.png-f404abde1de0e7fd1bd96fe130005325.stex"
+path="res://.import/moon_progress_bar.png-4e22c06ebc4882ab81fc4d5cb61a0e96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/sound_off_button_active.png"
-dest_files=[ "res://.import/sound_off_button_active.png-f404abde1de0e7fd1bd96fe130005325.stex" ]
+source_file="res://Asset/Button/moon_progress_bar.png"
+dest_files=[ "res://.import/moon_progress_bar.png-4e22c06ebc4882ab81fc4d5cb61a0e96.stex" ]
 
 [params]
 

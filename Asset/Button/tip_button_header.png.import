@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reset_button_active.png-e1fd62cc659f49b52608d9c03b350872.stex"
+path="res://.import/tip_button_header.png-2ea055a077c5772612924861501866e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/reset_button_active.png"
-dest_files=[ "res://.import/reset_button_active.png-e1fd62cc659f49b52608d9c03b350872.stex" ]
+source_file="res://Asset/Button/tip_button_header.png"
+dest_files=[ "res://.import/tip_button_header.png-2ea055a077c5772612924861501866e6.stex" ]
 
 [params]
 

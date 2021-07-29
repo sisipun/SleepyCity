@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tip_button_disabled.png-e26f1308eec2b5423e5cc33be740a5cd.stex"
+path="res://.import/sun_progress_bar.png-ffd7777f121d79b2f6790e0202ff1f89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/tip_button_disabled.png"
-dest_files=[ "res://.import/tip_button_disabled.png-e26f1308eec2b5423e5cc33be740a5cd.stex" ]
+source_file="res://Asset/Button/sun_progress_bar.png"
+dest_files=[ "res://.import/sun_progress_bar.png-ffd7777f121d79b2f6790e0202ff1f89.stex" ]
 
 [params]
 

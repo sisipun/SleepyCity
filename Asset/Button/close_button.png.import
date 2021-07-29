@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sound_on_button_active.png-c513e7e3a0bfe147e0ca080161350418.stex"
+path="res://.import/close_button.png-3324dd1fe683e265649172a5fc386ca5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/sound_on_button_active.png"
-dest_files=[ "res://.import/sound_on_button_active.png-c513e7e3a0bfe147e0ca080161350418.stex" ]
+source_file="res://Asset/Button/close_button.png"
+dest_files=[ "res://.import/close_button.png-3324dd1fe683e265649172a5fc386ca5.stex" ]
 
 [params]
 
