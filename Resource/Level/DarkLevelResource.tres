@@ -1,9 +1,8 @@
-[gd_resource type="Resource" load_steps=13 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://Game/Common/Resource/LevelResource.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/dark_border.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Level/level_area_background.png" type="Texture" id=6]
 [ext_resource path="res://Asset/Level/dark_window_2.png" type="Texture" id=7]
@@ -12,40 +11,27 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "target",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "dead",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "alive",
 "speed": 60.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "dead",
 "speed": 60.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": false,
 "name": "alive",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "dead",
 "speed": 60.0
 } ]
 
@@ -53,5 +39,5 @@ animations = [ {
 script = ExtResource( 1 )
 background_texture = ExtResource( 9 )
 level_background_texture = ExtResource( 6 )
-cell_sprite_frames = [ SubResource( 3 ), SubResource( 4 ) ]
-cell_border_sprite_frames = [ SubResource( 2 ) ]
+cell_sprite_frames = [ SubResource( 2 ), SubResource( 3 ) ]
+cell_border_sprite_texture = ExtResource( 5 )

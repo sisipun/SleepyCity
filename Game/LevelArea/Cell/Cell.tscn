@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/LevelArea/Cell/Cell.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/dark_border.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=5]
-[ext_resource path="res://Asset/Level/tip_cell.png" type="Texture" id=6]
+[ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 88.0623, 101.072 )
@@ -23,53 +22,52 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "target",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="Animation" id=5]
+resource_name = "tip"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 100 ), Vector2( 0, 150 ), Vector2( 0, 100 ) ]
+}
 
 [node name="Cell" type="Area2D"]
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
 _shape = NodePath("Shape")
-_sprite = NodePath("Sprite")
+_body = NodePath("Body")
 _border = NodePath("Border")
 _tip = NodePath("Tip")
+_animation_player = NodePath("CellAnimation")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 z_index = -1
 shape = SubResource( 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Body" type="AnimatedSprite" parent="."]
 position = Vector2( -0.797294, -16.2484 )
 scale = Vector2( 0.786119, 0.774645 )
 z_index = -2
 frames = SubResource( 2 )
 animation = "alive"
 
-[node name="Border" type="AnimatedSprite" parent="."]
+[node name="Border" type="Sprite" parent="."]
 z_index = -2
-frames = SubResource( 3 )
+texture = ExtResource( 5 )
 
-[node name="Tip" type="AnimatedSprite" parent="."]
+[node name="Tip" type="Sprite" parent="."]
 visible = false
-position = Vector2( -0.500003, -0.250005 )
-scale = Vector2( 1.2355, 1.57434 )
-frames = SubResource( 4 )
+position = Vector2( 0, 100 )
+scale = Vector2( 0.21781, 0.277546 )
+texture = ExtResource( 6 )
+
+[node name="CellAnimation" type="AnimationPlayer" parent="."]
+anims/tip = SubResource( 5 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]

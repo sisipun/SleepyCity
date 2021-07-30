@@ -8,9 +8,10 @@ signal clicked(cell)
 
 
 export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
-export (NodePath) onready var _sprite = get_node(_sprite) as AnimatedSprite
-export (NodePath) onready var _border = get_node(_border) as AnimatedSprite
-export (NodePath) onready var _tip = get_node(_tip) as AnimatedSprite
+export (NodePath) onready var _body = get_node(_body) as AnimatedSprite
+export (NodePath) onready var _border = get_node(_border) as Sprite
+export (NodePath) onready var _tip = get_node(_tip) as Sprite
+export (NodePath) onready var _animation_player = get_node(_animation_player) as AnimationPlayer
 
 
 var _alive: bool = false
@@ -34,7 +35,7 @@ func init(
 		target: bool,
 		level_resource: LevelResource
 	) -> Cell:
-	var sprite_size: Vector2 = _sprite.frames.get_frame(_sprite.animation, 0).get_size()
+	var sprite_size: Vector2 = _body.frames.get_frame(_body.animation, 0).get_size()
 	self.position = position
 	_target = target
 	_coord_x = coord_x
@@ -46,31 +47,27 @@ func init(
 	)
 	
 	var sprite_frames_index = randi() % len(level_resource.cell_sprite_frames)
-	var border_frames_index = randi() % len(level_resource.cell_border_sprite_frames)
+	_body.frames = level_resource.cell_sprite_frames[sprite_frames_index]
+	_border.texture = level_resource.cell_border_sprite_texture
 	
-	_sprite.frames = level_resource.cell_sprite_frames[sprite_frames_index]
-	_border.frames = level_resource.cell_border_sprite_frames[border_frames_index]
-	_border.animation = "target" if _target else "default"
-	
-	_border.play()
-	_sprite.play()
+	_body.play()
 	return self
 
 
 func play_tip_effect() -> bool:
-	if _tip.is_playing():
+	if _animation_player.is_playing() and _animation_player.current_animation == "tip":
 		return false
-		
-	_tip.play()
+	
+	_animation_player.play("tip")
 	_tip.show()
 	return true
 
 
 func stop_tip_effect() -> bool:
-	if not _tip.is_playing():
+	if not _animation_player.is_playing() or _animation_player.current_animation != "tip":
 		return false
-		
-	_tip.stop()
+	
+	_animation_player.stop()
 	_tip.hide()
 	return true
 
@@ -86,6 +83,6 @@ func is_alive() -> bool:
 func set_alive(alive: bool) -> void:
 	_alive = alive
 	if _alive:
-		_sprite.animation = "alive"
+		_body.animation = "alive"
 	else:
-		_sprite.animation = "dead"
+		_body.animation = "dead"

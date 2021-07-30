@@ -2,8 +2,6 @@
 
 [ext_resource path="res://Asset/Sound/background_music.wav" type="AudioStream" id=1]
 
-
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
 volume_db = -8.0
