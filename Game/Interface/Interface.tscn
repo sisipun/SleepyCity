@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Interface/GameProgress.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Asset/Button/reset_button.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Button/back_button.png" type="Texture" id=10]
 [ext_resource path="res://Asset/Button/menu_button.png" type="Texture" id=11]
-[ext_resource path="res://Game/Interface/GameProgress.gd" type="Script" id=15]
 
 [node name="Interface" type="Control"]
 anchor_left = -0.00479126
@@ -62,7 +61,6 @@ margin_left = 25.0
 margin_top = 40.0
 margin_right = 275.0
 margin_bottom = 60.0
-script = ExtResource( 15 )
 
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -94,7 +92,6 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
-
 [connection signal="pressed" from="Left/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]

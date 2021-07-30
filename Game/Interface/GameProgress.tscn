@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Asset/Level/dark_progress_bar_back.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Level/dark_progress_bar_front.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/sun_progress_bar.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/moon_progress_bar.png" type="Texture" id=4]
+[ext_resource path="res://Game/Interface/GameProgress.gd" type="Script" id=5]
 
 [node name="GameProgress" type="TextureProgress"]
 margin_left = 1.0
@@ -15,9 +16,12 @@ value = 30.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_left_icon = NodePath("LeftIcon")
+_right_icon = NodePath("RightIcon")
 
 [node name="LeftIcon" type="NinePatchRect" parent="."]
 margin_left = -10.0
@@ -33,9 +37,9 @@ __meta__ = {
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -30.0
-margin_top = -6.0
-margin_right = 3.0
-margin_bottom = 27.0
+margin_top = -9.0
+margin_right = 10.0
+margin_bottom = 31.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

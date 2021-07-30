@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Game/Interface/TipButton.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Button/tip_button.png" type="Texture" id=2]
-[ext_resource path="res://Asset/Button/tip_button_header.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/tip_button_header.png" type="Texture" id=3]
+
 
 [node name="TipButton" type="TextureButton"]
 margin_right = 50.0

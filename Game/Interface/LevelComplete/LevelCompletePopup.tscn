@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
-[ext_resource path="res://Asset/Level/bonus.png" type="Texture" id=2]
-[ext_resource path="res://Asset/Button/back_button.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/complete_level_header.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Button/next_level_button.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/complete_level_background.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/bonus_icon.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Common/title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Asset/Level/bonus_count.png" type="Texture" id=7]
 
 [node name="LevelCompletePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -12,82 +17,134 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_step_label = NodePath("Menu/CenterLabels/Labels/StepLabel")
-_bonus_label = NodePath("Menu/CenterLabels/Labels/BonusLabel")
-_bonus_texture = NodePath("Menu/CenterLabels/Labels/BonusTexture")
+_level_label = NodePath("Panel/Header/LevelLabel")
+_step_label = NodePath("Panel/Menu/Labels/StepLabel")
+_bonus_icon = NodePath("Panel/Menu/Buttons/BonusIcon")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.7818
-margin_top = -2.67267
-margin_right = -1.7818
-margin_bottom = -2.67261
+margin_left = 0.558776
+margin_top = 6.0621
+margin_right = 0.558777
+margin_bottom = 6.06213
 color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -85.0
+margin_right = 150.0
+margin_bottom = 85.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="NinePatchRect" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -69.0
+margin_top = -56.0
+margin_right = 70.0
+margin_bottom = 19.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="Panel/Header"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.5
+margin_right = 42.5
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 margin_left = -110.0
-margin_top = -58.5
+margin_top = -135.0
 margin_right = 110.0
-margin_bottom = 58.5
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterLabels" type="CenterContainer" parent="Menu"]
+[node name="Labels" type="HBoxContainer" parent="Panel/Menu"]
 margin_right = 220.0
-margin_bottom = 27.0
+margin_bottom = 32.0
+alignment = 1
 
-[node name="Labels" type="HBoxContainer" parent="Menu/CenterLabels"]
-margin_left = 56.0
-margin_right = 164.0
-margin_bottom = 27.0
-
-[node name="StepLabel" type="Label" parent="Menu/CenterLabels/Labels"]
-margin_right = 70.0
-margin_bottom = 27.0
+[node name="StepLabel" type="Label" parent="Panel/Menu/Labels"]
+margin_left = 57.0
+margin_right = 162.0
+margin_bottom = 32.0
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 6 )
 text = "%s/%s"
 align = 1
 
-[node name="BonusTexture" type="TextureRect" parent="Menu/CenterLabels/Labels"]
-margin_left = 74.0
-margin_right = 104.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 30, 0 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="BonusLabel" type="Label" parent="Menu/CenterLabels/Labels"]
-margin_left = 108.0
-margin_right = 108.0
-margin_bottom = 27.0
-
-[node name="Buttons" type="HBoxContainer" parent="Menu"]
-margin_top = 47.0
+[node name="Buttons" type="HBoxContainer" parent="Panel/Menu"]
+margin_top = 52.0
 margin_right = 220.0
-margin_bottom = 117.0
+margin_bottom = 122.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="TextureButton" parent="Menu/Buttons"]
-margin_left = 75.0
-margin_right = 145.0
+[node name="NextButton" type="TextureButton" parent="Panel/Menu/Buttons"]
+margin_left = 30.0
+margin_right = 100.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 5
-[connection signal="pressed" from="Menu/Buttons/NextButton" to="." method="_on_next_pressed"]
+
+[node name="BonusIcon" type="NinePatchRect" parent="Panel/Menu/Buttons"]
+margin_left = 120.0
+margin_right = 190.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 5 )
+
+[node name="CountBackground" type="NinePatchRect" parent="Panel/Menu/Buttons/BonusIcon"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.7818
+margin_top = -3.0
+margin_right = 0.218201
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CountLabel" type="Label" parent="Panel/Menu/Buttons/BonusIcon/CountBackground"]
+margin_right = 23.0
+margin_bottom = 23.0
+text = "+1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Panel/Menu/Buttons/NextButton" to="." method="_on_next_pressed"]

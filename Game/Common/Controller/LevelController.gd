@@ -32,6 +32,7 @@ func _on_level_loaded():
 
 func _on_level_complete(step_count: int, took_tip: bool) -> void:
 	var completed: LevelInfo = GameStorage.game.level
+	var completed_number: int = GameStorage.game.level_number
 	var progress: int = _calculate_progress(GameStorage.game.level_number + 1)
 	var earned_bonuses: int = 0
 	
@@ -42,7 +43,13 @@ func _on_level_complete(step_count: int, took_tip: bool) -> void:
 		GameStorage.game.tips_count += earned_bonuses
 	
 	EventStorage.emit_signal("game_updated", GameStorage.game)
-	EventStorage.emit_signal("level_completed", completed, step_count, earned_bonuses)
+	EventStorage.emit_signal(
+		"level_completed", 
+		completed, 
+		completed_number,
+		step_count, 
+		earned_bonuses
+	)
 
 
 func _generate_level(var levelType: int) -> LevelInfo:

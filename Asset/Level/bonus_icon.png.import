@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tip_button_header.png-2ea055a077c5772612924861501866e6.stex"
+path="res://.import/bonus_icon.png-97beb7482fe000f2ca02ae1fff986637.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/tip_button_header.png"
-dest_files=[ "res://.import/tip_button_header.png-2ea055a077c5772612924861501866e6.stex" ]
+source_file="res://Asset/Level/bonus_icon.png"
+dest_files=[ "res://.import/bonus_icon.png-97beb7482fe000f2ca02ae1fff986637.stex" ]
 
 [params]
 

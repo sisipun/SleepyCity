@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tip_cell.png-75bc4d68c114f796e7905e58f217c721.stex"
+path="res://.import/next_level_button.png-8ae75f4f69a518b3ab1eeb46b553861b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/tip_cell.png"
-dest_files=[ "res://.import/tip_cell.png-75bc4d68c114f796e7905e58f217c721.stex" ]
+source_file="res://Asset/Button/next_level_button.png"
+dest_files=[ "res://.import/next_level_button.png-8ae75f4f69a518b3ab1eeb46b553861b.stex" ]
 
 [params]
 
