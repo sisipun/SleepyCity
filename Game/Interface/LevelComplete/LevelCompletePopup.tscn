@@ -9,7 +9,6 @@
 [ext_resource path="res://Asset/Level/bonus_count.png" type="Texture" id=7]
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -147,4 +146,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Panel/Menu/Buttons/NextButton" to="." method="_on_next_pressed"]

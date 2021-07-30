@@ -12,7 +12,7 @@
 [ext_resource path="res://Asset/Level/sun_progress_bar.png" type="Texture" id=10]
 [ext_resource path="res://Asset/Level/dark_progress_bar_back.png" type="Texture" id=12]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": false,
@@ -25,7 +25,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": false,
@@ -38,7 +38,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/moon_progress_bar.png-a555249d115c2e6b6c28e80fc2451c3c.stex"
 
@@ -48,7 +48,7 @@ background_texture = ExtResource( 9 )
 level_background_texture = ExtResource( 6 )
 game_progress_back_texture = ExtResource( 12 )
 game_progress_front_texture = ExtResource( 4 )
-game_progress_left_icon_texture = SubResource( 4 )
+game_progress_left_icon_texture = SubResource( 3 )
 game_progress_right_icon_texture = ExtResource( 10 )
-cell_sprite_frames = [ SubResource( 2 ), SubResource( 3 ) ]
+cell_sprite_frames = [ SubResource( 1 ), SubResource( 2 ) ]
 cell_border_sprite_texture = ExtResource( 5 )

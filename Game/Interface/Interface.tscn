@@ -9,9 +9,9 @@
 
 [node name="Interface" type="Control"]
 anchor_left = -0.00479126
-anchor_top = -0.00159709
+anchor_top = -0.00237112
 anchor_right = 0.995209
-anchor_bottom = 0.998403
+anchor_bottom = 0.997629
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
@@ -52,15 +52,15 @@ __meta__ = {
 
 [node name="Center" type="CenterContainer" parent="Center"]
 margin_right = 300.0
-margin_bottom = 100.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameProgress" parent="Center/Center" instance=ExtResource( 1 )]
 margin_left = 25.0
-margin_top = 40.0
+margin_top = 65.0
 margin_right = 275.0
-margin_bottom = 60.0
+margin_bottom = 85.0
 
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -92,6 +92,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+
 [connection signal="pressed" from="Left/MenuButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]

@@ -93,7 +93,7 @@ func _ready() -> void:
 	
 	var file: = File.new()
 	if not file.file_exists(_save_path + _save_file):
-		EventStorage.emit_signal("game_updated", game)		
+		EventStorage.emit_signal("game_updated", game)	
 		return
 	
 	file.open(_save_path + _save_file, File.READ)
