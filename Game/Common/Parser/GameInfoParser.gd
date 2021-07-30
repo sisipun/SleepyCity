@@ -20,7 +20,7 @@ func read(dict: Dictionary) -> GameInfo:
 	var preset_levels: Dictionary = {}
 	var dict_preset_levels: Dictionary = dict["dict_preset_levels"]
 	for preset_level_key in dict_preset_levels:
-		preset_levels[preset_level_key] = LevelInfoParser.read(dict_preset_levels[preset_level_key])
+		preset_levels[int(preset_level_key)] = LevelInfoParser.read(dict_preset_levels[preset_level_key])
 	var dict_level = dict["level"]
 	return GameInfo.new(
 		preset_levels,
