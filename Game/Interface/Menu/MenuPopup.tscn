@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Asset/Button/sound_off_button.png" type="Texture" id=1]
 [ext_resource path="res://Game/Common/Node/SwitchButton.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Game/Interface/Menu/SoundButton.gd" type="Script" id=4]
 [ext_resource path="res://Asset/Level/menu_background.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Button/music_off_button.png" type="Texture" id=6]
+[ext_resource path="res://Asset/Level/menu_header.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Button/music_on_button.png" type="Texture" id=9]
 [ext_resource path="res://Asset/Button/sound_on_button.png" type="Texture" id=10]
 [ext_resource path="res://Game/Interface/Menu/MenuPopup.gd" type="Script" id=12]
@@ -39,7 +40,6 @@ tracks/1/keys = {
 }
 
 [node name="MenuPopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
@@ -51,8 +51,6 @@ _animation_player = NodePath("MenuAnimation")
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.840881
-margin_right = 0.840881
 color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,6 +66,18 @@ margin_top = -60.0
 margin_right = 125.0
 margin_bottom = 60.0
 texture = ExtResource( 5 )
+
+[node name="Header" type="NinePatchRect" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = -50.0
+margin_right = 60.0
+margin_bottom = 10.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5

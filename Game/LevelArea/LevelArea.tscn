@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/LevelArea/Cell/Cell.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Asset/Level/level_area_background.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/light_level_area_background.png" type="Texture" id=2]
 [ext_resource path="res://Game/LevelArea/LevelAreaBackground.gd" type="Script" id=5]
 [ext_resource path="res://Game/LevelArea/LevelArea.gd" type="Script" id=6]
 
