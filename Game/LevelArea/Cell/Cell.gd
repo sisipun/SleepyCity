@@ -20,10 +20,10 @@ var _coord_x: int = 0
 var _coord_y: int = 0
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventScreenTouch and event.is_pressed():
-		stop_tip_effect()
-		emit_signal("clicked", self)
+func _ready() -> void:
+	EventStorage.connect("reset", self, "_on_reset")
+	EventStorage.connect("step", self, "_on_step")
+	EventStorage.connect("step_back", self, "_on_step_back")
 
 
 func init(
@@ -52,6 +52,23 @@ func init(
 	
 	_body.play()
 	return self
+
+
+func _on_reset():
+	stop_tip_effect()
+
+
+func _on_step(step_count: int):
+	stop_tip_effect()
+
+
+func _on_step_back():
+	stop_tip_effect()
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventScreenTouch and event.is_pressed():
+		emit_signal("clicked", self)
 
 
 func play_tip_effect() -> bool:

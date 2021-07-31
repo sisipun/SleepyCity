@@ -11,18 +11,18 @@ extents = Vector2( 88.0623, 101.072 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "alive",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "dead",
 "speed": 60.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "alive",
+"speed": 60.0
 } ]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "tip"
 loop = true
 tracks/0/type = "value"
@@ -69,5 +69,5 @@ scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
 
 [node name="CellAnimation" type="AnimationPlayer" parent="."]
-anims/tip = SubResource( 5 )
+anims/tip = SubResource( 3 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]
