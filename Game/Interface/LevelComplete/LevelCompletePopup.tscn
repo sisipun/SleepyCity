@@ -9,6 +9,7 @@
 [ext_resource path="res://Asset/Level/bonus_count.png" type="Texture" id=7]
 
 [node name="LevelCompletePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -17,7 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 _level_label = NodePath("Panel/Header/LevelLabel")
-_step_label = NodePath("Panel/Menu/Labels/StepLabel")
+_step_label = NodePath("Panel/Menu/Labels/StarLabel")
 _bonus_icon = NodePath("Panel/Menu/Buttons/BonusIcon")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -90,13 +91,13 @@ margin_right = 220.0
 margin_bottom = 32.0
 alignment = 1
 
-[node name="StepLabel" type="Label" parent="Panel/Menu/Labels"]
-margin_left = 57.0
-margin_right = 162.0
+[node name="StarLabel" type="Label" parent="Panel/Menu/Labels"]
+margin_left = 99.0
+margin_right = 120.0
 margin_bottom = 32.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 6 )
-text = "%s/%s"
+text = "1"
 align = 1
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Menu"]
@@ -146,5 +147,4 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="Panel/Menu/Buttons/NextButton" to="." method="_on_next_pressed"]

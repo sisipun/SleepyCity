@@ -7,6 +7,7 @@ class_name LevelMap
 var _info: LevelInfo
 var _map: Array = []
 var _steps: Array = []
+var _steps_count = 0
 var _solutions: Array = []
 var _completed = false
 var _solution_changed = true
@@ -31,7 +32,7 @@ func height() -> int:
 
 
 func steps_count() -> int:
-	return len(_steps)
+	return _steps_count
 
 
 func solution() -> Vector2:
@@ -64,6 +65,7 @@ func step(i: int, j: int) -> bool:
 	
 	var step: = Vector2(i, j)
 	_steps.push_back(step)
+	_steps_count += 1
 	_step(i, j)
 	
 	var solution_index: = _solutions.find(step) 

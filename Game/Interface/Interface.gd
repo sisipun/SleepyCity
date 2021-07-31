@@ -4,11 +4,6 @@ extends Control
 class_name Interface
 
 
-func _ready() -> void:
-	pass
-	#margin_top = OS.get_window_safe_area().position.y
-
-
 func _on_reset_pressed() -> void:
 	EventStorage.emit_signal("reset")
 

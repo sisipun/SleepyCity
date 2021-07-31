@@ -34,21 +34,28 @@ func _on_level_complete(step_count: int, took_tip: bool) -> void:
 	var completed: LevelInfo = GameStorage.game.level
 	var completed_number: int = GameStorage.game.level_number
 	var progress: int = _calculate_progress(GameStorage.game.level_number + 1)
-	var earned_bonuses: int = 0
+	
+	var stars_count: int = 1
+	if not took_tip or step_count <= 2 * len(completed.solution):
+		stars_count += 1
+	if not took_tip and step_count <= len(completed.solution):
+		stars_count += 1 
+		
+	var earned_bonus: bool = stars_count == 3
 	
 	GameStorage.game.level_number += 1
 	GameStorage.game.level = _generate_level(1 - completed.type if progress == 0  else completed.type)
-	if not took_tip and step_count <= len(completed.solution):
-		earned_bonuses += min(max(completed.width / 3, 1), 3)
-		GameStorage.game.tips_count += earned_bonuses
+	if earned_bonus:
+		GameStorage.game.tips_count += 1
 	
 	EventStorage.emit_signal("game_updated", GameStorage.game)
 	EventStorage.emit_signal(
 		"level_completed", 
-		completed, 
+		completed,
 		completed_number,
-		step_count, 
-		earned_bonuses
+		step_count,
+		stars_count,
+		earned_bonus
 	)
 
 

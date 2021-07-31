@@ -13,17 +13,13 @@ func _ready() -> void:
 	EventStorage.connect("level_completed", self, "_on_level_completed")
 
 
-func _on_level_completed(level: LevelInfo, level_completed: int, step_count: int, earned_bonuses: int) -> void:
+func _on_level_completed(level: LevelInfo, level_number: int, step_count: int, stars_count: int, earned_bonus: bool) -> void:
 	popup_centered()
 	
-	_level_label.text = str(level_completed)
+	_level_label.text = str(level_number)
+	_step_label.text = str(stars_count)
 	
-	_step_label.text = "%d/%d" % [
-		step_count, 
-		min(len(level.solution), step_count)
-	]
-	
-	if earned_bonuses > 0:
+	if earned_bonus:
 		_bonus_icon.show()
 	else:
 		_bonus_icon.hide()

@@ -6,7 +6,7 @@ signal game_saved(game)
 
 signal level_loaded
 signal level_complete(steps_count, took_tip)
-signal level_completed(level, level_number, step_count, earned_bonuses)
+signal level_completed(level, level_number, step_count, stars_count, earned_bonus)
 signal level_changed(level, level_resource, progress)
 
 signal sound_switch
