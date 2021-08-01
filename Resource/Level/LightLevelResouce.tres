@@ -10,11 +10,11 @@
 [ext_resource path="res://Asset/Level/light_progress_bar_back.png" type="Texture" id=10]
 [ext_resource path="res://Asset/Level/sun_progress_bar.png" type="Texture" id=11]
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/background.png-3e11db30e1a5aaf41d2d6ad2a41437a7.stex"
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": false,
@@ -27,7 +27,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
@@ -40,7 +40,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=4]
 flags = 4
 load_path = "res://.import/moon_progress_bar.png-a555249d115c2e6b6c28e80fc2451c3c.stex"
 
@@ -50,11 +50,11 @@ load_path = "res://.import/level_area_background.png-bde3ced836b6061897539692f7f
 
 [resource]
 script = ExtResource( 1 )
-background_texture = SubResource( 4 )
+background_texture = SubResource( 1 )
 level_background_texture = SubResource( 5 )
 game_progress_back_texture = ExtResource( 10 )
 game_progress_front_texture = ExtResource( 5 )
 game_progress_left_icon_texture = ExtResource( 11 )
-game_progress_right_icon_texture = SubResource( 3 )
-cell_sprite_frames = [ SubResource( 1 ), SubResource( 2 ) ]
+game_progress_right_icon_texture = SubResource( 4 )
+cell_sprite_frames = [ SubResource( 2 ), SubResource( 3 ) ]
 cell_border_sprite_texture = ExtResource( 4 )

@@ -44,9 +44,9 @@ anchor_top = -0.000398916
 anchor_bottom = 0.999601
 
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 3 )]
+visible = false
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
-visible = false
 
 [node name="SoundLayer" type="CanvasLayer" parent="."]
 

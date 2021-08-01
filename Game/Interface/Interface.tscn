@@ -27,18 +27,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="TextureButton" parent="Left"]
+[node name="TipButton" parent="Left" instance=ExtResource( 2 )]
 margin_right = 70.0
 margin_bottom = 70.0
+
+[node name="MenuButton" type="TextureButton" parent="Left"]
+margin_top = 74.0
+margin_right = 70.0
+margin_bottom = 144.0
 rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 5
-
-[node name="TipButton" parent="Left" instance=ExtResource( 2 )]
-margin_top = 74.0
-margin_right = 70.0
-margin_bottom = 144.0
 
 [node name="Center" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -73,9 +73,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StepBackButton" type="TextureButton" parent="Right"]
+[node name="ResetButton" type="TextureButton" parent="Right"]
 margin_right = 70.0
 margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="StepBackButton" type="TextureButton" parent="Right"]
+margin_top = 74.0
+margin_right = 70.0
+margin_bottom = 144.0
 rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 10 )
 expand = true
@@ -83,16 +92,6 @@ stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ResetButton" type="TextureButton" parent="Right"]
-margin_top = 74.0
-margin_right = 70.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 70, 70 )
-texture_normal = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-
 [connection signal="pressed" from="Left/MenuButton" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Right/StepBackButton" to="." method="_on_step_back_pressed"]
