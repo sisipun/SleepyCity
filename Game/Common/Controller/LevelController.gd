@@ -36,7 +36,7 @@ func _on_level_complete(step_count: int, took_tip: bool) -> void:
 	var progress: int = _calculate_progress(GameStorage.game.level_number + 1)
 	
 	var stars_count: int = 1
-	if not took_tip or step_count <= 2 * len(completed.solution):
+	if step_count <= 2 * len(completed.solution):
 		stars_count += 1
 	if not took_tip and step_count <= len(completed.solution):
 		stars_count += 1 

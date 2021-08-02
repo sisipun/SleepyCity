@@ -3,7 +3,7 @@ extends Popup
 
 class_name LevelCompletePopup
 
-
+export (NodePath) onready var _animation_player = get_node(_animation_player) as AnimationPlayer
 export (NodePath) onready var _level_label = get_node(_level_label) as Label
 export (NodePath) onready var _bonus_icon = get_node(_bonus_icon) as NinePatchRect
 export (Array, NodePath) var _stars
@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _on_level_completed(level: LevelInfo, level_number: int, step_count: int, stars_count: int, earned_bonus: bool) -> void:
 	popup_centered()
+	_animation_player.play("popup")
 	
 	_level_label.text = str(level_number)
 	
