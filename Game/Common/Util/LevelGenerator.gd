@@ -14,7 +14,7 @@ func generate_level(number: int, level_type: int) -> LevelInfo:
 	var size_factor: float = sqrt(number * 0.3 + 10)
 	var solution_size_factor: float = 0.2 * size_factor * size_factor
 	
-	var width: int = min(floor(size_factor), 10)
+	var width: int = min(floor(size_factor), 6)
 	var height = width * 2
 	var rand_part = (randi() % 3)
 	var solution_size: int = rand_part + min(max(ceil(solution_size_factor), 3), 20) - 1

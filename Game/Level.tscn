@@ -35,7 +35,7 @@ __meta__ = {
 
 [node name="LevelArea" parent="." instance=ExtResource( 1 )]
 position = Vector2( 20, 100 )
-cell_margin = 30.0
+cell_margin = 15.0
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
@@ -44,7 +44,6 @@ anchor_top = -0.000398916
 anchor_bottom = 0.999601
 
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 3 )]
-visible = false
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
 
