@@ -5,10 +5,10 @@
 [ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/dark_progress_bar_front.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/dark_border.png" type="Texture" id=5]
-[ext_resource path="res://Asset/Level/dark_level_background.png.png" type="Texture" id=6]
+[ext_resource path="res://Asset/Level/dark_level_area_background.png.png" type="Texture" id=6]
 [ext_resource path="res://Asset/Level/dark_window_2.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Level/light_window_2.png" type="Texture" id=8]
-[ext_resource path="res://Asset/Level/dark_level_area_background.png.png" type="Texture" id=9]
+[ext_resource path="res://Asset/Level/dark_level_background.png.png" type="Texture" id=9]
 [ext_resource path="res://Asset/Level/sun_progress_bar.png" type="Texture" id=10]
 [ext_resource path="res://Asset/Level/dark_progress_bar_back.png" type="Texture" id=12]
 
@@ -44,8 +44,8 @@ load_path = "res://.import/moon_progress_bar.png-a555249d115c2e6b6c28e80fc2451c3
 
 [resource]
 script = ExtResource( 1 )
-background_texture = ExtResource( 6 )
-level_background_texture = ExtResource( 9 )
+background_texture = ExtResource( 9 )
+level_background_texture = ExtResource( 6 )
 game_progress_back_texture = ExtResource( 12 )
 game_progress_front_texture = ExtResource( 4 )
 game_progress_left_icon_texture = SubResource( 3 )
