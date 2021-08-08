@@ -6,4 +6,5 @@ func _ready() -> void:
 
 
 func _on_level_changed(level: LevelInfo, level_resource: LevelResource, progress: int) -> void:
-	texture = level_resource.level_background_texture
+	var level_background_index = randi() % len(level_resource.level_background_textures)
+	texture = level_resource.level_background_textures[level_background_index]

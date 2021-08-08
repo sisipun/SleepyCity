@@ -5,7 +5,7 @@ class_name LevelResource
 
 
 export (Texture) var background_texture 
-export (Texture) var level_background_texture
+export (Array, Texture) var level_background_textures
 
 export (Texture) var game_progress_back_texture
 export (Texture) var game_progress_front_texture

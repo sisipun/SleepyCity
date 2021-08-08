@@ -16,11 +16,11 @@ func _ready() -> void:
 		GameStorage.game.level = _generate_level(LevelInfo.LevelType.DARK)
 		EventStorage.emit_signal("game_updated", GameStorage.game)
 	
-	EventStorage.connect("level_loaded", self, "_on_level_loaded")
+	EventStorage.connect("next_level", self, "_on_next_level")
 	EventStorage.connect("level_complete", self, "_on_level_complete")
 
 
-func _on_level_loaded():
+func _on_next_level():
 	EventStorage.emit_signal(
 		"level_changed",
 		GameStorage.game.level, 

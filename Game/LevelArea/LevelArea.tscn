@@ -17,7 +17,13 @@ script = ExtResource( 6 )
 _cell_scene = ExtResource( 1 )
 _level_area = NodePath("LevelAreaShape")
 _game_area = NodePath("GameAreaShape")
-_background = NodePath("BackgroundLayer/LevelAreaBackground")
+_background = NodePath("LevelAreaBackground")
+_tween = NodePath("LevelAreaAnimation")
+
+[node name="LevelAreaBackground" type="Sprite" parent="."]
+z_index = -2
+texture = ExtResource( 2 )
+script = ExtResource( 5 )
 
 [node name="LevelAreaShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -25,9 +31,4 @@ shape = SubResource( 1 )
 [node name="GameAreaShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="LevelAreaBackground" type="Sprite" parent="BackgroundLayer"]
-texture = ExtResource( 2 )
-script = ExtResource( 5 )
+[node name="LevelAreaAnimation" type="Tween" parent="."]

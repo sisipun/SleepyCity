@@ -46,8 +46,8 @@ func init(
 		size.y / (_shape.shape.extents.y * 2)
 	)
 	
-	var sprite_frames_index = randi() % len(level_resource.cell_sprite_frames)
-	_body.frames = level_resource.cell_sprite_frames[sprite_frames_index]
+	var sprite_index = randi() % len(level_resource.cell_sprite_frames)
+	_body.frames = level_resource.cell_sprite_frames[sprite_index]
 	_border.texture = level_resource.cell_border_sprite_texture
 	
 	_body.play()
