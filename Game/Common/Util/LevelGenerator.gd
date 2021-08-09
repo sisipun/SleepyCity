@@ -11,16 +11,18 @@ class GeneratedLevel:
 
 
 func generate_level(number: int, level_type: int) -> LevelInfo:
-	var size_factor: float = sqrt(number * 0.3 + 10)
+	randomize()
+	
+	var size_factor: float = sqrt(max(number - 10, 1) * 0.3 + 10)
 	var solution_size_factor: float = 0.2 * size_factor * size_factor
 	
 	var width: int = min(floor(size_factor), 6)
-	var height = width * 2
+	var height = width * 2 - (randi() % 2)
 	var rand_part = (randi() % 3)
 	var solution_size: int = rand_part + min(max(ceil(solution_size_factor), 3), 20) - 1
 	
 	var level: LevelInfo
-	var generated: GeneratedLevel = _generate_level(width, width * 2, solution_size)
+	var generated: GeneratedLevel = _generate_level(width, height, solution_size)
 	return LevelInfo.new(
 		width,
 		height,
@@ -32,7 +34,6 @@ func generate_level(number: int, level_type: int) -> LevelInfo:
 
 
 func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
-	randomize()
 	var map: = []
 	for i in range(width):
 		map.push_back([])

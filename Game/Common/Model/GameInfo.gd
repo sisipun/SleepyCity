@@ -16,7 +16,7 @@ func _init(
 	preset_levels: Dictionary,
 	level: LevelInfo = null,
 	level_number: int = 1,
-	tips_count: int = 20, 
+	tips_count: int = 3, 
 	sound: bool = true, 
 	music: bool = true
 ) -> void:

@@ -41,6 +41,7 @@ expand = true
 stretch_mode = 5
 
 [node name="Center" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -150.0

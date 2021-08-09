@@ -153,6 +153,9 @@ func init(info: LevelInfo, level_resource: LevelResource):
 			_cells[i].append(cell)
 	update_cells()
 	
+	var level_background_index = randi() % len(level_resource.level_background_textures)
+	_background.texture = level_resource.level_background_textures[level_background_index]
+	
 	if _tutorial:
 		show_tip()
 	

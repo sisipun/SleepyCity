@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/LevelArea/Cell/Cell.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/cell_light_mask.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
 
@@ -46,6 +47,7 @@ _body = NodePath("Body")
 _border = NodePath("Border")
 _tip = NodePath("Tip")
 _animation_player = NodePath("CellAnimation")
+_ligth = NodePath("Light")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 z_index = -1
@@ -67,6 +69,12 @@ visible = false
 position = Vector2( 0, 100 )
 scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
+
+[node name="Light" type="Light2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+color = Color( 0.94902, 0.917647, 0.133333, 1 )
+energy = 0.7
 
 [node name="CellAnimation" type="AnimationPlayer" parent="."]
 anims/tip = SubResource( 3 )

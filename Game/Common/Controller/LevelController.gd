@@ -44,7 +44,7 @@ func _on_level_complete(step_count: int, took_tip: bool) -> void:
 	var earned_bonus: bool = stars_count == 3
 	
 	GameStorage.game.level_number += 1
-	GameStorage.game.level = _generate_level(1 - completed.type if progress == 0  else completed.type)
+	GameStorage.game.level = _generate_level(LevelInfo.LevelType.DARK)
 	if earned_bonus:
 		GameStorage.game.tips_count += 1
 	

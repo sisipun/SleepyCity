@@ -4,7 +4,7 @@ extends Node
 var game: GameInfo = GameInfo.new({
 	1: LevelInfo.new(
 		3,
-		6,
+		5,
 		LevelInfo.LevelType.DARK,
 		[
 		], 
@@ -22,7 +22,7 @@ var game: GameInfo = GameInfo.new({
 	),
 	2: LevelInfo.new(
 		3,
-		6,
+		5,
 		LevelInfo.LevelType.DARK,
 		[
 		], 
@@ -39,48 +39,156 @@ var game: GameInfo = GameInfo.new({
 			Vector2(1,4),
 			Vector2(2,1),
 			Vector2(2,3),
-		],
-		true
+		]
 	),
-	4: LevelInfo.new(
+	3: LevelInfo.new(
 		3,
-		6,
-		LevelInfo.LevelType.LIGHT,
+		5,
+		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
-			Vector2(1,2)
+			Vector2(1,2),
+			Vector2(1,3)
 		],
 		[
 			Vector2(0,2), 
-			Vector2(1,1), 
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(2,2)
-		],
-		true
+			Vector2(0,3),
+			Vector2(1,1),
+			Vector2(1,4),
+			Vector2(2,2),
+			Vector2(2,3),
+		]
 	),
-	5: LevelInfo.new(
+	4: LevelInfo.new(
 		3,
-		6,
-		LevelInfo.LevelType.LIGHT,
+		5,
+		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
 			Vector2(1,1),
+			Vector2(1,2),
 			Vector2(1,3)
 		],
 		[
 			Vector2(0,1), 
+			Vector2(0,2), 
+			Vector2(0,3),
+			Vector2(1,0),
+			Vector2(1,2),
+			Vector2(1,4),
+			Vector2(2,1),
+			Vector2(2,2),
+			Vector2(2,3),
+		]
+	),
+	5: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(0,2),
+			Vector2(1,2),
+			Vector2(2,2)
+		],
+		[
+			Vector2(0,1), 
+			Vector2(0,2), 
+			Vector2(0,3),
+			Vector2(1,1),
+			Vector2(1,2),
+			Vector2(1,3),
+			Vector2(2,1),
+			Vector2(2,2),
+			Vector2(2,3),
+		]
+	),
+	6: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(0,2),
+			Vector2(1,2),
+		],
+		[
+			Vector2(0,1), 
+			Vector2(0,3),
+			Vector2(1,1),
+			Vector2(1,3),
+		]
+	),
+	7: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(0,2),
+			Vector2(2,2),
+		],
+		[
+			Vector2(0,1), 
+			Vector2(0,3),
+			Vector2(2,1),
+			Vector2(2,3),
+		]
+	),
+	8: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(0,0),
+			Vector2(0,4),
+			Vector2(2,0),
+			Vector2(2,4),
+		],
+		[
+			Vector2(0,0), 
+			Vector2(0,1), 
+			Vector2(0,3),
+			Vector2(0,4),
+			Vector2(2,0),
+			Vector2(2,1),
+			Vector2(2,3),
+			Vector2(2,4),
+		]
+	),
+	9: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(0,0),
+			Vector2(2,1),
+			Vector2(0,2),
+			Vector2(2,3),
+			Vector2(0,4),
+		],
+		[
+			Vector2(0,1),
+			Vector2(0,2),
 			Vector2(0,3),
 			Vector2(1,0),
 			Vector2(1,1),
+			Vector2(1,2),
 			Vector2(1,3),
 			Vector2(1,4),
 			Vector2(2,1),
+			Vector2(2,2),
 			Vector2(2,3),
-		],
-		true
+		]
 	),
 })
 var _save_path: String = "user://saves/"

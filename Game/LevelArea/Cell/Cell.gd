@@ -12,6 +12,7 @@ export (NodePath) onready var _body = get_node(_body) as AnimatedSprite
 export (NodePath) onready var _border = get_node(_border) as Sprite
 export (NodePath) onready var _tip = get_node(_tip) as Sprite
 export (NodePath) onready var _animation_player = get_node(_animation_player) as AnimationPlayer
+export (NodePath) onready var _ligth = get_node(_ligth) as Light2D
 
 
 var _alive: bool = false
@@ -100,6 +101,8 @@ func is_alive() -> bool:
 func set_alive(alive: bool) -> void:
 	_alive = alive
 	if _alive:
+		_ligth.enabled = true
 		_body.animation = "alive"
 	else:
+		_ligth.enabled = false
 		_body.animation = "dead"

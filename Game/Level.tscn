@@ -17,7 +17,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "change_level"
 tracks/0/type = "value"
-tracks/0/path = NodePath("LevelArea:position")
+tracks/0/path = NodePath("CanvasLayer/LevelArea:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,15 +48,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LevelArea" parent="." instance=ExtResource( 1 )]
+[node name="LevelAreaLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="LevelArea" parent="LevelAreaLayer" instance=ExtResource( 1 )]
 position = Vector2( 20, 100 )
-level_area_margin_left = 20.0
-level_area_margin_right = 20.0
-level_area_margin_top = 70.0
-level_area_margin_bottom = 0.0
+_level_area = NodePath("../../LevelAreaLayer/LevelArea/LevelAreaShape")
+_game_area = NodePath("../../LevelAreaLayer/LevelArea/GameAreaShape")
+_background = NodePath("../../LevelAreaLayer/LevelArea/LevelAreaBackground")
+_tween = NodePath("../../LevelAreaLayer/LevelArea/LevelAreaAnimation")
 cell_margin = 15.0
 
-[node name="LevelAreaAnimation" type="AnimationPlayer" parent="."]
+[node name="LevelAreaAnimation" type="AnimationPlayer" parent="LevelAreaLayer"]
 anims/change_level = SubResource( 1 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
