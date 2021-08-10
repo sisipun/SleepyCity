@@ -157,6 +157,7 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	_background.texture = level_resource.level_background_textures[level_background_index]
 	
 	if _tutorial:
+		EventStorage.emit_signal("tutorial_open")
 		show_tip()
 	
 	_initialized = true

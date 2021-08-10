@@ -19,3 +19,5 @@ signal step_back
 signal reset
 signal menu_open
 signal menu_closed
+signal tutorial_open
+signal tutorial_closed

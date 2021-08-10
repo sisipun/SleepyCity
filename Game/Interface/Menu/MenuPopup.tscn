@@ -139,6 +139,9 @@ margin_bottom = 20.0
 texture_normal = ExtResource( 13 )
 expand = true
 stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuAnimation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )

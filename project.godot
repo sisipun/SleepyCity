@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "ButtonSound",
+"language": "GDScript",
+"path": "res://Game/Sound/ButtonSound.gd"
+}, {
 "base": "Area2D",
 "class": "Cell",
 "language": "GDScript",
@@ -83,8 +88,14 @@ _global_script_classes=[ {
 "class": "TipButton",
 "language": "GDScript",
 "path": "res://Game/Interface/TipButton.gd"
+}, {
+"base": "Popup",
+"class": "TutorialPopup",
+"language": "GDScript",
+"path": "res://Game/Interface/Tutorial/TutorialPopup.gd"
 } ]
 _global_script_class_icons={
+"ButtonSound": "",
 "Cell": "",
 "GameInfo": "",
 "GameProgress": "",
@@ -99,7 +110,8 @@ _global_script_class_icons={
 "SoundButton": "",
 "StepLabel": "",
 "SwitchButton": "",
-"TipButton": ""
+"TipButton": "",
+"TutorialPopup": ""
 }
 
 [application]

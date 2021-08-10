@@ -190,10 +190,41 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,3),
 		]
 	),
+	10: LevelInfo.new(
+		3,
+		5,
+		LevelInfo.LevelType.DARK,
+		[
+		], 
+		[
+			Vector2(1,0),
+			Vector2(1,1),
+			Vector2(1,2),
+			Vector2(1,3),
+			Vector2(1,4),
+		],
+		[
+			Vector2(0,0),
+			Vector2(0,1),
+			Vector2(0,2),
+			Vector2(0,3),
+			Vector2(0,4),
+			Vector2(1,0),
+			Vector2(1,1),
+			Vector2(1,2),
+			Vector2(1,3),
+			Vector2(1,4),
+			Vector2(2,0),
+			Vector2(2,1),
+			Vector2(2,2),
+			Vector2(2,3),
+			Vector2(2,4),
+		]
+	),
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels.json"
-var _current_version: String = "1.0"
+var _current_version: String = "1.1"
 
 
 func _ready() -> void:
