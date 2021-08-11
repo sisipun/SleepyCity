@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark_window.png-6dda23c1197153bbb19799a596dda188.stex"
+path="res://.import/bonus_icon_header.png-103f3865d6ab8f14870acbcd37cb321b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/dark_window.png"
-dest_files=[ "res://.import/dark_window.png-6dda23c1197153bbb19799a596dda188.stex" ]
+source_file="res://Asset/Level/bonus_icon_header.png"
+dest_files=[ "res://.import/bonus_icon_header.png-103f3865d6ab8f14870acbcd37cb321b.stex" ]
 
 [params]
 

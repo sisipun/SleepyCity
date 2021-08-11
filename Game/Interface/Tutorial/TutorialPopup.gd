@@ -11,7 +11,7 @@ func _ready() -> void:
 	EventStorage.connect("tutorial_open", self, "_on_tutorial_open")
 
 
-func _on_tutorial_open() -> void:
+func _on_tutorial_open(play_sound) -> void:
 	popup_centered()
 	_animation_player.play("popup")
 

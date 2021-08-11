@@ -4,9 +4,9 @@ extends Area2D
 class_name LevelArea
 
 
-export (Resource) var _cell_scene
-export (NodePath) onready var _level_area = get_node(_level_area) as CollisionShape2D
-export (NodePath) onready var _game_area = get_node(_game_area) as CollisionShape2D
+export (Resource) var _window_scene
+export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
+export (NodePath) onready var _game_area_shape = get_node(_game_area_shape) as CollisionShape2D
 export (NodePath) onready var _background = get_node(_background) as Sprite
 export (NodePath) onready var _tween = get_node(_tween) as Tween
 
@@ -15,11 +15,11 @@ export (float) var level_area_margin_left = 20
 export (float) var level_area_margin_right = 20
 export (float) var level_area_margin_top = 70
 export (float) var level_area_margin_bottom = 0
-export (float) var cell_margin: = 20
+export (float) var window_margin: = 20
 
 
 var _level: LevelMap
-var _cells: Array = []
+var _windows: Array = []
 var _took_tip: bool = false
 var _tutorial: bool = false
 var _level_area_width: float
@@ -40,12 +40,16 @@ func _ready() -> void:
 	position.x = level_area_margin_left + _level_area_width / 2
 	position.y = level_area_margin_top + _level_area_height / 2
 	scale = Vector2(
-		_level_area_width / (_level_area.shape.extents.x * 2), 
-		_level_area_height / (_level_area.shape.extents.y * 2)
+		_level_area_width / (_shape.shape.extents.x * 2), 
+		_level_area_height / (_shape.shape.extents.y * 2)
 	)
 
 
-func _on_level_changed(info: LevelInfo, level_resource: LevelResource, progress: int) -> void:
+func _on_level_changed(
+	info: LevelInfo, 
+	level_resource: LevelResource, 
+	progress: int
+) -> void:
 	var initial_x = position.x
 	if not _initialized:
 		init(info, level_resource)
@@ -78,36 +82,35 @@ func _on_level_changed(info: LevelInfo, level_resource: LevelResource, progress:
 	_tween.start()
 
 
-func _on_cell_clicked(cell: Cell) -> void:
-	var coordinates = cell.get_coordinates()
+func _on_window_clicked(window: Window) -> void:
+	var coordinates = window.get_coordinates()
 	var i: int = coordinates.x
 	var j: int = coordinates.y
 	
 	if _level.step(i, j):
-		update_cells()
+		update_windows()
 		EventStorage.emit_signal("step", _level.steps_count())
 	
 	if _level.is_complete():
-		EventStorage.emit_signal("level_complete", _level.steps_count(), _took_tip)
+		EventStorage.emit_signal("complete_current_level")
 	elif _tutorial:
 		show_tip()
 
 
 func _on_decrement_tip() -> void:
 	show_tip()
-	_took_tip = true
 
 
 func _on_reset() -> void:
 	if _level.reset():
 		EventStorage.emit_signal("step", _level.steps_count())
-		update_cells()
+		update_windows()
 
 
 func _on_step_back() -> void:
 	if _level.step_back():
 		EventStorage.emit_signal("step", _level.steps_count())
-		update_cells()
+		update_windows()
 
 
 func clear() -> void:
@@ -115,61 +118,67 @@ func clear() -> void:
 	_tutorial = false
 	_initialized = false
 
-	for i in len(_cells):
-		for j in len(_cells[i]):
-			remove_child(_cells[i][j])
-	_cells = []
+	for i in len(_windows):
+		for j in len(_windows[i]):
+			remove_child(_windows[i][j])
+	_windows = []
 
 
 func init(info: LevelInfo, level_resource: LevelResource):
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
-	var game_area_width: float = _game_area.shape.b.x - _game_area.shape.a.x
-	var game_area_height: float = _game_area.shape.b.y - _game_area.shape.a.y
-	var cells_width: float = (game_area_width - cell_margin * (_level.width() + 1)) / _level.width()
-	var cells_height: float = (game_area_height - cell_margin * (_level.height() + 1)) / _level.height()
+	var game_area_width: float = _game_area_shape.shape.b.x - _game_area_shape.shape.a.x
+	var game_area_height: float = _game_area_shape.shape.b.y - _game_area_shape.shape.a.y
+	var windows_width: float = (game_area_width - window_margin * (_level.width() + 1)) / _level.width()
+	var windows_height: float = (game_area_height - window_margin * (_level.height() + 1)) / _level.height()
+	
+	var window_sprite_frames_index = randi() % len(level_resource.window_sprite_frames)
+	var window_border_sprite_texute_index = randi() % len(level_resource.window_border_sprite_texture)
+	var window_sprite_frames = level_resource.window_sprite_frames[window_sprite_frames_index]
+	var window_border_sprite_texure = level_resource.window_border_sprite_texture[window_border_sprite_texute_index]
 	for i in range(_level.width()):
-		_cells.append([])
+		_windows.append([])
 		for j in range(_level.height()):
-			var cell_instance: Cell = _cell_scene.instance()
-			add_child(cell_instance)
-			var cell: Cell = cell_instance.init(
+			var window_instance: Window = _window_scene.instance()
+			add_child(window_instance)
+			var window: Window = window_instance.init(
 				i,
 				j,
 				Vector2(
-					_game_area.shape.a.x + cell_margin + (cells_width / 2) + i * (cell_margin + cells_width), 
-					_game_area.shape.a.y + cell_margin + (cells_height / 2) + j * (cell_margin + cells_height)
+					_game_area_shape.shape.a.x + window_margin + (windows_width / 2) + i * (window_margin + windows_width), 
+					_game_area_shape.shape.a.y + window_margin + (windows_height / 2) + j * (window_margin + windows_height)
 				), 
 				Vector2(
-					cells_width, 
-					cells_height
+					windows_width, 
+					windows_height
 				),
 				false,
 				_level.is_target(i, j),
-				level_resource
+				window_sprite_frames,
+				window_border_sprite_texure
 			)
-			cell.connect("clicked", self, "_on_cell_clicked")
-			_cells[i].append(cell)
-	update_cells()
+			window.connect("clicked", self, "_on_window_clicked")
+			_windows[i].append(window)
+	update_windows()
 	
-	var level_background_index = randi() % len(level_resource.level_background_textures)
-	_background.texture = level_resource.level_background_textures[level_background_index]
+	var level_background_index = randi() % len(level_resource.house_textures)
+	_background.texture = level_resource.house_textures[level_background_index]
 	
 	if _tutorial:
-		EventStorage.emit_signal("tutorial_open")
+		EventStorage.emit_signal("tutorial_open", false)
 		show_tip()
 	
 	_initialized = true
 
 
-func update_cells():
+func update_windows():
 	for i in range(_level.width()):
 		for j in range(_level.height()):
-			_cells[i][j].set_alive(_level.is_alive(i, j))
+			_windows[i][j].set_on(_level.is_on(i, j))
 
 
 func show_tip():
 	var tip: Vector2 = _level.solution()
-	var cell: Cell = _cells[tip.x][tip.y]
-	return cell.play_tip_effect()
+	var window: Window = _windows[tip.x][tip.y]
+	return window.play_tip_effect()

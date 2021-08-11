@@ -41,6 +41,7 @@ tracks/1/keys = {
 }
 
 [node name="MenuPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
@@ -66,6 +67,7 @@ margin_left = -125.0
 margin_top = -60.0
 margin_right = 125.0
 margin_bottom = 60.0
+rect_min_size = Vector2( 250, 150 )
 texture = ExtResource( 5 )
 
 [node name="Header" type="NinePatchRect" parent="Panel"]

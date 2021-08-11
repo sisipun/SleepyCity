@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moon_progress_bar.png-a555249d115c2e6b6c28e80fc2451c3c.stex"
+path="res://.import/2_off_window.png-9f0f19b50bc20d1c8f1d1d7c9706c94d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/moon_progress_bar.png"
-dest_files=[ "res://.import/moon_progress_bar.png-a555249d115c2e6b6c28e80fc2451c3c.stex" ]
+source_file="res://Asset/Level/Window/2_off_window.png"
+dest_files=[ "res://.import/2_off_window.png-9f0f19b50bc20d1c8f1d1d7c9706c94d.stex" ]
 
 [params]
 

@@ -14,20 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Sound/ButtonSound.gd"
 }, {
-"base": "Area2D",
-"class": "Cell",
-"language": "GDScript",
-"path": "res://Game/LevelArea/Cell/Cell.gd"
-}, {
 "base": "Node",
 "class": "GameInfo",
 "language": "GDScript",
 "path": "res://Game/Common/Model/GameInfo.gd"
-}, {
-"base": "TextureProgress",
-"class": "GameProgress",
-"language": "GDScript",
-"path": "res://Game/Interface/GameProgress.gd"
 }, {
 "base": "Control",
 "class": "Interface",
@@ -74,11 +64,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Interface/Menu/SoundButton.gd"
 }, {
-"base": "Label",
-"class": "StepLabel",
-"language": "GDScript",
-"path": "res://Game/Interface/StepLabel.gd"
-}, {
 "base": "TextureButton",
 "class": "SwitchButton",
 "language": "GDScript",
@@ -93,12 +78,15 @@ _global_script_classes=[ {
 "class": "TutorialPopup",
 "language": "GDScript",
 "path": "res://Game/Interface/Tutorial/TutorialPopup.gd"
+}, {
+"base": "Area2D",
+"class": "Window",
+"language": "GDScript",
+"path": "res://Game/LevelArea/Window/Window.gd"
 } ]
 _global_script_class_icons={
 "ButtonSound": "",
-"Cell": "",
 "GameInfo": "",
-"GameProgress": "",
 "Interface": "",
 "LevelArea": "",
 "LevelCompletePopup": "",
@@ -108,10 +96,10 @@ _global_script_class_icons={
 "MenuPopup": "",
 "MusicButton": "",
 "SoundButton": "",
-"StepLabel": "",
 "SwitchButton": "",
 "TipButton": "",
-"TutorialPopup": ""
+"TutorialPopup": "",
+"Window": ""
 }
 
 [application]

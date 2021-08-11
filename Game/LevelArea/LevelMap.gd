@@ -43,7 +43,7 @@ func solution_size() -> int:
 	return len(_solutions)
 
 
-func is_alive(i: int, j: int) -> bool:
+func is_on(i: int, j: int) -> bool:
 	return _map[i][j]
 
 

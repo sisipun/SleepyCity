@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light_border.png-e93fbbfb379024aa373aedf4f80c3878.stex"
+path="res://.import/1_on_window.png-a101a44e4c33e8ec1a08a5691c2a9273.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/light_border.png"
-dest_files=[ "res://.import/light_border.png-e93fbbfb379024aa373aedf4f80c3878.stex" ]
+source_file="res://Asset/Level/Window/1_on_window.png"
+dest_files=[ "res://.import/1_on_window.png-a101a44e4c33e8ec1a08a5691c2a9273.stex" ]
 
 [params]
 

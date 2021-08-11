@@ -2,8 +2,14 @@ extends AudioStreamPlayer
 
 
 func _ready() -> void:
-	EventStorage.connect("level_complete", self, "_on_level_complete")
+	EventStorage.connect("level_completed", self, "_on_level_completed")
 
 
-func _on_level_complete(steps_count: int, took_tip: bool) -> void:
+func _on_level_completed(
+	level: LevelInfo, 
+	level_number: int, 
+	previous_progress: int, 
+	current_progress: int, 
+	earned_bonus: bool
+) -> void:
 	play()

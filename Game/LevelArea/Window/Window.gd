@@ -1,10 +1,10 @@
 extends Area2D
 
 
-class_name Cell
+class_name Window
 
 
-signal clicked(cell)
+signal clicked(window)
 
 
 export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
@@ -15,7 +15,7 @@ export (NodePath) onready var _animation_player = get_node(_animation_player) as
 export (NodePath) onready var _ligth = get_node(_ligth) as Light2D
 
 
-var _alive: bool = false
+var _on: bool = false
 var _target: bool = false
 var _coord_x: int = 0
 var _coord_y: int = 0
@@ -28,28 +28,28 @@ func _ready() -> void:
 
 
 func init(
-		coord_x: int, 
-		coord_y: int, 
-		position: Vector2, 
-		size: Vector2, 
-		alive: bool,
-		target: bool,
-		level_resource: LevelResource
-	) -> Cell:
+	coord_x: int, 
+	coord_y: int, 
+	position: Vector2, 
+	size: Vector2, 
+	on: bool,
+	target: bool,
+	sprite_frames: SpriteFrames,
+	border_sprite_texture: Texture
+) -> Window:
 	var sprite_size: Vector2 = _body.frames.get_frame(_body.animation, 0).get_size()
 	self.position = position
 	_target = target
 	_coord_x = coord_x
 	_coord_y = coord_y
-	set_alive(alive)
+	set_on(on)
 	scale = Vector2(
 		size.x / (_shape.shape.extents.x * 2), 
 		size.y / (_shape.shape.extents.y * 2)
 	)
 	
-	var sprite_index = randi() % len(level_resource.cell_sprite_frames)
-	_body.frames = level_resource.cell_sprite_frames[sprite_index]
-	_border.texture = level_resource.cell_border_sprite_texture
+	_body.frames = sprite_frames
+	_border.texture = border_sprite_texture
 	
 	_body.play()
 	return self
@@ -94,15 +94,11 @@ func get_coordinates() -> Vector2:
 	return Vector2(_coord_x, _coord_y)
 
 
-func is_alive() -> bool:
-	return _alive
-
-
-func set_alive(alive: bool) -> void:
-	_alive = alive
-	if _alive:
+func set_on(on: bool) -> void:
+	_on = on
+	if _on:
 		_ligth.enabled = true
-		_body.animation = "alive"
+		_body.animation = "on"
 	else:
 		_ligth.enabled = false
-		_body.animation = "dead"
+		_body.animation = "off"

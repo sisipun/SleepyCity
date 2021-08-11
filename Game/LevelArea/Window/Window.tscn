@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Game/LevelArea/Cell/Cell.gd" type="Script" id=1]
-[ext_resource path="res://Asset/Level/dark_window.png" type="Texture" id=2]
-[ext_resource path="res://Asset/Level/light_window.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/cell_light_mask.png" type="Texture" id=4]
-[ext_resource path="res://Asset/Level/light_border.png" type="Texture" id=5]
+[ext_resource path="res://Game/LevelArea/Window/Window.gd" type="Script" id=1]
+[ext_resource path="res://Asset/Level/Window/1_off_window.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/Window/1_on_window.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/Window/window_light_mask.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/Border/border.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 100 ), Vector2( 0, 150 ), Vector2( 0, 100 ) ]
 }
 
-[node name="Cell" type="Area2D"]
+[node name="Window" type="Area2D"]
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
 _shape = NodePath("Shape")
@@ -70,12 +70,12 @@ position = Vector2( 0, 100 )
 scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
 
+[node name="CellAnimation" type="AnimationPlayer" parent="."]
+anims/tip = SubResource( 3 )
+
 [node name="Light" type="Light2D" parent="."]
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 color = Color( 0.94902, 0.917647, 0.133333, 1 )
 energy = 0.7
-
-[node name="CellAnimation" type="AnimationPlayer" parent="."]
-anims/tip = SubResource( 3 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]

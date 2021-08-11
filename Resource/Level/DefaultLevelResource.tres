@@ -1,0 +1,44 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://Game/Common/Resource/LevelResource.gd" type="Script" id=1]
+[ext_resource path="res://Asset/Level/Window/1_on_window.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/Window/1_off_window.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/Window/2_on_window.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/Window/2_off_window.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/Border/border.png" type="Texture" id=6]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/dark_house.png-009db828a7a418bf1d3b6112b1a9d5d8.stex"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
+
+[resource]
+script = ExtResource( 1 )
+house_textures = [ SubResource( 1 ) ]
+window_sprite_frames = [ SubResource( 2 ), SubResource( 3 ) ]
+window_border_sprite_texture = [ ExtResource( 6 ) ]

@@ -33,8 +33,10 @@ tracks/1/keys = {
 }
 
 [node name="TutorialPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 1000 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,13 +50,14 @@ color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
 
 [node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = -0.1
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = -0.1
 margin_left = -125.0
 margin_top = -70.0
 margin_right = 125.0
 margin_bottom = 70.0
+rect_min_size = Vector2( 250, 150 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,9 +70,13 @@ margin_left = -24.0
 margin_top = -13.0
 margin_right = 9.0
 margin_bottom = 20.0
+rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 1 )
 expand = true
 stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TutorialAnimation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )

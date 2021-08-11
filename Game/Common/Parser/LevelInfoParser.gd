@@ -14,7 +14,6 @@ func write(level: LevelInfo) -> Dictionary:
 	return {
 		"width" : level.width,
 		"height" : level.height,
-		"type": level.type,
 		"targets" : dict_targets,
 		"solution": dict_solution,
 		"initial": dict_initial,
@@ -39,7 +38,6 @@ func read(dict: Dictionary) -> LevelInfo:
 	return LevelInfo.new(
 		dict["width"], 
 		dict["height"], 
-		dict["type"],
 		targets,
 		solution,
 		initial,

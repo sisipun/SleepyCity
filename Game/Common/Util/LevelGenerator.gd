@@ -3,22 +3,22 @@ extends Node
 
 class GeneratedLevel:
 	var solution: Array
-	var cells: Array
+	var windows: Array
 	
-	func _init(solution: Array, cells: Array):
+	func _init(solution: Array, windows: Array):
 		self.solution = solution
-		self.cells = cells
+		self.windows = windows
 
 
-func generate_level(number: int, level_type: int) -> LevelInfo:
+func generate_level(level_number: int) -> LevelInfo:
 	randomize()
 	
-	var size_factor: float = sqrt(max(number - 10, 1) * 0.3 + 10)
+	var size_factor: float = sqrt(max(level_number, 1) * 0.3 + 10)
 	var solution_size_factor: float = 0.2 * size_factor * size_factor
 	
 	var width: int = min(floor(size_factor), 6)
-	var height = width * 2 - (randi() % 2)
-	var rand_part = (randi() % 3)
+	var height = width * 2
+	var rand_part = randi() % 3
 	var solution_size: int = rand_part + min(max(ceil(solution_size_factor), 3), 20) - 1
 	
 	var level: LevelInfo
@@ -26,11 +26,14 @@ func generate_level(number: int, level_type: int) -> LevelInfo:
 	return LevelInfo.new(
 		width,
 		height,
-		level_type,
 		[],
 		generated.solution,
-		generated.cells
+		generated.windows
 	)
+
+
+func calculate_progress(level_number: int):
+	return int(floor(fmod(sqrt(level_number), 1) * 100))
 
 
 func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
@@ -63,13 +66,13 @@ func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLe
 			solutions.remove(exists_solution)
 			solution_index -= 1
 	
-	var cells = []
+	var windows = []
 	for i in range(width):
 		for j in range(height):
 			if map[i][j]:
-				cells.push_back(Vector2(i, j))
+				windows.push_back(Vector2(i, j))
 				
 	return GeneratedLevel.new(
 		solutions,
-		cells
+		windows
 	)

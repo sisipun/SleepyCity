@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/complete_level_header.png" type="Texture" id=2]
@@ -6,8 +6,7 @@
 [ext_resource path="res://Asset/Level/complete_level_background.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/bonus_icon.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Common/title.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Asset/Level/bonus_count.png" type="Texture" id=7]
-[ext_resource path="res://Asset/Level/level_complete_star.png" type="Texture" id=8]
+[ext_resource path="res://Asset/Level/bonus_icon_header.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -48,7 +47,6 @@ __meta__ = {
 _animation_player = NodePath("LevelCompleteAnimation")
 _level_label = NodePath("Panel/Header/LevelLabel")
 _bonus_icon = NodePath("Panel/Body/Buttons/BonusIcon")
-_stars = [ NodePath("Panel/Body/StarIcons/FirstStarIcon"), NodePath("Panel/Body/StarIcons/SecondStarIcon"), NodePath("Panel/Body/StarIcons/ThirdStarIcon") ]
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -67,10 +65,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -85.0
-margin_right = 150.0
-margin_bottom = 85.0
+margin_left = -125.0
+margin_top = -75.0
+margin_right = 125.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 250, 150 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,42 +110,15 @@ margin_left = -110.0
 margin_top = -135.0
 margin_right = 110.0
 custom_constants/separation = 20
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StarIcons" type="HBoxContainer" parent="Panel/Body"]
-margin_right = 220.0
-alignment = 1
-
-[node name="FirstStarIcon" type="NinePatchRect" parent="Panel/Body/StarIcons"]
-visible = false
-margin_left = 58.0
-margin_right = 90.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 8 )
-
-[node name="SecondStarIcon" type="NinePatchRect" parent="Panel/Body/StarIcons"]
-visible = false
-margin_left = 76.0
-margin_right = 108.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 8 )
-
-[node name="ThirdStarIcon" type="NinePatchRect" parent="Panel/Body/StarIcons"]
-visible = false
-margin_left = 94.0
-margin_right = 126.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 8 )
-
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 20.0
+margin_top = 32.0
 margin_right = 220.0
-margin_bottom = 90.0
+margin_bottom = 102.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {

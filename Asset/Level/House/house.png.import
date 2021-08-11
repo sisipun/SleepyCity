@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark_progress_bar_front.png-6216d0c4365e3cf220cdb517226783fc.stex"
+path="res://.import/house.png-b6a16085ac63a854ccbb49abfa276b32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/dark_progress_bar_front.png"
-dest_files=[ "res://.import/dark_progress_bar_front.png-6216d0c4365e3cf220cdb517226783fc.stex" ]
+source_file="res://Asset/Level/House/house.png"
+dest_files=[ "res://.import/house.png-b6a16085ac63a854ccbb49abfa276b32.stex" ]
 
 [params]
 

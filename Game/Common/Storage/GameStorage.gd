@@ -5,7 +5,6 @@ var game: GameInfo = GameInfo.new({
 	1: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -23,7 +22,6 @@ var game: GameInfo = GameInfo.new({
 	2: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -44,7 +42,6 @@ var game: GameInfo = GameInfo.new({
 	3: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -63,7 +60,6 @@ var game: GameInfo = GameInfo.new({
 	4: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -86,7 +82,6 @@ var game: GameInfo = GameInfo.new({
 	5: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -109,7 +104,6 @@ var game: GameInfo = GameInfo.new({
 	6: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -126,7 +120,6 @@ var game: GameInfo = GameInfo.new({
 	7: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -143,7 +136,6 @@ var game: GameInfo = GameInfo.new({
 	8: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -166,7 +158,6 @@ var game: GameInfo = GameInfo.new({
 	9: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -193,7 +184,6 @@ var game: GameInfo = GameInfo.new({
 	10: LevelInfo.new(
 		3,
 		5,
-		LevelInfo.LevelType.DARK,
 		[
 		], 
 		[
@@ -224,7 +214,7 @@ var game: GameInfo = GameInfo.new({
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels.json"
-var _current_version: String = "1.1"
+var _current_version: String = "1.0"
 
 
 func _ready() -> void:

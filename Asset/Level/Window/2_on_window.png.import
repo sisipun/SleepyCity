@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark_border.png-96590ef1924a66544b0e3ee22244c504.stex"
+path="res://.import/2_on_window.png-48685b28f5cba25c5d24e61b7e9ce515.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/dark_border.png"
-dest_files=[ "res://.import/dark_border.png-96590ef1924a66544b0e3ee22244c504.stex" ]
+source_file="res://Asset/Level/Window/2_on_window.png"
+dest_files=[ "res://.import/2_on_window.png-48685b28f5cba25c5d24e61b7e9ce515.stex" ]
 
 [params]
 

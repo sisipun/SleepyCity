@@ -1,12 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Game/Common/Controller/LevelController.gd" type="Script" id=1]
-[ext_resource path="res://Resource/Level/LightLevelResouce.tres" type="Resource" id=2]
-[ext_resource path="res://Resource/Level/DarkLevelResource.tres" type="Resource" id=3]
-
-
+[ext_resource path="res://Resource/Level/DefaultLevelResource.tres" type="Resource" id=3]
 
 [node name="LevelController" type="Node"]
 script = ExtResource( 1 )
-light_level_resource = ExtResource( 2 )
-dark_level_resouce = ExtResource( 3 )
+level_resource = ExtResource( 3 )
