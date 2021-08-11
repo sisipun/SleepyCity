@@ -90,7 +90,6 @@ func _on_window_clicked(window: Window) -> void:
 	if _level.step(i, j):
 		update_windows()
 		EventStorage.emit_signal("step", _level.steps_count())
-		Input.vibrate_handheld(50)
 	
 	if _level.is_complete():
 		EventStorage.emit_signal("complete_current_level")
