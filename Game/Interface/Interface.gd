@@ -14,3 +14,7 @@ func _on_step_back_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	EventStorage.emit_signal("menu_open")
+
+
+func _on_skip_pressed() -> void:
+	EventStorage.emit_signal("complete_current_level")

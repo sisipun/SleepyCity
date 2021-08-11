@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureButton",
+"class": "AnimatedButton",
+"language": "GDScript",
+"path": "res://Game/Common/Node/AnimatedButton/AnimatedButton.gd"
+}, {
 "base": "AudioStreamPlayer",
 "class": "ButtonSound",
 "language": "GDScript",
@@ -64,12 +69,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Interface/Menu/SoundButton.gd"
 }, {
-"base": "TextureButton",
+"base": "AnimatedButton",
 "class": "SwitchButton",
 "language": "GDScript",
-"path": "res://Game/Common/Node/SwitchButton.gd"
+"path": "res://Game/Common/Node/SwitchButton/SwitchButton.gd"
 }, {
-"base": "TextureButton",
+"base": "AnimatedButton",
 "class": "TipButton",
 "language": "GDScript",
 "path": "res://Game/Interface/TipButton.gd"
@@ -85,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://Game/LevelArea/Window/Window.gd"
 } ]
 _global_script_class_icons={
+"AnimatedButton": "",
 "ButtonSound": "",
 "GameInfo": "",
 "Interface": "",

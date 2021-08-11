@@ -1,4 +1,4 @@
-extends TextureButton
+extends AnimatedButton
 
 
 class_name SwitchButton

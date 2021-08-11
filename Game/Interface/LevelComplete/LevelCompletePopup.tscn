@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/complete_level_header.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Asset/Level/bonus_icon.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Common/title.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Asset/Level/bonus_icon_header.png" type="Texture" id=7]
+[ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -116,9 +117,9 @@ __meta__ = {
 }
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 32.0
+margin_top = 42.0
 margin_right = 220.0
-margin_bottom = 102.0
+margin_bottom = 92.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
@@ -155,14 +156,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="TextureButton" parent="Panel/Body/Buttons"]
-margin_left = 75.0
-margin_right = 145.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
+[node name="NextButton" parent="Panel/Body/Buttons" instance=ExtResource( 8 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 85.0
+margin_top = 0.0
+margin_right = 135.0
+margin_bottom = 50.0
 texture_normal = ExtResource( 3 )
-expand = true
-stretch_mode = 5
 
 [node name="LevelCompleteAnimation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )

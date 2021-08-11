@@ -48,7 +48,6 @@ anchor_bottom = 0.999601
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 3 )]
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
-visible = false
 
 [node name="TutorialPopup" parent="InterfaceLayer" instance=ExtResource( 14 )]
 visible = false
