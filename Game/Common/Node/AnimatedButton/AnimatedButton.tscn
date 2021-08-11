@@ -58,5 +58,6 @@ _animation_player = NodePath("Animation")
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/down = SubResource( 1 )
 anims/up = SubResource( 2 )
+
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
