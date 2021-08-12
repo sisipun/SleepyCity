@@ -26,6 +26,8 @@ func _on_level_completed(
 	
 	_level_label.text = str(level_number)
 	_game_progress.value = previous_progress
+	if earned_bonus:
+		_bonus_icon.show()
 	
 	_animation_player.play("popup")
 	yield(_animation_player, "animation_finished")
@@ -40,10 +42,6 @@ func _on_level_completed(
 		Tween.EASE_OUT
 	)
 	_tween.start()
-	yield(_tween, "tween_completed")
-	
-	if earned_bonus:
-		_bonus_icon.show()
 
 
 func _on_next_pressed() -> void:

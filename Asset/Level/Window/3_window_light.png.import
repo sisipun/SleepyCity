@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2_on_window.png-48685b28f5cba25c5d24e61b7e9ce515.stex"
+path="res://.import/3_window_light.png-87dea2ace49ffc035918ad1e3bad387d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/Window/2_on_window.png"
-dest_files=[ "res://.import/2_on_window.png-48685b28f5cba25c5d24e61b7e9ce515.stex" ]
+source_file="res://Asset/Level/Window/3_window_light.png"
+dest_files=[ "res://.import/3_window_light.png-87dea2ace49ffc035918ad1e3bad387d.stex" ]
 
 [params]
 

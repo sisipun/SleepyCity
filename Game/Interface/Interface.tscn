@@ -64,9 +64,9 @@ _animation_player = NodePath("../TutorialButton/Animation")
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -100.0
+margin_left = -80.0
 margin_top = 40.0
-margin_right = -50.0
+margin_right = -30.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 50, 100 )
 __meta__ = {
