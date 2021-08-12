@@ -4,20 +4,43 @@ extends Popup
 class_name LevelCompletePopup
 
 
-export (NodePath) onready var _animation_player = get_node(_animation_player) as AnimationPlayer
+export (NodePath) onready var _game_progress = get_node(_game_progress) as TextureProgress
 export (NodePath) onready var _level_label = get_node(_level_label) as Label
 export (NodePath) onready var _bonus_icon = get_node(_bonus_icon) as NinePatchRect
+export (NodePath) onready var _animation_player = get_node(_animation_player) as AnimationPlayer
+export (NodePath) onready var _tween = get_node(_tween) as Tween
 
 
 func _ready() -> void:
 	EventStorage.connect("level_completed", self, "_on_level_completed")
 
 
-func _on_level_completed(level: LevelInfo, level_number: int, previous_progress: int, current_progress: int, earned_bonus: bool) -> void:
+func _on_level_completed(
+	level: LevelInfo, 
+	level_number: int, 
+	previous_progress: int, 
+	current_progress: int, 
+	earned_bonus: bool
+) -> void:
 	popup_centered()
-	_animation_player.play("popup")
 	
 	_level_label.text = str(level_number)
+	_game_progress.value = previous_progress
+	
+	_animation_player.play("popup")
+	yield(_animation_player, "animation_finished")
+	
+	_tween.interpolate_property(
+		_game_progress, 
+		"value", 
+		previous_progress, 
+		current_progress if current_progress != 0 else 100, 
+		1, 
+		Tween.TRANS_LINEAR, 
+		Tween.EASE_OUT
+	)
+	_tween.start()
+	yield(_tween, "tween_completed")
 	
 	if earned_bonus:
 		_bonus_icon.show()

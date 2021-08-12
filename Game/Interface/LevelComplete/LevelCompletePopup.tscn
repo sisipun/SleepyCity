@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/complete_level_header.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Asset/Common/title.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Asset/Level/bonus_icon_header.png" type="Texture" id=7]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Asset/Level/progress_border.png" type="Texture" id=9]
+[ext_resource path="res://Asset/Level/progress_body.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -38,6 +40,7 @@ tracks/1/keys = {
 }
 
 [node name="LevelCompletePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -45,9 +48,11 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_animation_player = NodePath("LevelCompleteAnimation")
+_game_progress = NodePath("Panel/Body/GameProgress")
 _level_label = NodePath("Panel/Header/LevelLabel")
 _bonus_icon = NodePath("Panel/Body/Buttons/BonusIcon")
+_animation_player = NodePath("LevelCompleteAnimation")
+_tween = NodePath("LevelCompleteTween")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -63,9 +68,9 @@ __meta__ = {
 
 [node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = -0.1
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = -0.1
 margin_left = -125.0
 margin_top = -75.0
 margin_right = 125.0
@@ -104,22 +109,38 @@ __meta__ = {
 
 [node name="Body" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -110.0
-margin_top = -135.0
+margin_top = -65.0
 margin_right = 110.0
+margin_bottom = 75.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 42.0
+[node name="GameProgress" type="TextureProgress" parent="Panel/Body"]
+margin_top = 25.0
 margin_right = 220.0
-margin_bottom = 92.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 20 )
+max_value = 100.0
+value = 33.0
+texture_under = ExtResource( 10 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 10 )
+tint_under = Color( 0.47451, 0.321569, 0.14902, 1 )
+tint_over = Color( 0.929412, 0.337255, 0.0196078, 1 )
+tint_progress = Color( 0.847059, 0.854902, 0.0235294, 1 )
+nine_patch_stretch = true
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
+margin_top = 65.0
+margin_right = 220.0
+margin_bottom = 115.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
@@ -128,10 +149,10 @@ __meta__ = {
 
 [node name="BonusIcon" type="NinePatchRect" parent="Panel/Body/Buttons"]
 visible = false
-margin_left = 30.0
+margin_left = 50.0
 margin_right = 100.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 5 )
 
 [node name="CountBackground" type="NinePatchRect" parent="Panel/Body/Buttons/BonusIcon"]
@@ -169,4 +190,6 @@ texture_normal = ExtResource( 3 )
 
 [node name="LevelCompleteAnimation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
+
+[node name="LevelCompleteTween" type="Tween" parent="."]
 [connection signal="pressed" from="Panel/Body/Buttons/NextButton" to="." method="_on_next_pressed"]
