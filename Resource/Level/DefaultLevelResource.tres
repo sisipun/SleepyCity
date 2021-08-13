@@ -1,12 +1,22 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=19 format=2]
 
 [ext_resource path="res://Game/Common/Resource/LevelResource.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/Border/2_border.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/Window/1_window_light_1.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Border/3_border.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/Window/3_window_dark.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=8]
-[ext_resource path="res://Asset/Level/House/1_house.png" type="Texture" id=9]
+[ext_resource path="res://Asset/Level/Window/2_window_light.png" type="Texture" id=9]
+[ext_resource path="res://Asset/Level/Window/3_window_light.png" type="Texture" id=10]
+[ext_resource path="res://Asset/Level/Window/2_window_dark.png" type="Texture" id=11]
+[ext_resource path="res://Asset/Level/Window/4_window_light.png" type="Texture" id=12]
+[ext_resource path="res://Asset/Level/Window/4_window_dark.png" type="Texture" id=13]
+[ext_resource path="res://Asset/Level/Border/4_border.png" type="Texture" id=14]
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/2_house.png-d7e0a3b438d2c090378808124e7709ba.stex"
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -21,8 +31,47 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "on",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+} ]
+
 [resource]
 script = ExtResource( 1 )
-house_textures = [ ExtResource( 9 ) ]
-window_sprite_frames = [ SubResource( 1 ) ]
-window_border_sprite_texture = [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ) ]
+house_textures = [ SubResource( 5 ) ]
+window_sprite_frames = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
+window_border_sprite_texture = [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 14 ) ]

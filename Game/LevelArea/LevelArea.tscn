@@ -8,10 +8,12 @@
 extents = Vector2( 347.036, 600.439 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -343.595, -596.342 )
-b = Vector2( 340.977, 598.668 )
+a = Vector2( -315, -575 )
+b = Vector2( 315, 600 )
 
 [node name="LevelArea" type="Area2D"]
+position = Vector2( 250, 600 )
+scale = Vector2( 0.662755, 0.666179 )
 script = ExtResource( 6 )
 _window_scene = ExtResource( 1 )
 _shape = NodePath("Shape")
@@ -19,10 +21,9 @@ _game_area_shape = NodePath("GameAreaShape")
 _background = NodePath("Background")
 _tween = NodePath("LevelAreaAnimation")
 level_area_margin_top = 200.0
-window_margin = 40.0
 
 [node name="Background" type="Sprite" parent="."]
-scale = Vector2( 0.85, 1 )
+scale = Vector2( 0.78, 1 )
 z_index = -2
 texture = ExtResource( 2 )
 
