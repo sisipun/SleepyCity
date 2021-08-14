@@ -60,9 +60,9 @@ func _on_level_changed(
 		"position", 
 		position, 
 		Vector2(-_level_area_width, position.y), 
-		0.5, 
-		Tween.TRANS_LINEAR, 
-		Tween.EASE_OUT
+		0.7, 
+		Tween.TRANS_BACK, 
+		Tween.EASE_IN
 	)
 	_tween.start()
 	yield(_tween, "tween_completed")
@@ -75,8 +75,8 @@ func _on_level_changed(
 		"position", 
 		Vector2(get_viewport_rect().size.x + initial_x, position.y), 
 		Vector2(initial_x, position.y), 
-		0.5, 
-		Tween.TRANS_LINEAR, 
+		0.7, 
+		Tween.TRANS_BACK, 
 		Tween.EASE_OUT
 	)
 	_tween.start()

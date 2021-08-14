@@ -13,7 +13,8 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
-length = 0.3
+length = 0.666667
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Panel:anchor_top")
 tracks/0/interp = 1
@@ -21,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.466667, 0.666667 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 1 ),
 "update": 0,
-"values": [ -0.1, 0.5 ]
+"values": [ -0.1, 0.5, 0.4, 0.5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Panel:anchor_bottom")
@@ -33,13 +34,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( -1.86265e-09, 0.3, 0.466667, 0.66 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 1 ),
 "update": 0,
-"values": [ -0.1, 0.5 ]
+"values": [ -0.1, 0.5, 0.4, 0.5 ]
 }
 
 [node name="LevelCompletePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -67,14 +69,14 @@ __meta__ = {
 
 [node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
-anchor_top = -0.1
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = -0.1
-margin_left = -125.0
+anchor_bottom = 0.5
+margin_left = -150.0
 margin_top = -75.0
-margin_right = 125.0
+margin_right = 150.0
 margin_bottom = 75.0
-rect_min_size = Vector2( 250, 150 )
+rect_min_size = Vector2( 300, 150 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,10 +113,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -110.0
-margin_top = -65.0
-margin_right = 110.0
-margin_bottom = 75.0
+margin_left = -125.0
+margin_top = -60.0
+margin_right = 125.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 250, 120 )
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
@@ -122,11 +125,10 @@ __meta__ = {
 }
 
 [node name="GameProgress" type="TextureProgress" parent="Panel/Body"]
-margin_top = 25.0
-margin_right = 220.0
-margin_bottom = 45.0
+margin_top = 15.0
+margin_right = 250.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 200, 20 )
-max_value = 100.0
 value = 33.0
 texture_under = ExtResource( 10 )
 texture_over = ExtResource( 9 )
@@ -137,9 +139,9 @@ tint_progress = Color( 0.847059, 0.854902, 0.0235294, 1 )
 nine_patch_stretch = true
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 65.0
-margin_right = 220.0
-margin_bottom = 115.0
+margin_top = 55.0
+margin_right = 250.0
+margin_bottom = 105.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
@@ -181,9 +183,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 85.0
+margin_left = 100.0
 margin_top = 0.0
-margin_right = 135.0
+margin_right = 150.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 3 )
 

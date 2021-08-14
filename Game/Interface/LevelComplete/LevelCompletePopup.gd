@@ -30,15 +30,15 @@ func _on_level_completed(
 		_bonus_icon.show()
 	
 	_animation_player.play("popup")
-	yield(_animation_player, "animation_finished")
+	#yield(_animation_player, "animation_finished")
 	
 	_tween.interpolate_property(
 		_game_progress, 
 		"value", 
 		previous_progress, 
 		current_progress if current_progress != 0 else 100, 
-		1, 
-		Tween.TRANS_LINEAR, 
+		2.0, 
+		Tween.TRANS_CIRC, 
 		Tween.EASE_OUT
 	)
 	_tween.start()

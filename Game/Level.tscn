@@ -51,6 +51,7 @@ __meta__ = {
 layer = 0
 
 [node name="LevelArea" parent="LevelAreaLayer" instance=ExtResource( 1 )]
+window_margin = 35.0
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
