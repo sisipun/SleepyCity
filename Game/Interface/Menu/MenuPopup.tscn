@@ -43,14 +43,13 @@ tracks/1/keys = {
 }
 
 [node name="MenuPopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_animation_player = NodePath("MenuAnimation")
+_animation_player = NodePath("Animation")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -149,7 +148,7 @@ rect_min_size = Vector2( 33, 33 )
 rect_pivot_offset = Vector2( 16.5, 16.5 )
 texture_normal = ExtResource( 13 )
 
-[node name="MenuAnimation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 [connection signal="gui_input" from="Background" to="." method="_on_background_input"]
 [connection signal="pressed" from="Panel/Body/Buttons/SoundButton" to="Panel/Body/Buttons/SoundButton" method="_on_pressed"]

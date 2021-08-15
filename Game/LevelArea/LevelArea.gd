@@ -13,9 +13,9 @@ export (NodePath) onready var _tween = get_node(_tween) as Tween
 
 export (float) var level_area_margin_left = 20
 export (float) var level_area_margin_right = 20
-export (float) var level_area_margin_top = 70
+export (float) var level_area_margin_top = 200
 export (float) var level_area_margin_bottom = 0
-export (float) var window_margin: = 20
+export (float) var window_margin: = 35
 
 
 var _level: LevelMap

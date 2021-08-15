@@ -34,14 +34,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( -1.86265e-09, 0.3, 0.466667, 0.66 ),
+"times": PoolRealArray( -1.86265e-09, 0.300001, 0.466667, 0.66 ),
 "transitions": PoolRealArray( 2, 0.5, 2, 1 ),
 "update": 0,
 "values": [ -0.1, 0.5, 0.4, 0.5 ]
 }
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -52,8 +51,8 @@ __meta__ = {
 _game_progress = NodePath("Panel/Body/GameProgress")
 _level_label = NodePath("Panel/Header/LevelLabel")
 _bonus_icon = NodePath("Panel/Body/Buttons/BonusIcon")
-_animation_player = NodePath("LevelCompleteAnimation")
-_tween = NodePath("LevelCompleteTween")
+_animation_player = NodePath("Animation")
+_tween = NodePath("Tween")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -189,8 +188,8 @@ margin_right = 150.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 3 )
 
-[node name="LevelCompleteAnimation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 
-[node name="LevelCompleteTween" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="Panel/Body/Buttons/NextButton" to="." method="_on_next_pressed"]

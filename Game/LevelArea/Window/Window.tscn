@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/LevelArea/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/Window/1_window_light_1.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/Window/window_light_mask.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/APfkB6p2.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
 
@@ -39,6 +39,9 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 100 ), Vector2( 0, 150 ), Vector2( 0, 100 ) ]
 }
 
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( -88.19, 100.032, -88.2675, 95.9089, 88.3324, 96.7928, 87.952, 100.032 )
+
 [node name="Window" type="Area2D"]
 gravity_vec = Vector2( -0.75, 1 )
 script = ExtResource( 1 )
@@ -46,7 +49,7 @@ _shape = NodePath("Shape")
 _body = NodePath("Body")
 _border = NodePath("Border")
 _tip = NodePath("Tip")
-_animation_player = NodePath("CellAnimation")
+_animation_player = NodePath("Animation")
 _ligth = NodePath("Light")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
@@ -70,12 +73,19 @@ position = Vector2( 0, 100 )
 scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
 
-[node name="CellAnimation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 anims/tip = SubResource( 3 )
 
 [node name="Light" type="Light2D" parent="."]
+position = Vector2( 0, -50 )
 texture = ExtResource( 4 )
-texture_scale = 0.4
-color = Color( 0.992157, 0.933333, 0.054902, 1 )
-energy = 0.3
+texture_scale = 0.5
+color = Color( 0.862745, 0.956863, 0.0313726, 0.784314 )
+energy = 0.5
+range_height = 2048.0
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( 0.117989, 1.04962 )
+occluder = SubResource( 4 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]
