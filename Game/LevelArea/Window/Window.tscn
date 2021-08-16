@@ -3,7 +3,7 @@
 [ext_resource path="res://Game/LevelArea/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/Window/1_window_light_1.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/APfkB6p2.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/Window/window_light.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
 
@@ -69,7 +69,7 @@ texture = ExtResource( 3 )
 
 [node name="Tip" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, 100 )
+position = Vector2( 0, 133.33 )
 scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
 
@@ -77,15 +77,15 @@ texture = ExtResource( 6 )
 anims/tip = SubResource( 3 )
 
 [node name="Light" type="Light2D" parent="."]
-position = Vector2( 0, -50 )
 texture = ExtResource( 4 )
-texture_scale = 0.5
-color = Color( 0.862745, 0.956863, 0.0313726, 0.784314 )
-energy = 0.5
+texture_scale = 0.4
+energy = 1.5
 range_height = 2048.0
+range_z_max = -5
 shadow_enabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 position = Vector2( 0.117989, 1.04962 )
 occluder = SubResource( 4 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]

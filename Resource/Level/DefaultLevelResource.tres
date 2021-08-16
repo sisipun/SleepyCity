@@ -5,6 +5,7 @@
 [ext_resource path="res://Asset/Level/Window/1_window_light_1.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Border/3_border.png" type="Texture" id=5]
+[ext_resource path="res://Resource/Level/1_house.png" type="Texture" id=6]
 [ext_resource path="res://Asset/Level/Window/3_window_dark.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Level/Window/2_window_light.png" type="Texture" id=9]
@@ -13,10 +14,6 @@
 [ext_resource path="res://Asset/Level/Window/4_window_light.png" type="Texture" id=12]
 [ext_resource path="res://Asset/Level/Window/4_window_dark.png" type="Texture" id=13]
 [ext_resource path="res://Asset/Level/Border/4_border.png" type="Texture" id=14]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/2_house.png-d7e0a3b438d2c090378808124e7709ba.stex"
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -72,6 +69,6 @@ animations = [ {
 
 [resource]
 script = ExtResource( 1 )
-house_textures = [ SubResource( 1 ) ]
+house_textures = [ ExtResource( 6 ) ]
 window_sprite_frames = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
 window_border_sprite_texture = [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 14 ) ]

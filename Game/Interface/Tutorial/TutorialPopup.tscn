@@ -33,8 +33,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [ -0.1, 0.5, 0.4, 0.5 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.300001, 0.466668, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 0.85 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
+}
 
 [node name="TutorialPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 1000 )
@@ -48,6 +61,9 @@ _animation_player = NodePath("Animation")
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -59,6 +75,7 @@ margin_top = -70.0
 margin_right = 125.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 250, 150 )
+rect_pivot_offset = Vector2( 125, 75 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

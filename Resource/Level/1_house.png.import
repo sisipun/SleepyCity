@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/APfkB6p.png-de71a1c62ea63a0a04d9a017a7a1161c.stex"
+path="res://.import/1_house.png-612cf935863dab0d638c16870043238f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/APfkB6p.png"
-dest_files=[ "res://.import/APfkB6p.png-de71a1c62ea63a0a04d9a017a7a1161c.stex" ]
+source_file="res://Resource/Level/1_house.png"
+dest_files=[ "res://.import/1_house.png-612cf935863dab0d638c16870043238f.stex" ]
 
 [params]
 

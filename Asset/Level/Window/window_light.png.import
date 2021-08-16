@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/APfkB6p2.png-37d1deb821b37d982de71d757752efd4.stex"
+path="res://.import/window_light.png-ecb62d740da73e3b68bdc7e066e848ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/APfkB6p2.png"
-dest_files=[ "res://.import/APfkB6p2.png-37d1deb821b37d982de71d757752efd4.stex" ]
+source_file="res://Asset/Level/Window/window_light.png"
+dest_files=[ "res://.import/window_light.png-ecb62d740da73e3b68bdc7e066e848ba.stex" ]
 
 [params]
 
