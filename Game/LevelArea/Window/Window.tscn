@@ -69,7 +69,7 @@ texture = ExtResource( 3 )
 
 [node name="Tip" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, 133.33 )
+position = Vector2( 0, 100 )
 scale = Vector2( 0.21781, 0.277546 )
 texture = ExtResource( 6 )
 
@@ -77,9 +77,11 @@ texture = ExtResource( 6 )
 anims/tip = SubResource( 3 )
 
 [node name="Light" type="Light2D" parent="."]
+position = Vector2( 0, 25 )
+scale = Vector2( 0.8, 1 )
 texture = ExtResource( 4 )
-texture_scale = 0.4
-energy = 1.5
+color = Color( 0.890196, 0.823529, 0.458824, 1 )
+energy = 2.1
 range_height = 2048.0
 range_z_max = -5
 shadow_enabled = true
