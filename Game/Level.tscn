@@ -45,10 +45,10 @@ layer = -1
 modulate = Color( 0.639216, 0.858824, 0.882353, 0.627451 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -548.0
-margin_top = -215.0
-margin_right = 313.0
-margin_bottom = 617.0
+margin_left = -619.906
+margin_top = -207.857
+margin_right = 241.094
+margin_bottom = 624.143
 texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,10 +57,10 @@ __meta__ = {
 [node name="Moon" type="NinePatchRect" parent="SkyLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -240.0
-margin_top = 70.0
-margin_right = -10.0
-margin_bottom = 300.0
+margin_left = -319.937
+margin_top = 76.5244
+margin_right = -89.937
+margin_bottom = 306.524
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,18 +91,18 @@ rect_rotation = 0.0
 rect_scale = Vector2( 1, 1 )
 
 [node name="Star_4" parent="SkyLayer" instance=ExtResource( 15 )]
-margin_left = 139.221
-margin_top = 166.31
-margin_right = 169.221
-margin_bottom = 196.31
+margin_left = 133.335
+margin_top = 157.06
+margin_right = 163.335
+margin_bottom = 187.06
 rect_rotation = 0.0
 rect_scale = Vector2( 1, 1 )
 
 [node name="Star_5" parent="SkyLayer" instance=ExtResource( 15 )]
-margin_left = 197.178
-margin_top = 96.384
-margin_right = 227.178
-margin_bottom = 126.384
+margin_left = 439.356
+margin_top = 133.383
+margin_right = 469.356
+margin_bottom = 163.383
 rect_rotation = 0.0
 rect_scale = Vector2( 1, 1 )
 
@@ -182,10 +182,12 @@ anchor_top = -0.000398916
 anchor_bottom = 0.999601
 
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 3 )]
+visible = false
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
 
 [node name="TutorialPopup" parent="InterfaceLayer" instance=ExtResource( 14 )]
+visible = false
 
 [node name="SoundLayer" type="CanvasLayer" parent="."]
 

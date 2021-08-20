@@ -1,11 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Asset/Button/close_button.png" type="Texture" id=1]
-[ext_resource path="res://Asset/Level/menu_background.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/tutorial_background.png" type="Texture" id=2]
 [ext_resource path="res://Game/Interface/Tutorial/TutorialPopup.gd" type="Script" id=3]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=4]
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -42,13 +40,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.300001, 0.466668, 0.666667 ),
+"times": PoolRealArray( 0, 0.306, 0.466668, 0.666667 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.15, 0.85 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ), Vector2( 1, 1 ) ]
 }
 
 [node name="TutorialPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 1000 )
@@ -71,12 +70,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -70.0
-margin_right = 125.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 250, 150 )
-rect_pivot_offset = Vector2( 125, 75 )
+margin_left = -175.0
+margin_top = -300.0
+margin_right = 175.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 350, 600 )
+rect_pivot_offset = Vector2( 175, 300 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
