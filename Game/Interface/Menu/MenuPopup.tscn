@@ -13,6 +13,8 @@
 [ext_resource path="res://Game/Interface/Menu/MenuPopup.gd" type="Script" id=12]
 [ext_resource path="res://Asset/Button/close_button.png" type="Texture" id=13]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
 length = 0.666668

@@ -42,7 +42,7 @@ __meta__ = {
 layer = -1
 
 [node name="MoonLight" type="NinePatchRect" parent="SkyLayer"]
-modulate = Color( 0.717647, 0.898039, 0.917647, 0.466667 )
+modulate = Color( 0.639216, 0.858824, 0.882353, 0.627451 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -548.0
