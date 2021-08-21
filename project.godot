@@ -171,5 +171,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
 vram_compression/import_pvrtc=true
