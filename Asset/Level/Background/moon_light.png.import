@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moon.png-26a84ae3873d8e7cb66d236aef015d8d.stex"
+path="res://.import/moon_light.png-0db51b3fe6cdaba173f72025fc96611d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/moon.png"
-dest_files=[ "res://.import/moon.png-26a84ae3873d8e7cb66d236aef015d8d.stex" ]
+source_file="res://Asset/Level/Background/moon_light.png"
+dest_files=[ "res://.import/moon_light.png-0db51b3fe6cdaba173f72025fc96611d.stex" ]
 
 [params]
 

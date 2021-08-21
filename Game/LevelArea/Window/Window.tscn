@@ -5,21 +5,21 @@
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/Window/window_light.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=5]
-[ext_resource path="res://Asset/Level/tip_animation.png" type="Texture" id=6]
+[ext_resource path="res://Asset/Level/Window/tip_animation.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 88.0623, 101.072 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "on",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "off",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "on",
 "speed": 60.0
 } ]
 

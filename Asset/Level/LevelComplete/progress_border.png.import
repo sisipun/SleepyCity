@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/complete_level_header.png-b982caf6884aadaa9bba69dbc68bc13b.stex"
+path="res://.import/progress_border.png-4064143489863e1fa1cce601f073b0cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/complete_level_header.png"
-dest_files=[ "res://.import/complete_level_header.png-b982caf6884aadaa9bba69dbc68bc13b.stex" ]
+source_file="res://Asset/Level/LevelComplete/progress_border.png"
+dest_files=[ "res://.import/progress_border.png-4064143489863e1fa1cce601f073b0cd.stex" ]
 
 [params]
 

@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
-[ext_resource path="res://Asset/Level/complete_level_header.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/LevelComplete/complete_level_header.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Button/next_level_button.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/complete_level_background.png" type="Texture" id=4]
-[ext_resource path="res://Asset/Level/bonus_icon.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/LevelComplete/complete_level_background.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/LevelComplete/bonus_icon.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Common/title.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Asset/Level/bonus_icon_header.png" type="Texture" id=7]
+[ext_resource path="res://Asset/Level/LevelComplete/bonus_icon_header.png" type="Texture" id=7]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Asset/Level/progress_border.png" type="Texture" id=9]
-[ext_resource path="res://Asset/Level/progress_body.png" type="Texture" id=10]
+[ext_resource path="res://Asset/Level/LevelComplete/progress_border.png" type="Texture" id=9]
+[ext_resource path="res://Asset/Level/LevelComplete/progress_body.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -97,10 +97,11 @@ __meta__ = {
 [node name="Header" type="NinePatchRect" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -69.0
-margin_top = -56.0
+margin_left = -70.0
+margin_top = -55.0
 margin_right = 70.0
-margin_bottom = 19.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 140, 75 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

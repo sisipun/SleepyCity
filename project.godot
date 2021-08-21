@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Interface/Tutorial/TutorialPopup.gd"
 }, {
+"base": "Resource",
+"class": "TutorialResource",
+"language": "GDScript",
+"path": "res://Game/Common/Resource/TutorialResource.gd"
+}, {
 "base": "Area2D",
 "class": "Window",
 "language": "GDScript",
@@ -105,6 +110,7 @@ _global_script_class_icons={
 "SwitchButton": "",
 "TipButton": "",
 "TutorialPopup": "",
+"TutorialResource": "",
 "Window": ""
 }
 

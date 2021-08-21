@@ -4,16 +4,14 @@
 [ext_resource path="res://Asset/Button/sound_off_button.png" type="Texture" id=2]
 [ext_resource path="res://Game/Interface/Menu/MusicButton.gd" type="Script" id=3]
 [ext_resource path="res://Game/Interface/Menu/SoundButton.gd" type="Script" id=4]
-[ext_resource path="res://Asset/Level/menu_background.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/Menu/menu_background.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Button/music_off_button.png" type="Texture" id=6]
-[ext_resource path="res://Asset/Level/menu_header.png" type="Texture" id=7]
+[ext_resource path="res://Asset/Level/Menu/menu_header.png" type="Texture" id=7]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Asset/Button/music_on_button.png" type="Texture" id=9]
 [ext_resource path="res://Asset/Button/sound_on_button.png" type="Texture" id=10]
 [ext_resource path="res://Game/Interface/Menu/MenuPopup.gd" type="Script" id=12]
 [ext_resource path="res://Asset/Button/close_button.png" type="Texture" id=13]
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"

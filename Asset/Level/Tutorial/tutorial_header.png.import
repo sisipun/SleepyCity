@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tip_animation.png-ebcdb9ca3db9577b8c3e292493358c71.stex"
+path="res://.import/tutorial_header.png-fd4e19e5211867ca36a27b22c6c1cec6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/tip_animation.png"
-dest_files=[ "res://.import/tip_animation.png-ebcdb9ca3db9577b8c3e292493358c71.stex" ]
+source_file="res://Asset/Level/Tutorial/tutorial_header.png"
+dest_files=[ "res://.import/tutorial_header.png-fd4e19e5211867ca36a27b22c6c1cec6.stex" ]
 
 [params]
 

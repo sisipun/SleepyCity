@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/complete_level_background.png-684308152242b2320d1b71ff4328e47a.stex"
+path="res://.import/level_complete_star.png-aaa36308fe204e987d81649014bfda3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/complete_level_background.png"
-dest_files=[ "res://.import/complete_level_background.png-684308152242b2320d1b71ff4328e47a.stex" ]
+source_file="res://Asset/Level/LevelComplete/level_complete_star.png"
+dest_files=[ "res://.import/level_complete_star.png-aaa36308fe204e987d81649014bfda3c.stex" ]
 
 [params]
 
