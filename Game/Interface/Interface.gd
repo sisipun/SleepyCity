@@ -21,4 +21,4 @@ func _on_skip_pressed() -> void:
 
 
 func _on_tutorial_pressed() -> void:
-	EventStorage.emit_signal("tutorial_open", true)
+	EventStorage.emit_signal("tutorial_open")

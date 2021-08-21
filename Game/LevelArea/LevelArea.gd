@@ -4,7 +4,7 @@ extends Area2D
 class_name LevelArea
 
 
-export (Resource) var _window_scene
+export (Resource) var _window_scene = _window_scene as Window
 export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
 export (NodePath) onready var _game_area_shape = get_node(_game_area_shape) as CollisionShape2D
 export (NodePath) onready var _background = get_node(_background) as Sprite
@@ -166,7 +166,7 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	_background.texture = level_resource.house_textures[level_background_index]
 	
 	if _tutorial:
-		EventStorage.emit_signal("tutorial_open", false)
+		EventStorage.emit_signal("tutorial_open")
 		show_tip()
 	
 	_initialized = true

@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Sound/ButtonSound.gd"
 }, {
+"base": "HBoxContainer",
+"class": "Carousel",
+"language": "GDScript",
+"path": "res://Game/Common/Node/Carousel/Carousel.gd"
+}, {
+"base": "NinePatchRect",
+"class": "CarouselElement",
+"language": "GDScript",
+"path": "res://Game/Common/Node/Carousel/CarouselElement.gd"
+}, {
 "base": "Node",
 "class": "GameInfo",
 "language": "GDScript",
@@ -97,6 +107,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AnimatedButton": "",
 "ButtonSound": "",
+"Carousel": "",
+"CarouselElement": "",
 "GameInfo": "",
 "Interface": "",
 "LevelArea": "",

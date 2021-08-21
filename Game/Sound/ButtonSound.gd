@@ -10,14 +10,9 @@ func _ready() -> void:
 	EventStorage.connect("decrement_tip", self, "_on_button_pressed")
 	EventStorage.connect("menu_open", self, "_on_button_pressed")
 	EventStorage.connect("menu_closed", self, "_on_button_pressed")
-	EventStorage.connect("tutorial_open", self, "_on_mutable_button_pressed")
+	EventStorage.connect("tutorial_open", self, "_on_button_pressed")
 	EventStorage.connect("tutorial_closed", self, "_on_button_pressed")
 
 
 func _on_button_pressed() -> void:
 	play()
-
-
-func _on_mutable_button_pressed(play_sound: bool) -> void:
-	if play_sound:
-		play()

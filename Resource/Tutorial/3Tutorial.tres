@@ -9,4 +9,4 @@ script = ExtResource( 1 )
 before = ExtResource( 2 )
 after = ExtResource( 3 )
 tap_x = 25
-tap_y = 65
+tap_y = 60

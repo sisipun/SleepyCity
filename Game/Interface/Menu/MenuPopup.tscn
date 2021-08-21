@@ -55,6 +55,7 @@ tracks/2/keys = {
 }
 
 [node name="MenuPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
@@ -99,6 +100,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CloseButton" parent="Panel" instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -30.0
+margin_top = -15.0
+margin_right = 10.0
+rect_min_size = Vector2( 40, 40 )
+rect_pivot_offset = Vector2( 20, 20 )
+texture_normal = ExtResource( 13 )
+_animation_player = NodePath("../CloseButton/Animation")
+
 [node name="Body" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,6 +145,7 @@ margin_top = 0.0
 margin_right = 90.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
+rect_pivot_offset = Vector2( 35, 35 )
 texture_normal = ExtResource( 10 )
 script = ExtResource( 4 )
 on_normal = ExtResource( 10 )
@@ -146,27 +161,15 @@ margin_top = 0.0
 margin_right = 180.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
+rect_pivot_offset = Vector2( 35, 35 )
 texture_normal = ExtResource( 9 )
 script = ExtResource( 3 )
 on_normal = ExtResource( 9 )
 off_normal = ExtResource( 6 )
 
-[node name="AnimatedButton" parent="Panel" instance=ExtResource( 8 )]
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -24.0
-margin_top = -13.0
-margin_right = 9.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 33, 33 )
-rect_pivot_offset = Vector2( 16.5, 16.5 )
-texture_normal = ExtResource( 13 )
-
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 [connection signal="gui_input" from="Background" to="." method="_on_background_input"]
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close"]
 [connection signal="pressed" from="Panel/Body/Buttons/SoundButton" to="Panel/Body/Buttons/SoundButton" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Body/Buttons/MusicButton" to="Panel/Body/Buttons/MusicButton" method="_on_pressed"]
-[connection signal="pressed" from="Panel/AnimatedButton" to="." method="_on_close"]
