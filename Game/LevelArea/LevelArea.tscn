@@ -18,13 +18,13 @@ script = ExtResource( 6 )
 _window_scene = ExtResource( 1 )
 _shape = NodePath("Shape")
 _game_area_shape = NodePath("GameAreaShape")
-_background = NodePath("Background")
+_house = NodePath("House")
 _tween = NodePath("Tween")
 level_area_margin_left = 15.0
 level_area_margin_right = 15.0
 level_area_margin_top = 170.0
 
-[node name="Background" type="Sprite" parent="."]
+[node name="House" type="Sprite" parent="."]
 modulate = Color( 0.12549, 0.109804, 0.109804, 1 )
 light_mask = -2147483647
 scale = Vector2( 0.78, 1 )

@@ -10,9 +10,9 @@
 [ext_resource path="res://Asset/Level/Tutorial/tutorial_header.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Level/Window/tip_animation.png" type="Texture" id=9]
 [ext_resource path="res://Resource/Tutorial/1Tutorial.tres" type="Resource" id=10]
-[ext_resource path="res://Resource/Tutorial/4Tutorial.tres" type="Resource" id=11]
+[ext_resource path="res://Resource/Tutorial/3Tutorial.tres" type="Resource" id=11]
 [ext_resource path="res://Resource/Tutorial/2Tutorial.tres" type="Resource" id=12]
-[ext_resource path="res://Resource/Tutorial/3Tutorial.tres" type="Resource" id=13]
+[ext_resource path="res://Resource/Tutorial/4Tutorial.tres" type="Resource" id=13]
 [ext_resource path="res://Game/Common/Node/Carousel/Carousel.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
@@ -88,7 +88,6 @@ tracks/1/keys = {
 }
 
 [node name="TutorialPopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 1000 )
@@ -100,12 +99,12 @@ _animation_player = NodePath("Animation")
 _tutorial_image = NodePath("Panel/Body/Image")
 _tap = NodePath("Panel/Body/Image/Tap")
 _carousel = NodePath("Panel/Body/Carousel")
-_tutorial_resources = [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ) ]
+_tutorial_resources = [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ]
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
+color = Color( 0.470588, 0.470588, 0.588235, 0.470588 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -238,6 +237,7 @@ _animation_player = NodePath("../NextButton/Animation")
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 anims/tap = SubResource( 2 )
+[connection signal="gui_input" from="Background" to="." method="_on_background_input"]
 [connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close"]
 [connection signal="pressed" from="Panel/Body/Buttons/PreviousButton" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="Panel/Body/Buttons/NextButton" to="." method="_on_next_pressed"]

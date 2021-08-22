@@ -53,7 +53,6 @@ tracks/2/keys = {
 }
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -70,11 +69,8 @@ _tween = NodePath("Tween")
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.24057
-margin_top = 5.64166
-margin_right = 2.24057
-margin_bottom = 5.64172
-color = Color( 0.333333, 0.333333, 0.333333, 0.333333 )
+margin_bottom = 6.10352e-05
+color = Color( 0.470588, 0.470588, 0.588235, 0.470588 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -46,4 +46,4 @@ func _on_level_completed(
 func _on_next_pressed() -> void:
 	hide()
 	_bonus_icon.hide()
-	EventStorage.emit_signal("next_level")
+	EventStorage.emit_signal("next_level", false)

@@ -71,3 +71,8 @@ func update_current() -> void:
 	_tap.rect_position = Vector2(current_resource.tap_x, current_resource.tap_y)
 	_tutorial_image.texture = current_resource.after if resource_state else current_resource.before
 	_carousel.set_current(resource_index)
+
+
+func _on_background_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.is_pressed():
+		_on_close()

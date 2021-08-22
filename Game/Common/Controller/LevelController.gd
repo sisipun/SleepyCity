@@ -13,9 +13,10 @@ func _ready() -> void:
 	EventStorage.connect("complete_current_level", self, "_on_complete_current_level")
 
 
-func _on_next_level():
+func _on_next_level(initial):
 	EventStorage.emit_signal(
 		"level_changed",
+		initial,
 		GameStorage.game.level, 
 		level_resource,
 		LevelGenerator.calculate_progress(GameStorage.game.level_number)

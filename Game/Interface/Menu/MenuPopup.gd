@@ -19,3 +19,8 @@ func _on_menu_open() -> void:
 func _on_close() -> void:
 	hide()
 	EventStorage.emit_signal("menu_closed")
+
+
+func _on_background_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.is_pressed():
+		_on_close()

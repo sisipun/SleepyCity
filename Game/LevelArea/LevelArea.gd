@@ -7,7 +7,7 @@ class_name LevelArea
 export (Resource) var _window_scene = _window_scene as Window
 export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
 export (NodePath) onready var _game_area_shape = get_node(_game_area_shape) as CollisionShape2D
-export (NodePath) onready var _background = get_node(_background) as Sprite
+export (NodePath) onready var _house = get_node(_house) as Sprite
 export (NodePath) onready var _tween = get_node(_tween) as Tween
 
 
@@ -24,7 +24,6 @@ var _took_tip: bool = false
 var _tutorial: bool = false
 var _level_area_width: float
 var _level_area_height: float
-var _initialized: bool = false
 
 
 func _ready() -> void:
@@ -46,21 +45,22 @@ func _ready() -> void:
 
 
 func _on_level_changed(
+	initial: bool,
 	info: LevelInfo, 
 	level_resource: LevelResource, 
 	progress: int
 ) -> void:
-	var initial_x = position.x
-	if not _initialized:
+	if initial:
 		init(info, level_resource)
 		return
 	
+	var initial_x = position.x
 	_tween.interpolate_property(
 		self, 
 		"position", 
 		position, 
 		Vector2(-_level_area_width, position.y), 
-		0.7, 
+		1.0, 
 		Tween.TRANS_BACK, 
 		Tween.EASE_IN
 	)
@@ -75,7 +75,7 @@ func _on_level_changed(
 		"position", 
 		Vector2(get_viewport_rect().size.x + initial_x, position.y), 
 		Vector2(initial_x, position.y), 
-		0.7, 
+		1.0, 
 		Tween.TRANS_BACK, 
 		Tween.EASE_OUT
 	)
@@ -116,7 +116,6 @@ func _on_step_back() -> void:
 func clear() -> void:
 	_took_tip = false
 	_tutorial = false
-	_initialized = false
 
 	for i in len(_windows):
 		for j in len(_windows[i]):
@@ -162,14 +161,12 @@ func init(info: LevelInfo, level_resource: LevelResource):
 			_windows[i].append(window)
 	update_windows()
 	
-	var level_background_index = randi() % len(level_resource.house_textures)
-	_background.texture = level_resource.house_textures[level_background_index]
+	var level_house_index = randi() % len(level_resource.house_textures)
+	_house.texture = level_resource.house_textures[level_house_index]
 	
 	if _tutorial:
 		EventStorage.emit_signal("tutorial_open")
 		show_tip()
-	
-	_initialized = true
 
 
 func update_windows():
