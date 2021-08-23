@@ -51,6 +51,7 @@ func _on_level_changed(
 	progress: int
 ) -> void:
 	if initial:
+		clear(info)
 		init(info, level_resource)
 		return
 	
@@ -67,7 +68,7 @@ func _on_level_changed(
 	_tween.start()
 	yield(_tween, "tween_completed")
 	
-	clear()
+	clear(info)
 	init(info, level_resource)
 	
 	_tween.interpolate_property(
@@ -113,14 +114,22 @@ func _on_step_back() -> void:
 		update_windows()
 
 
-func clear() -> void:
+func clear(info: LevelInfo) -> void:
 	_took_tip = false
 	_tutorial = false
+	
+	if info.width == len(_windows) and info.height == len(_windows[0]):
+		return
+	
+	for i in range(info.width):
+		if i < len(_windows):
+			for j in range(info.height - len(_windows[i])):
+				add_window(i)
+		else:
+			_windows.append([])
+			for j in range(info.height):
+				add_window(i)
 
-	for i in len(_windows):
-		for j in len(_windows[i]):
-			remove_child(_windows[i][j])
-	_windows = []
 
 
 func init(info: LevelInfo, level_resource: LevelResource):
@@ -137,11 +146,8 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	var window_sprite_frames = level_resource.window_sprite_frames[window_sprite_frames_index]
 	var window_border_sprite_texure = level_resource.window_border_sprite_texture[window_border_sprite_texute_index]
 	for i in range(_level.width()):
-		_windows.append([])
 		for j in range(_level.height()):
-			var window_instance: Window = _window_scene.instance()
-			add_child(window_instance)
-			var window: Window = window_instance.init(
+			var window: Window = _windows[i][j].init(
 				i,
 				j,
 				Vector2(
@@ -157,8 +163,6 @@ func init(info: LevelInfo, level_resource: LevelResource):
 				window_sprite_frames,
 				window_border_sprite_texure
 			)
-			window.connect("clicked", self, "_on_window_clicked")
-			_windows[i].append(window)
 	update_windows()
 	
 	var level_house_index = randi() % len(level_resource.house_textures)
@@ -167,6 +171,13 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	if _tutorial:
 		EventStorage.emit_signal("tutorial_open")
 		show_tip()
+
+
+func add_window(i: int):
+	var window: Window = _window_scene.instance()
+	add_child(window)
+	window.connect("clicked", self, "_on_window_clicked")
+	_windows[i].append(window)
 
 
 func update_windows():
