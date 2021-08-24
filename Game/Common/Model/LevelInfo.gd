@@ -13,16 +13,16 @@ var tutorial: bool
 
 
 func _init(
-		width: int, 
-		height: int,
-		targets: Array,
-		solution: Array,
-		initial: Array,
-		tutorial: bool = false
+		_width: int, 
+		_height: int,
+		_targets: Array,
+		_solution: Array,
+		_initial: Array,
+		_tutorial: bool = false
 	) -> void:
-	self.width = width
-	self.height = height
-	self.targets = targets
-	self.solution = solution
-	self.initial = initial
-	self.tutorial = tutorial
+	self.width = _width
+	self.height = _height
+	self.targets = _targets
+	self.solution = _solution
+	self.initial = _initial
+	self.tutorial = _tutorial

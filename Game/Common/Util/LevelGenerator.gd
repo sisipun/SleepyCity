@@ -5,9 +5,9 @@ class GeneratedLevel:
 	var solution: Array
 	var windows: Array
 	
-	func _init(solution: Array, windows: Array):
-		self.solution = solution
-		self.windows = windows
+	func _init(_solution: Array, _windows: Array):
+		self.solution = _solution
+		self.windows = _windows
 
 
 func generate_level(level_number: int) -> LevelInfo:
@@ -21,7 +21,6 @@ func generate_level(level_number: int) -> LevelInfo:
 	var rand_part = randi() % 3
 	var solution_size: int = max(rand_part + min(max(ceil(solution_size_factor), 3), 20) - 1, 3)
 	
-	var level: LevelInfo
 	var generated: GeneratedLevel = _generate_level(width, height, solution_size)
 	return LevelInfo.new(
 		width,
@@ -40,7 +39,7 @@ func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLe
 	var map: = []
 	for i in range(width):
 		map.push_back([])
-		for j in range(height):
+		for _j in range(height):
 			map[i].push_back(false)
 	
 	var solutions = []

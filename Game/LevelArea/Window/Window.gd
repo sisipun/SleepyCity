@@ -37,7 +37,6 @@ func init(
 	sprite_frames: SpriteFrames,
 	border_sprite_texture: Texture
 ) -> Window:
-	var sprite_size: Vector2 = _body.frames.get_frame(_body.animation, 0).get_size()
 	self.position = position
 	_target = target
 	_coord_x = coord_x
@@ -55,39 +54,31 @@ func init(
 	return self
 
 
-func _on_reset():
+func _on_reset() -> void:
 	stop_tip_effect()
 
 
-func _on_step(step_count: int):
+func _on_step(_step_count: int) -> void:
 	stop_tip_effect()
 
 
-func _on_step_back():
+func _on_step_back() -> void:
 	stop_tip_effect()
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventScreenTouch and event.is_pressed():
 		emit_signal("clicked", self)
 
 
-func play_tip_effect() -> bool:
-	if _animation_player.is_playing() and _animation_player.current_animation == "tip":
-		return false
-	
+func play_tip_effect():
 	_animation_player.play("tip")
 	_tip.show()
-	return true
 
 
-func stop_tip_effect() -> bool:
-	if not _animation_player.is_playing() or _animation_player.current_animation != "tip":
-		return false
-	
+func stop_tip_effect():
 	_animation_player.stop()
 	_tip.hide()
-	return true
 
 
 func get_coordinates() -> Vector2:

@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _on_level_completed(
-	level: LevelInfo, 
+	_level: LevelInfo, 
 	level_number: int, 
 	previous_progress: int, 
 	current_progress: int, 

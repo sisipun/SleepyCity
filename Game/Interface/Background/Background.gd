@@ -12,9 +12,9 @@ func _ready() -> void:
 
 func _on_level_changed(
 	initial: bool,
-	info: LevelInfo, 
-	level_resource: LevelResource, 
-	progress: int
+	_info: LevelInfo, 
+	_level_resource: LevelResource, 
+	_progress: int
 ) -> void:
 	if initial:
 		return

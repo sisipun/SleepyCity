@@ -8,6 +8,7 @@ export (Resource) var _window_scene = _window_scene as Window
 export (NodePath) onready var _shape = get_node(_shape) as CollisionShape2D
 export (NodePath) onready var _game_area_shape = get_node(_game_area_shape) as CollisionShape2D
 export (NodePath) onready var _house = get_node(_house) as Sprite
+export (NodePath) onready var _roof = get_node(_roof) as Sprite
 export (NodePath) onready var _tween = get_node(_tween) as Tween
 
 
@@ -48,7 +49,7 @@ func _on_level_changed(
 	initial: bool,
 	info: LevelInfo, 
 	level_resource: LevelResource, 
-	progress: int
+	_progress: int
 ) -> void:
 	if initial:
 		clear(info)
@@ -123,11 +124,11 @@ func clear(info: LevelInfo) -> void:
 	
 	for i in range(info.width):
 		if i < len(_windows):
-			for j in range(info.height - len(_windows[i])):
+			for _j in range(info.height - len(_windows[i])):
 				add_window(i)
 		else:
 			_windows.append([])
-			for j in range(info.height):
+			for _j in range(info.height):
 				add_window(i)
 
 
@@ -147,7 +148,7 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	var window_border_sprite_texure = level_resource.window_border_sprite_texture[window_border_sprite_texute_index]
 	for i in range(_level.width()):
 		for j in range(_level.height()):
-			var window: Window = _windows[i][j].init(
+			 _windows[i][j].init(
 				i,
 				j,
 				Vector2(
@@ -165,8 +166,11 @@ func init(info: LevelInfo, level_resource: LevelResource):
 			)
 	update_windows()
 	
-	var level_house_index = randi() % len(level_resource.house_textures)
-	_house.texture = level_resource.house_textures[level_house_index]
+	var house_index = randi() % len(level_resource.house_textures)
+	_house.texture = level_resource.house_textures[house_index]
+	
+	var roof_index = randi() % len(level_resource.roof_textures)
+	_roof.texture = level_resource.roof_textures[roof_index]
 	
 	if _tutorial:
 		EventStorage.emit_signal("tutorial_open")

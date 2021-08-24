@@ -13,16 +13,16 @@ var music: bool
 
 
 func _init(
-	preset_levels: Dictionary,
-	level: LevelInfo = null,
-	level_number: int = 1,
-	tips_count: int = 3, 
-	sound: bool = true, 
-	music: bool = true
+	_preset_levels: Dictionary,
+	_level: LevelInfo = null,
+	_level_number: int = 1,
+	_tips_count: int = 3, 
+	_sound: bool = true, 
+	_music: bool = true
 ) -> void:
-	self.preset_levels = preset_levels
-	self.level = level
-	self.level_number = level_number
-	self.tips_count = tips_count
-	self.sound = sound
-	self.music = music
+	self.preset_levels = _preset_levels
+	self.level = _level
+	self.level_number = _level_number
+	self.tips_count = _tips_count
+	self.sound = _sound
+	self.music = _music

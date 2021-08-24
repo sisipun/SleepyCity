@@ -21,8 +21,8 @@ func _ready() -> void:
 	texture_disabled = on_disabled
 
 
-func set_is_on(is_on: bool) -> void:
-	self.is_on = is_on
+func set_is_on(_is_on: bool) -> void:
+	self.is_on = _is_on
 	if is_on:
 		texture_normal = on_normal
 		texture_pressed = on_pressed

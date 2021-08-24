@@ -6,10 +6,10 @@ func _ready() -> void:
 
 
 func _on_level_completed(
-	level: LevelInfo, 
-	level_number: int, 
-	previous_progress: int, 
-	current_progress: int, 
-	earned_bonus: bool
+	_level: LevelInfo, 
+	_level_number: int, 
+	_previous_progress: int, 
+	_current_progress: int, 
+	_earned_bonus: bool
 ) -> void:
 	play()

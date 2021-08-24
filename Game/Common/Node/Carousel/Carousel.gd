@@ -12,7 +12,7 @@ var elements = []
 
 
 func _ready() -> void:
-	for i in range(element_count):
+	for _i in range(element_count):
 		var element = _element_scene.instance()
 		elements.push_back(element)
 		add_child(element)

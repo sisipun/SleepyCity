@@ -86,7 +86,7 @@ func step_back() -> bool:
 		return false
 	
 	var step: Vector2 = _steps.pop_back()
-	_step(step.x, step.y)
+	_step(int(step.x), int(step.y))
 	
 	var solution_index: = _solutions.find(step) 
 	if solution_index < 0:

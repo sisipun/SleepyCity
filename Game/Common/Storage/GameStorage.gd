@@ -232,11 +232,9 @@ func _ready() -> void:
 	var version: String = data["version"]
 	if version == _current_version:
 		game = GameInfoParser.read(data)
-	
-	EventStorage.connect("game_updated", self, "_on_game_updated")
 
 
-func _on_game_updated(game: GameInfo) -> void:
+func _on_game_updated(_game: GameInfo) -> void:
 	var dir: Directory = Directory.new()
 	if not dir.dir_exists(_save_path):
 		dir.make_dir(_save_path)
