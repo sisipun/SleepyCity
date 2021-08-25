@@ -24,3 +24,7 @@ func _on_close() -> void:
 func _on_background_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_pressed():
 		_on_close()
+
+
+func _on_tutorial_pressed() -> void:
+	EventStorage.emit_signal("tutorial_open")

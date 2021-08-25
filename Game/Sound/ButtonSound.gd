@@ -12,6 +12,8 @@ func _ready() -> void:
 	EventStorage.connect("menu_closed", self, "_on_button_pressed")
 	EventStorage.connect("tutorial_open", self, "_on_button_pressed")
 	EventStorage.connect("tutorial_closed", self, "_on_button_pressed")
+	EventStorage.connect("tutorial_next", self, "_on_button_pressed")
+	EventStorage.connect("tutorial_previous", self, "_on_button_pressed")
 
 
 func _on_button_pressed() -> void:

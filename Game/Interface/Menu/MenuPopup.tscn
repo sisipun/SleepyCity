@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Game/Common/Node/SwitchButton/SwitchButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Asset/Button/sound_off_button.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Asset/Button/music_on_button.png" type="Texture" id=9]
 [ext_resource path="res://Asset/Button/sound_on_button.png" type="Texture" id=10]
+[ext_resource path="res://Asset/Button/tutorial_button.png" type="Texture" id=11]
 [ext_resource path="res://Game/Interface/Menu/MenuPopup.gd" type="Script" id=12]
 [ext_resource path="res://Asset/Button/close_button.png" type="Texture" id=13]
 
@@ -118,9 +119,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
+margin_left = -125.0
 margin_top = -35.0
-margin_right = 100.0
+margin_right = 125.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 200, 70 )
 alignment = 1
@@ -129,9 +130,9 @@ __meta__ = {
 }
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_right = 200.0
+margin_right = 250.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 140, 70 )
+rect_min_size = Vector2( 200, 70 )
 custom_constants/separation = 20
 alignment = 1
 
@@ -140,9 +141,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 20.0
+margin_left = 0.0
 margin_top = 0.0
-margin_right = 90.0
+margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 rect_pivot_offset = Vector2( 35, 35 )
@@ -156,9 +157,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 110.0
+margin_left = 90.0
 margin_top = 0.0
-margin_right = 180.0
+margin_right = 160.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 rect_pivot_offset = Vector2( 35, 35 )
@@ -167,9 +168,23 @@ script = ExtResource( 3 )
 on_normal = ExtResource( 9 )
 off_normal = ExtResource( 6 )
 
+[node name="TutorialButton" parent="Panel/Body/Buttons" instance=ExtResource( 8 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 180.0
+margin_top = 0.0
+margin_right = 250.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 11 )
+_animation_player = NodePath("../TutorialButton/Animation")
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 [connection signal="gui_input" from="Background" to="." method="_on_background_input"]
 [connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close"]
 [connection signal="pressed" from="Panel/Body/Buttons/SoundButton" to="Panel/Body/Buttons/SoundButton" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Body/Buttons/MusicButton" to="Panel/Body/Buttons/MusicButton" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Body/Buttons/TutorialButton" to="." method="_on_tutorial_pressed"]

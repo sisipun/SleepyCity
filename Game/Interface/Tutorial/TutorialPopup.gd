@@ -42,6 +42,7 @@ func _on_previous_pressed() -> void:
 	
 	resource_state = false
 	show_current(true)
+	EventStorage.emit_signal("tutorial_next")
 
 
 func _on_next_pressed() -> void:
@@ -51,6 +52,7 @@ func _on_next_pressed() -> void:
 	
 	resource_state = false
 	show_current(true)
+	EventStorage.emit_signal("tutorial_previous")
 
 
 func _on_change_statue() -> void:

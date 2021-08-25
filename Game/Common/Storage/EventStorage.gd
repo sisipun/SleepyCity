@@ -22,3 +22,6 @@ signal menu_open
 signal menu_closed
 signal tutorial_open
 signal tutorial_closed
+
+signal tutorial_next
+signal tutorial_previous
