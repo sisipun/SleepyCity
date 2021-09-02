@@ -52,7 +52,6 @@ tracks/2/keys = {
 }
 
 [node name="LevelCompletePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -81,8 +80,8 @@ anchor_bottom = -0.1
 margin_left = -150.0
 margin_top = -75.0
 margin_right = 150.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 300, 150 )
+margin_bottom = 95.0
+rect_min_size = Vector2( 300, 170 )
 rect_pivot_offset = Vector2( 150, 75 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -126,7 +125,7 @@ margin_top = -60.0
 margin_right = 125.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 250, 100 )
-custom_constants/separation = 5
+custom_constants/separation = 15
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,14 +137,14 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 12.0
+margin_top = 5.0
 margin_right = 250.0
-margin_bottom = 52.0
+margin_bottom = 55.0
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 57.0
+margin_top = 70.0
 margin_right = 250.0
-margin_bottom = 107.0
+margin_bottom = 130.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {
@@ -194,10 +193,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 100.0
+margin_left = 95.0
 margin_top = 0.0
-margin_right = 150.0
-margin_bottom = 50.0
+margin_right = 155.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
 texture_normal = ExtResource( 3 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
