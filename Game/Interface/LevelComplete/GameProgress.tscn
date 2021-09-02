@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/GameProgress.gd" type="Script" id=1]
-[ext_resource path="res://Asset/Level/LevelComplete/loadbar1.png" type="Texture" id=2]
-[ext_resource path="res://Asset/Level/LevelComplete/bulbNewOff.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/LevelComplete/loadbar2.png" type="Texture" id=4]
-[ext_resource path="res://Asset/Level/LevelComplete/bulbNewOn.png" type="Texture" id=5]
+[ext_resource path="res://Asset/Level/LevelComplete/progress_front.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Level/LevelComplete/blub_on.png" type="Texture" id=3]
+[ext_resource path="res://Asset/Level/LevelComplete/progress_back_14.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/LevelComplete/blub_off.png" type="Texture" id=6]
 
 [node name="GameProgress" type="TextureProgress"]
 anchor_left = 0.5
@@ -12,16 +12,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -10.0
+margin_top = -25.0
 margin_right = 125.0
-margin_bottom = 10.0
-rect_min_size = Vector2( 200, 20 )
+margin_bottom = 15.0
+rect_min_size = Vector2( 250, 40 )
 value = 33.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 4 )
-tint_under = Color( 0.47451, 0.321569, 0.14902, 1 )
-tint_over = Color( 0.929412, 0.337255, 0.0196078, 1 )
-tint_progress = Color( 0.847059, 0.854902, 0.0235294, 1 )
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
 script = ExtResource( 1 )
 __meta__ = {
@@ -29,19 +26,19 @@ __meta__ = {
 }
 _tween = NodePath("Tween")
 _blub = NodePath("Blub")
-_blub_off = ExtResource( 3 )
-_blub_on = ExtResource( 5 )
+_blub_off = ExtResource( 6 )
+_blub_on = ExtResource( 3 )
 
 [node name="Blub" type="NinePatchRect" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -29.6976
-margin_top = -30.9213
-margin_right = 12.3024
-margin_bottom = 11.0787
-texture = ExtResource( 3 )
+margin_left = -29.0
+margin_top = -33.0
+margin_right = 19.0
+margin_bottom = 15.0
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

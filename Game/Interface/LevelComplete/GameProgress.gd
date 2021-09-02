@@ -24,10 +24,11 @@ func _on_level_completed(
 		"value", 
 		previous_progress, 
 		current_progress if current_progress != 0 else 100, 
-		3.0, 
-		Tween.TRANS_QUAD, 
-		Tween.EASE_IN_OUT if current_progress != 0 else Tween.EASE_IN
+		2.0, 
+		Tween.TRANS_LINEAR, 
+		Tween.EASE_IN_OUT
 	)
+	
 	_tween.start()
 	
 	if current_progress == 0:
