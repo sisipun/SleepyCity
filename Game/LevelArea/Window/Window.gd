@@ -25,6 +25,7 @@ func _ready() -> void:
 	EventStorage.connect("reset", self, "_on_reset")
 	EventStorage.connect("step", self, "_on_step")
 	EventStorage.connect("step_back", self, "_on_step_back")
+	EventStorage.connect("level_changed", self, "_on_level_changed")
 
 
 func init(
@@ -63,6 +64,10 @@ func _on_step(_step_count: int) -> void:
 
 
 func _on_step_back() -> void:
+	stop_tip_effect()
+
+
+func _on_level_changed() -> void:
 	stop_tip_effect()
 
 

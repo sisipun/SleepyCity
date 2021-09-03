@@ -9,7 +9,6 @@ export (Texture) var _blub_on
 
 func _ready() -> void:
 	EventStorage.connect("level_completed", self, "_on_level_completed")
-	EventStorage.connect("next_level", self, "_on_next_level")
 
 
 func _on_level_completed(
@@ -19,6 +18,7 @@ func _on_level_completed(
 	current_progress: int, 
 	_earned_bonus: bool
 ) -> void:
+	_blub.texture = _blub_off
 	_tween.interpolate_property(
 		self, 
 		"value", 
@@ -34,6 +34,3 @@ func _on_level_completed(
 	if current_progress == 0:
 		yield(_tween, "tween_completed")
 		_blub.texture = _blub_on
-
-func _on_next_level(_initial: bool) -> void:
-	_blub.texture = _blub_off
