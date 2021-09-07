@@ -163,14 +163,14 @@ margin_top = -200.0
 margin_right = 125.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 250, 400 )
-custom_constants/separation = 30
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Image" type="NinePatchRect" parent="Panel/Body"]
 margin_right = 250.0
-margin_bottom = 285.0
+margin_bottom = 300.0
 size_flags_vertical = 3
 texture = ExtResource( 7 )
 
@@ -191,13 +191,13 @@ __meta__ = {
 }
 
 [node name="Carousel" parent="Panel/Body" instance=ExtResource( 14 )]
-margin_top = 315.0
+margin_top = 320.0
 margin_right = 250.0
-margin_bottom = 315.0
+margin_bottom = 320.0
 element_count = 4
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 345.0
+margin_top = 340.0
 margin_right = 250.0
 margin_bottom = 400.0
 alignment = 1
@@ -209,16 +209,16 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 55.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 55, 55 )
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 6 )
 
 [node name="Mock" type="NinePatchRect" parent="Panel/Body/Buttons"]
-margin_left = 59.0
-margin_right = 191.0
-margin_bottom = 55.0
+margin_left = 64.0
+margin_right = 186.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="NextButton" parent="Panel/Body/Buttons" instance=ExtResource( 4 )]
@@ -226,11 +226,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 195.0
+margin_left = 190.0
 margin_top = 0.0
 margin_right = 250.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 55, 55 )
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 5 )
 _animation_player = NodePath("../NextButton/Animation")

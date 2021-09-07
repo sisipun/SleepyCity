@@ -1,11 +1,10 @@
-[gd_resource type="Resource" load_steps=27 format=2]
+[gd_resource type="Resource" load_steps=26 format=2]
 
 [ext_resource path="res://Game/Common/Resource/LevelResource.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/Border/2_border.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/Window/1_window_light_1.png" type="Texture" id=3]
 [ext_resource path="res://Asset/Level/Window/1_window_dark.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Border/3_border.png" type="Texture" id=5]
-[ext_resource path="res://Asset/Level/House/1_house.png" type="Texture" id=6]
 [ext_resource path="res://Asset/Level/Window/3_window_dark.png" type="Texture" id=7]
 [ext_resource path="res://Asset/Level/Border/1_border.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Level/Window/2_window_light.png" type="Texture" id=9]
@@ -77,7 +76,7 @@ animations = [ {
 
 [resource]
 script = ExtResource( 1 )
-house_textures = [ ExtResource( 6 ) ]
+house_colors = [ Color( 0.0784314, 0.027451, 0.027451, 1 ), Color( 0.0588235, 0.0588235, 0.0509804, 1 ), Color( 0.0901961, 0.0470588, 0.027451, 1 ), Color( 0.0901961, 0.0352941, 0.0235294, 1 ), Color( 0.0588235, 0.0509804, 0.0196078, 1 ) ]
 roof_textures = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ) ]
 window_sprite_frames = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 window_border_sprite_texture = [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 14 ) ]

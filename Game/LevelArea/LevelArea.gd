@@ -119,6 +119,10 @@ func clear(info: LevelInfo) -> void:
 	_took_tip = false
 	_tutorial = false
 	
+	for window_row in _windows:
+		for window in window_row: 
+			window.hide()
+	
 	if info.width == len(_windows) and info.height == len(_windows[0]):
 		return
 	
@@ -148,7 +152,8 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	var window_border_sprite_texure = level_resource.window_border_sprite_texture[window_border_sprite_texute_index]
 	for i in range(_level.width()):
 		for j in range(_level.height()):
-			 _windows[i][j].init(
+			var window = _windows[i][j]
+			window.init(
 				i,
 				j,
 				Vector2(
@@ -164,10 +169,11 @@ func init(info: LevelInfo, level_resource: LevelResource):
 				window_sprite_frames,
 				window_border_sprite_texure
 			)
+			window.show()
 	update_windows()
 	
-	var house_index = randi() % len(level_resource.house_textures)
-	_house.texture = level_resource.house_textures[house_index]
+	var house_color_index = randi() % len(level_resource.house_colors)
+	_house.modulate = level_resource.house_colors[house_color_index]
 	
 	var roof_index = randi() % len(level_resource.roof_textures)
 	_roof.texture = level_resource.roof_textures[roof_index]
