@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Asset/Button/next_level_button.png" type="Texture" id=1]
+[ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
+[ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Asset/Button/reset_button.png" type="Texture" id=8]
+[ext_resource path="res://Asset/Button/menu_button.png" type="Texture" id=11]
+
+[node name="Interface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="VBoxContainer" parent="."]
+margin_left = 30.0
+margin_top = 50.0
+margin_right = 85.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 50, 100 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipButton" parent="Left" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 27.5, 27.5 )
+texture_normal = ExtResource( 1 )
+
+[node name="TipButton" parent="Left" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 70.0
+margin_right = 60.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 27.5, 27.5 )
+
+[node name="Right" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_top = 50.0
+margin_right = -25.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 50, 100 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetButton" parent="Right" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 27.5, 27.5 )
+texture_normal = ExtResource( 8 )
+
+[node name="MenuButton" parent="Right" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 70.0
+margin_right = 60.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 27.5, 27.5 )
+texture_normal = ExtResource( 11 )
+_animation_player = NodePath("../MenuButton/Animation")
+[connection signal="pressed" from="Left/SkipButton" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Right/MenuButton" to="." method="_on_menu_pressed"]

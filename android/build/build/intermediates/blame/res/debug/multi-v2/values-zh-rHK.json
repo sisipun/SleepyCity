@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/alexeykadach/GodotProjects/Cells/android/build/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rHK/values-zh-rHK.xml",
+            "map": [
+                {
+                    "source": "/Users/alexeykadach/.gradle/caches/transforms-2/files-2.1/f67d85943d9cad2370d93f677f0a0aa9/jetified-play-services-basement-17.6.0/res/values-zh-rHK/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "166",
+                        "endOffsets": "417"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "166",
+                        "endOffsets": "267"
+                    }
+                },
+                {
+                    "source": "/Users/alexeykadach/.gradle/caches/transforms-2/files-2.1/af4fd823e542fa107b13064f17c08ba7/jetified-play-services-ads-20.2.0/res/values-zh-rHK/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "203,292,386,466,567,651,753,839,900,973,1033,1093,1157,1227",
+                        "endColumns": "88,93,79,100,83,101,85,60,72,59,59,63,69,61",
+                        "endOffsets": "291,385,465,566,650,752,838,899,972,1032,1092,1156,1226,1288"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "332,425,523,607,712,800,906,996,1061,1138,1202,1266,1334,1408",
+                        "endColumns": "92,97,83,104,87,105,89,64,76,63,63,67,73,65",
+                        "endOffsets": "420,518,602,707,795,901,991,1056,1133,1197,1261,1329,1403,1469"
+                    }
+                },
+                {
+                    "source": "/Users/alexeykadach/GodotProjects/Cells/android/build/res/values-zh-rHK/godot_project_name_string.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "1",
+                        "startOffsets": "112",
+                        "endColumns": "56",
+                        "endOffsets": "167"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "272",
+                        "endColumns": "59",
+                        "endOffsets": "327"
+                    }
+                },
+                {
+                    "source": "/Users/alexeykadach/.gradle/caches/transforms-2/files-2.1/6ae463a1ca68eaa1dde82bb26ec9dcdf/core-1.2.0/res/values-zh-rHK/values-zh-rHK.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "1474",
+                        "endColumns": "100",
+                        "endOffsets": "1570"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/alexeykadach/GodotProjects/Cells/android/build/build/intermediates/res/merged/debug/drawable-nodpi_splash_bg_color.png.flat",
+        "source": "/Users/alexeykadach/GodotProjects/Cells/android/build/res/drawable-nodpi/splash_bg_color.png"
+    },
+    {
+        "merged": "/Users/alexeykadach/GodotProjects/Cells/android/build/build/intermediates/res/merged/debug/drawable-nodpi_splash.png.flat",
+        "source": "/Users/alexeykadach/GodotProjects/Cells/android/build/res/drawable-nodpi/splash.png"
+    },
+    {
+        "merged": "/Users/alexeykadach/GodotProjects/Cells/android/build/build/intermediates/res/merged/debug/drawable_splash_drawable.xml.flat",
+        "source": "/Users/alexeykadach/GodotProjects/Cells/android/build/res/drawable/splash_drawable.xml"
+    }
+]
