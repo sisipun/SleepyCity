@@ -15,6 +15,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_skip_button = NodePath("Left/SkipButton")
 
 [node name="Left" type="VBoxContainer" parent="."]
 margin_left = 30.0

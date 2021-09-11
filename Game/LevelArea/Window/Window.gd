@@ -67,7 +67,12 @@ func _on_step_back() -> void:
 	stop_tip_effect()
 
 
-func _on_level_changed() -> void:
+func _on_level_changed(
+	_initial: bool,
+	_info: LevelInfo, 
+	_level_resource: LevelResource, 
+	_progress: int
+) -> void:
 	stop_tip_effect()
 
 
