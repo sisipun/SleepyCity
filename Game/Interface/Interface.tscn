@@ -91,6 +91,7 @@ rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 11 )
 _animation_player = NodePath("../MenuButton/Animation")
+
 [connection signal="pressed" from="Left/SkipButton" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Right/MenuButton" to="." method="_on_menu_pressed"]
