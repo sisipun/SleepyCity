@@ -20,13 +20,16 @@ func generate_level(level_number: int) -> LevelInfo:
 	var height = width * 2 - randi() % 2
 	var solution_size: int = max(randi() % 3 + min(max(ceil(solution_size_factor), 3), 20) - 1, 3)
 	
+	var attempt_count = solution_size * 2
+	
 	var generated: GeneratedLevel = _generate_level(width, height, solution_size)
 	return LevelInfo.new(
 		width,
 		height,
 		[],
 		generated.solution,
-		generated.windows
+		generated.windows,
+		attempt_count
 	)
 
 

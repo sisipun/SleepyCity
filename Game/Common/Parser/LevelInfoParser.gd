@@ -17,6 +17,7 @@ func write(level: LevelInfo) -> Dictionary:
 		"targets" : dict_targets,
 		"solution": dict_solution,
 		"initial": dict_initial,
+		"attempt_count": level.attempt_count,
 		"tutorial": level.tutorial
 	}
 
@@ -41,5 +42,6 @@ func read(dict: Dictionary) -> LevelInfo:
 		targets,
 		solution,
 		initial,
+		dict["attempt_count"],
 		dict["tutorial"]
 	)

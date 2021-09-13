@@ -9,6 +9,7 @@ var height: int
 var targets: Array
 var solution: Array
 var initial: Array
+var attempt_count: int
 var tutorial: bool
 
 
@@ -18,6 +19,7 @@ func _init(
 		_targets: Array,
 		_solution: Array,
 		_initial: Array,
+		_attempt_count: int,
 		_tutorial: bool = false
 	) -> void:
 	self.width = _width
@@ -25,4 +27,5 @@ func _init(
 	self.targets = _targets
 	self.solution = _solution
 	self.initial = _initial
+	self.attempt_count = _attempt_count
 	self.tutorial = _tutorial

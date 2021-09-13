@@ -17,6 +17,7 @@ var game: GameInfo = GameInfo.new({
 			Vector2(1,3),
 			Vector2(2,2)
 		],
+		3,
 		true
 	),
 	2: LevelInfo.new(
@@ -37,7 +38,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(1,4),
 			Vector2(2,1),
 			Vector2(2,3),
-		]
+		],
+		4
 	),
 	3: LevelInfo.new(
 		3,
@@ -55,7 +57,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(1,4),
 			Vector2(2,2),
 			Vector2(2,3),
-		]
+		],
+		4
 	),
 	4: LevelInfo.new(
 		3,
@@ -77,7 +80,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,1),
 			Vector2(2,2),
 			Vector2(2,3),
-		]
+		],
+		6
 	),
 	5: LevelInfo.new(
 		3,
@@ -99,7 +103,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,1),
 			Vector2(2,2),
 			Vector2(2,3),
-		]
+		],
+		6
 	),
 	6: LevelInfo.new(
 		3,
@@ -115,7 +120,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(0,3),
 			Vector2(1,1),
 			Vector2(1,3),
-		]
+		],
+		5
 	),
 	7: LevelInfo.new(
 		3,
@@ -131,7 +137,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(0,3),
 			Vector2(2,1),
 			Vector2(2,3),
-		]
+		],
+		5
 	),
 	8: LevelInfo.new(
 		3,
@@ -153,7 +160,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,1),
 			Vector2(2,3),
 			Vector2(2,4),
-		]
+		],
+		8
 	),
 	9: LevelInfo.new(
 		3,
@@ -179,7 +187,8 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,1),
 			Vector2(2,2),
 			Vector2(2,3),
-		]
+		],
+		10
 	),
 	10: LevelInfo.new(
 		3,
@@ -209,12 +218,13 @@ var game: GameInfo = GameInfo.new({
 			Vector2(2,2),
 			Vector2(2,3),
 			Vector2(2,4),
-		]
+		],
+		10
 	),
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels.json"
-var _current_version: String = "1.1"
+var _current_version: String = "1.0"
 
 
 func _ready() -> void:
