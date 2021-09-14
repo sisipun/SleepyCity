@@ -38,8 +38,8 @@ _background_2 = NodePath("Background_2")
 
 [node name="Background_1" type="NinePatchRect" parent="BackgroundLayer/Background"]
 modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
-anchor_left = -1.0
-anchor_right = 2.04
+anchor_left = -0.990486
+anchor_right = 2.04951
 anchor_bottom = 1.0
 margin_left = -3.05176e-05
 margin_right = -19.9999
