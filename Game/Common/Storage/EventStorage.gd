@@ -10,6 +10,8 @@ signal complete_current_level
 signal level_completed(level, level_number, previous_progress, current_progress, earned_bonus)
 signal level_changed(initial, level, level_resource, progress)
 
+signal level_failed
+
 signal sound_switch
 signal music_switch
 

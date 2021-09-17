@@ -96,7 +96,7 @@ func _on_window_clicked(window: Window) -> void:
 	if _level.is_complete():
 		EventStorage.emit_signal("complete_current_level")
 	elif not _level.has_attempts():
-		EventStorage.emit_signal("reset")
+		EventStorage.emit_signal("level_failed")
 	elif _tutorial:
 		show_tip()
 
