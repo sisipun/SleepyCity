@@ -91,7 +91,7 @@ func _on_window_clicked(window: Window) -> void:
 	
 	if _level.step(i, j):
 		update_windows()
-		EventStorage.emit_signal("step", _level.steps_count())
+		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
 	
 	if _level.is_complete():
 		EventStorage.emit_signal("complete_current_level")
@@ -107,13 +107,13 @@ func _on_decrement_tip() -> void:
 
 func _on_reset() -> void:
 	if _level.reset():
-		EventStorage.emit_signal("step", _level.steps_count())
+		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
 		update_windows()
 
 
 func _on_step_back() -> void:
 	if _level.step_back():
-		EventStorage.emit_signal("step", _level.steps_count())
+		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
 		update_windows()
 
 

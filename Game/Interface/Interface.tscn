@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Asset/Button/next_level_button.png" type="Texture" id=1]
 [ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Asset/Common/counter.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Game/Interface/AttemptCounter.gd" type="Script" id=6]
 [ext_resource path="res://Asset/Button/reset_button.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Button/menu_button.png" type="Texture" id=11]
 
@@ -53,6 +55,28 @@ margin_bottom = 130.0
 rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 
+[node name="Middle" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -25.0
+margin_top = 50.0
+margin_right = 25.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 50, 80 )
+rect_pivot_offset = Vector2( 25, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttemptCounter" type="Label" parent="Middle"]
+margin_right = 50.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -92,7 +116,6 @@ rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 11 )
 _animation_player = NodePath("../MenuButton/Animation")
-
 [connection signal="pressed" from="Left/SkipButton" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Right/MenuButton" to="." method="_on_menu_pressed"]

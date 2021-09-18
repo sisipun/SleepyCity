@@ -30,7 +30,7 @@ func height() -> int:
 	return _info.height
 
 
-func steps_count() -> int:
+func step_number() -> int:
 	return len(_steps)
 
 
@@ -42,8 +42,12 @@ func solution_size() -> int:
 	return len(_solutions)
 
 
+func attempts_left() -> int:
+	return _info.attempt_count - step_number()
+
+
 func has_attempts() -> bool:
-	return steps_count() < _info.attempt_count
+	return attempts_left() > 0
 
 
 func is_on(i: int, j: int) -> bool:

@@ -9,7 +9,7 @@ export (NodePath) onready var _skip_button = get_node(_skip_button) as AnimatedB
 
 func _ready() -> void:
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
-		_skip_button.disabled = true		
+		_skip_button.disabled = true
 		MobileAds.connect("initialization_complete", self, "_on_ads_initialization_complete")
 		MobileAds.connect("rewarded_ad_loaded", self, "_on_ads_rewarded_ad_loaded")
 		MobileAds.connect("rewarded_ad_closed", self, "_on_ads_rewarded_ad_closed")

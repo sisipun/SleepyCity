@@ -59,7 +59,7 @@ func _on_reset() -> void:
 	stop_tip_effect()
 
 
-func _on_step(_step_count: int) -> void:
+func _on_step(_step_number: int, _attempts_left: int) -> void:
 	stop_tip_effect()
 
 

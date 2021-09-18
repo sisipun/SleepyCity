@@ -15,7 +15,7 @@ signal level_failed
 signal sound_switch
 signal music_switch
 
-signal step(step_count)
+signal step(step_number, attempts_left)
 signal decrement_tip
 signal increment_tip
 signal step_back
