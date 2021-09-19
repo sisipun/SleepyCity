@@ -22,9 +22,9 @@ var _coord_y: int = 0
 
 
 func _ready() -> void:
-	EventStorage.connect("reset", self, "_on_reset")
-	EventStorage.connect("step", self, "_on_step")
-	EventStorage.connect("step_back", self, "_on_step_back")
+	EventStorage.connect("steped", self, "_on_steped")
+	EventStorage.connect("steped_back", self, "_on_steped_back")
+	EventStorage.connect("reseted", self, "_on_reset")
 	EventStorage.connect("level_changed", self, "_on_level_changed")
 
 
@@ -55,15 +55,15 @@ func init(
 	return self
 
 
-func _on_reset() -> void:
+func _on_steped(_step_number: int, _attempts_left: int) -> void:
 	stop_tip_effect()
 
 
-func _on_step(_step_number: int, _attempts_left: int) -> void:
+func _on_steped_back(_step_number: int, _attempts_left: int) -> void:
 	stop_tip_effect()
 
 
-func _on_step_back() -> void:
+func _on_reseted(_step_number: int, _attempts_left: int) -> void:
 	stop_tip_effect()
 
 

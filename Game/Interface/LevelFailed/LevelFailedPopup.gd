@@ -15,4 +15,4 @@ func _on_level_failed() -> void:
 
 func _on_reset_pressed() -> void:
 	hide()
-	EventStorage.emit_signal("reset")
+	EventStorage.emit_signal("reset_request")

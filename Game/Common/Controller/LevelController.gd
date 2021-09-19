@@ -9,11 +9,11 @@ func _ready() -> void:
 		GameStorage.game.level = _generate_level()
 		EventStorage.emit_signal("game_updated", GameStorage.game)
 	
-	EventStorage.connect("next_level", self, "_on_next_level")
-	EventStorage.connect("complete_current_level", self, "_on_complete_current_level")
+	EventStorage.connect("level_change_request", self, "_on_level_change_request")
+	EventStorage.connect("level_complete_request", self, "_on_level_complete_request")
 
 
-func _on_next_level(initial):
+func _on_level_change_request(initial):
 	EventStorage.emit_signal(
 		"level_changed",
 		initial,
@@ -24,7 +24,7 @@ func _on_next_level(initial):
 	EventStorage.emit_signal("game_updated", GameStorage.game)
 
 
-func _on_complete_current_level() -> void:
+func _on_level_complete_request() -> void:
 	var completed: LevelInfo = GameStorage.game.level
 	var completed_number: int = GameStorage.game.level_number
 	var previous_progress: int = LevelGenerator.calculate_progress(GameStorage.game.level_number)

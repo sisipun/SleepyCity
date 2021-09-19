@@ -32,4 +32,4 @@ func _on_level_completed(
 func _on_next_pressed() -> void:
 	hide()
 	_bonus_icon.hide()
-	EventStorage.emit_signal("next_level", false)
+	EventStorage.emit_signal("level_change_request", false)

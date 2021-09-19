@@ -2,8 +2,8 @@ extends AudioStreamPlayer
 
 
 func _ready() -> void:
-	EventStorage.connect("step", self, "_on_step")
+	EventStorage.connect("steped", self, "_on_steped")
 
 
-func _on_step(_step_number: int, _attempts_left: int) -> void:
+func _on_steped(_step_number: int, _attempts_left: int) -> void:
 	play()

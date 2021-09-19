@@ -2,4 +2,4 @@ extends Node
 
 
 func _ready() -> void:
-	EventStorage.emit_signal("next_level", true)
+	EventStorage.emit_signal("level_change_request", true)

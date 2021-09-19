@@ -30,8 +30,8 @@ var _level_area_height: float
 func _ready() -> void:
 	EventStorage.connect("level_changed", self, "_on_level_changed")
 	EventStorage.connect("decrement_tip", self, "_on_decrement_tip")
-	EventStorage.connect("reset", self, "_on_reset")
-	EventStorage.connect("step_back", self, "_on_step_back")
+	EventStorage.connect("reset_request", self, "_on_reset_request")
+	EventStorage.connect("step_back_request", self, "_on_step_back_request")
 	
 	var screen_size: = get_viewport_rect().size
 	_level_area_width = screen_size.x - (level_area_margin_left + level_area_margin_right)
@@ -91,10 +91,10 @@ func _on_window_clicked(window: Window) -> void:
 	
 	if _level.step(i, j):
 		update_windows()
-		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
+		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	
 	if _level.is_complete():
-		EventStorage.emit_signal("complete_current_level")
+		EventStorage.emit_signal("level_complete_request")
 	elif not _level.has_attempts():
 		EventStorage.emit_signal("level_failed")
 	elif _tutorial:
@@ -105,15 +105,15 @@ func _on_decrement_tip() -> void:
 	show_tip()
 
 
-func _on_reset() -> void:
+func _on_reset_request() -> void:
 	if _level.reset():
-		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
+		EventStorage.emit_signal("reseted", _level.step_number(), _level.attempts_left())
 		update_windows()
 
 
-func _on_step_back() -> void:
+func _on_step_back_request() -> void:
 	if _level.step_back():
-		EventStorage.emit_signal("step", _level.step_number(), _level.attempts_left())
+		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
 		update_windows()
 
 
