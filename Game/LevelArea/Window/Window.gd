@@ -24,7 +24,7 @@ var _coord_y: int = 0
 func _ready() -> void:
 	EventStorage.connect("steped", self, "_on_steped")
 	EventStorage.connect("steped_back", self, "_on_steped_back")
-	EventStorage.connect("reseted", self, "_on_reset")
+	EventStorage.connect("reseted", self, "_on_reseted")
 	EventStorage.connect("level_changed", self, "_on_level_changed")
 
 

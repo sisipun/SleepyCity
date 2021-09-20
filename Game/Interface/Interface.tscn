@@ -68,6 +68,7 @@ __meta__ = {
 }
 
 [node name="AttemptCounter" parent="Middle" instance=ExtResource( 5 )]
+custom_colors/font_color = Color( 0.988235, 0.658824, 0.211765, 1 )
 
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0

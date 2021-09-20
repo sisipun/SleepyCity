@@ -107,14 +107,14 @@ func _on_decrement_tip() -> void:
 
 func _on_reset_request() -> void:
 	if _level.reset():
-		EventStorage.emit_signal("reseted", _level.step_number(), _level.attempts_left())
 		update_windows()
+		EventStorage.emit_signal("reseted", _level.step_number(), _level.attempts_left())
 
 
 func _on_step_back_request() -> void:
 	if _level.step_back():
-		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
 		update_windows()
+		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
 
 
 func clear(info: LevelInfo) -> void:

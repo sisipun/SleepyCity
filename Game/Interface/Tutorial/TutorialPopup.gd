@@ -32,7 +32,7 @@ func _on_close() -> void:
 	resource_index = 0
 	resource_state = false
 	update_current()
-	EventStorage.emit_signal("tutorial_close")
+	EventStorage.emit_signal("tutorial_closed")
 
 
 func _on_previous_pressed() -> void:
