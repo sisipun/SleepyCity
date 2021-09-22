@@ -94,7 +94,7 @@ func _on_window_clicked(window: Window) -> void:
 		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	
 	if _level.is_complete():
-		EventStorage.emit_signal("level_complete_request")
+		EventStorage.emit_signal("level_complete_request", _level.step_number(), false)
 	elif not _level.has_attempts():
 		EventStorage.emit_signal("level_failed")
 	elif _tutorial:

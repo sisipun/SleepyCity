@@ -25,7 +25,7 @@ func _on_ads_rewarded_ad_loaded() -> void:
 
 
 func _on_ads_rewarded_ad_closed() -> void:
-	EventStorage.emit_signal("level_complete_request")
+	EventStorage.emit_signal("level_complete_request", 0, true)
 	_skip_button.disabled = true
 	MobileAds.load_rewarded()
 
@@ -43,4 +43,4 @@ func _on_skip_pressed() -> void:
 		MobileAds.show_rewarded()
 		MobileAds.load_rewarded()
 	else:
-		EventStorage.emit_signal("level_complete_request")
+		EventStorage.emit_signal("level_complete_request", 0, true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Game/Interface/LevelComplete/LevelCompletePopup.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/LevelComplete/complete_level_header.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Asset/Level/LevelComplete/bonus_icon_header.png" type="Texture" id=7]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Game/Interface/LevelComplete/GameProgress.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Game/Interface/LevelComplete/LevelResultStars.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -24,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.466667, 0.666667 ),
 "transitions": PoolRealArray( 2, 0.5, 2, 1 ),
 "update": 0,
-"values": [ -0.1, 0.5, 0.4, 0.5 ]
+"values": [ -0.2, 0.5, 0.4, 0.5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Panel:anchor_bottom")
@@ -36,7 +37,7 @@ tracks/1/keys = {
 "times": PoolRealArray( -1.86265e-09, 0.300001, 0.466667, 0.66 ),
 "transitions": PoolRealArray( 2, 0.5, 2, 1 ),
 "update": 0,
-"values": [ -0.1, 0.5, 0.4, 0.5 ]
+"values": [ -0.2, 0.5, 0.4, 0.5 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Panel:rect_scale")
@@ -74,14 +75,14 @@ __meta__ = {
 
 [node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
-anchor_top = -0.1
+anchor_top = -0.2
 anchor_right = 0.5
-anchor_bottom = -0.1
+anchor_bottom = -0.2
 margin_left = -150.0
 margin_top = -75.0
 margin_right = 150.0
 margin_bottom = 95.0
-rect_min_size = Vector2( 300, 170 )
+rect_min_size = Vector2( 300, 220 )
 rect_pivot_offset = Vector2( 150, 75 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -121,9 +122,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -60.0
+margin_top = -75.0
 margin_right = 125.0
-margin_bottom = 60.0
+margin_bottom = 95.0
 rect_min_size = Vector2( 250, 100 )
 custom_constants/separation = 0
 alignment = 1
@@ -131,21 +132,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LevelResultStars" parent="Panel/Body" instance=ExtResource( 10 )]
+margin_right = 250.0
+
 [node name="GameProgress" parent="Panel/Body" instance=ExtResource( 9 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 0.0
+margin_top = 50.0
 margin_right = 250.0
-margin_bottom = 60.0
+margin_bottom = 110.0
 rect_min_size = Vector2( 250, 60 )
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
-margin_top = 60.0
+margin_top = 110.0
 margin_right = 250.0
-margin_bottom = 120.0
+margin_bottom = 170.0
 custom_constants/separation = 20
 alignment = 1
 __meta__ = {

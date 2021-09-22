@@ -18,7 +18,8 @@ func _on_level_completed(
 	level_number: int, 
 	_previous_progress: int, 
 	_current_progress: int, 
-	earned_bonus: bool
+	earned_bonus: bool,
+	_stars_count: int
 ) -> void:
 	popup_centered()
 	

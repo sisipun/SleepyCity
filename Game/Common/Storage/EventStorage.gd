@@ -5,10 +5,10 @@ signal game_updated(game)
 signal game_saved(game)
 
 # LEVEL STATE
-signal level_complete_request
+signal level_complete_request(step_number, skipped)
 signal level_change_request(initial)
 
-signal level_completed(level, level_number, previous_progress, current_progress, earned_bonus)
+signal level_completed(level, level_number, previous_progress, current_progress, earned_bonus, stars_count)
 signal level_changed(initial, level, level_resource, progress)
 signal level_failed
 

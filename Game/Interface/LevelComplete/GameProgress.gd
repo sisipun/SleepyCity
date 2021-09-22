@@ -16,7 +16,8 @@ func _on_level_completed(
 	_level_number: int, 
 	previous_progress: int, 
 	current_progress: int, 
-	_earned_bonus: bool
+	_earned_bonus: bool,
+	_stars_count: int
 ) -> void:
 	_blub.texture = _blub_off
 	_tween.interpolate_property(

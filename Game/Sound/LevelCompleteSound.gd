@@ -10,6 +10,7 @@ func _on_level_completed(
 	_level_number: int, 
 	_previous_progress: int, 
 	_current_progress: int, 
-	_earned_bonus: bool
+	_earned_bonus: bool,
+	_stars_count: int
 ) -> void:
 	play()
