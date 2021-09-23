@@ -4,6 +4,7 @@ extends HBoxContainer
 export (NodePath) onready var _first_star = get_node(_first_star) as NinePatchRect
 export (NodePath) onready var _second_star = get_node(_second_star) as NinePatchRect
 export (NodePath) onready var _third_star = get_node(_third_star) as NinePatchRect
+export (NodePath) onready var _timer = get_node(_timer) as Timer
 
 
 func _ready() -> void:
@@ -21,8 +22,12 @@ func _on_level_completed(
 ) -> void:
 	if stars_count >= 1:
 		_first_star.show()
+		_timer.start()
+		yield(_timer, "timeout")
 	if stars_count >= 2:
 		_second_star.show()
+		_timer.start()
+		yield(_timer, "timeout")
 	if stars_count >= 3:
 		_third_star.show()
 

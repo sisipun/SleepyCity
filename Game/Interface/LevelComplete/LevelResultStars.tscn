@@ -16,6 +16,7 @@ __meta__ = {
 _first_star = NodePath("FirstStar")
 _second_star = NodePath("SecondStar")
 _third_star = NodePath("ThirdStar")
+_timer = NodePath("Timer")
 
 [node name="FirstStar" type="NinePatchRect" parent="."]
 margin_right = 50.0
@@ -36,3 +37,6 @@ margin_right = 170.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
