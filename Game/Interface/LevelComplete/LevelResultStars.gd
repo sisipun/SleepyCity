@@ -5,6 +5,7 @@ export (NodePath) onready var _first_star = get_node(_first_star) as NinePatchRe
 export (NodePath) onready var _second_star = get_node(_second_star) as NinePatchRect
 export (NodePath) onready var _third_star = get_node(_third_star) as NinePatchRect
 export (NodePath) onready var _timer = get_node(_timer) as Timer
+export (NodePath) onready var _tween = get_node(_tween) as Tween
 
 
 func _ready() -> void:
@@ -21,18 +22,30 @@ func _on_level_completed(
 	stars_count: int
 ) -> void:
 	if stars_count >= 1:
-		_first_star.show()
-		_timer.start()
-		yield(_timer, "timeout")
+		_interpolate_scale(_first_star)
+		yield(_tween, "tween_completed")
 	if stars_count >= 2:
-		_second_star.show()
-		_timer.start()
-		yield(_timer, "timeout")
+		_interpolate_scale(_second_star)
+		yield(_tween, "tween_completed")
 	if stars_count >= 3:
-		_third_star.show()
+		_interpolate_scale(_third_star)
+		yield(_tween, "tween_completed")
 
 
-func _on_level_change_request(_initial: bool):
-	_first_star.hide()
-	_second_star.hide()
-	_third_star.hide()
+func _on_level_change_request(_initial: bool) -> void:
+	_first_star.modulate = Color(1, 1, 1, 0)
+	_second_star.modulate = Color(1, 1, 1, 0)
+	_third_star.modulate = Color(1, 1, 1, 0)
+
+
+func _interpolate_scale(star: NinePatchRect) -> void:
+	_tween.interpolate_property(
+		star, 
+		"modulate",
+		Color(1, 1, 1, 0), 
+		Color(1, 1, 1, 1), 
+		0.7, 
+		Tween.TRANS_CIRC, 
+		Tween.EASE_IN
+	)
+	_tween.start()

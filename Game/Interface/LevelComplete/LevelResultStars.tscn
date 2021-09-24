@@ -17,11 +17,13 @@ _first_star = NodePath("FirstStar")
 _second_star = NodePath("SecondStar")
 _third_star = NodePath("ThirdStar")
 _timer = NodePath("Timer")
+_tween = NodePath("Tween")
 
 [node name="FirstStar" type="NinePatchRect" parent="."]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
 texture = ExtResource( 1 )
 
 [node name="SecondStar" type="NinePatchRect" parent="."]
@@ -29,6 +31,7 @@ margin_left = 60.0
 margin_right = 110.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
 texture = ExtResource( 1 )
 
 [node name="ThirdStar" type="NinePatchRect" parent="."]
@@ -36,7 +39,10 @@ margin_left = 120.0
 margin_right = 170.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
 texture = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
