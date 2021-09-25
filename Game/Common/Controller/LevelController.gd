@@ -41,6 +41,7 @@ func _on_level_complete_request(step_number: int, skipped: bool) -> void:
 	if step_number < first_border and not skipped:
 		stars_count += 1
 	
+	GameStorage.game.stars_count += stars_count
 	GameStorage.game.level_number += 1
 	GameStorage.game.level = _generate_level()
 	

@@ -11,6 +11,7 @@ func write(game: GameInfo) -> Dictionary:
 		"level": dict_level,
 		"level_number": game.level_number,
 		"tips_count": game.tips_count,
+		"stars_count": game.stars_count,
 		"sound": game.sound,
 		"music": game.music
 	}
@@ -27,6 +28,7 @@ func read(dict: Dictionary) -> GameInfo:
 		LevelInfoParser.read(dict_level) if dict_level else null, 
 		dict["level_number"],
 		dict["tips_count"], 
+		dict["stars_count"],
 		dict["sound"],
 		dict["music"]
 	)
