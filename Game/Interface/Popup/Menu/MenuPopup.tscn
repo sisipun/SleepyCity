@@ -145,11 +145,7 @@ rect_pivot_offset = Vector2( 35, 35 )
 texture_normal = ExtResource( 10 )
 script = ExtResource( 4 )
 on_normal = ExtResource( 10 )
-on_pressed = null
-on_disabled = null
 off_normal = ExtResource( 2 )
-off_pressed = null
-off_disabled = null
 
 [node name="MusicButton" parent="Panel/Body/Buttons" instance=ExtResource( 1 )]
 anchor_left = 0.0
@@ -165,11 +161,7 @@ rect_pivot_offset = Vector2( 35, 35 )
 texture_normal = ExtResource( 9 )
 script = ExtResource( 3 )
 on_normal = ExtResource( 9 )
-on_pressed = null
-on_disabled = null
 off_normal = ExtResource( 6 )
-off_pressed = null
-off_disabled = null
 
 [node name="TutorialButton" parent="Panel/Body/Buttons" instance=ExtResource( 8 )]
 anchor_left = 0.0

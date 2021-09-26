@@ -13,14 +13,16 @@ export (Array, Resource) var _tutorial_resources
 
 var resource_index: int = 0
 var resource_state: bool = false
-
+var initial: bool = false
 
 func _ready() -> void:
 	EventStorage.connect("tutorial_open", self, "_on_open")
 
 
-func _on_open() -> void:
+func _on_open(initial: bool) -> void:
+	self.initial = initial
 	popup_centered()
+	EventStorage.emit_signal("popup_open")
 	_animation_player.play("popup")
 	yield(_animation_player, "animation_finished")
 	show_current(true)
@@ -29,6 +31,8 @@ func _on_open() -> void:
 
 func _on_close() -> void:
 	hide()
+	if initial:
+		EventStorage.emit_signal("popup_close")
 	resource_index = 0
 	resource_state = false
 	update_current()

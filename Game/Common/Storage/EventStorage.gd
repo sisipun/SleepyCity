@@ -19,10 +19,12 @@ signal music_switch
 # MENU
 signal menu_open
 signal menu_closed
-signal tutorial_open
+signal tutorial_open(initial)
 signal tutorial_closed
 signal tutorial_next
 signal tutorial_previous
+signal popup_open
+signal popup_close
 
 signal steped(step_number, attempts_left)
 signal step_back_request

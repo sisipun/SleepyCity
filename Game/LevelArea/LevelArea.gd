@@ -181,7 +181,7 @@ func init(info: LevelInfo, level_resource: LevelResource):
 	_roof.texture = level_resource.roof_textures[roof_index]
 	
 	if _tutorial:
-		EventStorage.emit_signal("tutorial_open")
+		EventStorage.emit_signal("tutorial_open", true)
 		show_tip()
 
 

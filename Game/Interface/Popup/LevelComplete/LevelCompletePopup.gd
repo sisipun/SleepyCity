@@ -22,6 +22,7 @@ func _on_level_completed(
 	_stars_count: int
 ) -> void:
 	popup_centered()
+	EventStorage.emit_signal("popup_open")
 	
 	_level_label.text = str(level_number)
 	if earned_bonus:
@@ -32,5 +33,6 @@ func _on_level_completed(
 
 func _on_next_pressed() -> void:
 	hide()
+	EventStorage.emit_signal("popup_close")
 	_bonus_icon.hide()
 	EventStorage.emit_signal("level_change_request", false)
