@@ -19,8 +19,8 @@ func _ready() -> void:
 	EventStorage.connect("tutorial_open", self, "_on_open")
 
 
-func _on_open(initial: bool) -> void:
-	self.initial = initial
+func _on_open(_initial: bool) -> void:
+	self.initial = _initial
 	popup_centered()
 	EventStorage.emit_signal("popup_open")
 	_animation_player.play("popup")
