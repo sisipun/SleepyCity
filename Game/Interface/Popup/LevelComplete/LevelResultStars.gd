@@ -33,7 +33,7 @@ func _on_level_completed(
 
 
 func _on_level_change_request(_initial: bool) -> void:
-	_tween.stop_all()	
+	_tween.stop_all()
 	_first_star.modulate = Color(1, 1, 1, 0)
 	_second_star.modulate = Color(1, 1, 1, 0)
 	_third_star.modulate = Color(1, 1, 1, 0)
