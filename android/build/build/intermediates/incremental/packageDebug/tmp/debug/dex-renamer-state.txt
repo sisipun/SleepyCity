@@ -1,4 +1,4 @@
-#Wed Sep 08 20:38:41 MSK 2021
+#Wed Oct 13 20:54:06 MSK 2021
 base.0=/Users/alexeykadach/GodotProjects/Cells/android/build/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

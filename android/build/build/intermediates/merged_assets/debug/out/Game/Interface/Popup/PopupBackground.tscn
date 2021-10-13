@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Game/Interface/Popup/StarsCount.tscn" type="PackedScene" id=1]
+
+[node name="PopupBackground" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.470588, 0.470588, 0.588235, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StarCount" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -130.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 80.0

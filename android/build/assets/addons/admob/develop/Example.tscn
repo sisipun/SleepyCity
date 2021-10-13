@@ -299,7 +299,6 @@ __meta__ = {
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
-
 [connection signal="pressed" from="Background/TabContainer/AdFormats/VBoxContainer/Banner/EnableBanner" to="." method="_on_EnableBanner_pressed"]
 [connection signal="pressed" from="Background/TabContainer/AdFormats/VBoxContainer/Banner/DisableBanner" to="." method="_on_DisableBanner_pressed"]
 [connection signal="pressed" from="Background/TabContainer/AdFormats/VBoxContainer/Banner2/ShowBanner" to="." method="_on_ShowBanner_pressed"]

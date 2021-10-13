@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Asset/Button/next_level_button.png" type="Texture" id=1]
 [ext_resource path="res://Game/Interface/TipButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.gd" type="Script" id=3]
 [ext_resource path="res://Game/Common/Node/AnimatedButton/AnimatedButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/Interface/AttemptCounter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Asset/Button/reset_button.png" type="Texture" id=8]
 [ext_resource path="res://Asset/Button/menu_button.png" type="Texture" id=11]
 
@@ -15,8 +16,9 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_skip_button = NodePath("LeftButtons/SkipButton")
 
-[node name="Left" type="VBoxContainer" parent="."]
+[node name="LeftButtons" type="VBoxContainer" parent="."]
 margin_left = 30.0
 margin_top = 50.0
 margin_right = 85.0
@@ -27,7 +29,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkipButton" parent="Left" instance=ExtResource( 4 )]
+[node name="SkipButton" parent="LeftButtons" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -39,8 +41,9 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 1 )
+_animation_player = NodePath("../../LeftButtons/SkipButton/Animation")
 
-[node name="TipButton" parent="Left" instance=ExtResource( 2 )]
+[node name="TipButton" parent="LeftButtons" instance=ExtResource( 2 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -51,8 +54,26 @@ margin_right = 60.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
+_animation_player = NodePath("../../LeftButtons/TipButton/Animation")
+_count_label = NodePath("../../LeftButtons/TipButton/CountArea/CountLabel")
 
-[node name="Right" type="VBoxContainer" parent="."]
+[node name="Middle" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -25.0
+margin_top = 50.0
+margin_right = 25.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 50, 80 )
+rect_pivot_offset = Vector2( 25, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttemptCounter" parent="Middle" instance=ExtResource( 5 )]
+custom_colors/font_color = Color( 0.988235, 0.658824, 0.211765, 1 )
+
+[node name="RightButtons" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -80.0
@@ -65,7 +86,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResetButton" parent="Right" instance=ExtResource( 4 )]
+[node name="ResetButton" parent="RightButtons" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -77,8 +98,9 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 8 )
+_animation_player = NodePath("../../RightButtons/ResetButton/Animation")
 
-[node name="MenuButton" parent="Right" instance=ExtResource( 4 )]
+[node name="MenuButton" parent="RightButtons" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -91,6 +113,6 @@ rect_min_size = Vector2( 60, 60 )
 rect_pivot_offset = Vector2( 27.5, 27.5 )
 texture_normal = ExtResource( 11 )
 _animation_player = NodePath("../MenuButton/Animation")
-[connection signal="pressed" from="Left/SkipButton" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="Right/ResetButton" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Right/MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="LeftButtons/SkipButton" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="RightButtons/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="RightButtons/MenuButton" to="." method="_on_menu_pressed"]

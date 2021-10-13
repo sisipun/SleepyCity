@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Interface/LevelBackground/LevelBackground.gd" type="Script" id=1]
+[ext_resource path="res://Asset/Level/Background/game_background.png" type="Texture" id=2]
+
+[node name="LevelBackground" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_tween = NodePath("BackgroundTween")
+_background_1 = NodePath("FirstBackground")
+_background_2 = NodePath("SecondBackground")
+
+[node name="FirstBackground" type="NinePatchRect" parent="."]
+modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+anchor_left = -0.990486
+anchor_right = 2.04951
+anchor_bottom = 1.0
+margin_left = -3.05176e-05
+margin_right = -19.9999
+margin_bottom = 6.10352e-05
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SecondBackground" type="NinePatchRect" parent="."]
+modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+anchor_left = -0.988
+anchor_right = 2.052
+anchor_bottom = 1.0
+margin_left = -1499.0
+margin_right = -1519.0
+margin_bottom = 6.10352e-05
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BackgroundTween" type="Tween" parent="."]
