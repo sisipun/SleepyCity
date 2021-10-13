@@ -136,6 +136,8 @@ _global_script_class_icons={
 
 config/name="Cells"
 run/main_scene="res://Game/Level.tscn"
+boot_splash/image="res://Asset/Launch/launch.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
 
 [audio]
 
