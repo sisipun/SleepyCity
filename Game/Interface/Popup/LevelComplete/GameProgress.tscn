@@ -3,10 +3,8 @@
 [ext_resource path="res://Game/Interface/Popup/LevelComplete/GameProgress.gd" type="Script" id=1]
 [ext_resource path="res://Asset/Level/Popup/LevelComplete/progress_front.png" type="Texture" id=2]
 [ext_resource path="res://Asset/Level/Popup/LevelComplete/blub_on.png" type="Texture" id=3]
-[ext_resource path="res://Asset/Level/Popup/LevelComplete/progress_back_14.png" type="Texture" id=4]
+[ext_resource path="res://Asset/Level/Popup/LevelComplete/progress_back.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Level/Popup/LevelComplete/blub_off.png" type="Texture" id=6]
-
-
 
 [node name="GameProgress" type="TextureProgress"]
 anchor_left = 0.5

@@ -7,18 +7,18 @@
 [ext_resource path="res://Game/Level.gd" type="Script" id=5]
 [ext_resource path="res://Game/Interface/LevelBackground/LevelBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Asset/Level/Background/moon.png" type="Texture" id=7]
-[ext_resource path="res://Asset/Sound/level_complete.wav" type="AudioStream" id=8]
-[ext_resource path="res://Asset/Sound/light_switch.wav" type="AudioStream" id=9]
+[ext_resource path="res://Asset/Sound/level_complete.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Asset/Sound/light_switch.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Game/Sound/LevelCompleteSound.gd" type="Script" id=10]
 [ext_resource path="res://Game/Sound/LightSwitchSound.gd" type="Script" id=11]
 [ext_resource path="res://Game/Sound/ButtonSound.gd" type="Script" id=12]
-[ext_resource path="res://Asset/Sound/button_sound.wav" type="AudioStream" id=13]
+[ext_resource path="res://Asset/Sound/button_sound.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Game/Interface/Popup/Tutorial/TutorialPopup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Game/Interface/LevelBackground/Star.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Asset/Level/Background/moon_light.png" type="Texture" id=16]
+[ext_resource path="res://Asset/Sound/level_failed.ogg" type="AudioStream" id=17]
 [ext_resource path="res://Game/Interface/Popup/LevelFailed/LevelFailedPopup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Game/Sound/LevelFailedSound.gd" type="Script" id=19]
-[ext_resource path="res://Asset/Sound/level_failed.wav" type="AudioStream" id=20]
 
 [node name="Level" type="Node"]
 script = ExtResource( 5 )
@@ -172,12 +172,14 @@ anchor_left = 0.000297302
 anchor_right = 1.0003
 
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource( 3 )]
+visible = false
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource( 4 )]
 
 [node name="TutorialPopup" parent="InterfaceLayer" instance=ExtResource( 14 )]
 
 [node name="LevelFailedPopup" parent="InterfaceLayer" instance=ExtResource( 18 )]
+visible = false
 
 [node name="SoundLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -195,7 +197,7 @@ bus = "Music"
 script = ExtResource( 10 )
 
 [node name="LevelFailedSound" type="AudioStreamPlayer" parent="SoundLayer"]
-stream = ExtResource( 20 )
+stream = ExtResource( 17 )
 volume_db = -2.0
 bus = "Sound"
 script = ExtResource( 19 )

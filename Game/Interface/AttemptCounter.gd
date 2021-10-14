@@ -18,11 +18,11 @@ func _ready() -> void:
 
 
 func _on_steped(_step_number: int, attempts_left: int):
-	_set_value(attempts_left)
+	_update_vaue(attempts_left)
 
 
 func _on_steped_back(_step_number: int, attempts_left: int):
-	_set_value(attempts_left)
+	_update_vaue(attempts_left)
 
 
 func _on_reseted(_step_number: int, attempts_left: int):
@@ -41,6 +41,11 @@ func _on_level_changed(
 		return
 	
 	_interpolate_value(info.attempt_count)
+
+
+func _update_vaue(new_value: int):
+	_tween.remove_all()
+	_set_value(new_value)
 
 
 func _interpolate_value(destination: int):

@@ -22,31 +22,29 @@ func _on_level_completed(
 	stars_count: int
 ) -> void:
 	if stars_count >= 1:
-		_interpolate_scale(_first_star)
-		yield(_tween, "tween_completed")
+		_interpolate_scale(_first_star, 0.7, 0.0)
 	if stars_count >= 2:
-		_interpolate_scale(_second_star)
-		yield(_tween, "tween_completed")
+		_interpolate_scale(_second_star, 0.7, 0.7)
 	if stars_count >= 3:
-		_interpolate_scale(_third_star)
-		yield(_tween, "tween_completed")
+		_interpolate_scale(_third_star, 0.7, 1.4)
 
 
 func _on_level_change_request(_initial: bool) -> void:
-	_tween.stop_all()
+	_tween.remove_all()
 	_first_star.modulate = Color(1, 1, 1, 0)
 	_second_star.modulate = Color(1, 1, 1, 0)
 	_third_star.modulate = Color(1, 1, 1, 0)
 
 
-func _interpolate_scale(star: NinePatchRect) -> void:
+func _interpolate_scale(star: NinePatchRect, duration: float, delay: float) -> void:
 	_tween.interpolate_property(
 		star, 
 		"modulate",
 		Color(1, 1, 1, 0), 
-		Color(1, 1, 1, 1), 
-		0.7, 
+		Color(1, 1, 1, 1),
+		duration, 
 		Tween.TRANS_CIRC, 
-		Tween.EASE_IN
+		Tween.EASE_IN,
+		delay
 	)
 	_tween.start()

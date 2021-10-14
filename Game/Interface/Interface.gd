@@ -10,7 +10,7 @@ export (NodePath) onready var _skip_button = get_node(_skip_button) as AnimatedB
 func _ready() -> void:
 	EventStorage.connect("popup_open", self, "_on_popup_open")
 	EventStorage.connect("popup_close", self, "_on_popup_close")
-	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+	if OS.get_name() != "Windows":
 		_skip_button.disabled = true
 		MobileAds.connect("initialization_complete", self, "_on_ads_initialization_complete")
 		MobileAds.connect("rewarded_ad_loaded", self, "_on_ads_rewarded_ad_loaded")
@@ -49,8 +49,8 @@ func _on_menu_pressed() -> void:
 
 
 func _on_skip_pressed() -> void:
-	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+	if OS.get_name() == "Windows":
+		EventStorage.emit_signal("level_complete_request", 0, true)
+	else:
 		MobileAds.show_rewarded()
 		MobileAds.load_rewarded()
-	else:
-		EventStorage.emit_signal("level_complete_request", 0, true)

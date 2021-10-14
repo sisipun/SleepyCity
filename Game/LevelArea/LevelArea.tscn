@@ -10,7 +10,7 @@ extents = Vector2( 347.036, 599.956 )
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -315, -575 )
-b = Vector2( 315, 600 )
+b = Vector2( 315, 550 )
 
 [node name="LevelArea" type="Area2D"]
 position = Vector2( 250, 600 )
