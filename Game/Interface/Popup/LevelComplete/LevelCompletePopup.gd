@@ -35,6 +35,9 @@ func _on_level_completed(
 
 
 func _on_next_pressed() -> void:
+	if _next_level_button.disabled:
+		return
+
 	_next_level_button.disabled = true
 	hide()
 	EventStorage.emit_signal("popup_close")
