@@ -54,7 +54,7 @@ func _interpolate_value(destination: int):
 		"_set_value", 
 		_value, 
 		destination, 
-		(destination - _value) / 8.0, 
+		abs(destination - _value) / 8.0, 
 		Tween.TRANS_LINEAR, 
 		Tween.EASE_IN_OUT
 	)

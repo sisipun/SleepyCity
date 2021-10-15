@@ -37,12 +37,20 @@ func _ready() -> void:
 	_level_area_width = screen_size.x - (level_area_margin_left + level_area_margin_right)
 	_level_area_height = screen_size.y - (level_area_margin_top + level_area_margin_bottom)
 	
-	position.x = level_area_margin_left + _level_area_width / 2
-	position.y = level_area_margin_top + _level_area_height / 2
+	position.x = _initial_x()
+	position.y = _initial_y()
 	scale = Vector2(
 		_level_area_width / (_shape.shape.extents.x * 2), 
 		_level_area_height / (_shape.shape.extents.y * 2)
 	)
+
+
+func _initial_x() -> float:
+	return level_area_margin_left + _level_area_width / 2
+
+
+func _initial_y() -> float:
+	return level_area_margin_top + _level_area_height / 2
 
 
 func _on_level_changed(
@@ -51,37 +59,34 @@ func _on_level_changed(
 	level_resource: LevelResource, 
 	_progress: int
 ) -> void:
-	if initial:
-		clear(info)
-		init(info, level_resource)
-		return
-	
-	var initial_x = position.x
-	_tween.interpolate_property(
-		self, 
-		"position", 
-		position, 
-		Vector2(-_level_area_width, position.y), 
-		1.0, 
-		Tween.TRANS_BACK, 
-		Tween.EASE_IN
-	)
-	_tween.start()
-	yield(_tween, "tween_completed")
+	if not initial:
+		_tween.interpolate_property(
+			self, 
+			"position", 
+			position, 
+			Vector2(-_level_area_width, position.y), 
+			1.0,
+			Tween.TRANS_BACK, 
+			Tween.EASE_IN
+		)
+		_tween.start()
+		yield(_tween, "tween_completed")
 	
 	clear(info)
 	init(info, level_resource)
 	
-	_tween.interpolate_property(
-		self, 
-		"position", 
-		Vector2(get_viewport_rect().size.x + initial_x, position.y), 
-		Vector2(initial_x, position.y), 
-		1.0, 
-		Tween.TRANS_BACK, 
-		Tween.EASE_OUT
-	)
-	_tween.start()
+	if not initial:
+		_tween.interpolate_property(
+			self, 
+			"position", 
+			Vector2(_initial_x() + get_viewport_rect().size.x, position.y), 
+			Vector2(_initial_x(), position.y), 
+			1.0, 
+			Tween.TRANS_BACK, 
+			Tween.EASE_OUT
+		)
+		_tween.start()
+		yield(_tween, "tween_completed")
 
 
 func _on_window_clicked(window: Window) -> void:
