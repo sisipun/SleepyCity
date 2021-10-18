@@ -134,10 +134,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Cells"
+config/name="Sleepy City"
 run/main_scene="res://Game/Level.tscn"
 boot_splash/image="res://Asset/Launch/launch.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/icon="res://Asset/Incon/icon180x180.png"
 
 [audio]
 
