@@ -114,12 +114,16 @@ func _on_reset_request() -> void:
 	if _level.reset():
 		update_windows()
 		EventStorage.emit_signal("reseted", _level.step_number(), _level.attempts_left())
+	if _tutorial:
+		show_tip()
 
 
 func _on_step_back_request() -> void:
 	if _level.step_back():
 		update_windows()
 		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
+	if _tutorial:
+		show_tip()
 
 
 func clear(info: LevelInfo) -> void:
