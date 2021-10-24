@@ -19,3 +19,5 @@ func _on_game_updated(game: GameInfo):
 	_count_label.text = str(game.tips_count)
 	if game.tips_count <= 0:
 		disabled = true
+	else:
+		disabled = false
