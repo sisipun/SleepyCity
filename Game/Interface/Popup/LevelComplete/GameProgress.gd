@@ -27,7 +27,7 @@ func _on_level_completed(
 		current_progress if current_progress != 0 else 100, 
 		2.0,
 		Tween.TRANS_LINEAR, 
-		Tween.EASE_IN_OUT
+		Tween.EASE_IN
 	)
 	
 	_tween.start()

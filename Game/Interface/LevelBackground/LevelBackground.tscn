@@ -34,8 +34,8 @@ __meta__ = {
 
 [node name="SecondBackground" type="NinePatchRect" parent="."]
 modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
-anchor_left = -0.988
-anchor_right = 2.052
+anchor_left = -0.944
+anchor_right = 2.096
 anchor_bottom = 1.0
 margin_left = -1499.0
 margin_right = -1519.0
