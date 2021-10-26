@@ -81,12 +81,12 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		emit_signal("clicked", self)
 
 
-func play_tip_effect():
+func play_tip_effect() -> void:
 	_animation_player.play("tip")
 	_tip.show()
 
 
-func stop_tip_effect():
+func stop_tip_effect() -> void:
 	_animation_player.stop()
 	_tip.hide()
 

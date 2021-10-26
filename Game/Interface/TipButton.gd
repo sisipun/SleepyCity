@@ -7,12 +7,12 @@ class_name TipButton
 export (NodePath) onready var _count_label = get_node(_count_label) as Label
 
 
-func _ready():
+func _ready() -> void:
 	EventStorage.connect("game_updated", self, "_on_game_updated")
 
 
-func _on_pressed():
-	EventStorage.emit_signal("decrement_tip")
+func _on_pressed() -> void:
+	EventStorage.emit_signal("decrement_tip_request")
 
 
 func _on_game_updated(game: GameInfo):

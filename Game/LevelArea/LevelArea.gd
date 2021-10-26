@@ -29,7 +29,7 @@ var _level_area_height: float
 
 func _ready() -> void:
 	EventStorage.connect("level_changed", self, "_on_level_changed")
-	EventStorage.connect("decrement_tip", self, "_on_decrement_tip")
+	EventStorage.connect("decrement_tip_request", self, "_on_decrement_tip_request")
 	EventStorage.connect("reset_request", self, "_on_reset_request")
 	EventStorage.connect("step_back_request", self, "_on_step_back_request")
 	
@@ -106,8 +106,9 @@ func _on_window_clicked(window: Window) -> void:
 		show_tip()
 
 
-func _on_decrement_tip() -> void:
-	show_tip()
+func _on_decrement_tip_request() -> void:
+	if show_tip():
+		EventStorage.emit_signal("decrement_tip")
 
 
 func _on_reset_request() -> void:
@@ -148,7 +149,7 @@ func clear(info: LevelInfo) -> void:
 
 
 
-func init(info: LevelInfo, level_resource: LevelResource):
+func init(info: LevelInfo, level_resource: LevelResource) -> void:
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
@@ -194,20 +195,23 @@ func init(info: LevelInfo, level_resource: LevelResource):
 		show_tip()
 
 
-func add_window(i: int):
+func add_window(i: int) -> void:
 	var window: Window = _window_scene.instance()
 	add_child(window)
 	window.connect("clicked", self, "_on_window_clicked")
 	_windows[i].append(window)
 
 
-func update_windows():
+func update_windows() -> void:
 	for i in range(_level.width()):
 		for j in range(_level.height()):
 			_windows[i][j].set_on(_level.is_on(i, j))
 
 
-func show_tip():
+func show_tip() -> bool:
+	if _level.is_complete():
+		return false
+
 	var tip: Vector2 = _level.solution()
-	var window: Window = _windows[tip.x][tip.y]
-	return window.play_tip_effect()
+	_windows[tip.x][tip.y].play_tip_effect()
+	return true

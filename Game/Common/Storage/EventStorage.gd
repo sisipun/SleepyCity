@@ -26,6 +26,7 @@ signal tutorial_previous
 signal popup_open
 signal popup_close
 
+# USER ACTIONS
 signal steped(step_number, attempts_left)
 signal step_back_request
 signal steped_back(step_number, attempts_left)
@@ -33,5 +34,6 @@ signal reset_request
 signal reseted(step_number, attempts_left)
 
 # TIP STATE
+signal decrement_tip_request
 signal decrement_tip
 signal increment_tip

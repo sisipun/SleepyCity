@@ -7,8 +7,9 @@ func _ready() -> void:
 
 
 func _on_decrement_tip() -> void:
-	GameStorage.game.tips_count -= 1
-	EventStorage.emit_signal("game_updated", GameStorage.game)
+	if GameStorage.game.tips_count > 0:
+		GameStorage.game.tips_count -= 1
+		EventStorage.emit_signal("game_updated", GameStorage.game)
 
 
 func _on_increment_tip() -> void:
