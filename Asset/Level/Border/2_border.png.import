@@ -1,34 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/2_border.png-46e3a2b84e82d6c29b28343f5d1a0c61.stex"
+type="CompressedTexture2D"
+uid="uid://cvfjbf71c24w3"
+path="res://.godot/imported/2_border.png-3c51d574cfe6624430704d9d7e68ecd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/Border/2_border.png"
-dest_files=[ "res://.import/2_border.png-46e3a2b84e82d6c29b28343f5d1a0c61.stex" ]
+source_file="res://asset/level/border/2_border.png"
+dest_files=["res://.godot/imported/2_border.png-3c51d574cfe6624430704d9d7e68ecd6.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

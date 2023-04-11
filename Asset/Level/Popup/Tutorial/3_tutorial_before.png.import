@@ -1,34 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/3_tutorial_before.png-148f9adff6ed113b8a702404c79c1bc7.stex"
+type="CompressedTexture2D"
+uid="uid://cbnj6ajmrnq2n"
+path="res://.godot/imported/3_tutorial_before.png-b457246f9c2b41a1f3e49a09bed33dbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Level/Popup/Tutorial/3_tutorial_before.png"
-dest_files=[ "res://.import/3_tutorial_before.png-148f9adff6ed113b8a702404c79c1bc7.stex" ]
+source_file="res://asset/level/popup/tutorial/3_tutorial_before.png"
+dest_files=["res://.godot/imported/3_tutorial_before.png-b457246f9c2b41a1f3e49a09bed33dbb.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

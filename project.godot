@@ -6,169 +6,42 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "TextureButton",
-"class": "AnimatedButton",
-"language": "GDScript",
-"path": "res://Game/Common/Node/AnimatedButton/AnimatedButton.gd"
-}, {
-"base": "Label",
-"class": "AttemptCounter",
-"language": "GDScript",
-"path": "res://Game/Interface/AttemptCounter.gd"
-}, {
-"base": "AudioStreamPlayer",
-"class": "ButtonSound",
-"language": "GDScript",
-"path": "res://Game/Sound/ButtonSound.gd"
-}, {
-"base": "HBoxContainer",
-"class": "Carousel",
-"language": "GDScript",
-"path": "res://Game/Common/Node/Carousel/Carousel.gd"
-}, {
-"base": "NinePatchRect",
-"class": "CarouselElement",
-"language": "GDScript",
-"path": "res://Game/Common/Node/Carousel/CarouselElement.gd"
-}, {
-"base": "Node",
-"class": "GameInfo",
-"language": "GDScript",
-"path": "res://Game/Common/Model/GameInfo.gd"
-}, {
-"base": "Control",
-"class": "Interface",
-"language": "GDScript",
-"path": "res://Game/Interface/Interface.gd"
-}, {
-"base": "Area2D",
-"class": "LevelArea",
-"language": "GDScript",
-"path": "res://Game/LevelArea/LevelArea.gd"
-}, {
-"base": "Popup",
-"class": "LevelCompletePopup",
-"language": "GDScript",
-"path": "res://Game/Interface/Popup/LevelComplete/LevelCompletePopup.gd"
-}, {
-"base": "Node",
-"class": "LevelInfo",
-"language": "GDScript",
-"path": "res://Game/Common/Model/LevelInfo.gd"
-}, {
-"base": "Node",
-"class": "LevelMap",
-"language": "GDScript",
-"path": "res://Game/LevelArea/LevelMap.gd"
-}, {
-"base": "Resource",
-"class": "LevelResource",
-"language": "GDScript",
-"path": "res://Game/Common/Resource/LevelResource.gd"
-}, {
-"base": "Popup",
-"class": "MenuPopup",
-"language": "GDScript",
-"path": "res://Game/Interface/Popup/Menu/MenuPopup.gd"
-}, {
-"base": "SwitchButton",
-"class": "MusicButton",
-"language": "GDScript",
-"path": "res://Game/Interface/Popup/Menu/MusicButton.gd"
-}, {
-"base": "SwitchButton",
-"class": "SoundButton",
-"language": "GDScript",
-"path": "res://Game/Interface/Popup/Menu/SoundButton.gd"
-}, {
-"base": "AnimatedButton",
-"class": "SwitchButton",
-"language": "GDScript",
-"path": "res://Game/Common/Node/SwitchButton/SwitchButton.gd"
-}, {
-"base": "AnimatedButton",
-"class": "TipButton",
-"language": "GDScript",
-"path": "res://Game/Interface/TipButton.gd"
-}, {
-"base": "Popup",
-"class": "TutorialPopup",
-"language": "GDScript",
-"path": "res://Game/Interface/Popup/Tutorial/TutorialPopup.gd"
-}, {
-"base": "Resource",
-"class": "TutorialResource",
-"language": "GDScript",
-"path": "res://Game/Common/Resource/TutorialResource.gd"
-}, {
-"base": "Area2D",
-"class": "Window",
-"language": "GDScript",
-"path": "res://Game/LevelArea/Window/Window.gd"
-} ]
-_global_script_class_icons={
-"AnimatedButton": "",
-"AttemptCounter": "",
-"ButtonSound": "",
-"Carousel": "",
-"CarouselElement": "",
-"GameInfo": "",
-"Interface": "",
-"LevelArea": "",
-"LevelCompletePopup": "",
-"LevelInfo": "",
-"LevelMap": "",
-"LevelResource": "",
-"MenuPopup": "",
-"MusicButton": "",
-"SoundButton": "",
-"SwitchButton": "",
-"TipButton": "",
-"TutorialPopup": "",
-"TutorialResource": "",
-"Window": ""
-}
+config_version=5
 
 [application]
 
 config/name="Sleepy City"
-run/main_scene="res://Game/Level.tscn"
-boot_splash/image="res://Asset/Launch/launch.png"
-boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://Asset/Incon/icon180x180.png"
+run/main_scene="res://script/level.tscn"
+config/features=PackedStringArray("4.0")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://asset/launch/launch.png"
+config/icon="res://asset/incon/icon180x180.png"
 
 [audio]
 
-default_bus_layout="res://Asset/Common/default_bus_layout.tres"
+buses/default_bus_layout="res://Asset/Common/buses/default_bus_layout.tres"
 
 [autoload]
 
-EventStorage="*res://Game/Common/Storage/EventStorage.gd"
-LevelInfoParser="*res://Game/Common/Parser/LevelInfoParser.gd"
-GameInfoParser="*res://Game/Common/Parser/GameInfoParser.gd"
-GameStorage="*res://Game/Common/Storage/GameStorage.gd"
-LevelGenerator="*res://Game/Common/Util/LevelGenerator.gd"
-LevelController="*res://Game/Common/Controller/LevelController.tscn"
-TipController="*res://Game/Common/Controller/TipController.gd"
-AudioController="*res://Game/Common/Controller/AudioController.gd"
-BackgroundMusic="*res://Game/Common/Controller/BackgroundMusicController.tscn"
-MobileAds="*res://addons/admob/scripts/MobileAds.gd"
+EventStorage="*res://script/common/storage/event_storage.gd"
+GameStorage="*res://script/common/storage/game_storage.gd"
+LevelController="res://script/common/controller/level_controller.tscn"
+TipController="res://script/common/controller/tip_controller.gd"
+AudioController="res://script/common/controller/audio_controller.gd"
+BackgroundMusicController="res://script/common/controller/background_music_controller.tscn"
 
 [display]
 
-window/size/width=500
-window/size/height=1000
+window/size/viewport_width=1000
+window/size/viewport_height=2000
 window/energy_saving/keep_screen_on=false
-window/handheld/orientation="sensor_portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+window/handheld/orientation="sensor_portrait"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "admob" )
+enabled=PackedStringArray("admob")
 
 [font]
 
@@ -176,7 +49,7 @@ tablet_driver=false
 
 [gui]
 
-theme/custom_font="res://Asset/Common/default.tres"
+theme/custom_font="res://asset/common/default.tres"
 
 [input_devices]
 

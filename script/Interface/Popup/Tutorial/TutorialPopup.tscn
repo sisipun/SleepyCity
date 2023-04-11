@@ -1,0 +1,239 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Texture2D" uid="uid://g3pedgnrfsnc" path="res://asset/button/close_button.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://duvck2xnaquyt" path="res://asset/level/popup/tutorial/tutorial_background.png" id="2"]
+[ext_resource type="Script" path="res://script/Interface/Popup/Tutorial/TutorialPopup.gd" id="3"]
+[ext_resource type="PackedScene" path="res://script/common/node/animated_button/animated_button.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://xpdjrrdcduxr" path="res://asset/button/next_tutorial_button.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://d2txrws7sgoab" path="res://asset/button/previous_tutorial_button.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cyxp8exlwjdrw" path="res://asset/level/popup/tutorial/1_tutorial_before.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://b4fwr2564qnip" path="res://asset/level/popup/tutorial/tutorial_header.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://15bnkj8q2c1p" path="res://asset/level/window/tip_animation.png" id="9"]
+[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial1Step.tres" id="10"]
+[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial4Step.tres" id="11"]
+[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial2Step.tres" id="12"]
+[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial3Step.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://cn1f06xs0fnqj" path="res://script/common/node/carousel/carousel.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://script/Interface/Popup/PopupBackground.tscn" id="15"]
+
+[sub_resource type="Animation" id=1]
+resource_name = "popup"
+length = 0.666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0, 0.3, 0.466667, 0.666667 ),
+"transitions": PackedFloat32Array( 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ -0.3, 0.55, 0.5, 0.55 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0, 0.306, 0.466667, 0.666667 ),
+"transitions": PackedFloat32Array( 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ -0.3, 0.55, 0.5, 0.55 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array( 0, 0.306, 0.466668, 0.666667 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "tap"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/Body/Image/Tap:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0.4, 0.7, 1 ),
+"transitions": PackedFloat32Array( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0.7 ),
+"transitions": PackedFloat32Array( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_change_statue"
+} ]
+}
+
+[node name="TutorialPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_minimum_size = Vector2( 0, 1000 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_animation_player = NodePath("Animation")
+_tutorial_image = NodePath("Panel/Body/Image")
+_tap = NodePath("Panel/Body/Image/Tap")
+_carousel = NodePath("Panel/Body/Carousel")
+_tutorial_resources = [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ]
+
+[node name="PopupBackground" parent="." instance=ExtResource( 15 )]
+
+[node name="Panel" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = -0.3
+anchor_right = 0.5
+anchor_bottom = -0.3
+offset_left = -175.0
+offset_top = -250.0
+offset_right = 175.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 350, 500 )
+pivot_offset = Vector2( 175, 300 )
+mouse_filter = 0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="NinePatchRect" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = -55.0
+offset_right = 70.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 140, 75 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" parent="Panel" instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -35.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 40, 40 )
+pivot_offset = Vector2( 20, 20 )
+texture_normal = ExtResource( 1 )
+_animation_player = NodePath("../CloseButton/Animation")
+
+[node name="Body" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -200.0
+offset_right = 125.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 250, 400 )
+theme_override_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="NinePatchRect" parent="Panel/Body"]
+offset_right = 250.0
+offset_bottom = 300.0
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+
+[node name="Tap" type="NinePatchRect" parent="Panel/Body/Image"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 40, 60 )
+scale = Vector2( 0.988889, 0.988889 )
+pivot_offset = Vector2( 20, 30 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Carousel" parent="Panel/Body" instance=ExtResource( 14 )]
+offset_top = 320.0
+offset_right = 250.0
+offset_bottom = 320.0
+element_count = 4
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
+offset_top = 340.0
+offset_right = 250.0
+offset_bottom = 400.0
+alignment = 1
+
+[node name="PreviousButton" parent="Panel/Body/Buttons" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 60.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 60, 60 )
+pivot_offset = Vector2( 27.5, 27.5 )
+texture_normal = ExtResource( 6 )
+
+[node name="Mock" type="NinePatchRect" parent="Panel/Body/Buttons"]
+offset_left = 64.0
+offset_right = 186.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="NextButton" parent="Panel/Body/Buttons" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 190.0
+offset_top = 0.0
+offset_right = 250.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 60, 60 )
+pivot_offset = Vector2( 27.5, 27.5 )
+texture_normal = ExtResource( 5 )
+_animation_player = NodePath("../NextButton/Animation")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/popup = SubResource( 1 )
+anims/tap = SubResource( 2 )
+[connection signal="gui_input" from="PopupBackground" to="." method="_on_background_input"]
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close"]
+[connection signal="pressed" from="Panel/Body/Buttons/PreviousButton" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="Panel/Body/Buttons/NextButton" to="." method="_on_next_pressed"]

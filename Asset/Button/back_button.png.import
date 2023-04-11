@@ -1,34 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/back_button.png-1510aced28e05a57be85f1f6569359aa.stex"
+type="CompressedTexture2D"
+uid="uid://bqusftxfeb40c"
+path="res://.godot/imported/back_button.png-456be2850d5cd867c3881ef2c1bb11db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Button/back_button.png"
-dest_files=[ "res://.import/back_button.png-1510aced28e05a57be85f1f6569359aa.stex" ]
+source_file="res://asset/button/back_button.png"
+dest_files=["res://.godot/imported/back_button.png-456be2850d5cd867c3881ef2c1bb11db.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

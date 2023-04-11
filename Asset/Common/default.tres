@@ -1,6 +1,6 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
+[gd_resource type="FontFile" load_steps=2 format=3]
 
-[ext_resource path="res://Asset/Common/RubikMonoOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource type="FontFile" uid="uid://brdxmmlj5pqgj" path="res://asset/common/RubikMonoOne-Regular.ttf" id="1"]
 
 [resource]
 size = 13

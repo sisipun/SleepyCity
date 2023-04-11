@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/level_failed.ogg-6285290a7fe940ac44368a8445f6cfe8.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmp287xhfvnea"
+path="res://.godot/imported/level_failed.ogg-ed9af35d396344279c903788469469b4.oggvorbisstr"
 
 [deps]
 
-source_file="res://Asset/Sound/level_failed.ogg"
-dest_files=[ "res://.import/level_failed.ogg-6285290a7fe940ac44368a8445f6cfe8.oggstr" ]
+source_file="res://asset/sound/level_failed.ogg"
+dest_files=["res://.godot/imported/level_failed.ogg-ed9af35d396344279c903788469469b4.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

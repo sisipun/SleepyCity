@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="FontFile" path="res://asset/common/counter.tres" id="1"]
+[ext_resource type="Script" path="res://script/Interface/AttemptCounter.gd" id="2"]
+
+[node name="AttemptCounter" type="Label"]
+offset_right = 50.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource( 1 )
+text = "0"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_tween = NodePath("Tween")
+
+[node name="Tween" type="Tween" parent="."]

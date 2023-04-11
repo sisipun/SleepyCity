@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/background_music.ogg-87d768412de8790b494f337210c5a1cb.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nguhobirnnya"
+path="res://.godot/imported/background_music.ogg-459973c8f0535faa033d072d4a388e0a.oggvorbisstr"
 
 [deps]
 
-source_file="res://Asset/Sound/background_music.ogg"
-dest_files=[ "res://.import/background_music.ogg-87d768412de8790b494f337210c5a1cb.oggstr" ]
+source_file="res://asset/sound/background_music.ogg"
+dest_files=["res://.godot/imported/background_music.ogg-459973c8f0535faa033d072d4a388e0a.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

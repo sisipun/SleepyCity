@@ -1,34 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/icon1024x1024.png-0f7d5c279b54ade5c8ce2c068d0b18b1.stex"
+type="CompressedTexture2D"
+uid="uid://p2k3bbx6mswk"
+path="res://.godot/imported/icon1024x1024.png-a396ef24856e5252967963f640b87571.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Incon/icon1024x1024.png"
-dest_files=[ "res://.import/icon1024x1024.png-0f7d5c279b54ade5c8ce2c068d0b18b1.stex" ]
+source_file="res://asset/incon/icon1024x1024.png"
+dest_files=["res://.godot/imported/icon1024x1024.png-a396ef24856e5252967963f640b87571.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
