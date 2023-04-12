@@ -1,118 +1,72 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://c0f5x5h0sts8p"]
 
-[ext_resource type="Texture2D" uid="uid://bj8w4o08xnc6c" path="res://asset/button/next_level_button.png" id="1"]
-[ext_resource type="PackedScene" path="res://script/Interface/TipButton.tscn" id="2"]
-[ext_resource type="Script" path="res://script/Interface/Interface.gd" id="3"]
-[ext_resource type="PackedScene" path="res://script/common/node/animated_button/animated_button.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://script/Interface/AttemptCounter.tscn" id="5"]
-[ext_resource type="Texture2D" uid="uid://ps040wi1tqos" path="res://asset/button/reset_button.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://dif0r6s2smeri" path="res://asset/button/menu_button.png" id="11"]
+[ext_resource type="Script" path="res://script/interface/interface.gd" id="1_k641j"]
+[ext_resource type="PackedScene" uid="uid://tygmmfpneg6o" path="res://script/common/node/animated_button/animated_button.tscn" id="2_avq0v"]
+[ext_resource type="Texture2D" uid="uid://bj8w4o08xnc6c" path="res://asset/button/next_level_button.png" id="3_fue4m"]
+[ext_resource type="PackedScene" uid="uid://bmv6y8w7u5tr3" path="res://script/interface/attempt_counter.tscn" id="4_nyu5f"]
+[ext_resource type="Texture2D" uid="uid://ps040wi1tqos" path="res://asset/button/reset_button.png" id="5_aqwgd"]
+[ext_resource type="Texture2D" uid="uid://dif0r6s2smeri" path="res://asset/button/menu_button.png" id="6_rgw3d"]
 
 [node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-_skip_button = NodePath("LeftButtons/SkipButton")
+script = ExtResource("1_k641j")
+_skip_button_path = NodePath("LeftButtons/SkipButton")
 
 [node name="LeftButtons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 0
 offset_left = 30.0
 offset_top = 50.0
 offset_right = 85.0
 offset_bottom = 135.0
-custom_minimum_size = Vector2( 50, 100 )
 theme_override_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SkipButton" parent="LeftButtons" instance=ExtResource( 4 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 60.0
-offset_bottom = 60.0
-custom_minimum_size = Vector2( 60, 60 )
-pivot_offset = Vector2( 27.5, 27.5 )
-texture_normal = ExtResource( 1 )
-_animation_player = NodePath("../../LeftButtons/SkipButton/Animation")
-
-[node name="TipButton" parent="LeftButtons" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 70.0
-offset_right = 60.0
-offset_bottom = 130.0
-custom_minimum_size = Vector2( 60, 60 )
-pivot_offset = Vector2( 27.5, 27.5 )
-_animation_player = NodePath("../../LeftButtons/TipButton/Animation")
-_count_label = NodePath("../../LeftButtons/TipButton/CountArea/CountLabel")
+[node name="SkipButton" parent="LeftButtons" instance=ExtResource("2_avq0v")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_fue4m")
 
 [node name="Middle" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -25.0
 offset_top = 50.0
 offset_right = 25.0
 offset_bottom = 130.0
-custom_minimum_size = Vector2( 50, 80 )
-pivot_offset = Vector2( 25, 40 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+pivot_offset = Vector2(25, 40)
 
-[node name="AttemptCounter" parent="Middle" instance=ExtResource( 5 )]
-theme_override_colors/font_color = Color( 0.988235, 0.658824, 0.211765, 1 )
+[node name="AttemptCounter" parent="Middle" instance=ExtResource("4_nyu5f")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.658824, 0.211765, 1)
 
 [node name="RightButtons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -80.0
 offset_top = 50.0
 offset_right = -25.0
 offset_bottom = 136.0
-custom_minimum_size = Vector2( 50, 100 )
 theme_override_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ResetButton" parent="RightButtons" instance=ExtResource( 4 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 60.0
-offset_bottom = 60.0
-custom_minimum_size = Vector2( 60, 60 )
-pivot_offset = Vector2( 27.5, 27.5 )
-texture_normal = ExtResource( 8 )
-_animation_player = NodePath("../../RightButtons/ResetButton/Animation")
+[node name="ResetButton" parent="RightButtons" instance=ExtResource("2_avq0v")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture_normal = ExtResource("5_aqwgd")
 
-[node name="MenuButton" parent="RightButtons" instance=ExtResource( 4 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 70.0
-offset_right = 60.0
-offset_bottom = 130.0
-custom_minimum_size = Vector2( 60, 60 )
-pivot_offset = Vector2( 27.5, 27.5 )
-texture_normal = ExtResource( 11 )
-_animation_player = NodePath("../MenuButton/Animation")
+[node name="MenuButton" parent="RightButtons" instance=ExtResource("2_avq0v")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture_normal = ExtResource("6_rgw3d")
 
 [connection signal="pressed" from="LeftButtons/SkipButton" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="RightButtons/ResetButton" to="." method="_on_reset_pressed"]

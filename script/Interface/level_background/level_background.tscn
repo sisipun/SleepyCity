@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://di3845iht1lbe"]
+
+[ext_resource type="Script" path="res://script/interface/level_background/level_background.gd" id="1_ji0sb"]
+[ext_resource type="Texture2D" uid="uid://y2ta6ovl16v3" path="res://asset/level/background/game_background.png" id="2_f60ob"]
+
+[node name="LevelBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_ji0sb")
+_background_1_path = NodePath("FirstBackground")
+_background_2_path = NodePath("SecondBackground")
+
+[node name="FirstBackground" type="NinePatchRect" parent="."]
+modulate = Color(0.356863, 0.356863, 0.356863, 1)
+layout_mode = 0
+anchor_left = -0.990486
+anchor_right = 2.04951
+anchor_bottom = 1.0
+offset_left = -3.05176e-05
+offset_right = -19.9999
+offset_bottom = 6.10352e-05
+texture = ExtResource("2_f60ob")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="SecondBackground" type="NinePatchRect" parent="."]
+modulate = Color(0.356863, 0.356863, 0.356863, 1)
+layout_mode = 0
+anchor_left = -0.944
+anchor_right = 2.096
+anchor_bottom = 1.0
+offset_left = -1499.0
+offset_right = -1519.0
+offset_bottom = 6.10352e-05
+texture = ExtResource("2_f60ob")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10

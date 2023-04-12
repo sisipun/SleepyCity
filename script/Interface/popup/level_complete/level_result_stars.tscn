@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvyt2q5xucgp"]
+
+[ext_resource type="Texture2D" uid="uid://b5tnjbrjw3576" path="res://asset/level/popup/level_complete/level_complete_star.png" id="1"]
+[ext_resource type="Script" path="res://script/interface/popup/level_complete/level_result_stars.gd" id="2"]
+
+[node name="LevelResultStars" type="HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("2")
+_first_star_path = NodePath("FirstStar")
+_second_star_path = NodePath("SecondStar")
+_third_star_path = NodePath("ThirdStar")
+_timer_path = NodePath("Timer")
+
+[node name="FirstStar" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1")
+
+[node name="SecondStar" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1")
+
+[node name="ThirdStar" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

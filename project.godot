@@ -35,9 +35,9 @@ BackgroundMusicController="res://script/common/controller/background_music_contr
 window/size/viewport_width=1000
 window/size/viewport_height=2000
 window/energy_saving/keep_screen_on=false
+window/handheld/orientation="sensor_portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-window/handheld/orientation="sensor_portrait"
 
 [editor_plugins]
 

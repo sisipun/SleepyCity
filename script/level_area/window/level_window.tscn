@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://ibghwfmwwx4v"]
+
+[ext_resource type="Script" path="res://script/level_area/window/level_window.gd" id="1_1tbbu"]
+[ext_resource type="Texture2D" uid="uid://bqhothkx0cmov" path="res://asset/level/window/1_window_dark.png" id="2_ucynm"]
+[ext_resource type="Texture2D" uid="uid://dbt7vssojelw5" path="res://asset/level/window/1_window_light_1.png" id="3_h75ia"]
+[ext_resource type="Texture2D" uid="uid://dj80fayuahwdn" path="res://asset/level/border/1_border.png" id="4_q2iox"]
+[ext_resource type="Texture2D" uid="uid://15bnkj8q2c1p" path="res://asset/level/window/tip_animation.png" id="5_tfqw2"]
+[ext_resource type="Texture2D" uid="uid://d0cayx1on1o3o" path="res://asset/level/window/window_light.png" id="6_wtff6"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(88.0623, 101.072)
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ucynm")
+}],
+"loop": false,
+"name": &"off",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h75ia")
+}],
+"loop": false,
+"name": &"on",
+"speed": 60.0
+}]
+
+[sub_resource type="Animation" id="3"]
+resource_name = "tip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 150), Vector2(0, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ii7da"]
+_data = {
+"tip": SubResource("3")
+}
+
+[node name="LevelWindow" type="Area2D"]
+gravity_point_center = Vector2(-0.75, 1)
+gravity_direction = Vector2(-0.75, 1)
+script = ExtResource("1_1tbbu")
+_shape_path = NodePath("Shape3D")
+_body_path = NodePath("Body")
+_border_path = NodePath("Border")
+_tip_path = NodePath("Tip")
+_animation_player_path = NodePath("Animation")
+_ligth_path = NodePath("Light3D")
+
+[node name="Shape3D" type="CollisionShape2D" parent="."]
+z_index = -1
+shape = SubResource("1")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.44, 0.5)
+sprite_frames = SubResource("2")
+animation = &"on"
+
+[node name="Border" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.44, 0.5)
+texture = ExtResource("4_q2iox")
+
+[node name="Tip" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 100)
+scale = Vector2(0.21781, 0.277546)
+texture = ExtResource("5_tfqw2")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ii7da")
+}
+
+[node name="Light3D" type="PointLight2D" parent="."]
+position = Vector2(5, 40)
+scale = Vector2(0.6, 0.7)
+color = Color(0.945098, 0.921569, 0.796078, 1)
+energy = 2.74
+range_item_cull_mask = 2
+texture = ExtResource("6_wtff6")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

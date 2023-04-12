@@ -6,7 +6,7 @@ class GeneratedLevel:
 	var solution: Array
 	var windows: Array
 	
-	func _init(_solution: Array, _windows: Array):
+	func _init(_solution: Array, _windows: Array) -> void:
 		self.solution = _solution
 		self.windows = _windows
 
@@ -34,7 +34,7 @@ static func generate_level(level_number: int) -> LevelInfo:
 	)
 
 
-static func calculate_progress(level_number: int):
+static func calculate_progress(level_number: int) -> int:
 	return int(floor(fmod(sqrt(level_number), 1) * 100))
 
 
