@@ -28,7 +28,6 @@ offset_bottom = 135.0
 theme_override_constants/separation = 10
 
 [node name="SkipButton" parent="LeftButtons" instance=ExtResource("2_avq0v")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("3_fue4m")
 
@@ -59,12 +58,10 @@ offset_bottom = 136.0
 theme_override_constants/separation = 10
 
 [node name="ResetButton" parent="RightButtons" instance=ExtResource("2_avq0v")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("5_aqwgd")
 
 [node name="MenuButton" parent="RightButtons" instance=ExtResource("2_avq0v")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("6_rgw3d")
 

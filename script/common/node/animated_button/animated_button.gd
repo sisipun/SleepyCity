@@ -1,4 +1,4 @@
-class_name AnimatedButton
+class_name AnimationButton
 extends TextureButton
 
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=18 format=3 uid="uid://dke5sdgxemjo7"]
 
 [ext_resource type="PackedScene" uid="uid://b0c3u67hl3a7t" path="res://script/level_area/level_area.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://c0f5x5h0sts8p" path="res://script/interface/interface.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://script/interface/popup/level_complete/level_complete_popup.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c0f5x5h0sts8p" path="res://script/interface/Interface.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dbqh15l07lcfn" path="res://script/interface/popup/level_complete/level_complete_popup.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://x4v1yyorhh6y" path="res://script/interface/popup/menu/menu_popup.tscn" id="4"]
 [ext_resource type="Script" path="res://script/level.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://di3845iht1lbe" path="res://script/interface/level_background/level_background.tscn" id="6"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://script/sound/light_switch_sound.gd" id="11"]
 [ext_resource type="Script" path="res://script/sound/button_sound.gd" id="12"]
 [ext_resource type="AudioStream" uid="uid://dn07o8rako05u" path="res://asset/sound/button_sound.ogg" id="13"]
-[ext_resource type="PackedScene" path="res://script/interface/popup/tutorial/tutorial_popup.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://b67m0go7kljyq" path="res://script/interface/popup/tutorial/tutorial_popup.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://cfr7o2mk8ewbq" path="res://script/interface/level_background/star.tscn" id="15"]
 [ext_resource type="AudioStream" uid="uid://dmp287xhfvnea" path="res://asset/sound/level_failed.ogg" id="17"]
 [ext_resource type="PackedScene" uid="uid://db03kqwapojst" path="res://script/interface/popup/level_failed/level_failed_popup.tscn" id="18"]
@@ -25,10 +25,10 @@ script = ExtResource("5")
 layer = -2
 
 [node name="LevelBackground" parent="BackgroundLayer" instance=ExtResource("6")]
-layout_mode = 3
-anchors_preset = 15
 offset_left = -1.18921
 offset_right = -1.18921
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SkyLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -164,18 +164,18 @@ layer = 0
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource("2")]
-layout_mode = 3
+anchors_preset = -1
 anchor_left = 0.000297302
 anchor_right = 1.0003
 
 [node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource("3")]
+visible = false
 
 [node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource("4")]
+visible = false
 
 [node name="TutorialPopup" parent="InterfaceLayer" instance=ExtResource("14")]
-anchor_right = 0.5
-anchor_bottom = -0.3
-custom_minimum_size = Vector2(350, 500)
+visible = false
 
 [node name="LevelFailedPopup" parent="InterfaceLayer" instance=ExtResource("18")]
 visible = false

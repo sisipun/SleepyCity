@@ -58,10 +58,13 @@ _data = {
 "popup": SubResource("1")
 }
 
-[node name="LevelCompletePopup" type="Popup"]
-size = Vector2i(288, 145)
-visible = true
-exclusive = true
+[node name="LevelCompletePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
 _level_label_path = NodePath("Panel/Header/LevelLabel")
 _bonus_icon_path = NodePath("Panel/Body/Buttons/BonusIcon")
@@ -69,9 +72,11 @@ _animation_player_path = NodePath("Animation")
 _next_level_button_path = NodePath("Panel/Body/Buttons/NextButton")
 
 [node name="PopupBackground" parent="." instance=ExtResource("11")]
+layout_mode = 1
 
 [node name="Panel" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(300, 220)
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = -0.2
@@ -104,6 +109,8 @@ offset_right = 42.5
 offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("6")
 text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Body" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(250, 100)
@@ -161,7 +168,6 @@ theme_override_colors/font_color = Color(0.988235, 0.658824, 0.211765, 1)
 text = "+1"
 
 [node name="NextButton" parent="Panel/Body/Buttons" instance=ExtResource("8")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("3")
 

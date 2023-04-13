@@ -1,12 +1,9 @@
-extends HBoxContainer
-
-
 class_name Carousel
+extends HBoxContainer
 
 
 @export var _element_scene: PackedScene
 @export var _element_count: int
-
 
 var elements = []
 

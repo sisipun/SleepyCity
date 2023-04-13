@@ -6,7 +6,7 @@ static func write(game: GameInfo) -> Dictionary:
 	var dict_preset_levels: Dictionary = {}
 	for preset_level_key in game.preset_levels:
 		dict_preset_levels[preset_level_key] = LevelInfoParser.write(game.preset_levels[preset_level_key])
-	var dict_level = LevelInfoParser.write(game.level) if game.level != null else null
+	var dict_level: Dictionary = LevelInfoParser.write(game.level) if game.level != null else null
 	return {
 		"dict_preset_levels": dict_preset_levels,
 		"level": dict_level,

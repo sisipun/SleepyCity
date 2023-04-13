@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dotn0xj6piddk"]
 
-[ext_resource type="PackedScene" path="res://script/common/Node/animated_button/animated_button.tscn" id="1_km3r5"]
+[ext_resource type="PackedScene" uid="uid://tygmmfpneg6o" path="res://script/common/node/animated_button/animated_button.tscn" id="1_km3r5"]
 [ext_resource type="Script" path="res://script/common/node/switch_button/switch_button.gd" id="2_hf4a0"]
 
 [sub_resource type="Animation" id="1"]
@@ -42,7 +42,6 @@ _data = {
 }
 
 [node name="SwitchButton" instance=ExtResource("1_km3r5")]
-anchors_preset = 8
 script = ExtResource("2_hf4a0")
 on_normal = null
 on_pressed = null
@@ -50,6 +49,7 @@ checked_disabled = null
 off_normal = null
 off_pressed = null
 unchecked_disabled = null
+_animation_player_path = NodePath("Animation")
 
 [node name="Animation" parent="." index="0"]
 libraries = {

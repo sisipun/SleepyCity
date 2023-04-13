@@ -44,11 +44,9 @@ _data = {
 }
 
 [node name="TipButton" instance=ExtResource("1_v7k8x")]
-anchors_preset = 8
 texture_normal = ExtResource("2_hyj3d")
 script = ExtResource("3_tbowp")
 _count_label_path = NodePath("CountArea/CountLabel")
-_animation_player_path = NodePath("Animation")
 
 [node name="Animation" parent="." index="0"]
 libraries = {

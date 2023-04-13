@@ -1,5 +1,5 @@
 class_name TipButton
-extends AnimatedButton
+extends AnimationButton
 
 
 @export_node_path("Label") var _count_label_path: NodePath

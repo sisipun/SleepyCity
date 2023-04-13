@@ -1,5 +1,5 @@
 class_name MenuPopup
-extends Popup
+extends Control
 
 
 @export var _animation_player_path: NodePath
@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _on_menu_open() -> void:
-	popup_centered()
+	show()
 	EventStorage.emit_signal("popup_open")
 	_animation_player.play("popup")
 

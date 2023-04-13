@@ -1,5 +1,5 @@
 class_name SwitchButton
-extends AnimatedButton
+extends AnimationButton
 
 
 @export var on_normal: Texture2D

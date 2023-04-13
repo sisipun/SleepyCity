@@ -404,7 +404,7 @@ var game: GameInfo = GameInfo.new({
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels.json"
-var _current_version: String = "1.0.2"
+var _current_version: String = "1.0.1"
 
 
 func _ready() -> void:
@@ -431,6 +431,6 @@ func _on_game_updated(_game: GameInfo) -> void:
 	data["version"] = _current_version
 	
 	var file: FileAccess = FileAccess.open(_save_path + _save_file, FileAccess.WRITE)
-	file.store_line(JSON.new().stringify(data))
+	file.store_line(JSON.stringify(data))
 	file.close()
 	EventStorage.emit_signal("game_saved", self.game)

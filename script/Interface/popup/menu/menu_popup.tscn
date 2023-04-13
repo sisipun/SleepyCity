@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://x4v1yyorhh6y"]
 
-[ext_resource type="PackedScene" uid="uid://f6onir5nhini" path="res://script/common/node/switch_button/switch_button.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dotn0xj6piddk" path="res://script/common/node/switch_button/switch_button.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cmcnihxgmy8if" path="res://asset/button/sound_off_button.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dpoi6uufujc6c" path="res://asset/level/popup/menu/menu_background.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bjswmh5sfsrre" path="res://asset/button/music_off_button.png" id="6"]
@@ -61,16 +61,22 @@ _data = {
 "popup": SubResource("1")
 }
 
-[node name="MenuPopup" type="Popup"]
-size = Vector2i(297, 188)
-visible = true
+[node name="MenuPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("12")
 _animation_player_path = NodePath("Animation")
 
 [node name="Background" parent="." instance=ExtResource("14")]
+layout_mode = 1
 
 [node name="Panel" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(300, 170)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -80,6 +86,8 @@ offset_left = -150.0
 offset_top = -75.0
 offset_right = 150.0
 offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(150, 70)
 mouse_filter = 0
 texture = ExtResource("5")
@@ -97,6 +105,7 @@ texture = ExtResource("7")
 [node name="CloseButton" parent="Panel" instance=ExtResource("8")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
+anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0

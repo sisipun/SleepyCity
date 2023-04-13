@@ -53,16 +53,22 @@ _data = {
 "popup": SubResource("1")
 }
 
-[node name="LevelFailedPopup" type="Popup"]
-size = Vector2i(250, 153)
-visible = true
+[node name="LevelFailedPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5")
 _animation_player_path = NodePath("Animation")
 
 [node name="PopupBackground" parent="." instance=ExtResource("6")]
+layout_mode = 1
 
 [node name="Panel" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(300, 170)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -72,6 +78,8 @@ offset_left = -150.0
 offset_top = -85.0
 offset_right = 150.0
 offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(150, 85)
 texture = ExtResource("1")
 
@@ -113,7 +121,6 @@ layout_mode = 2
 alignment = 1
 
 [node name="ResetButton" parent="Panel/Body/Buttons" instance=ExtResource("3")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("4")
 

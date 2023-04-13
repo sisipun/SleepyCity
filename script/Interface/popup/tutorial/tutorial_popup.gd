@@ -1,7 +1,5 @@
-extends Popup
-
-
 class_name TutorialPopup
+extends Control
 
 
 @export_node_path("AnimationPlayer") var _animation_player_path: NodePath
@@ -16,10 +14,10 @@ class_name TutorialPopup
 @onready var _tap: NinePatchRect = get_node(_tap_path)
 @onready var _carousel: Carousel = get_node(_carousel_path)
 
-
 var resource_index: int = 0
 var resource_state: bool = false
 var initial: bool = false
+
 
 func _ready() -> void:
 	EventStorage.connect("tutorial_open", Callable(self, "_on_open"))
@@ -27,7 +25,7 @@ func _ready() -> void:
 
 func _on_open(_initial: bool) -> void:
 	self.initial = _initial
-	popup_centered()
+	show()
 	EventStorage.emit_signal("popup_open")
 	_animation_player.play("popup")
 	await _animation_player.animation_finished

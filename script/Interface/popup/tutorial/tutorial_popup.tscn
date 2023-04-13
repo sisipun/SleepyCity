@@ -93,9 +93,13 @@ _data = {
 "tap": SubResource("2")
 }
 
-[node name="TutorialPopup" type="Popup"]
-size = Vector2i(288, 220)
-visible = true
+[node name="TutorialPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3")
 _animation_player_path = NodePath("Animation")
 _tutorial_image_path = NodePath("Panel/Body/Image")
@@ -104,18 +108,22 @@ _carousel_path = NodePath("Panel/Body/Carousel")
 _tutorial_resources = Array[Resource("res://script/common/resource/tutorial_resource.gd")]([ExtResource("10"), ExtResource("12"), ExtResource("11"), ExtResource("13")])
 
 [node name="PopupBackground" parent="." instance=ExtResource("15")]
+layout_mode = 1
 
 [node name="Panel" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(350, 500)
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = -0.3
+anchor_top = 0.55
 anchor_right = 0.5
-anchor_bottom = -0.3
+anchor_bottom = 0.55
 offset_left = -175.0
 offset_top = -250.0
 offset_right = 175.0
 offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(175, 300)
 mouse_filter = 0
 texture = ExtResource("2")
@@ -134,6 +142,7 @@ texture = ExtResource("8")
 [node name="CloseButton" parent="Panel" instance=ExtResource("4")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
+anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -142,6 +151,8 @@ offset_left = -35.0
 offset_top = -15.0
 offset_right = 10.0
 offset_bottom = 30.0
+grow_horizontal = 1
+grow_vertical = 1
 pivot_offset = Vector2(20, 20)
 texture_normal = ExtResource("1")
 
@@ -173,7 +184,6 @@ anchor_bottom = 0.5
 offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 60.0
-scale = Vector2(0.988889, 0.988889)
 pivot_offset = Vector2(20, 30)
 texture = ExtResource("9")
 
@@ -185,7 +195,6 @@ layout_mode = 2
 alignment = 1
 
 [node name="PreviousButton" parent="Panel/Body/Buttons" instance=ExtResource("4")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("6")
 
@@ -194,7 +203,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NextButton" parent="Panel/Body/Buttons" instance=ExtResource("4")]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("5")
 

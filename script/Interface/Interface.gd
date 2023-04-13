@@ -2,9 +2,9 @@ class_name Interface
 extends Control
 
 
-@export_node_path("AnimatedButton") var _skip_button_path: NodePath
+@export_node_path("AnimationButton") var _skip_button_path: NodePath
 
-@onready var _skip_button: AnimatedButton = get_node(_skip_button_path)
+@onready var _skip_button: AnimationButton = get_node(_skip_button_path)
 
 
 func _ready() -> void:
