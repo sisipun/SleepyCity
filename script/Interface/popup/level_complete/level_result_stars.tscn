@@ -13,7 +13,6 @@ script = ExtResource("2")
 _first_star_path = NodePath("FirstStar")
 _second_star_path = NodePath("SecondStar")
 _third_star_path = NodePath("ThirdStar")
-_timer_path = NodePath("Timer")
 
 [node name="FirstStar" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(50, 50)

@@ -5,9 +5,8 @@ extends Node
 var _info: LevelInfo
 var _map: Array[Array] = []
 var _steps: Array[Vector2] = []
-var _solutions: Array[Vector2] = []
+var _solution_steps: Array[Vector2] = []
 var _completed: bool = false
-var _solution_changed: bool = true
 
 
 func _init(info: LevelInfo) -> void:
@@ -17,7 +16,7 @@ func _init(info: LevelInfo) -> void:
 		for j in range(_info.height):
 			_map[i].append(Vector2(i, j) in _info.initial)
 	for solution in info.solution:
-		_solutions.push_back(solution)
+		_solution_steps.push_back(solution)
 
 
 func width() -> int:
@@ -32,12 +31,12 @@ func step_number() -> int:
 	return len(_steps)
 
 
-func solution() -> Vector2:
-	return _solutions[0]
+func next_step_solution() -> Vector2:
+	return _solution_steps[0]
 
 
 func solution_size() -> int:
-	return len(_solutions)
+	return len(_solution_steps)
 
 
 func attempts_left() -> int:
@@ -64,22 +63,22 @@ func is_complete() -> bool:
 	return _completed
 
 
-func step(i: int, j: int) -> bool:
+func make_step(i: int, j: int) -> bool:
 	if is_complete():
 		return false
 	
 	var step: Vector2 = Vector2(i, j)
 	_steps.push_back(step)
-	_step(i, j)
+	_make_step(i, j)
 	
-	var solution_index: = _solutions.find(step) 
-	if solution_index < 0:
-		_solutions.push_back(step)
+	var solution_step_index: = _solution_steps.find(step) 
+	if solution_step_index < 0:
+		_solution_steps.push_back(step)
 	else: 
-		_solutions.remove_at(solution_index)
+		_solution_steps.remove_at(solution_step_index)
 	
 	if _is_target_complete():
-		_solutions.clear()
+		_solution_steps.clear()
 		_completed = true
 	
 	return true
@@ -90,13 +89,13 @@ func step_back() -> bool:
 		return false
 	
 	var step: Vector2 = _steps.pop_back()
-	_step(int(step.x), int(step.y))
+	_make_step(int(step.x), int(step.y))
 	
-	var solution_index: = _solutions.find(step) 
-	if solution_index < 0:
-		_solutions.push_front(step)
+	var solution_step_index: = _solution_steps.find(step) 
+	if solution_step_index < 0:
+		_solution_steps.push_front(step)
 	else: 
-		_solutions.remove_at(solution_index)
+		_solution_steps.remove_at(solution_step_index)
 	
 	return true
 
@@ -106,12 +105,12 @@ func reset() -> bool:
 		return false
 	
 	_steps = []
-	_solutions = []
+	_solution_steps = []
 	for i in range(_map.size()):
 		for j in range(_map[i].size()):
 			_map[i][j] = Vector2(i, j) in _info.initial
-	for solution in _info.solution:
-		_solutions.push_back(solution)
+	for solution_step in _info.solution:
+		_solution_steps.push_back(solution_step)
 	return true
 
 
@@ -131,7 +130,7 @@ func _is_target_complete() -> bool:
 	return true
 
 
-func _step(x: int, y: int) -> void:
+func _make_step(x: int, y: int) -> void:
 	var inc_x: int = x + 1 if _info.width > x + 1 else 0
 	var inc_y: int = y + 1 if _info.height > y + 1 else 0
 	

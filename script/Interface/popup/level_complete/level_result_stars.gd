@@ -5,13 +5,10 @@ extends HBoxContainer
 @export_node_path("NinePatchRect") var _first_star_path: NodePath
 @export_node_path("NinePatchRect") var _second_star_path: NodePath
 @export_node_path("NinePatchRect") var _third_star_path: NodePath
-@export_node_path("Timer") var _timer_path: NodePath
 
 @onready var _first_star: NinePatchRect = get_node(_first_star_path)
 @onready var _second_star: NinePatchRect = get_node(_second_star_path)
 @onready var _third_star: NinePatchRect = get_node(_third_star_path)
-@onready var _timer: Timer = get_node(_timer_path)
-@onready var _tween: Tween = create_tween()
 
 
 func _ready() -> void:
@@ -36,14 +33,14 @@ func _on_level_completed(
 
 
 func _on_level_change_request(_initial: bool) -> void:
-	_tween.stop()
 	_first_star.modulate = Color(1, 1, 1, 0)
 	_second_star.modulate = Color(1, 1, 1, 0)
 	_third_star.modulate = Color(1, 1, 1, 0)
 
 
 func _interpolate_scale(star: NinePatchRect, duration: float, delay: float) -> void:
-	_tween.tween_property(
+	var tween: Tween = create_tween()
+	tween.tween_property(
 		star, 
 		"modulate",
 		Color(1, 1, 1, 1),

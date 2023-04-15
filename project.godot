@@ -19,7 +19,7 @@ config/icon="res://asset/incon/icon180x180.png"
 
 [audio]
 
-buses/default_bus_layout="res://Asset/Common/buses/default_bus_layout.tres"
+buses/default_bus_layout="res://asset/common/default_bus_layout.tres"
 
 [autoload]
 

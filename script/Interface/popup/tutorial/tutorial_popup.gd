@@ -20,7 +20,7 @@ var initial: bool = false
 
 
 func _ready() -> void:
-	EventStorage.connect("tutorial_open", Callable(self, "_on_open"))
+	EventStorage.tutorial_open.connect(_on_open)
 
 
 func _on_open(_initial: bool) -> void:
@@ -30,7 +30,6 @@ func _on_open(_initial: bool) -> void:
 	_animation_player.play("popup")
 	await _animation_player.animation_finished
 	show_current(true)
-	_animation_player.play("tap")
 
 
 func _on_close() -> void:
@@ -40,6 +39,7 @@ func _on_close() -> void:
 	resource_index = 0
 	resource_state = false
 	update_current()
+	_animation_player.stop(true)
 	EventStorage.emit_signal("tutorial_closed")
 
 
@@ -70,10 +70,10 @@ func _on_change_statue() -> void:
 
 func show_current(restart_animation: bool) -> void:
 	if restart_animation:
-		_animation_player.stop()
+		_animation_player.stop(true)
+		_animation_player.play("tap")
 	
 	update_current()
-	_animation_player.play("tap")
 
 
 func update_current() -> void:

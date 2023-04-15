@@ -8,7 +8,6 @@ extends TextureProgressBar
 @export var _blub_on: Texture2D
 
 @onready var _blub: NinePatchRect = get_node(_blub_path)
-@onready var _tween: Tween = create_tween()
 
 
 func _ready() -> void:
@@ -25,15 +24,14 @@ func _on_level_completed(
 ) -> void:
 	_blub.texture = _blub_off
 	
-	print(previous_progress)
-	print(current_progress)
-	_tween.tween_property(
+	var tween: Tween = create_tween()
+	tween.tween_property(
 		self, 
 		"value",
-		current_progress if current_progress != 0 else 100, 
+		float(current_progress) if current_progress != 0 else 100.0, 
 		2.0
-	).from(previous_progress).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+	).from(float(previous_progress)).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	
+	await tween.finished
 	if current_progress == 0:
-		await _tween.tween_completed
 		_blub.texture = _blub_on

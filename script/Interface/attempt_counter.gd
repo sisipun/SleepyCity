@@ -2,8 +2,6 @@ class_name AttemptCounter
 extends Label
 
 
-@onready var _tween: Tween = create_tween()
-
 var _value: int = 0
 
 
@@ -41,20 +39,17 @@ func _on_level_changed(
 
 
 func _update_vaue(new_value: int) -> void:
-	_tween.stop()
 	_set_value(new_value)
 
 
 func _interpolate_value(destination: int) -> void:
-	_tween.interpolate_method(
-		self, 
-		"_set_value", 
+	var tween: Tween = create_tween()
+	tween.tween_method(
+		_set_value, 
 		_value, 
 		destination, 
 		abs(destination - _value) / 8.0, 
-		Tween.TRANS_LINEAR, 
-		Tween.EASE_IN_OUT
-	)
+	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 
 func _set_value(new_value: int) -> void:

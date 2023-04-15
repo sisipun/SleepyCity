@@ -49,7 +49,6 @@ checked_disabled = null
 off_normal = null
 off_pressed = null
 unchecked_disabled = null
-_animation_player_path = NodePath("Animation")
 
 [node name="Animation" parent="." index="0"]
 libraries = {

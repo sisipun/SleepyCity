@@ -36,14 +36,14 @@ func _ready() -> void:
 func init(
 	coord_x: int, 
 	coord_y: int, 
-	position: Vector2, 
+	_position: Vector2, 
 	size: Vector2, 
 	on: bool,
 	target: bool,
 	sprite_frames: SpriteFrames,
 	border_sprite_texture: Texture2D
 ) -> LevelWindow:
-	self.position = position
+	position = _position
 	_target = target
 	_coord_x = coord_x
 	_coord_y = coord_y
@@ -92,7 +92,7 @@ func play_tip_effect() -> void:
 
 
 func stop_tip_effect() -> void:
-	_animation_player.stop()
+	_animation_player.stop(true)
 	_tip.hide()
 
 

@@ -16,7 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_k641j")
-_skip_button_path = NodePath("LeftButtons/SkipButton")
 
 [node name="LeftButtons" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 100)

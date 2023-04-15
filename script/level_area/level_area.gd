@@ -19,7 +19,6 @@ extends Area2D
 @onready var _game_area_shape: CollisionShape2D = get_node(_game_area_shape_path)
 @onready var _house: Sprite2D = get_node(_house_path)
 @onready var _roof: Sprite2D = get_node(_roof_path)
-@onready var _tween: Tween = create_tween()
 
 var _level: LevelMap
 var _windows: Array = []
@@ -61,26 +60,24 @@ func _on_level_changed(
 	level_resource: LevelResource, 
 	_progress: int
 ) -> void:
-	if not initial:
-		_tween.tween_property(
-			self, 
-			"position", 
-			Vector2(-_level_area_width, position.y), 
-			1.0
-		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-		await _tween.tween_completed
+	if initial:
+		restart(info, level_resource)
+		return
 	
-	clear(info)
-	init(info, level_resource)
-	
-	if not initial:
-		_tween.tween_property(
-			self, 
-			"position", 
-			Vector2(_initial_x(), position.y), 
-			1.0
-		).from(Vector2(_initial_x() + get_viewport_rect().size.x, position.y)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-		await _tween.tween_completed
+	var tween: Tween = create_tween()
+	tween.tween_property(
+		self, 
+		"position", 
+		Vector2(-_level_area_width, position.y), 
+		1.0
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.tween_callback(Callable(self, "restart").bind(info, level_resource))
+	tween.parallel().tween_property(
+		self, 
+		"position", 
+		Vector2(_initial_x(), position.y), 
+		1.0
+	).from(Vector2(_initial_x() + get_viewport_rect().size.x, position.y)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
 func _on_window_clicked(window: LevelWindow) -> void:
@@ -88,7 +85,7 @@ func _on_window_clicked(window: LevelWindow) -> void:
 	var i: int = coordinates.x
 	var j: int = coordinates.y
 	
-	if _level.step(i, j):
+	if _level.make_step(i, j):
 		update_windows()
 		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	
@@ -119,6 +116,11 @@ func _on_step_back_request() -> void:
 		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
 	if _tutorial:
 		show_tip()
+
+
+func restart(info: LevelInfo, level_resource: LevelResource) -> void:
+	clear(info)
+	init(info, level_resource)
 
 
 func clear(info: LevelInfo) -> void:
@@ -192,7 +194,7 @@ func init(info: LevelInfo, level_resource: LevelResource) -> void:
 func add_window(i: int) -> void:
 	var window: LevelWindow = _window_scene.instantiate()
 	add_child(window)
-	window.connect("clicked", Callable(self, "_on_window_clicked"))
+	window.clicked.connect(_on_window_clicked)
 	_windows[i].append(window)
 
 
@@ -206,6 +208,6 @@ func show_tip() -> bool:
 	if _level.is_complete():
 		return false
 
-	var tip: Vector2 = _level.solution()
+	var tip: Vector2 = _level.next_step_solution()
 	_windows[tip.x][tip.y].play_tip_effect()
 	return true

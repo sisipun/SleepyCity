@@ -419,8 +419,8 @@ func _ready() -> void:
 	file.close()
 	
 	var version: String = data["version"]
-	if version == _current_version:
-		game = GameInfoParser.read(data)
+	#if version == _current_version:
+		#game = GameInfoParser.read(data)
 
 
 func _on_game_updated(_game: GameInfo) -> void:

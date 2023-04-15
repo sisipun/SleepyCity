@@ -28,6 +28,7 @@ func play_sound(play: bool) -> void:
 
 
 func play_music(play: bool) -> void:
+	print(AudioServer.get_bus_index(music_bus_name))
 	GameStorage.game.music = play
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(music_bus_name), not play)
 	EventStorage.emit_signal("game_updated", GameStorage.game)

@@ -1,18 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://b67m0go7kljyq"]
+[gd_scene load_steps=19 format=3 uid="uid://7bxxysscpfcc"]
 
 [ext_resource type="Texture2D" uid="uid://g3pedgnrfsnc" path="res://asset/button/close_button.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://duvck2xnaquyt" path="res://asset/level/popup/tutorial/tutorial_background.png" id="2"]
+[ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial1Step.tres" id="2_531qw"]
 [ext_resource type="Script" path="res://script/interface/popup/tutorial/tutorial_popup.gd" id="3"]
+[ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial2Step.tres" id="3_s3t73"]
 [ext_resource type="PackedScene" uid="uid://tygmmfpneg6o" path="res://script/common/node/animated_button/animated_button.tscn" id="4"]
+[ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial4Step.tres" id="4_mdnb2"]
 [ext_resource type="Texture2D" uid="uid://xpdjrrdcduxr" path="res://asset/button/next_tutorial_button.png" id="5"]
+[ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial3Step.tres" id="5_veqdd"]
 [ext_resource type="Texture2D" uid="uid://d2txrws7sgoab" path="res://asset/button/previous_tutorial_button.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cyxp8exlwjdrw" path="res://asset/level/popup/tutorial/1_tutorial_before.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b4fwr2564qnip" path="res://asset/level/popup/tutorial/tutorial_header.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://15bnkj8q2c1p" path="res://asset/level/window/tip_animation.png" id="9"]
-[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial1Step.tres" id="10"]
-[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial4Step.tres" id="11"]
-[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial2Step.tres" id="12"]
-[ext_resource type="Resource" path="res://resource/tutorial/DefaultTutorial3Step.tres" id="13"]
 [ext_resource type="PackedScene" uid="uid://cxirlvdvfwakc" path="res://script/common/node/carousel/carousel.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://b41rsdein5njp" path="res://script/interface/popup/popup_background.tscn" id="15"]
 
@@ -23,23 +23,23 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:anchor_top")
+tracks/0/path = NodePath("Panel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.466667, 0.666667),
-"transitions": PackedFloat32Array(2, 0.5, 2, 1),
+"times": PackedFloat32Array(0, 0.306, 0.466668, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.3, 0.55, 0.5, 0.55]
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:anchor_bottom")
+tracks/1/path = NodePath("Panel:anchor_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.306, 0.466667, 0.666667),
+"times": PackedFloat32Array(0, 0.3, 0.466667, 0.666667),
 "transitions": PackedFloat32Array(2, 0.5, 2, 1),
 "update": 0,
 "values": [-0.3, 0.55, 0.5, 0.55]
@@ -47,19 +47,20 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:scale")
+tracks/2/path = NodePath("Panel:anchor_bottom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.306, 0.466668, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.306, 0.466667, 0.666667),
+"transitions": PackedFloat32Array(2, 0.5, 2, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+"values": [-0.3, 0.55, 0.5, 0.55]
 }
 
 [sub_resource type="Animation" id="2"]
 resource_name = "tap"
 length = 1.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,7 +106,7 @@ _animation_player_path = NodePath("Animation")
 _tutorial_image_path = NodePath("Panel/Body/Image")
 _tap_path = NodePath("Panel/Body/Image/Tap")
 _carousel_path = NodePath("Panel/Body/Carousel")
-_tutorial_resources = Array[Resource("res://script/common/resource/tutorial_resource.gd")]([ExtResource("10"), ExtResource("12"), ExtResource("11"), ExtResource("13")])
+_tutorial_resources = Array[Resource("res://script/common/resource/tutorial_resource.gd")]([ExtResource("2_531qw"), ExtResource("3_s3t73"), ExtResource("4_mdnb2"), ExtResource("5_veqdd")])
 
 [node name="PopupBackground" parent="." instance=ExtResource("15")]
 layout_mode = 1
@@ -115,9 +116,9 @@ custom_minimum_size = Vector2(350, 500)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.55
+anchor_top = -0.3
 anchor_right = 0.5
-anchor_bottom = 0.55
+anchor_bottom = -0.3
 offset_left = -175.0
 offset_top = -250.0
 offset_right = 175.0

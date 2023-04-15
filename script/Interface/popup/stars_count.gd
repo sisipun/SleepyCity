@@ -8,7 +8,7 @@ extends HBoxContainer
 
 
 func _ready() -> void:
-	EventStorage.connect("game_updated", Callable(self, "_on_game_updated"))
+	EventStorage.game_updated.connect(_on_game_updated)
 
 
 func _on_game_updated(game: GameInfo) -> void:
