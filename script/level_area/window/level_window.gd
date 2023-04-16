@@ -49,8 +49,8 @@ func init(
 	_coord_y = coord_y
 	set_on(on)
 	scale = Vector2(
-		size.x / (_shape.shape.size.x * 2), 
-		size.y / (_shape.shape.size.y * 2)
+		size.x / (_shape.shape.size.x), 
+		size.y / (_shape.shape.size.y)
 	)
 	
 	_body.frames = sprite_frames

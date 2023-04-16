@@ -190,6 +190,7 @@ texture = ExtResource("9")
 
 [node name="Carousel" parent="Panel/Body" instance=ExtResource("14")]
 layout_mode = 2
+_element_count = 4
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
 layout_mode = 2

@@ -3,10 +3,10 @@ extends Node
 
 
 class GeneratedLevel:
-	var solution: Array
-	var windows: Array
+	var solution: Array[Vector2]
+	var windows: Array[Vector2]
 	
-	func _init(_solution: Array, _windows: Array) -> void:
+	func _init(_solution: Array[Vector2], _windows: Array[Vector2]) -> void:
 		self.solution = _solution
 		self.windows = _windows
 
@@ -39,13 +39,13 @@ static func calculate_progress(level_number: int) -> int:
 
 
 static func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
-	var map: = []
+	var map: Array = []
 	for i in range(width):
 		map.push_back([])
 		for _j in range(height):
 			map[i].push_back(false)
 	
-	var solutions = []
+	var solutions: Array[Vector2] = []
 	var solution_index: = 0
 	while solution_index < solution_size:
 		var x: = randi() % width
@@ -65,10 +65,10 @@ static func _generate_level(width: int, height: int, solution_size: int) -> Gene
 			solutions.push_back(Vector2(x, y))
 			solution_index += 1
 		else:
-			solutions.remove(exists_solution)
+			solutions.remove_at(exists_solution)
 			solution_index -= 1
 	
-	var windows = []
+	var windows: Array[Vector2] = []
 	for i in range(width):
 		for j in range(height):
 			if map[i][j]:

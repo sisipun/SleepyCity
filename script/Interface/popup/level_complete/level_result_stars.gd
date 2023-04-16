@@ -11,6 +11,9 @@ extends HBoxContainer
 @onready var _third_star: NinePatchRect = get_node(_third_star_path)
 
 
+var _tween: Tween = null
+
+
 func _ready() -> void:
 	EventStorage.level_completed.connect(_on_level_completed)
 	EventStorage.level_change_request.connect(_on_level_change_request)
@@ -24,25 +27,33 @@ func _on_level_completed(
 	_earned_bonus: bool,
 	stars_count: int
 ) -> void:
+	_tween = create_tween()
 	if stars_count >= 1:
-		_interpolate_scale(_first_star, 0.7, 0.0)
+		_interpolate_modulate(_tween, _first_star, 0.7)
 	if stars_count >= 2:
-		_interpolate_scale(_second_star, 0.7, 0.7)
+		_interpolate_modulate(_tween, _second_star, 0.7)
 	if stars_count >= 3:
-		_interpolate_scale(_third_star, 0.7, 1.4)
+		_interpolate_modulate(_tween, _third_star, 0.7)
 
 
 func _on_level_change_request(_initial: bool) -> void:
+	if _tween:
+		_tween.kill()
+		_tween = null
+	
 	_first_star.modulate = Color(1, 1, 1, 0)
 	_second_star.modulate = Color(1, 1, 1, 0)
 	_third_star.modulate = Color(1, 1, 1, 0)
 
 
-func _interpolate_scale(star: NinePatchRect, duration: float, delay: float) -> void:
-	var tween: Tween = create_tween()
+func _interpolate_modulate(
+	tween: Tween, 
+	star: NinePatchRect, 
+	duration: float
+) -> void:
 	tween.tween_property(
 		star, 
 		"modulate",
 		Color(1, 1, 1, 1),
 		duration
-	).from(Color(1, 1, 1, 0)).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN).set_delay(delay)
+	).from(Color(1, 1, 1, 0)).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)

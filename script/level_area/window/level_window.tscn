@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d0cayx1on1o3o" path="res://asset/level/window/window_light.png" id="6_wtff6"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(88.0623, 101.072)
+size = Vector2(176, 202)
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="LevelWindow" type="Area2D"]
+scale = Vector2(1.68, 1.68)
 gravity_point_center = Vector2(-0.75, 1)
 gravity_direction = Vector2(-0.75, 1)
 script = ExtResource("1_1tbbu")
@@ -63,11 +64,12 @@ _ligth_path = NodePath("Light3D")
 
 [node name="Shape3D" type="CollisionShape2D" parent="."]
 z_index = -1
+scale = Vector2(1.00018, 1)
 shape = SubResource("1")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 z_index = -2
-scale = Vector2(0.44, 0.5)
+scale = Vector2(0.44, 0.502)
 sprite_frames = SubResource("2")
 animation = &"on"
 
