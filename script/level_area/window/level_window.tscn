@@ -71,7 +71,7 @@ shape = SubResource("1")
 z_index = -2
 scale = Vector2(0.44, 0.502)
 sprite_frames = SubResource("2")
-animation = &"on"
+animation = &"off"
 
 [node name="Border" type="Sprite2D" parent="."]
 z_index = -2
