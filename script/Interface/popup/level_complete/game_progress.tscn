@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://3h5itwsdy2ib"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://script/interface/popup/level_complete/game_progress.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://f5utrbnwc77o" path="res://asset/level/popup/level_complete/progress_front.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://dol31hs5saux0" path="res://asset/level/popup/level_complete/blub_on.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://dr621pp8uloeu" path="res://asset/level/popup/level_complete/progress_back.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://b2adrn1kxt3cr" path="res://asset/level/popup/level_complete/blub_off.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://f5utrbnwc77o" path="res://asset/image/interface/popup/level_complete/progress_front.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dol31hs5saux0" path="res://asset/image/interface/popup/level_complete/blub_on.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dr621pp8uloeu" path="res://asset/image/interface/popup/level_complete/progress_back.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b2adrn1kxt3cr" path="res://asset/image/interface/popup/level_complete/blub_off.png" id="6"]
 
 [node name="GameProgress" type="TextureProgressBar"]
 custom_minimum_size = Vector2(250, 50)

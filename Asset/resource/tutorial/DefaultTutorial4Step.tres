@@ -1,8 +1,8 @@
 [gd_resource type="Resource" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://script/common/resource/tutorial_resource.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://durc64mc3d2g5" path="res://asset/level/popup/tutorial/4_tutorial_before.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://b2xuk8ym8s65y" path="res://asset/level/popup/tutorial/4_tutorial_after.png" id="3"]
+[ext_resource type="Script" path="res://script/game_state/resource/tutorial_resource.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://durc64mc3d2g5" path="res://asset/image/interface/popup/tutorial/4_tutorial_before.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b2xuk8ym8s65y" path="res://asset/image/interface/popup/tutorial/4_tutorial_after.png" id="3"]
 
 [resource]
 script = ExtResource( 1 )

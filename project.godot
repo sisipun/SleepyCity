@@ -11,24 +11,24 @@ config_version=5
 [application]
 
 config/name="Sleepy City"
-run/main_scene="res://script/level.tscn"
+run/main_scene="res://script/game.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://asset/launch/launch.png"
-config/icon="res://asset/incon/icon180x180.png"
+boot_splash/image="res://asset/image/launch/launch.png"
+config/icon="res://asset/image/incon/icon180x180.png"
 
 [audio]
 
-buses/default_bus_layout="res://asset/common/default_bus_layout.tres"
+buses/default_bus_layout="res://asset/fonts/default_bus_layout.tres"
 
 [autoload]
 
-EventStorage="*res://script/common/storage/event_storage.gd"
-GameStorage="*res://script/common/storage/game_storage.gd"
-LevelController="res://script/common/controller/level_controller.tscn"
-TipController="res://script/common/controller/tip_controller.gd"
-AudioController="res://script/common/controller/audio_controller.gd"
-BackgroundMusicController="res://script/common/controller/background_music_controller.tscn"
+EventStorage="*res://script/game_state/storage/event_storage.gd"
+GameStorage="*res://script/game_state/storage/game_storage.gd"
+LevelController="res://script/game_state/controller/level_controller.tscn"
+TipController="res://script/game_state/controller/tip_controller.gd"
+AudioController="res://script/game_state/controller/audio_controller.gd"
+BackgroundMusicController="res://script/game_state/controller/background_music_controller.tscn"
 
 [display]
 
@@ -50,7 +50,7 @@ tablet_driver=false
 
 [gui]
 
-theme/custom_font="res://asset/common/default.tres"
+theme/custom_font="res://asset/fonts/default.tres"
 
 [input_devices]
 

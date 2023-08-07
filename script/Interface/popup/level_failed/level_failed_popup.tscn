@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://db03kqwapojst"]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cktuyjo38oek2" path="res://asset/level/popup/level_failed/failed_level_background.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://bb1vvr32gdcr0" path="res://asset/level/popup/level_failed/level_failed_header.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://tygmmfpneg6o" path="res://script/common/node/animated_button/animated_button.tscn" id="3"]
-[ext_resource type="Texture2D" uid="uid://ps040wi1tqos" path="res://asset/button/reset_button.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cktuyjo38oek2" path="res://asset/image/interface/popup/level_failed/failed_level_background.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bb1vvr32gdcr0" path="res://asset/image/interface/popup/level_failed/level_failed_header.png" id="2"]
+[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://ps040wi1tqos" path="res://asset/image/interface/button/reset_button.png" id="4"]
 [ext_resource type="Script" path="res://script/interface/popup/level_failed/level_failed_popup.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://b41rsdein5njp" path="res://script/interface/popup/popup_background.tscn" id="6"]
-[ext_resource type="Texture2D" uid="uid://dfneg2hy5n77c" path="res://asset/level/popup/level_failed/level_failed_message.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dfneg2hy5n77c" path="res://asset/image/interface/popup/level_failed/level_failed_message.png" id="7"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "popup"

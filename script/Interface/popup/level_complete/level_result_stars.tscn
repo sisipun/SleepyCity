@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvyt2q5xucgp"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" uid="uid://b5tnjbrjw3576" path="res://asset/level/popup/level_complete/level_complete_star.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b5tnjbrjw3576" path="res://asset/image/interface/popup/level_complete/level_complete_star.png" id="1"]
 [ext_resource type="Script" path="res://script/interface/popup/level_complete/level_result_stars.gd" id="2"]
 
 [node name="LevelResultStars" type="HBoxContainer"]

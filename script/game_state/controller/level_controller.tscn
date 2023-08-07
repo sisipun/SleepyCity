@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://script/game_state/controller/level_controller.gd" id="1_e2xtk"]
+[ext_resource type="Resource" uid="uid://c5eat080urx0e" path="res://asset/resource/level/DefaultLevelResource.tres" id="2_aphyb"]
+
+[node name="LevelController" type="Node"]
+script = ExtResource("1_e2xtk")
+level_resource = ExtResource("2_aphyb")

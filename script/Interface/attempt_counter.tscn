@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmv6y8w7u5tr3"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="FontFile" path="res://asset/common/counter.tres" id="1_24p0e"]
+[ext_resource type="FontFile" path="res://asset/fonts/counter.tres" id="1_24p0e"]
 [ext_resource type="Script" path="res://script/interface/attempt_counter.gd" id="2_axaus"]
 
 [node name="AttemptCounter" type="Label"]

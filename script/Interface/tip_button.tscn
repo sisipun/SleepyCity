@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdyqx4do4yyry"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="PackedScene" uid="uid://tygmmfpneg6o" path="res://script/common/node/animated_button/animated_button.tscn" id="1_v7k8x"]
-[ext_resource type="Texture2D" uid="uid://cg5ax67dxmub8" path="res://asset/button/tip_button.png" id="2_hyj3d"]
+[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_v7k8x"]
+[ext_resource type="Texture2D" uid="uid://cg5ax67dxmub8" path="res://asset/image/interface/button/tip_button.png" id="2_hyj3d"]
 [ext_resource type="Script" path="res://script/interface/tip_button.gd" id="3_tbowp"]
-[ext_resource type="Texture2D" uid="uid://xdusj6vf00hb" path="res://asset/button/tip_button_header.png" id="4_oll8t"]
+[ext_resource type="Texture2D" uid="uid://xdusj6vf00hb" path="res://asset/image/interface/button/tip_button_header.png" id="4_oll8t"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "down"

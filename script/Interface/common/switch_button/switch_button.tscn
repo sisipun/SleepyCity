@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_km3r5"]
+[ext_resource type="Script" path="res://script/interface/common/switch_button/switch_button.gd" id="2_hf4a0"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sb0mf"]
+_data = {
+"down": SubResource("1"),
+"up": SubResource("2")
+}
+
+[node name="SwitchButton" instance=ExtResource("1_km3r5")]
+script = ExtResource("2_hf4a0")
+on_normal = null
+on_pressed = null
+checked_disabled = null
+off_normal = null
+off_pressed = null
+unchecked_disabled = null
+
+[node name="Animation" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_sb0mf")
+}
