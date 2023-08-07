@@ -208,6 +208,6 @@ func show_tip() -> bool:
 	if _level.is_complete():
 		return false
 
-	var tip: Vector2 = _level.next_step_solution()
+	var tip: Vector2i = _level.next_step_solution()
 	_windows[tip.x][tip.y].play_tip_effect()
 	return true

@@ -8,14 +8,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,2)
+			Vector2i(1,2)
 		],
 		[
-			Vector2(0,2), 
-			Vector2(1,1), 
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(2,2)
+			Vector2i(0,2), 
+			Vector2i(1,1), 
+			Vector2i(1,2),
+			Vector2i(1,3),
+			Vector2i(2,2)
 		],
 		3,
 		true
@@ -26,14 +26,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,2)
+			Vector2i(0,2)
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,2), 
-			Vector2(0,3),
-			Vector2(1,2),
-			Vector2(2,2)
+			Vector2i(0,1), 
+			Vector2i(0,2), 
+			Vector2i(0,3),
+			Vector2i(1,2),
+			Vector2i(2,2)
 		],
 		3
 	),
@@ -43,14 +43,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,0)
+			Vector2i(1,0)
 		],
 		[
-			Vector2(0,0), 
-			Vector2(1,0), 
-			Vector2(1,1),
-			Vector2(1,4),
-			Vector2(2,0)
+			Vector2i(0,0), 
+			Vector2i(1,0), 
+			Vector2i(1,1),
+			Vector2i(1,4),
+			Vector2i(2,0)
 		],
 		3
 	),
@@ -60,14 +60,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,0)
+			Vector2i(0,0)
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,1), 
-			Vector2(0,4),
-			Vector2(1,0),
-			Vector2(2,0)
+			Vector2i(0,0), 
+			Vector2i(0,1), 
+			Vector2i(0,4),
+			Vector2i(1,0),
+			Vector2i(2,0)
 		],
 		3
 	),
@@ -77,14 +77,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(2,4)
+			Vector2i(2,4)
 		],
 		[
-			Vector2(0,4), 
-			Vector2(1,4), 
-			Vector2(2,0),
-			Vector2(2,3),
-			Vector2(2,4)
+			Vector2i(0,4), 
+			Vector2i(1,4), 
+			Vector2i(2,0),
+			Vector2i(2,3),
+			Vector2i(2,4)
 		],
 		3
 	),
@@ -94,18 +94,18 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,1),
-			Vector2(1,3)
+			Vector2i(1,1),
+			Vector2i(1,3)
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,3),
-			Vector2(1,0),
-			Vector2(1,1),
-			Vector2(1,3),
-			Vector2(1,4),
-			Vector2(2,1),
-			Vector2(2,3),
+			Vector2i(0,1), 
+			Vector2i(0,3),
+			Vector2i(1,0),
+			Vector2i(1,1),
+			Vector2i(1,3),
+			Vector2i(1,4),
+			Vector2i(2,1),
+			Vector2i(2,3),
 		],
 		4
 	),
@@ -115,16 +115,16 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,2),
-			Vector2(1,3)
+			Vector2i(1,2),
+			Vector2i(1,3)
 		],
 		[
-			Vector2(0,2), 
-			Vector2(0,3),
-			Vector2(1,1),
-			Vector2(1,4),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,2), 
+			Vector2i(0,3),
+			Vector2i(1,1),
+			Vector2i(1,4),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		4
 	),
@@ -134,16 +134,16 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,1),
-			Vector2(0,2),
+			Vector2i(0,1),
+			Vector2i(0,2),
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,3),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(2,1),
-			Vector2(2,2),
+			Vector2i(0,0), 
+			Vector2i(0,3),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(2,1),
+			Vector2i(2,2),
 		],
 		5
 	),
@@ -153,16 +153,16 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,0),
-			Vector2(1,4)
+			Vector2i(1,0),
+			Vector2i(1,4)
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,4),
-			Vector2(1,1),
-			Vector2(1,3),
-			Vector2(2,0),
-			Vector2(2,4),
+			Vector2i(0,0), 
+			Vector2i(0,4),
+			Vector2i(1,1),
+			Vector2i(1,3),
+			Vector2i(2,0),
+			Vector2i(2,4),
 		],
 		4
 	),
@@ -172,14 +172,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,2),
-			Vector2(2,2),
+			Vector2i(0,2),
+			Vector2i(2,2),
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,3),
-			Vector2(2,1),
-			Vector2(2,3),
+			Vector2i(0,1), 
+			Vector2i(0,3),
+			Vector2i(2,1),
+			Vector2i(2,3),
 		],
 		5
 	),
@@ -189,14 +189,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,2),
-			Vector2(1,2),
+			Vector2i(0,2),
+			Vector2i(1,2),
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,3),
-			Vector2(1,1),
-			Vector2(1,3),
+			Vector2i(0,1), 
+			Vector2i(0,3),
+			Vector2i(1,1),
+			Vector2i(1,3),
 		],
 		5
 	),
@@ -206,20 +206,20 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,3),
-			Vector2(2,1),
+			Vector2i(0,3),
+			Vector2i(2,1),
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,2),
-			Vector2(0,3),
-			Vector2(0,4),
-			Vector2(1,1),
-			Vector2(1,3),
-			Vector2(2,0),
-			Vector2(2,1),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,1), 
+			Vector2i(0,2),
+			Vector2i(0,3),
+			Vector2i(0,4),
+			Vector2i(1,1),
+			Vector2i(1,3),
+			Vector2i(2,0),
+			Vector2i(2,1),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		5
 	),
@@ -229,16 +229,16 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,0),
-			Vector2(2,4),
+			Vector2i(0,0),
+			Vector2i(2,4),
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,1),
-			Vector2(1,0),
-			Vector2(1,4),
-			Vector2(2,3),
-			Vector2(2,4),
+			Vector2i(0,0), 
+			Vector2i(0,1),
+			Vector2i(1,0),
+			Vector2i(1,4),
+			Vector2i(2,3),
+			Vector2i(2,4),
 		],
 		5
 	),
@@ -248,14 +248,14 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,0),
-			Vector2(2,0),
+			Vector2i(0,0),
+			Vector2i(2,0),
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,4),
-			Vector2(2,1),
-			Vector2(2,4),
+			Vector2i(0,1), 
+			Vector2i(0,4),
+			Vector2i(2,1),
+			Vector2i(2,4),
 		],
 		5
 	),
@@ -265,16 +265,16 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,1),
-			Vector2(2,2),
+			Vector2i(0,1),
+			Vector2i(2,2),
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,1),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,0), 
+			Vector2i(0,1),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		5
 	),
@@ -284,20 +284,20 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(1,3)
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(1,3)
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,2), 
-			Vector2(0,3),
-			Vector2(1,0),
-			Vector2(1,2),
-			Vector2(1,4),
-			Vector2(2,1),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,1), 
+			Vector2i(0,2), 
+			Vector2i(0,3),
+			Vector2i(1,0),
+			Vector2i(1,2),
+			Vector2i(1,4),
+			Vector2i(2,1),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		6
 	),
@@ -307,20 +307,20 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,1),
-			Vector2(0,2),
-			Vector2(0,3),
+			Vector2i(0,1),
+			Vector2i(0,2),
+			Vector2i(0,3),
 		],
 		[
-			Vector2(0,0),
-			Vector2(0,2),
-			Vector2(0,4),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(2,1),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,0),
+			Vector2i(0,2),
+			Vector2i(0,4),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(1,3),
+			Vector2i(2,1),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		6
 	),
@@ -330,20 +330,20 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,2),
-			Vector2(1,2),
-			Vector2(2,2)
+			Vector2i(0,2),
+			Vector2i(1,2),
+			Vector2i(2,2)
 		],
 		[
-			Vector2(0,1), 
-			Vector2(0,2), 
-			Vector2(0,3),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(2,1),
-			Vector2(2,2),
-			Vector2(2,3),
+			Vector2i(0,1), 
+			Vector2i(0,2), 
+			Vector2i(0,3),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(1,3),
+			Vector2i(2,1),
+			Vector2i(2,2),
+			Vector2i(2,3),
 		],
 		6
 	),
@@ -353,20 +353,20 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(0,0),
-			Vector2(0,4),
-			Vector2(2,0),
-			Vector2(2,4),
+			Vector2i(0,0),
+			Vector2i(0,4),
+			Vector2i(2,0),
+			Vector2i(2,4),
 		],
 		[
-			Vector2(0,0), 
-			Vector2(0,1), 
-			Vector2(0,3),
-			Vector2(0,4),
-			Vector2(2,0),
-			Vector2(2,1),
-			Vector2(2,3),
-			Vector2(2,4),
+			Vector2i(0,0), 
+			Vector2i(0,1), 
+			Vector2i(0,3),
+			Vector2i(0,4),
+			Vector2i(2,0),
+			Vector2i(2,1),
+			Vector2i(2,3),
+			Vector2i(2,4),
 		],
 		8
 	),
@@ -376,35 +376,35 @@ var game: GameInfo = GameInfo.new({
 		[
 		], 
 		[
-			Vector2(1,0),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(1,4),
+			Vector2i(1,0),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(1,3),
+			Vector2i(1,4),
 		],
 		[
-			Vector2(0,0),
-			Vector2(0,1),
-			Vector2(0,2),
-			Vector2(0,3),
-			Vector2(0,4),
-			Vector2(1,0),
-			Vector2(1,1),
-			Vector2(1,2),
-			Vector2(1,3),
-			Vector2(1,4),
-			Vector2(2,0),
-			Vector2(2,1),
-			Vector2(2,2),
-			Vector2(2,3),
-			Vector2(2,4),
+			Vector2i(0,0),
+			Vector2i(0,1),
+			Vector2i(0,2),
+			Vector2i(0,3),
+			Vector2i(0,4),
+			Vector2i(1,0),
+			Vector2i(1,1),
+			Vector2i(1,2),
+			Vector2i(1,3),
+			Vector2i(1,4),
+			Vector2i(2,0),
+			Vector2i(2,1),
+			Vector2i(2,2),
+			Vector2i(2,3),
+			Vector2i(2,4),
 		],
 		10
 	),
 })
 var _save_path: String = "user://saves/"
 var _save_file: String = "levels.json"
-var _current_version: String = "1.0.1"
+var _current_version: String = "1.0.2"
 
 
 func _ready() -> void:

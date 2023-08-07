@@ -78,7 +78,7 @@ func show_current(restart_animation: bool) -> void:
 
 func update_current() -> void:
 	var current_resource = _tutorial_resources[resource_index]
-	_tap.position = Vector2(current_resource.tap_x, current_resource.tap_y)
+	_tap.position = Vector2i(current_resource.tap_x, current_resource.tap_y)
 	_tutorial_image.texture = current_resource.after if resource_state else current_resource.before
 	_carousel.set_current(resource_index)
 

@@ -2,13 +2,44 @@ class_name LevelGenerator
 extends Node
 
 
-class GeneratedLevel:
-	var solution: Array[Vector2]
-	var windows: Array[Vector2]
+class GeneratedLevelMap extends LevelMap:
 	
-	func _init(_solution: Array[Vector2], _windows: Array[Vector2]) -> void:
+	
+	func _init(map_width: int, map_height: int) -> void:
+		_width = map_width
+		_height = map_height
+		_targets = []
+		_solution = []
+		_attempt_count = 0
+		for i in range(_width):
+			_map.append([])
+			for j in range(_height):
+				_map[i].append(false)
+	
+	
+	func make_step(i: int, j: int) -> bool:
+		var step: Vector2i = Vector2i(i, j)
+		_steps.push_back(step)
+		_make_step(i, j)
+		return true
+	
+	
+	func steps() -> Array[Vector2i]:
+		return _steps
+	
+	
+	func has_step(x: int, y: int) -> bool:
+		return Vector2i(x, y) in _steps
+
+
+class GeneratedLevel:
+	
+	
+	var solution: Array[Vector2i]
+	
+	
+	func _init(_solution: Array[Vector2i]) -> void:
 		self.solution = _solution
-		self.windows = _windows
 
 
 static func generate_level(level_number: int) -> LevelInfo:
@@ -29,7 +60,7 @@ static func generate_level(level_number: int) -> LevelInfo:
 		height,
 		[],
 		generated.solution,
-		generated.windows,
+		[],
 		attempt_count
 	)
 
@@ -39,42 +70,15 @@ static func calculate_progress(level_number: int) -> int:
 
 
 static func _generate_level(width: int, height: int, solution_size: int) -> GeneratedLevel:
-	var map: Array = []
-	for i in range(width):
-		map.push_back([])
-		for _j in range(height):
-			map[i].push_back(false)
+	var map: GeneratedLevelMap = GeneratedLevelMap.new(width, height)
 	
-	var solutions: Array[Vector2] = []
-	var solution_index: = 0
-	while solution_index < solution_size:
+	while map.steps().size() < solution_size:
 		var x: = randi() % width
 		var y: = randi() % height
 		
-		var inc_x: int = x + 1 if width > x + 1 else 0
-		var inc_y: int = y + 1 if height > y + 1 else 0
+		if (not map.has_step(x, y)):
+			map.make_step(x, y)
 	
-		map[x][y] = not map[x][y]
-		map[x - 1][y] = not map[x - 1][y]
-		map[x][y - 1] = not map[x][y - 1]
-		map[inc_x][y] = not map[inc_x][y]
-		map[x][inc_y] = not map[x][inc_y]
-		
-		var exists_solution = solutions.find(Vector2(x, y)) 
-		if exists_solution == -1:
-			solutions.push_back(Vector2(x, y))
-			solution_index += 1
-		else:
-			solutions.remove_at(exists_solution)
-			solution_index -= 1
-	
-	var windows: Array[Vector2] = []
-	for i in range(width):
-		for j in range(height):
-			if map[i][j]:
-				windows.push_back(Vector2(i, j))
-				
 	return GeneratedLevel.new(
-		solutions,
-		windows
+		map.steps()
 	)

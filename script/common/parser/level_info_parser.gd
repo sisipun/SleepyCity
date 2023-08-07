@@ -25,18 +25,18 @@ static func write(level: LevelInfo) -> Dictionary:
 
 
 static func read(dict: Dictionary) -> LevelInfo:
-	var targets: Array[Vector2] = []
+	var targets: Array[Vector2i] = []
 	var dict_targets: Array = dict["targets"]
 	for target in dict_targets:
-		targets.push_back(Vector2(target["x"], target["y"]))
-	var solution: Array[Vector2] = []
+		targets.push_back(Vector2i(target["x"], target["y"]))
+	var solution: Array[Vector2i] = []
 	var dict_solution: Array = dict["solution"]
 	for solution_item in dict_solution:
-		solution.push_back(Vector2(solution_item["x"], solution_item["y"]))
-	var initial: Array[Vector2] = []
+		solution.push_back(Vector2i(solution_item["x"], solution_item["y"]))
+	var initial: Array[Vector2i] = []
 	var dict_initial: Array = dict["initial"]
 	for initial_item in dict_initial:
-		initial.push_back(Vector2(initial_item["x"], initial_item["y"]))
+		initial.push_back(Vector2i(initial_item["x"], initial_item["y"]))
 	return LevelInfo.new(
 		dict["width"], 
 		dict["height"], 

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="TutorialResource" load_steps=4 format=3 uid="uid://bee53v1lud84q"]
 
 [ext_resource type="Script" path="res://script/common/resource/tutorial_resource.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cbnj6ajmrnq2n" path="res://asset/level/popup/tutorial/3_tutorial_before.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dpimt2u5kh7sg" path="res://asset/level/popup/tutorial/3_tutorial_after.png" id="3"]
 
 [resource]
-script = ExtResource( 1 )
-before = ExtResource( 2 )
-after = ExtResource( 3 )
+script = ExtResource("1")
+before = ExtResource("2")
+after = ExtResource("3")
 tap_x = 25
 tap_y = 60
