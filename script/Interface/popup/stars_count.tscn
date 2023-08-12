@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://dy2exvuqbcxe6"]
 
 [ext_resource type="Texture2D" uid="uid://ddwguyehigpap" path="res://asset/image/interface/popup/star.png" id="1"]
 [ext_resource type="FontFile" path="res://asset/fonts/title.tres" id="2"]

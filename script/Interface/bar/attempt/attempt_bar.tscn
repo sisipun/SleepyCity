@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://crg8eoljtbi43"]
+
+[ext_resource type="Texture2D" uid="uid://cnvl63ju8jhrx" path="res://asset/image/interface/bar/attempt/middleground.png" id="1_1kkr3"]
+[ext_resource type="Script" path="res://script/interface/bar/attempt/attempt_bar.gd" id="2_fco7y"]
+[ext_resource type="Texture2D" uid="uid://cimqi3x8auobk" path="res://asset/image/interface/bar/attempt/progress.png" id="2_u3c2u"]
+[ext_resource type="Texture2D" uid="uid://bev2be2q8q72h" path="res://asset/image/interface/bar/attempt/background.png" id="4_qsjv1"]
+[ext_resource type="Texture2D" uid="uid://cqp10mrktqkg4" path="res://asset/image/interface/bar/attempt/sign_with_border.png" id="5_q3gd4"]
+
+[node name="AttemptBar" type="TextureProgressBar"]
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("1_1kkr3")
+texture_progress = ExtResource("2_u3c2u")
+tint_under = Color(0, 0.0156863, 0.164706, 1)
+radial_initial_angle = 220.0
+radial_fill_degrees = 280.0
+script = ExtResource("2_fco7y")
+_sign_path = NodePath("Sign")
+_low_energy_color = Color(1, 0.470588, 0.117647, 1)
+_middle_energy_color = Color(0.988235, 0.658824, 0.211765, 1)
+_high_energy_color = Color(1, 0.858824, 0.117647, 1)
+
+[node name="Background" type="NinePatchRect" parent="."]
+modulate = Color(0, 0.0156863, 0.164706, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00094, 0.996031)
+texture = ExtResource("4_qsjv1")
+
+[node name="Sign" type="NinePatchRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_q3gd4")

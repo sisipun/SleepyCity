@@ -34,11 +34,11 @@ BackgroundMusicController="res://script/game_state/controller/background_music_c
 
 window/size/viewport_width=500
 window/size/viewport_height=1000
-window/size/resizable=false
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
-window/handheld/orientation="sensor_portrait"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+window/handheld/orientation=1
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

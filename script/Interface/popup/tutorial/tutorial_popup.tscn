@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=19 format=3 uid="uid://ds50dv1hyvb7s"]
 
 [ext_resource type="Texture2D" uid="uid://g3pedgnrfsnc" path="res://asset/image/interface/button/close_button.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://duvck2xnaquyt" path="res://asset/image/interface/popup/tutorial/tutorial_background.png" id="2"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="4"]
 [ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial4Step.tres" id="4_mdnb2"]
 [ext_resource type="Texture2D" uid="uid://xpdjrrdcduxr" path="res://asset/image/interface/button/next_tutorial_button.png" id="5"]
-[ext_resource type="Resource" path="res://asset/resource/tutorial/DefaultTutorial3Step.tres" id="5_veqdd"]
+[ext_resource type="Resource" uid="uid://du1pn7sb8na1k" path="res://asset/resource/tutorial/DefaultTutorial3Step.tres" id="5_veqdd"]
 [ext_resource type="Texture2D" uid="uid://d2txrws7sgoab" path="res://asset/image/interface/button/previous_tutorial_button.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cyxp8exlwjdrw" path="res://asset/image/interface/popup/tutorial/1_tutorial_before.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://b4fwr2564qnip" path="res://asset/image/interface/popup/tutorial/tutorial_header.png" id="8"]
@@ -106,7 +106,7 @@ _animation_player_path = NodePath("Animation")
 _tutorial_image_path = NodePath("Panel/Body/Image")
 _tap_path = NodePath("Panel/Body/Image/Tap")
 _carousel_path = NodePath("Panel/Body/Carousel")
-_tutorial_resources = Array[Resource("res://script/common/resource/tutorial_resource.gd")]([ExtResource("2_531qw"), ExtResource("3_s3t73"), ExtResource("4_mdnb2"), ExtResource("5_veqdd")])
+_tutorial_resources = Array[Resource("res://script/game_state/resource/tutorial_resource.gd")]([ExtResource("2_531qw"), ExtResource("3_s3t73"), ExtResource("5_veqdd"), ExtResource("4_mdnb2")])
 
 [node name="PopupBackground" parent="." instance=ExtResource("15")]
 layout_mode = 1

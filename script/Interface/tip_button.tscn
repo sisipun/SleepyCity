@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://d2brt8f0mvpfq"]
 
 [ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_v7k8x"]
 [ext_resource type="Texture2D" uid="uid://cg5ax67dxmub8" path="res://asset/image/interface/button/tip_button.png" id="2_hyj3d"]

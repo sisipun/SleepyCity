@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=26 format=3]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=26 format=3 uid="uid://dgpuarpqfqkt2"]
 
 [ext_resource type="Script" path="res://script/game_state/resource/level_resource.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cvfjbf71c24w3" path="res://asset/image/level/border/2_border.png" id="2"]

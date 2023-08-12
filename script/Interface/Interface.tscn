@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://script/interface/interface.gd" id="1_k641j"]
 [ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="2_avq0v"]
 [ext_resource type="Texture2D" uid="uid://bj8w4o08xnc6c" path="res://asset/image/interface/button/next_level_button.png" id="3_j3b0g"]
-[ext_resource type="PackedScene" path="res://script/interface/tip_button.tscn" id="4_dx0rc"]
-[ext_resource type="PackedScene" path="res://script/interface/attempt_counter.tscn" id="4_nyu5f"]
+[ext_resource type="PackedScene" uid="uid://d2brt8f0mvpfq" path="res://script/interface/tip_button.tscn" id="4_dx0rc"]
+[ext_resource type="PackedScene" uid="uid://crg8eoljtbi43" path="res://script/interface/bar/attempt/attempt_bar.tscn" id="6_khxwc"]
 [ext_resource type="Texture2D" uid="uid://ps040wi1tqos" path="res://asset/image/interface/button/reset_button.png" id="6_uck1h"]
 [ext_resource type="Texture2D" uid="uid://dif0r6s2smeri" path="res://asset/image/interface/button/menu_button.png" id="7_qw3pj"]
 
@@ -35,19 +35,19 @@ texture_normal = ExtResource("3_j3b0g")
 layout_mode = 2
 
 [node name="Middle" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 0
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
+offset_left = -50.0
 offset_top = 50.0
-offset_right = 25.0
-offset_bottom = 130.0
-pivot_offset = Vector2(25, 40)
+offset_right = 50.0
+offset_bottom = 150.0
+grow_horizontal = 2
 
-[node name="AttemptCounter" parent="Middle" instance=ExtResource("4_nyu5f")]
+[node name="AttemptBar" parent="Middle" instance=ExtResource("6_khxwc")]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.988235, 0.658824, 0.211765, 1)
 
 [node name="RightButtons" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 100)
