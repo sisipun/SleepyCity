@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqp10mrktqkg4"
-path="res://.godot/imported/sign_with_border.png-89ae63739a9b7cd633486820bbdd3260.ctex"
+uid="uid://bpq3ck121tb5h"
+path="res://.godot/imported/sign_background.png-5f8588792cfd6d70adbba4fc9f3a67a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/image/interface/bar/attempt/sign_with_border.png"
-dest_files=["res://.godot/imported/sign_with_border.png-89ae63739a9b7cd633486820bbdd3260.ctex"]
+source_file="res://asset/image/interface/bar/attempt/sign_background.png"
+dest_files=["res://.godot/imported/sign_background.png-5f8588792cfd6d70adbba4fc9f3a67a0.ctex"]
 
 [params]
 

@@ -34,6 +34,7 @@ BackgroundMusicController="res://script/game_state/controller/background_music_c
 
 window/size/viewport_width=500
 window/size/viewport_height=1000
+window/size/resizable=false
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
