@@ -29,15 +29,15 @@ func _ready() -> void:
 
 
 func _on_steped(_step_number: int, attempts_left: int) -> void:
-	_interpolate_attempt(attempts_left)
+	_interpolate_attempt(attempts_left, Tween.TRANS_ELASTIC)
 
 
 func _on_steped_back(_step_number: int, attempts_left: int) -> void:
-	_interpolate_attempt(attempts_left)
+	_interpolate_attempt(attempts_left, Tween.TRANS_ELASTIC)
 
 
 func _on_reseted(_step_number: int, attempts_left: int) -> void:
-	_interpolate_attempt(attempts_left)
+	_interpolate_attempt(attempts_left, Tween.TRANS_LINEAR)
 
 
 func _on_level_changed(
@@ -50,7 +50,7 @@ func _on_level_changed(
 	if _initial:
 		_update_attempt(info.attempt_count)
 	else:
-		_interpolate_attempt(info.attempt_count)
+		_interpolate_attempt(info.attempt_count, Tween.TRANS_LINEAR)
 
 
 func _update_attempt(attempt: int) -> void:
@@ -58,9 +58,9 @@ func _update_attempt(attempt: int) -> void:
 	_update_value(_attempt_value * _attempt_share)
 
 
-func _interpolate_attempt(attempt: int) -> void:
+func _interpolate_attempt(attempt: int, type: Tween.TransitionType) -> void:
 	_attempt_value = attempt
-	_interpolate_value(_attempt_value * _attempt_share)
+	_interpolate_value(_attempt_value * _attempt_share, type)
 
 
 func _update_value(new_value: float) -> void:
@@ -71,7 +71,7 @@ func _update_value(new_value: float) -> void:
 	_set_value(new_value)
 
 
-func _interpolate_value(new_value: float) -> void:
+func _interpolate_value(new_value: float, type: Tween.TransitionType) -> void:
 	if _tween and _tween.is_running():
 		_tween.custom_step(_change_value_duration)
 		_tween.stop()
@@ -82,7 +82,7 @@ func _interpolate_value(new_value: float) -> void:
 		value, 
 		new_value, 
 		_change_value_duration
-	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	).set_trans(type).set_ease(Tween.EASE_OUT)
 
 
 func _set_value(new_value: float) -> void:

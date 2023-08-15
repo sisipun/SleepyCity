@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://script/level/background/star.tscn" id="5_4jegl"]
 [ext_resource type="PackedScene" uid="uid://cmjh01hskvn3q" path="res://script/level/level.tscn" id="6_2g8iv"]
 [ext_resource type="PackedScene" uid="uid://yuddeyfiws6m" path="res://script/interface/interface.tscn" id="7_1i3qu"]
-[ext_resource type="PackedScene" path="res://script/interface/popup/level_complete/level_complete_popup.tscn" id="8_p72bj"]
+[ext_resource type="PackedScene" uid="uid://dkn25b25bk34v" path="res://script/interface/popup/level_complete/level_complete_popup.tscn" id="8_p72bj"]
 [ext_resource type="PackedScene" path="res://script/interface/popup/menu/menu_popup.tscn" id="9_em01l"]
 [ext_resource type="PackedScene" uid="uid://ds50dv1hyvb7s" path="res://script/interface/popup/tutorial/tutorial_popup.tscn" id="10_sumu7"]
 [ext_resource type="PackedScene" path="res://script/interface/popup/level_failed/level_failed_popup.tscn" id="11_meujr"]
