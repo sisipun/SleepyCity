@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy2exvuqbcxe6"]
 
-[ext_resource type="Texture2D" uid="uid://ddwguyehigpap" path="res://asset/image/interface/popup/star.png" id="1"]
 [ext_resource type="FontFile" path="res://asset/fonts/title.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://bftgiyaagohvi" path="res://script/interface/common/star/star.tscn" id="2_l74xr"]
 [ext_resource type="Script" path="res://script/interface/popup/stars_count.gd" id="3"]
 
 [node name="StarCount" type="HBoxContainer"]
@@ -13,10 +13,8 @@ alignment = 1
 script = ExtResource("3")
 _count_label_path = NodePath("CountLabel")
 
-[node name="Star" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(50, 50)
+[node name="Star" parent="." instance=ExtResource("2_l74xr")]
 layout_mode = 2
-texture = ExtResource("1")
 
 [node name="CountLabel" type="Label" parent="."]
 layout_mode = 2

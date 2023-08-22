@@ -1,4 +1,4 @@
-class_name Star
+class_name BackgroundStar
 extends NinePatchRect
 
 

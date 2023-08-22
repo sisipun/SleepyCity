@@ -2,13 +2,13 @@ class_name LevelResultStars
 extends HBoxContainer
 
 
-@export_node_path("NinePatchRect") var _first_star_path: NodePath
-@export_node_path("NinePatchRect") var _second_star_path: NodePath
-@export_node_path("NinePatchRect") var _third_star_path: NodePath
+@export_node_path("Star") var _first_star_path: NodePath
+@export_node_path("Star") var _second_star_path: NodePath
+@export_node_path("Star") var _third_star_path: NodePath
 
-@onready var _first_star: NinePatchRect = get_node(_first_star_path)
-@onready var _second_star: NinePatchRect = get_node(_second_star_path)
-@onready var _third_star: NinePatchRect = get_node(_third_star_path)
+@onready var _first_star: Star = get_node(_first_star_path)
+@onready var _second_star: Star = get_node(_second_star_path)
+@onready var _third_star: Star = get_node(_third_star_path)
 
 
 var _tween: Tween = null
@@ -41,19 +41,19 @@ func _on_level_change_request(_initial: bool) -> void:
 		_tween.kill()
 		_tween = null
 	
-	_first_star.modulate = Color(1, 1, 1, 0)
-	_second_star.modulate = Color(1, 1, 1, 0)
-	_third_star.modulate = Color(1, 1, 1, 0)
+	_first_star.set_body_alpha(0)
+	_second_star.set_body_alpha(0)
+	_third_star.set_body_alpha(0)
 
 
 func _interpolate_modulate(
 	tween: Tween, 
-	star: NinePatchRect, 
+	star: Star, 
 	duration: float
 ) -> void:
-	tween.tween_property(
-		star, 
-		"modulate",
-		Color(1, 1, 1, 1),
+	tween.tween_method(
+		Callable(star, "set_body_alpha"),
+		0.0,
+		1.0,
 		duration
-	).from(Color(1, 1, 1, 0)).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
+	).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)

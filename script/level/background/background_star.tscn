@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cledqb1nsfjvh"]
 
-[ext_resource type="Texture2D" uid="uid://drjk2msrigif6" path="res://asset/image/level/background/star.png" id="1"]
-[ext_resource type="Script" path="res://script/level/background/star.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://drjk2msrigif6" path="res://asset/image/level/background/star.png" id="1_djec5"]
+[ext_resource type="Script" path="res://script/level/background/background_star.gd" id="2_b8l62"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "rotation"
@@ -38,14 +38,14 @@ _data = {
 "rotation": SubResource("1")
 }
 
-[node name="Star" type="NinePatchRect"]
+[node name="BackgroundStar" type="NinePatchRect"]
 custom_minimum_size = Vector2(30, 30)
 offset_right = 30.0
 offset_bottom = 30.0
 scale = Vector2(0.7, 0.7)
 pivot_offset = Vector2(15, 15)
-texture = ExtResource("1")
-script = ExtResource("2")
+texture = ExtResource("1_djec5")
+script = ExtResource("2_b8l62")
 _animation_player_path = NodePath("Animation")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
