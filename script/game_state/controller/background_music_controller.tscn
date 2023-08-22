@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkckmdgt68vrc"]
-
-[ext_resource type="AudioStream" uid="uid://nguhobirnnya" path="res://asset/sound/background_music.ogg" id="1"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1")
-autoplay = true
-bus = &"Music"
