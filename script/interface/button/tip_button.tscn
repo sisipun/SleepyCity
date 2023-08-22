@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_v7k8x"]
+[ext_resource type="Texture2D" uid="uid://cg5ax67dxmub8" path="res://asset/image/interface/button/tip_button.png" id="2_hyj3d"]
+[ext_resource type="Script" path="res://script/interface/button/tip_button.gd" id="3_tbowp"]
+[ext_resource type="Texture2D" uid="uid://xdusj6vf00hb" path="res://asset/image/interface/button/tip_button_header.png" id="4_oll8t"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_woatf"]
+_data = {
+"down": SubResource("1"),
+"up": SubResource("2")
+}
+
+[node name="TipButton" instance=ExtResource("1_v7k8x")]
+texture_normal = ExtResource("2_hyj3d")
+script = ExtResource("3_tbowp")
+_count_label_path = NodePath("CountArea/CountLabel")
+
+[node name="Animation" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_woatf")
+}
+
+[node name="CountArea" type="NinePatchRect" parent="." index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -14.4729
+offset_top = -7.02698
+offset_right = 5.52707
+offset_bottom = 12.973
+texture = ExtResource("4_oll8t")
+
+[node name="CountLabel" type="Label" parent="CountArea" index="0"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.988235, 0.658824, 0.211765, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

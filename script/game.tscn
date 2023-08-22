@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://cytmmal074jsd"]
+
+[ext_resource type="Script" path="res://script/game.gd" id="1_crcd4"]
+[ext_resource type="PackedScene" uid="uid://veio7vp782qu" path="res://script/level/background/level_background.tscn" id="2_7hb5s"]
+[ext_resource type="Texture2D" uid="uid://duy2yjwwut6ue" path="res://asset/image/level/background/moon_light.png" id="3_28mxm"]
+[ext_resource type="Texture2D" uid="uid://cgxqr118qsqj5" path="res://asset/image/level/background/moon.png" id="4_0rfrh"]
+[ext_resource type="PackedScene" uid="uid://cmjh01hskvn3q" path="res://script/level/level.tscn" id="6_2g8iv"]
+[ext_resource type="PackedScene" uid="uid://ctmr0emap1cvq" path="res://script/interface/interface.tscn" id="7_1i3qu"]
+[ext_resource type="PackedScene" uid="uid://dkn25b25bk34v" path="res://script/interface/popup/level_complete/level_complete_popup.tscn" id="8_p72bj"]
+[ext_resource type="PackedScene" path="res://script/interface/popup/menu/menu_popup.tscn" id="9_em01l"]
+[ext_resource type="PackedScene" uid="uid://ds50dv1hyvb7s" path="res://script/interface/popup/tutorial/tutorial_popup.tscn" id="10_sumu7"]
+[ext_resource type="PackedScene" path="res://script/interface/popup/level_failed/level_failed_popup.tscn" id="11_meujr"]
+[ext_resource type="AudioStream" uid="uid://cvvgvmwfoo7v3" path="res://asset/sound/light_switch.ogg" id="12_bl57n"]
+[ext_resource type="Script" path="res://script/sound/light_switch_sound.gd" id="13_8ygdy"]
+[ext_resource type="AudioStream" uid="uid://bf8w5ocd8bi4f" path="res://asset/sound/level_complete.ogg" id="14_k0y5o"]
+[ext_resource type="Script" path="res://script/sound/level_complete_sound.gd" id="15_lwumv"]
+[ext_resource type="AudioStream" uid="uid://dmp287xhfvnea" path="res://asset/sound/level_failed.ogg" id="16_j5v63"]
+[ext_resource type="Script" path="res://script/sound/level_failed_sound.gd" id="17_073hx"]
+[ext_resource type="AudioStream" uid="uid://dn07o8rako05u" path="res://asset/sound/button_sound.ogg" id="18_7ga16"]
+[ext_resource type="Script" path="res://script/sound/button_sound.gd" id="19_0c2ek"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_crcd4")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="LevelBackground" parent="BackgroundLayer" instance=ExtResource("2_7hb5s")]
+offset_left = -1.18921
+offset_right = -1.18921
+
+[node name="SkyLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="MoonLight" type="NinePatchRect" parent="SkyLayer"]
+modulate = Color(0.639216, 0.858824, 0.882353, 0.627451)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -619.906
+offset_top = -207.857
+offset_right = 241.094
+offset_bottom = 624.143
+texture = ExtResource("3_28mxm")
+
+[node name="Moon" type="NinePatchRect" parent="SkyLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -319.937
+offset_top = 76.5244
+offset_right = -89.937
+offset_bottom = 306.524
+texture = ExtResource("4_0rfrh")
+
+[node name="LevelAreaLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Level" parent="LevelAreaLayer" instance=ExtResource("6_2g8iv")]
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="Interface" parent="InterfaceLayer" instance=ExtResource("7_1i3qu")]
+
+[node name="LevelCompletePopup" parent="InterfaceLayer" instance=ExtResource("8_p72bj")]
+visible = false
+
+[node name="LevelFailedPopup" parent="InterfaceLayer" instance=ExtResource("11_meujr")]
+visible = false
+
+[node name="MenuPopup" parent="InterfaceLayer" instance=ExtResource("9_em01l")]
+visible = false
+
+[node name="TutorialPopup" parent="InterfaceLayer" instance=ExtResource("10_sumu7")]
+visible = false
+
+[node name="SoundLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LightSwitchSound" type="AudioStreamPlayer" parent="SoundLayer"]
+stream = ExtResource("12_bl57n")
+volume_db = -20.0
+bus = &"Sound"
+script = ExtResource("13_8ygdy")
+
+[node name="LevelCompleteSound" type="AudioStreamPlayer" parent="SoundLayer"]
+stream = ExtResource("14_k0y5o")
+volume_db = -8.0
+bus = &"Sound"
+script = ExtResource("15_lwumv")
+
+[node name="LevelFailedSound" type="AudioStreamPlayer" parent="SoundLayer"]
+stream = ExtResource("16_j5v63")
+volume_db = -2.0
+bus = &"Sound"
+script = ExtResource("17_073hx")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="SoundLayer"]
+stream = ExtResource("18_7ga16")
+volume_db = -20.0
+bus = &"Sound"
+script = ExtResource("19_0c2ek")

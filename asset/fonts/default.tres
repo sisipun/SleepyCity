@@ -1,0 +1,7 @@
+[gd_resource type="FontFile" load_steps=2 format=3]
+
+[ext_resource type="FontFile" uid="uid://brdxmmlj5pqgj" path="res://asset/fonts/RubikMonoOne-Regular.ttf" id="1"]
+
+[resource]
+size = 13
+font_data = ExtResource( 1 )

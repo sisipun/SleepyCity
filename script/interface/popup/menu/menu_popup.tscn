@@ -1,0 +1,171 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="PackedScene" path="res://script/interface/common/switch_button/switch_button.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cmcnihxgmy8if" path="res://asset/image/interface/button/sound_off_button.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dpoi6uufujc6c" path="res://asset/image/interface/popup/menu/menu_background.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bjswmh5sfsrre" path="res://asset/image/interface/button/music_off_button.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bm5flr06t5qdy" path="res://asset/image/interface/popup/menu/menu_header.png" id="7"]
+[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://bjsah8lv41h7p" path="res://asset/image/interface/button/music_on_button.png" id="9"]
+[ext_resource type="Script" path="res://script/interface/popup/menu/sound_button.gd" id="9_05qro"]
+[ext_resource type="Texture2D" uid="uid://bwxb47kq577xs" path="res://asset/image/interface/button/sound_on_button.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://u5k6p6tlrfse" path="res://asset/image/interface/button/tutorial_button.png" id="11"]
+[ext_resource type="Script" path="res://script/interface/popup/menu/menu_popup.gd" id="12"]
+[ext_resource type="Script" path="res://script/interface/popup/menu/music_button.gd" id="12_66d2s"]
+[ext_resource type="Texture2D" uid="uid://g3pedgnrfsnc" path="res://asset/image/interface/button/close_button.png" id="13"]
+[ext_resource type="PackedScene" uid="uid://b41rsdein5njp" path="res://script/interface/popup/popup_background.tscn" id="14"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "popup"
+length = 0.666668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:anchor_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466668, 0.666668),
+"transitions": PackedFloat32Array(2, 0.7, 2, 0.5),
+"update": 0,
+"values": [-0.1, 0.5, 0.4, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466668, 0.666668),
+"transitions": PackedFloat32Array(2, 0.7, 2, 0.5),
+"update": 0,
+"values": [-0.1, 0.5, 0.4, 0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.300001, 0.466668, 0.666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 0.85), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jh40q"]
+_data = {
+"popup": SubResource("1")
+}
+
+[node name="MenuPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12")
+_animation_player_path = NodePath("Animation")
+
+[node name="Background" parent="." instance=ExtResource("14")]
+layout_mode = 1
+
+[node name="Panel" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(300, 170)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 70)
+mouse_filter = 0
+texture = ExtResource("5")
+
+[node name="Header" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -45.0
+offset_right = 60.0
+offset_bottom = 15.0
+texture = ExtResource("7")
+
+[node name="CloseButton" parent="Panel" instance=ExtResource("8")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -30.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+pivot_offset = Vector2(20, 20)
+texture_normal = ExtResource("13")
+
+[node name="Body" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -35.0
+offset_right = 125.0
+offset_bottom = 35.0
+alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Body"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SoundButton" parent="Panel/Body/Buttons" instance=ExtResource("1")]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("10")
+script = ExtResource("9_05qro")
+on_normal = ExtResource("10")
+off_normal = ExtResource("2")
+
+[node name="MusicButton" parent="Panel/Body/Buttons" instance=ExtResource("1")]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("9")
+script = ExtResource("12_66d2s")
+on_normal = ExtResource("9")
+off_normal = ExtResource("6")
+
+[node name="TutorialButton" parent="Panel/Body/Buttons" instance=ExtResource("8")]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("11")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jh40q")
+}
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_input"]
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close"]
+[connection signal="pressed" from="Panel/Body/Buttons/SoundButton" to="Panel/Body/Buttons/SoundButton" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Body/Buttons/MusicButton" to="Panel/Body/Buttons/MusicButton" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Body/Buttons/TutorialButton" to="." method="_on_tutorial_pressed"]
