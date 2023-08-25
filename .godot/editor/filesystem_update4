@@ -1,13 +1,6 @@
-res://script/interface/bar/attempt/attempt_bar.tscn
+res://script/interface/common/animated_button/animated_button.tscn
 res://asset/resource/tutorial/DefaultTutorial3Step.tres
 res://asset/resource/level/DefaultLevelResource.tres
-res://script/interface/bar/tip/tip_progress_bar.tscn
-res://script/interface/popup/level_complete/level_result_stars.tscn
-res://script/interface/popup/level_complete/level_complete_popup.tscn
+res://script/interface/common/animated_button/animated_button.gd
 res://script/level/level.tscn
-res://script/game.tscn
-res://script/interface/common/star/star.tscn
-res://script/level/background/background_star.tscn
-res://script/interface/popup/stars_count.tscn
-res://script/interface/interface.tscn
-res://script/game_state/controller/level_controller.tscn
+res://script/level/level.gd

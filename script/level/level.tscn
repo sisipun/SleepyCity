@@ -24,8 +24,6 @@ _window_scene = ExtResource("2_5hhjj")
 level_area_margin_left = 15.0
 level_area_margin_right = 15.0
 level_area_margin_top = 170.0
-level_area_margin_bottom = null
-window_margin = null
 
 [node name="House" type="Sprite2D" parent="."]
 modulate = Color(0.0784314, 0.027451, 0.027451, 1)

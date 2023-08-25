@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://daq58p3rwjmi2"]
 
 [ext_resource type="Script" path="res://script/interface/common/animated_button/animated_button.gd" id="1_0pu7k"]
 

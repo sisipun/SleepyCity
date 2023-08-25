@@ -20,6 +20,8 @@ extends Area2D
 @onready var _house: Sprite2D = get_node(_house_path)
 @onready var _roof: Sprite2D = get_node(_roof_path)
 
+var haptic = null
+
 var _level: LevelMap
 var _windows: Array = []
 var _took_tip: bool = false
@@ -44,6 +46,9 @@ func _ready() -> void:
 		_level_area_width / (_shape.shape.size.x * 2), 
 		_level_area_height / (_shape.shape.size.y * 2)
 	)
+	
+	if Engine.has_singleton("Haptic"):
+		haptic = Engine.get_singleton("Haptic")
 
 
 func _initial_x() -> float:
@@ -87,6 +92,9 @@ func _on_window_clicked(window: LevelWindow) -> void:
 	
 	if _level.make_step(i, j):
 		update_windows()
+		if Engine.has_singleton("Haptic"):
+			var singleton = Engine.get_singleton("Haptic")
+			singleton.impact(1)
 		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	
 	if _level.is_complete():
