@@ -12,6 +12,7 @@ extends TextureProgressBar
 @export_range(0, 10) var _change_value_duration: float
 
 @export var _blub_off: Texture2D
+@warning_ignore("unused_private_class_variable")
 @export var _blub_on: Texture2D
 
 @onready var _blub: NinePatchRect = get_node(_blub_path)

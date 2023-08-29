@@ -1,6 +1,0 @@
-res://script/interface/common/animated_button/animated_button.tscn
-res://asset/resource/tutorial/DefaultTutorial3Step.tres
-res://asset/resource/level/DefaultLevelResource.tres
-res://script/interface/common/animated_button/animated_button.gd
-res://script/level/level.tscn
-res://script/level/level.gd

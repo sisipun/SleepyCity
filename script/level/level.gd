@@ -2,20 +2,14 @@ class_name Level
 extends Area2D
 
 
-@export_node_path("CollisionShape2D") var _shape_path: NodePath
 @export_node_path("CollisionShape2D") var _game_area_shape_path: NodePath
 @export_node_path("Sprite2D") var _house_path: NodePath
 @export_node_path("Sprite2D") var _roof_path: NodePath
 
 @export var _window_scene: PackedScene
 
-@export var level_area_margin_left: float = 20
-@export var level_area_margin_right: float = 20
-@export var level_area_margin_top: float = 200
-@export var level_area_margin_bottom: float = 0
 @export var window_margin: float = 35
 
-@onready var _shape: CollisionShape2D = get_node(_shape_path)
 @onready var _game_area_shape: CollisionShape2D = get_node(_game_area_shape_path)
 @onready var _house: Sprite2D = get_node(_house_path)
 @onready var _roof: Sprite2D = get_node(_roof_path)
@@ -26,37 +20,26 @@ var _level: LevelMap
 var _windows: Array = []
 var _took_tip: bool = false
 var _tutorial: bool = false
-var _level_area_width: float
-var _level_area_height: float
+var _level_area_y_offset: float
 
 
 func _ready() -> void:
+	_level_area_y_offset = get_viewport_rect().size.y - position.y
+	_on_window_size_changed()
+	
+	get_viewport().size_changed.connect(_on_window_size_changed)
 	EventStorage.level_changed.connect(_on_level_changed)
 	EventStorage.decrement_tip_request.connect(_on_decrement_tip_request)
 	EventStorage.reset_request.connect(_on_reset_request)
 	EventStorage.step_back_request.connect(_on_step_back_request)
 	
-	var screen_size: = get_viewport_rect().size
-	_level_area_width = screen_size.x - (level_area_margin_left + level_area_margin_right)
-	_level_area_height = screen_size.y - (level_area_margin_top + level_area_margin_bottom)
-	
-	position.x = _initial_x()
-	position.y = _initial_y()
-	scale = Vector2(
-		_level_area_width / (_shape.shape.size.x * 2), 
-		_level_area_height / (_shape.shape.size.y * 2)
-	)
-	
 	if Engine.has_singleton("Haptic"):
 		haptic = Engine.get_singleton("Haptic")
 
 
-func _initial_x() -> float:
-	return level_area_margin_left + _level_area_width / 2
-
-
-func _initial_y() -> float:
-	return level_area_margin_top + _level_area_height / 2
+func _on_window_size_changed() -> void:
+	position.x = get_viewport_rect().size.x / 2
+	position.y = get_viewport_rect().size.y - _level_area_y_offset
 
 
 func _on_level_changed(
@@ -73,16 +56,16 @@ func _on_level_changed(
 	tween.tween_property(
 		self, 
 		"position", 
-		Vector2(-_level_area_width, position.y), 
+		Vector2(-position.x, position.y), 
 		1.0
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	tween.tween_callback(Callable(self, "restart").bind(info, level_resource))
 	tween.parallel().tween_property(
 		self, 
 		"position", 
-		Vector2(_initial_x(), position.y), 
+		Vector2(position.x, position.y), 
 		1.0
-	).from(Vector2(_initial_x() + get_viewport_rect().size.x, position.y)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	).from(Vector2(position.x + get_viewport_rect().size.x, position.y)).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
 func _on_window_clicked(window: LevelWindow) -> void:
@@ -92,9 +75,8 @@ func _on_window_clicked(window: LevelWindow) -> void:
 	
 	if _level.make_step(i, j):
 		update_windows()
-		if Engine.has_singleton("Haptic"):
-			var singleton = Engine.get_singleton("Haptic")
-			singleton.impact(1)
+		if haptic != null:
+			haptic.impact(1)
 		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	
 	if _level.is_complete():

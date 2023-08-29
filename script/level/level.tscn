@@ -16,14 +16,10 @@ b = Vector2(315, 550)
 position = Vector2(250, 600)
 scale = Vector2(0.662755, 0.666179)
 script = ExtResource("1_adnb7")
-_shape_path = NodePath("Shape")
 _game_area_shape_path = NodePath("GameAreaShape")
 _house_path = NodePath("House")
 _roof_path = NodePath("House/Roof")
 _window_scene = ExtResource("2_5hhjj")
-level_area_margin_left = 15.0
-level_area_margin_right = 15.0
-level_area_margin_top = 170.0
 
 [node name="House" type="Sprite2D" parent="."]
 modulate = Color(0.0784314, 0.027451, 0.027451, 1)
