@@ -75,7 +75,7 @@ func _on_window_clicked(window: LevelWindow) -> void:
 	
 	if _level.make_step(i, j):
 		update_windows()
-		if haptic != null:
+		if GameStorage.game.sound and haptic != null:
 			haptic.impact(1)
 		EventStorage.emit_signal("steped", _level.step_number(), _level.attempts_left())
 	

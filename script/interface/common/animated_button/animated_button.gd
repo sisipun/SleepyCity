@@ -12,7 +12,7 @@ func _ready() -> void:
 		haptic = Engine.get_singleton("Haptic")
 
 func _on_button_down() -> void:
-	if haptic != null:
+	if GameStorage.game.sound and haptic != null:
 		haptic.selection()
 	_animation_player.play("down")
 
