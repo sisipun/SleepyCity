@@ -16,6 +16,10 @@ signal level_failed
 signal sound_switch
 signal music_switch
 
+# HAPTIC
+signal haptic_selection_request
+signal haptic_impact_request(value)
+
 # MENU
 signal menu_open
 signal menu_closed

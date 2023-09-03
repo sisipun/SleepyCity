@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Sleepy City"
 run/main_scene="res://script/game.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.1")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://asset/image/launch/launch.png"
 config/icon="res://asset/image/incon/icon180x180.png"
@@ -29,6 +29,7 @@ LevelController="res://script/game_state/controller/level_controller.tscn"
 TipController="res://script/game_state/controller/tip_controller.gd"
 AudioController="res://script/game_state/controller/audio_controller.gd"
 BackgroundMusicController="res://script/game_state/controller/background_music_controller.tscn"
+HapticController="res://script/game_state/controller/haptic_controller.tscn"
 
 [display]
 
@@ -58,5 +59,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 vram_compression/import_etc=true
 vram_compression/import_pvrtc=true

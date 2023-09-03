@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djdg4v1nqme6k"]
+
+[ext_resource type="Script" path="res://script/game_state/controller/haptic_controller.gd" id="1_l5t3l"]
+
+[node name="HapticController" type="Node"]
+script = ExtResource("1_l5t3l")
