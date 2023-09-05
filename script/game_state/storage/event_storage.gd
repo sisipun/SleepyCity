@@ -41,3 +41,18 @@ signal reseted(step_number, attempts_left)
 signal decrement_tip_request
 signal decrement_tip
 signal increment_tip
+
+# AD
+signal ad_initialized
+
+signal banner_ad_load_request
+
+signal interstitial_ad_load_request
+signal interstitial_ad_show_request
+signal interstitial_ad_closed
+
+signal rewarded_ad_load_request
+signal rewarded_ad_loaded
+signal rewarded_ad_show_request
+signal rewarded_ad_earned
+signal rewarded_ad_closed

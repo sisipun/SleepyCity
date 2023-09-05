@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b13pfwnkajofq"]
+
+[ext_resource type="Script" path="res://script/game_state/controller/ads/interstitial_ad_controller.gd" id="1_mn73h"]
+
+[node name="InterstitialAdController" type="Node"]
+script = ExtResource("1_mn73h")
+_ad_unit = "ca-app-pub-7402100760013075/1514305459"

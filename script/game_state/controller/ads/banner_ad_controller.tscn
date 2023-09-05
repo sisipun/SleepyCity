@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://db0jc6fhefuha"]
+
+[ext_resource type="Script" path="res://script/game_state/controller/ads/banner_ad_controller.gd" id="1_mg5ky"]
+
+[node name="BannerAdController" type="Node"]
+script = ExtResource("1_mg5ky")
+_ad_unit = "ca-app-pub-7402100760013075/2555924380"
+_enabled = true

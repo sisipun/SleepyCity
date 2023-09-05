@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmlm8tuoc3x8b"]
+
+[ext_resource type="Script" path="res://script/game_state/controller/ads/rewarded_ad_controller.gd" id="1_uwm5c"]
+
+[node name="RewardedAdController" type="Node"]
+script = ExtResource("1_uwm5c")
+_ad_unit = "ca-app-pub-7402100760013075/9201223781"
+_enabled = true

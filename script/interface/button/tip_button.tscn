@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://c2kak63ol80to"]
 
-[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_v7k8x"]
+[ext_resource type="PackedScene" uid="uid://daq58p3rwjmi2" path="res://script/interface/common/animated_button/animated_button.tscn" id="1_v7k8x"]
 [ext_resource type="Texture2D" uid="uid://cg5ax67dxmub8" path="res://asset/image/interface/button/tip_button.png" id="2_hyj3d"]
+[ext_resource type="Texture2D" uid="uid://smxei1tq273c" path="res://asset/image/interface/button/tip_button_disabled.png" id="3_luxak"]
 [ext_resource type="Script" path="res://script/interface/button/tip_button.gd" id="3_tbowp"]
 [ext_resource type="Texture2D" uid="uid://xdusj6vf00hb" path="res://asset/image/interface/button/tip_button_header.png" id="4_oll8t"]
 
@@ -45,6 +46,7 @@ _data = {
 
 [node name="TipButton" instance=ExtResource("1_v7k8x")]
 texture_normal = ExtResource("2_hyj3d")
+texture_disabled = ExtResource("3_luxak")
 script = ExtResource("3_tbowp")
 _count_label_path = NodePath("CountArea/CountLabel")
 

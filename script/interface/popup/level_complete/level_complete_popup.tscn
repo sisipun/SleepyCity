@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" path="res://asset/fonts/title.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://clkn31jj4lcgb" path="res://asset/image/interface/popup/level_complete/bonus_icon_header.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://c1le668pr2dpc" path="res://script/interface/bar/tip/tip_progress_bar.tscn" id="7_xq60y"]
-[ext_resource type="PackedScene" path="res://script/interface/common/animated_button/animated_button.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://daq58p3rwjmi2" path="res://script/interface/common/animated_button/animated_button.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://52pfg1focils" path="res://script/interface/popup/level_complete/level_result_stars.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://b41rsdein5njp" path="res://script/interface/popup/popup_background.tscn" id="11"]
 

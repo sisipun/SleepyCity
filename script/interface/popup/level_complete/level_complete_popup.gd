@@ -43,6 +43,7 @@ func _on_next_pressed() -> void:
 
 	_next_level_button.disabled = true
 	hide()
+	EventStorage.emit_signal("interstitial_ad_show_request")
 	EventStorage.emit_signal("popup_close")
 	_bonus_icon.hide()
 	EventStorage.emit_signal("level_change_request", false)

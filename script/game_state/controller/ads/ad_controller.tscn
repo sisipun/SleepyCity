@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2mmmkk3qjpkk"]
+
+[ext_resource type="Script" path="res://script/game_state/controller/ads/ad_controller.gd" id="1_t0ow1"]
+
+[node name="AdController" type="Node"]
+script = ExtResource("1_t0ow1")

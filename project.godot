@@ -30,6 +30,10 @@ TipController="res://script/game_state/controller/tip_controller.gd"
 AudioController="res://script/game_state/controller/audio_controller.gd"
 BackgroundMusicController="res://script/game_state/controller/background_music_controller.tscn"
 HapticController="res://script/game_state/controller/haptic_controller.tscn"
+AdController="res://script/game_state/controller/ads/ad_controller.tscn"
+BannerAdController="res://script/game_state/controller/ads/banner_ad_controller.tscn"
+InterstitialAdController="res://script/game_state/controller/ads/interstitial_ad_controller.tscn"
+RewardedAdController="res://script/game_state/controller/ads/rewarded_ad_controller.tscn"
 
 [display]
 
@@ -43,7 +47,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("admob")
+enabled=PackedStringArray("res://addons/admob/plugin.cfg")
 
 [font]
 
