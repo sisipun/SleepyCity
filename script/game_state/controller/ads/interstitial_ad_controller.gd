@@ -2,7 +2,8 @@ class_name InterstitialAdController
 extends Node
 
 
-@export var _ad_unit: String
+@export var _android_ad_unit: String
+@export var _ios_ad_unit: String
 @export var _enabled: bool
 
 var _ad: InterstitialAd
@@ -22,8 +23,17 @@ func _ready() -> void:
 	_ad_full_screen_content_callback.on_ad_failed_to_show_full_screen_content = _on_ad_failed_to_show
 
 
+func get_ad_unit() -> String:
+	if OS.get_name() == "Android":
+		return _android_ad_unit
+	elif OS.get_name() == "iOS":
+		return _ios_ad_unit
+	else:
+		return ""
+
+
 func _on_ad_load_request() -> void:
-	InterstitialAdLoader.new().load(_ad_unit, AdRequest.new(), _ad_load_callback)
+	InterstitialAdLoader.new().load(get_ad_unit(), AdRequest.new(), _ad_load_callback)
 
 
 func _on_ad_loaded(ad : InterstitialAd) -> void:

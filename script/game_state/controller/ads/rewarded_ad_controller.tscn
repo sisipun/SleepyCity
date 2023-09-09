@@ -4,5 +4,6 @@
 
 [node name="RewardedAdController" type="Node"]
 script = ExtResource("1_uwm5c")
-_ad_unit = "ca-app-pub-7402100760013075/9201223781"
+_android_ad_unit = "ca-app-pub-7402100760013075/9201223781"
+_ios_ad_unit = "ca-app-pub-7402100760013075/5255026332"
 _enabled = true

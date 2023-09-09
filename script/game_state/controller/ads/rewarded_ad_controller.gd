@@ -2,14 +2,14 @@ class_name RewardedAdController
 extends Node
 
 
-@export var _ad_unit: String
+@export var _android_ad_unit: String
+@export var _ios_ad_unit: String
 @export var _enabled: bool
 
 var _ad: RewardedAd
 var _ad_load_callback: RewardedAdLoadCallback = RewardedAdLoadCallback.new()
 var _ad_shown_callback: OnUserEarnedRewardListener = OnUserEarnedRewardListener.new()
 var _ad_full_screen_content_callback: FullScreenContentCallback = FullScreenContentCallback.new()
-
 
 func _ready() -> void:
 	if _enabled:
@@ -25,8 +25,17 @@ func _ready() -> void:
 	_ad_full_screen_content_callback.on_ad_failed_to_show_full_screen_content = _on_ad_failed_to_show
 
 
+func get_ad_unit() -> String:
+	if OS.get_name() == "Android":
+		return _android_ad_unit
+	elif OS.get_name() == "iOS":
+		return _ios_ad_unit
+	else:
+		return ""
+
+
 func _on_ad_load_request() -> void:
-	RewardedAdLoader.new().load(_ad_unit, AdRequest.new(), _ad_load_callback)
+	RewardedAdLoader.new().load(get_ad_unit(), AdRequest.new(), _ad_load_callback)
 
 
 func _on_ad_loaded(ad: RewardedAd) -> void:
