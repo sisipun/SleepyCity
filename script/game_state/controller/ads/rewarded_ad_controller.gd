@@ -6,6 +6,7 @@ extends Node
 @export var _ios_ad_unit: String
 @export var _enabled: bool
 
+var _ad_unit: String
 var _ad: RewardedAd
 var _ad_load_callback: RewardedAdLoadCallback = RewardedAdLoadCallback.new()
 var _ad_shown_callback: OnUserEarnedRewardListener = OnUserEarnedRewardListener.new()
@@ -13,6 +14,7 @@ var _ad_full_screen_content_callback: FullScreenContentCallback = FullScreenCont
 
 func _ready() -> void:
 	if _enabled:
+		_ad_unit = get_ad_unit()
 		EventStorage.rewarded_ad_load_request.connect(_on_ad_load_request)
 		EventStorage.rewarded_ad_show_request.connect(_on_ad_show_request)
 	
@@ -35,7 +37,7 @@ func get_ad_unit() -> String:
 
 
 func _on_ad_load_request() -> void:
-	RewardedAdLoader.new().load(get_ad_unit(), AdRequest.new(), _ad_load_callback)
+	RewardedAdLoader.new().load(_ad_unit, AdRequest.new(), _ad_load_callback)
 
 
 func _on_ad_loaded(ad: RewardedAd) -> void:
