@@ -2,6 +2,7 @@ class_name Level
 extends Area2D
 
 
+@export_node_path("CollisionShape2D") var _shape_path: NodePath
 @export_node_path("CollisionShape2D") var _game_area_shape_path: NodePath
 @export_node_path("Sprite2D") var _house_path: NodePath
 @export_node_path("Sprite2D") var _roof_path: NodePath
@@ -10,19 +11,20 @@ extends Area2D
 
 @export var window_margin: float = 35
 
+@onready var _shape: CollisionShape2D = get_node(_shape_path)
 @onready var _game_area_shape: CollisionShape2D = get_node(_game_area_shape_path)
 @onready var _house: Sprite2D = get_node(_house_path)
 @onready var _roof: Sprite2D = get_node(_roof_path)
+@onready var _game_area_width: float = _game_area_shape.shape.b.x - _game_area_shape.shape.a.x
+@onready var _game_area_height: float = _game_area_shape.shape.b.y - _game_area_shape.shape.a.y
 
 var _level: LevelMap
 var _windows: Array = []
 var _took_tip: bool = false
 var _tutorial: bool = false
-var _level_area_y_offset: float
 
 
 func _ready() -> void:
-	_level_area_y_offset = get_viewport_rect().size.y - position.y
 	_on_window_size_changed()
 	
 	get_viewport().size_changed.connect(_on_window_size_changed)
@@ -34,7 +36,7 @@ func _ready() -> void:
 
 func _on_window_size_changed() -> void:
 	position.x = get_viewport_rect().size.x / 2
-	position.y = get_viewport_rect().size.y - _level_area_y_offset
+	position.y = get_viewport_rect().size.y - (_shape.shape.size.y * scale.y / 2)
 
 
 func _on_level_changed(
@@ -55,7 +57,7 @@ func _on_level_changed(
 		1.0
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	tween.tween_callback(Callable(self, "restart").bind(info, level_resource))
-	tween.parallel().tween_property(
+	tween.tween_property(
 		self, 
 		"position", 
 		Vector2(position.x, position.y), 
@@ -64,6 +66,9 @@ func _on_level_changed(
 
 
 func _on_window_clicked(window: LevelWindow) -> void:
+	if _level.is_complete():
+		return
+	
 	var coordinates = window.get_coordinates()
 	var i: int = coordinates.x
 	var j: int = coordinates.y
@@ -82,11 +87,17 @@ func _on_window_clicked(window: LevelWindow) -> void:
 
 
 func _on_decrement_tip_request() -> void:
+	if _level.is_complete():
+		return
+	
 	if show_tip():
 		EventStorage.emit_signal("decrement_tip")
 
 
 func _on_reset_request() -> void:
+	if _level.is_complete():
+		return
+	
 	if _level.reset():
 		update_windows()
 		EventStorage.emit_signal("reseted", _level.step_number(), _level.attempts_left())
@@ -95,6 +106,9 @@ func _on_reset_request() -> void:
 
 
 func _on_step_back_request() -> void:
+	if _level.is_complete():
+		return
+	
 	if _level.step_back():
 		update_windows()
 		EventStorage.emit_signal("steped_back", _level.step_number(), _level.attempts_left())
@@ -110,10 +124,6 @@ func restart(info: LevelInfo, level_resource: LevelResource) -> void:
 func clear(info: LevelInfo) -> void:
 	_took_tip = false
 	_tutorial = false
-	
-	for window_row in _windows:
-		for window in window_row: 
-			window.hide()
 	
 	if info.width == len(_windows) and info.height == len(_windows[0]):
 		return
@@ -133,10 +143,8 @@ func init(info: LevelInfo, level_resource: LevelResource) -> void:
 	_level = LevelMap.new(info)
 	_tutorial = info.tutorial
 	
-	var game_area_width: float = _game_area_shape.shape.b.x - _game_area_shape.shape.a.x
-	var game_area_height: float = _game_area_shape.shape.b.y - _game_area_shape.shape.a.y
-	var windows_width: float = (game_area_width - window_margin * (_level.width() + 1)) / _level.width()
-	var windows_height: float = (game_area_height - window_margin * (_level.height() + 1)) / _level.height()
+	var windows_width: float = (_game_area_width - window_margin * (_level.width() + 1)) / _level.width()
+	var windows_height: float = (_game_area_height - window_margin * (_level.height() + 1)) / _level.height()
 	
 	var window_sprite_frames_index = randi() % len(level_resource.window_sprite_frames)
 	var window_border_sprite_texute_index = randi() % len(level_resource.window_border_sprite_texture)
@@ -156,13 +164,11 @@ func init(info: LevelInfo, level_resource: LevelResource) -> void:
 					windows_width, 
 					windows_height
 				),
-				false,
+				_level.is_on(i, j),
 				_level.is_target(i, j),
 				window_sprite_frames,
 				window_border_sprite_texure
 			)
-			window.show()
-	update_windows()
 	
 	var house_color_index = randi() % len(level_resource.house_colors)
 	_house.modulate = level_resource.house_colors[house_color_index]

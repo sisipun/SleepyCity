@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dasfu66am0roa" path="res://asset/image/level/house/roof/6_roof.png" id="4_v7bqp"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(347.036, 599.956)
+size = Vector2(630, 1200)
 
 [sub_resource type="SegmentShape2D" id="2"]
 a = Vector2(-315, -575)
@@ -16,6 +16,7 @@ b = Vector2(315, 500)
 position = Vector2(250, 600)
 scale = Vector2(0.662755, 0.666179)
 script = ExtResource("1_adnb7")
+_shape_path = NodePath("Shape")
 _game_area_shape_path = NodePath("GameAreaShape")
 _house_path = NodePath("House")
 _roof_path = NodePath("House/Roof")
@@ -34,6 +35,7 @@ scale = Vector2(0.454488, 0.454488)
 texture = ExtResource("4_v7bqp")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+scale = Vector2(0.999999, 0.997038)
 shape = SubResource("1")
 
 [node name="GameAreaShape" type="CollisionShape2D" parent="."]
