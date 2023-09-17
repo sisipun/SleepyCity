@@ -90,6 +90,7 @@ libraries = {
 }
 
 [node name="Light3D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(5, 40)
 scale = Vector2(0.6, 0.7)
 color = Color(0.945098, 0.921569, 0.796078, 1)

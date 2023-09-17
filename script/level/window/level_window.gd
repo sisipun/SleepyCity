@@ -103,8 +103,10 @@ func get_coordinates() -> Vector2:
 func set_on(on: bool) -> void:
 	_on = on
 	if _on:
-		_ligth.enabled = true
+		# TODO enable when fix performance
+		#_ligth.enabled = true
 		_body.animation = "on"
 	else:
-		_ligth.enabled = false
+		# TODO enable when fix performance
+		#_ligth.enabled = false
 		_body.animation = "off"
